@@ -34,6 +34,7 @@ function callApiForLogout() {
       return response.json();
     })
     .then(data => {
+        localStorage.removeItem("token");
         return data.message;
     })
     .catch(error => {
@@ -52,7 +53,6 @@ function showTimeoutMessage() {
     alert("Your session has timed out. Please log in again."),
         localStorage.removeItem("lastActivity"),
         localStorage.removeItem("email"),
-        localStorage.removeItem("token"),
         cordova.InAppBrowser.open("index.html", "_self");
         if(localStorage.getItem("token") == null){
             cordova.InAppBrowser.open("index.html", "_self");
