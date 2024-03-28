@@ -1,6 +1,6 @@
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-
+// March 2024
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("deviceready", function () {
     document.querySelector(".loading-screen").style.display = "none";
