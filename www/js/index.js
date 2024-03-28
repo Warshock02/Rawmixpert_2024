@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     const db = window.sqlitePlugin.openDatabase({
-      name: "rawmixpert2.db",
+      name: "rawmixpert24.db",
       location: "default",
     });
 
@@ -214,7 +214,7 @@ async function onLoginFormSubmit(event) {
 
     if (window.sqlitePlugin) {
       const db = window.sqlitePlugin.openDatabase({
-        name: "rawmixpert2.db",
+        name: "rawmixpert24.db",
         location: "default",
       });
     } else {
@@ -226,7 +226,7 @@ async function onLoginFormSubmit(event) {
     const passwordInput = document.getElementById("password");
 
     const email = emailInput.value.trim();
-    const password = passwordInput.value;
+    const password = passwordInput.value.trim();;
 
     // START API
     //#region 
@@ -255,7 +255,7 @@ async function onLoginFormSubmit(event) {
     }
 
     const db = window.sqlitePlugin.openDatabase({
-      name: "rawmixpert2.db",
+      name: "rawmixpert24.db",
       location: "default",
     });
 
