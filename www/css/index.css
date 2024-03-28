@@ -1,0 +1,307 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/rm.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+.table-containerMatrix {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; 
+
+}
+/* 
+.table_container {
+    display: flex;
+  }
+  .table-column {
+    flex: 1;
+    padding: 10px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 4px;
+  }
+
+  .grid-container th{
+    white-space: nowrap;
+  }
+  .header-cell {
+    border: 1px solid black;
+  }
+  
+  .table-header-content {
+    padding-right: 20px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .placeholder-label {
+    position: relative;
+    color: #999;
+    padding: 5px;
+  }
+
+  .placeholder-label::after {
+    content: "0.0";
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    color: #999;
+  }
+  .input-container {
+    display: flex;
+  }
+  .centered-label {
+    font-size: medium;
+    text-align: center;
+    display: block;
+  } */
+  .floating-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .floating-button button {
+    display: none;
+    margin-bottom: 5px;
+    padding: 15px;
+    background-color: #caa52a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .floating-button-circle {
+    width: 40px;
+    height: 40px;
+    background-color:#caa52a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .floating-button-circle span {
+    font-size: 24px;
+  }
+
+  .floating-button.opened button {
+    display: block;
+  }
+
+  .floating-button.opened .floating-button-circle {
+    transform: rotate(45deg);
+  }
+  .flex-container {
+    display: flex;
+  }
+
+  .table1,
+  .table2 {
+    min-width: 200px; /* Set a fixed width for the tables */
+    margin-right: 10px; /* Add some spacing between the tables */
+  }
+
+  /* Responsive labels */
+  /*th {
+   /* max-width: 100px; /* Set a maximum width for the labels */
+   /* white-space: normal; /* Prevent label text from wrapping */
+  /*  overflow: hidden; /* Hide any overflowing text */
+  /*  text-overflow: ellipsis;  Add ellipsis (...) to indicate truncated text */
+  /*}
+
+  /* Add media query for responsiveness */
+  @media (max-width: 768px) {
+    .flex-container {
+      flex-wrap: wrap;
+    }
+
+    .table1,
+    .table2 {
+      flex: 1 1 100%; /* Let the tables take the full width on smaller screens */
+      margin-bottom: 10px; /* Add spacing between the tables on smaller screens */
+    }
+  }
+  
+ /* Optional: Set some general styles for the table */
+.table {
+width: 100%;
+border-collapse: collapse;
+border: 1px solid #ccc;
+}
+
+
+.table-inputvar {
+  display: flex;
+  border-collapse: collapse;
+  }
+
+
+/* Optional: Add some basic styling to the table cells */
+.table td, .table th {
+border: 1px solid #ccc;
+padding: 4px;
+}
+
+/* Set up the table-row as a flex container to align tables side by side */
+.table-row {
+display: flex;
+flex-wrap: wrap;
+}
+
+/* Set the flex property to 50% for both tables to take up half of the row each */
+.table {
+flex: 0 0 50%;
+}
+
+#circular-image {
+  border-radius: 50%; /* Set the border-radius to 50% to create a circular shape */
+  overflow: hidden; /* Hide any content outside the circular shape */
+}
+
+#notify1 {
+  position: fixed;
+  transform: translateX(-50%);
+  background-color: #ddd9d9;
+  padding: 10px;
+  border: 1px solid #a7a4a4;
+  border-radius: 4px;
+  display: none;
+  color: green;
+  align-content: center;
+}
+
+#notifyerror1 {
+  position: fixed;
+  transform: translateX(-50%);
+  background-color: #ddd9d9;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 4px;
+  display: none;
+  color: red;
+  align-content: center;
+}
+
+
+#notify2 {
+  position: fixed;
+  transform: translateX(-50%);
+  background-color: #ddd9d9;
+  padding: 10px;
+  border: 1px solid rgb(142, 212, 35);
+  border-radius: 4px;
+  display: none;
+  color: green;
+  align-content: center;
+}
+
+
+
+#notifyerror2 {
+  position: fixed;
+  transform: translateX(-50%);
+  background-color: #ddd9d9;
+  padding: 10px;
+  border: 1px solid #a7a4a4;
+  border-radius: 4px;
+  display: none;
+  color:red;
+  align-content: center;
+}
+/* Set up the table-row as a flex container to align tables side by side */
+.notify-row {
+  display: flex;
+  flex-wrap: wrap;
+  }
+  
+  /* Set the flex property to 50% for both tables to take up half of the row each */
+  .notify {
+  flex: 0 0 50%;
+  margin-left: 40%;
+  }
+
+  @media (max-width: 400px) {
+    /* Reduce font size for better fit */
+    table {
+        font-size: 8px;
+    }
+    
+    /* Make table headers and cells stack vertically */
+    th, td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Adjust spacing and padding */
+    th {
+        padding: 5px;
+    }
+
+    td {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+}

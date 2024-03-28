@@ -1,0 +1,145 @@
+
+.limestone-color {
+    background-color: white;
+    color: black;
+  }
+
+  .Shale-color {
+    background-color:#974706;
+    color: white
+  }
+
+  .Sand-color {
+    background-color: #FF9900;
+    color: black
+  }
+
+  .Iron-color {
+    background-color: #262626;
+    color: white
+  }
+
+  .row-gray {
+    background-color: rgb(170, 161, 154);
+  }
+
+  .bg-yellow {
+    background-color: rgb(245, 232, 48);
+    color: black;
+  }
+
+  .bg-lightdarkblue {
+    background-color: #C5D9F1;
+    color: black;
+    border: 1px solid black;
+  }
+
+  .bg-aqua {
+    background-color: aqua;
+    color: black;
+  }
+
+  .bg-darkblack {
+    background-color: #404040;
+
+    color: white;
+  }
+
+  .bg-lightblack {
+    background-color: #595959;
+    color: black;
+  }
+
+  .rawmill-lightgray {
+    background-color: #808080;
+    color: black;
+  }
+
+  .xrf-color {
+    background-color: #808080;
+    color: black;
+  }
+
+  .xrf-lightcolor {
+    background-color: #D9D9D9;
+    color: black;
+  }
+  .inputvar-dark{
+    background-color:#5F5F5F;
+    color: black;
+  }
+  .inputvar-darklight{
+    background-color:#5F5F5F;
+    color: white;
+  }
+  .inputvar-righttext{
+    text-align: right;
+  }
+
+  .tc-headcolor {
+    background-color: #948A54;
+    color: black;
+  }
+
+  .coff-matrix-color {
+    background-color: #948A54;
+    color: black; border:1px solid navajowhite;
+  }
+
+  .mix-column-color {
+    background-color: #9BBB59;
+    color: black;
+  }
+
+  .mix-limestone {
+    background-color: white;
+    color: black;
+  }
+
+  .mix-shale {
+    background-color: #974706;
+    color: white;
+  }
+
+  .mix-sand {
+    background-color: #E26B0A;
+    color: black;
+  }
+
+  .mix-iron {
+    background-color: #808080;
+    color: white;
+  }
+
+  .mix-rawmeal {
+    background-color: #FDE9D9;
+    color: blue;
+  }
+
+  .mix-rawmeal-head {
+    background-color: #FDE9D9;
+    color: black;
+  }
+
+  .mix-rg {
+    background-color: #C0C0C0;
+  }
+
+  .mix-color {
+    background-color: #DDD9C4;
+    color: black;
+  }
+
+  .rawmaterial-head{
+    background-color: #C4BD97;
+  }
+  .modulus-head{
+    background-color: #595959;
+    color: black;
+    border: 1px solid whitesmoke;
+    text-wrap: nowrap;
+  }
+  .modulus-detail{
+    background-color: #EEECE1;
+    color: black;
+  }

@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url(../img/RawMixMenu.jpg);
+      margin: 0;
+      /* Remove default margin to cover the full viewport */
+      padding: 0;
+      /* Remove default padding */
+      background-size: cover;
+      /* Adjust the background size as needed */
+      background-repeat: no-repeat;
+      /* Prevent image from repeating */
+      background-attachment: fixed;
+  }
+
+  .box {
+    /* background-color: #fff;
+    border: 1px solid #ccc; */
+    padding: 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin: 10px;
+    margin-top: 5px;
+  }
+
+  .desc {
+    font-size: 1em;
+  }
+
+  .button-container {
+    margin-top: 120px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  .button {
+    background-color: transparent;
+    color: #fff;
+    border: 3px solid black;
+    border-bottom-style: groove;
+    padding: 10px;
+    text-shadow: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+
+  .button:hover {
+    background-color: rgb(81, 87, 94);
+  }
+
+  .form-footer {
+    text-align: left;
+  }
+
+  .icon-with-text {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-with-text img {
+    size: 10px;
+    margin-right: 10px;
+    /* Adjust spacing between icon and text */
+  }
+
+  .icon-with-text .text {
+    font-size: 12px;
+  }
+
+  .resized-image {
+    width: 15px;
+    /* Make the image fit within the container */
+    height: 15px;
+    /* Maintain aspect ratio */
+  }

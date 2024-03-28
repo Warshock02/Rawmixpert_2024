@@ -1,0 +1,82 @@
+/* General styles for the form */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 210px
+  }
+  
+  .form-header {
+    text-align: center;
+  }
+  
+  .form-group {
+    /* margin-bottom: 10px; */
+    margin-top: 40px;
+  }
+
+  .form-input {
+    bottom: 10px;
+    /* width: 100%; */
+    padding: 10px;
+    font-size: 1rem;
+    color: #FFC736;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-size: cover;
+  }
+  
+  .form-button {
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 1rem;
+    color: #fff;
+    background-size: cover;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.input-group {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.input-group input {
+  margin: 0 5px;
+  padding: 5px;
+}
+
+.input-group button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+  
+  .form-footer {
+    text-align: center;
+  }
+  
+  /* Media Queries for responsive design */
+  @media only screen and (max-width: 768px) {
+    .login-form {
+      padding: 10px;
+    }
+  
+    .form-header img {
+      width: 100px;
+      height: 71px;
+    }
+  
+    .form-input,
+    .form-button {
+      font-size: 0.8rem;
+      flex-wrap: nowrap;
+    }
+  }
+  

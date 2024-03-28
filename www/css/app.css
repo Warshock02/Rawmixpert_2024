@@ -1,0 +1,115 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container-tab {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: #948A54; 
+  color: black; */
+}
+
+/* Styles for each tab */
+.container-tab .tab {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+ 
+}
+.container-tab .tab span{
+  color:black;
+  text-decoration:solid;
+  text-shadow: #fff;
+}
+
+/* Add any other styles you need for the tabs */
+
+/* Styles for tabContents */
+.container {
+  position: relative;
+  padding-bottom: 60px; /* Set the padding to accommodate the bottom tabs */
+}
+
+.scaler-container{
+  position: relative;
+  transform: scale(1);
+
+}
+
+.tab-content {
+  padding: 10px;
+  /* Add any other styles you need for the tab contents */
+  /* The height will be adjusted automatically to fill the available space */
+  height: calc(100vh - 60px); /* Adjust the height to fill the available screen space */
+  overflow: auto;
+}
+
+.drag-container {
+  text-align: center;
+  margin: 10px;
+
+  /* width: 100px;
+  height: 100px;
+  background-color: blue;
+  color: white;
+  line-height: 100px;
+  margin: 10px; */
+}
+
+/* Apply zooming and scrolling to all tabContents */
+.tab-content.zoomable {
+  overflow: auto;
+  transform-origin: center center;
+  touch-action: pan-x pan-y; /* Enable smooth scrolling on touch devices */
+}
+
+.tab-content.zoomable.zoomed {
+  transform: scale(1.5); /* Set the zoom level as per your requirement */
+  transition: transform 0.3s ease; /* Add a smooth transition for zooming */
+}
+
+  .tab i {
+    font-size: 24px;
+    color: #888;
+  }
+  
+  .tab span {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #888;
+  }
+  
+  input{
+    font-size: 10px
+  }
+  /* BACK BUTTON */
+  .back-button {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    background-color: grey;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Replace the following with your actual font-awesome CDN link */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+  

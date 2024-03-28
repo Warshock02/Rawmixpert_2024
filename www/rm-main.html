@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/load.css">
+
+  <title>RM</title>
+
+  <style>
+    #offBtn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-image: url('./img/off-button.png');
+      background-size: cover;
+      /* Adjust as needed */
+      width: 40px;
+      /* Adjust the width of the button */
+      height: 40px;
+      /* Adjust the height of the button */
+      border: none;
+      /* Remove default button styling */
+      border-radius: 50%
+    }
+  </style>
+  <script src="js/session.js"></script>
+</head>
+
+<body>
+
+
+  <div class="loading-screen">
+    <img src="img/4.webp" alt="Loading" class="loading-icon">
+    Loading RawMixPERT Menu . . .
+  </div>
+  <div class="app-content box" id="appContent">
+
+
+    <!-- <h2 class="title">RawMixPERT</h2>
+    <p class="desc">A Cement Raw Materia Proportion Expert</p> -->
+    <div class="button-container">
+      <button class="button" onclick="window.rawmill1()">RAWMILL 1</button>
+      <button class="button" onclick="window.rawmill2()">RAWMILL 2</button>
+      <button class="button" onclick="window.recipe1()">RECIPE 1</button>
+      <button class="button" onclick="window.recipe2()">RECIPE 2</button>
+    </div>
+
+    <button id="offBtn"></button>
+
+    <div class="form-footer">
+
+      <p style="margin-top: 0.6rem; font-size: 0.8rem">Created by: Franco Bacalando Ortiz</p>
+
+      <div class="icon-with-text">
+        <img class="resized-image" src="./img/linkin.png" alt="linkin">
+        <span class="text">https://www.linkedin.com/in/francobacalandoortiz</span>
+      </div>
+      <br>
+      <div class="icon-with-text">
+        <img class="resized-image" src="./img/google.png" alt="linkin">
+        <span class="text">franco.bacalando.ortiz@gmail.com</span>
+      </div>
+      <hr>
+      <p style="margin-top: 0.6rem; font-size: 0.8rem; text-align: center;">2023 © WM-Dev</p>
+    </div>
+  </div>
+
+  <script src="cordova.js"></script>
+  <script src="js/main-script.js"></script>
+  <script src="js/confirmation.js"></script>
+</body>
+
+</html>
