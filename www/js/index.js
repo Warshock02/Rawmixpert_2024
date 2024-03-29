@@ -1,6 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady);
 
-async function onDeviceReady() {
+ async function onDeviceReady() {
   try {
 
     document.querySelector(".loading-screen").style.display = "none";
@@ -18,7 +18,7 @@ async function onDeviceReady() {
       });
 
     // Open or create the SQLite database
-    const db = await window.sqlitePlugin.openDatabase({
+    const db =  window.sqlitePlugin.openDatabase({
       name: "rawmixpert24.db",
       location: "default",
     });
@@ -104,17 +104,17 @@ function checkPassword(password) {
 const loginForm = document.getElementById("loginForm");
 loginForm.addEventListener("submit", onLoginFormSubmit);
 
-async function onLoginFormSubmit(event) {
+ async function onLoginFormSubmit(event) {
+  var element = document.querySelector(".loading-screen");
+  element.style.display = "none"; // Hide loading screen initially
+
   try {
-
-    var element = document.querySelector(".loading-screen")
-
     event.preventDefault();
 
-    const db = await window.sqlitePlugin.openDatabase({
-        name: "rawmixpert24.db",
-        location: "default",
-      });
+    const db =  window.sqlitePlugin.openDatabase({
+      name: "rawmixpert24.db",
+      location: "default",
+    });
 
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
@@ -141,8 +141,8 @@ async function onLoginFormSubmit(event) {
     // login process
 
     // Check if the user exists in the local SQLite database
-    const res = await executeSqlAsync(db, "SELECT * FROM users LIMIT 1");
-    
+    const res =  await executeSqlAsync(db, "SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1", [email, password]);
+
     if (res.rows.length > 0) {
       // User exists, retrieve the username
       const email = res.rows.item(0).email;
@@ -150,25 +150,24 @@ async function onLoginFormSubmit(event) {
     } else {
       // User doesn't exist, call the API to get the email
       const token = await callApiForEmail(email, password);
-      // console.log("Email from API:", token);
-
+      
       if (token != null || token != "") {
         // Save the email to SQLite for future use
         await saveEmailToSQLite(db, email, password, token);
-        element.style.display = "none";
         navigateToDashboard();
+      } else {
+        alert("Error: " + token);
       }
     }
     // end login process
   } catch (error) {
     alert("Login's error: " + error.message);
-    element.style.display = "none";
   }
 }
 
 // End Submit
 
-async function executeSqlAsync(db, query, params = []) {
+ async function executeSqlAsync(db, query, params = []) {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -185,8 +184,8 @@ async function executeSqlAsync(db, query, params = []) {
   });
 }
 
-async function callApiForEmail(email, password) {
-  try {
+ function callApiForEmail(email, password) {
+  
     const apiUrl = "http://127.0.0.1:8000/api/auth/login";
 
     // User credentials
@@ -196,7 +195,7 @@ async function callApiForEmail(email, password) {
     };
 
     // Make an API call to get the username
-    const response = await fetch(apiUrl, {
+    return fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -207,19 +206,29 @@ async function callApiForEmail(email, password) {
         "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
       },
       body: JSON.stringify(credentials),
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.token != null && data.token !== '') {
+        return data.token;
+      } else {
+        return data.message;
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching user from API:", error);
+      throw error; // Re-throw the error to be caught by the caller
     });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const data = await response.json();
-    return data.token;
-  } catch (error) {
-    throw new Error("Error fetching user from API:", error);
-  }
 }
 
-async function saveEmailToSQLite(db, email, password, token) {
+ async function saveEmailToSQLite(db, email, password, token) {
   // Insert the username into the users table
   await executeSqlAsync(
     db,
