@@ -8,8 +8,8 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-navigation href="http://127.0.0.1:8000/*" />
-    
+    <allow-navigation href="https://*/*" />
+    <access origin="*" />
 
 
     
@@ -20,4 +20,21 @@
     <icon src="www/img/rm.png" density="xxhdpi" />
     <icon src="www/img/rm.png" density="xxxhdpi" />
 
+    <platform name="android">   
+        <allow-intent href="http://*/*" />
+        <allow-intent href="https://*/*" />
+        <allow-intent href="tel:*" />
+        <allow-intent href="sms:*" />
+        <allow-intent href="mailto:*" />
+        <allow-intent href="geo:*" />
+        <preference name="AndroidInsecureFileModeEnabled" value="true" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="http://*/*" />
+        <allow-intent href="https://*/*" />
+        <allow-intent href="tel:*" />
+        <allow-intent href="sms:*" />
+        <allow-intent href="mailto:*" />
+        <allow-intent href="geo:*" />
+    </platform>
 </widget>

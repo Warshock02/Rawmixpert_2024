@@ -2,6 +2,7 @@ document.addEventListener("deviceready", onDeviceReady);
 
 async function onDeviceReady() {
   try {
+    console.log("INDEX 2!!!!!!!!!!!");
 
     document.querySelector(".loading-screen").style.display = "none";
 
@@ -50,7 +51,7 @@ function isUserLoggedIn() {
       result = true;
       console.log("Email DETECTED!");
     }
-  
+    
     return result;
   }
   

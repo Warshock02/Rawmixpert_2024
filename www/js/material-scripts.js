@@ -1247,7 +1247,7 @@ function onDeviceReady() {
 
     db.transaction((tx) => {
         tx.executeSql(
-            "CREATE TABLE IF NOT EXISTS rmTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NULL, check16 BOOLEAN, D16_Limestone NUMERIC NULL,E16_Shale NUMERIC NULL,F16_Sand NUMERIC NULL,G16_Iron NUMERIC NULL, check17 BOOLEAN, D17_Limestone NUMERIC NULL,E17_Shale NUMERIC NULL,F17_Sand NUMERIC NULL,G17_Iron NUMERIC NULL, check18 BOOLEAN, D18_Limestone NUMERIC NULL,E18_Shale NUMERIC NULL,F18_Sand NUMERIC NULL,G18_Iron NUMERIC NULL, check19 BOOLEAN, D19_Limestone NUMERIC NULL,E19_Shale NUMERIC NULL,F19_Sand NUMERIC NULL,G19_Iron NUMERIC NULL, D15 NUMERIC,E15 NUMERIC,F15 NUMERIC,G15 NUMERIC,H15_SiO2 NUMERIC,I15_Al2O3 NUMERIC,J15_Fe2O3 NUMERIC,K15_CaO NUMERIC,L15_MgO NUMERIC,M15_Na2O NUMERIC,N15_K2O NUMERIC,O15_SO3 NUMERIC,P15_Cl NUMERIC,H16_SiO2 NUMERIC,I16_Al2O3 NUMERIC,J16_Fe2O3 NUMERIC,K16_CaO NUMERIC,L16_MgO NUMERIC,M16_Na2O NUMERIC,N16_K2O NUMERIC,O16_SO3 NUMERIC,P16_Cl NUMERIC,H17_SiO2 NUMERIC,I17_Al2O3 NUMERIC,J17_Fe2O3 NUMERIC,K17_CaO NUMERIC,L17_MgO NUMERIC,M17_Na2O NUMERIC,N17_K2O NUMERIC,O17_SO3 NUMERIC,P17_Cl NUMERIC,H18_SiO2 NUMERIC,I18_Al2O3 NUMERIC,J18_Fe2O3 NUMERIC,K18_CaO NUMERIC,L18_MgO NUMERIC,M18_Na2O NUMERIC,N18_K2O NUMERIC,O18_SO3 NUMERIC,P18_Cl NUMERIC,C30_LSF_PR NUMERIC,C31_SM_PR NUMERIC,C32_AM_PR NUMERIC,E33_Clinker_Factor NUMERIC,E34_RawMixType TEXT,F30_LSF_TG NUMERIC,F31_SM_TG NUMERIC,F32_AM_TG NUMERIC,H31_SiO2 NUMERIC,I31_Al2O3 NUMERIC,J31_Fe2O3 NUMERIC,K31_CaO NUMERIC,L31_MgO NUMERIC,M31_Na2O NUMERIC,N31_K2O NUMERIC,O31_SO3 NUMERIC,P31_Cl NUMERIC,L38_KL_LOI NUMERIC, V38_LOI NUMERIC, H38_literKG TEXT,I38_FCaO NUMERIC, J38_BurningCondition TEXT, U38_SO3 TEXT, DT DATETIME)",
+            "CREATE TABLE IF NOT EXISTS rmTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NULL, email TEXT NULL, check16 BOOLEAN, D16_Limestone NUMERIC NULL,E16_Shale NUMERIC NULL,F16_Sand NUMERIC NULL,G16_Iron NUMERIC NULL, check17 BOOLEAN, D17_Limestone NUMERIC NULL,E17_Shale NUMERIC NULL,F17_Sand NUMERIC NULL,G17_Iron NUMERIC NULL, check18 BOOLEAN, D18_Limestone NUMERIC NULL,E18_Shale NUMERIC NULL,F18_Sand NUMERIC NULL,G18_Iron NUMERIC NULL, check19 BOOLEAN, D19_Limestone NUMERIC NULL,E19_Shale NUMERIC NULL,F19_Sand NUMERIC NULL,G19_Iron NUMERIC NULL, D15 NUMERIC,E15 NUMERIC,F15 NUMERIC,G15 NUMERIC,H15_SiO2 NUMERIC,I15_Al2O3 NUMERIC,J15_Fe2O3 NUMERIC,K15_CaO NUMERIC,L15_MgO NUMERIC,M15_Na2O NUMERIC,N15_K2O NUMERIC,O15_SO3 NUMERIC,P15_Cl NUMERIC,H16_SiO2 NUMERIC,I16_Al2O3 NUMERIC,J16_Fe2O3 NUMERIC,K16_CaO NUMERIC,L16_MgO NUMERIC,M16_Na2O NUMERIC,N16_K2O NUMERIC,O16_SO3 NUMERIC,P16_Cl NUMERIC,H17_SiO2 NUMERIC,I17_Al2O3 NUMERIC,J17_Fe2O3 NUMERIC,K17_CaO NUMERIC,L17_MgO NUMERIC,M17_Na2O NUMERIC,N17_K2O NUMERIC,O17_SO3 NUMERIC,P17_Cl NUMERIC,H18_SiO2 NUMERIC,I18_Al2O3 NUMERIC,J18_Fe2O3 NUMERIC,K18_CaO NUMERIC,L18_MgO NUMERIC,M18_Na2O NUMERIC,N18_K2O NUMERIC,O18_SO3 NUMERIC,P18_Cl NUMERIC,C30_LSF_PR NUMERIC,C31_SM_PR NUMERIC,C32_AM_PR NUMERIC,E33_Clinker_Factor NUMERIC,E34_RawMixType TEXT,F30_LSF_TG NUMERIC,F31_SM_TG NUMERIC,F32_AM_TG NUMERIC,H31_SiO2 NUMERIC,I31_Al2O3 NUMERIC,J31_Fe2O3 NUMERIC,K31_CaO NUMERIC,L31_MgO NUMERIC,M31_Na2O NUMERIC,N31_K2O NUMERIC,O31_SO3 NUMERIC,P31_Cl NUMERIC,L38_KL_LOI NUMERIC, V38_LOI NUMERIC, H38_literKG TEXT,I38_FCaO NUMERIC, J38_BurningCondition TEXT, U38_SO3 TEXT, DT DATETIME)",
             [],
             () => console.log("Table rm created successfully"),
             (error) => console.error("Error rm creating table", error.message)
@@ -1270,8 +1270,8 @@ function onDeviceReady() {
 
     db.transaction((tx) => {
         tx.executeSql(
-            "SELECT * FROM rmTable ORDER BY id DESC",
-            [],
+            "SELECT * FROM rmTable WHERE email = ? ORDER BY id DESC",
+            [localStorage.getItem("email")],
             function (tx, result) {
                 const table = document.getElementById("material_table");
                 const rows = result.rows;
@@ -1739,8 +1739,8 @@ function mloadlist() {
 
     db.transaction((tx) => {
         tx.executeSql(
-            "SELECT * FROM rmTable ORDER BY id DESC",
-            [],
+            "SELECT * FROM rmTable WHERE email = ? ORDER BY id DESC",
+            [localStorage.getItem("email")],
             function (tx, result) {
                 const table = document.getElementById("material_table");
                 const rows = result.rows;
@@ -1832,9 +1832,10 @@ function save_ma() {
 
             db.transaction((tx) => {
                 tx.executeSql(
-                    "INSERT INTO rmTable (name,check16,D16_Limestone,E16_Shale,F16_Sand,G16_Iron,  check17,D17_Limestone,E17_Shale ,F17_Sand,G17_Iron,check18,D18_Limestone, E18_Shale ,F18_Sand,G18_Iron,check19,D19_Limestone,E19_Shale ,F19_Sand,G19_Iron,   D15,E15,F15,G15,H15_SiO2,I15_Al2O3,J15_Fe2O3,K15_CaO,L15_MgO,M15_Na2O,N15_K2O,  O15_SO3,P15_Cl,H16_SiO2,I16_Al2O3,J16_Fe2O3,K16_CaO,L16_MgO,M16_Na2O,N16_K2O, O16_SO3,P16_Cl,H17_SiO2,I17_Al2O3,J17_Fe2O3,K17_CaO,L17_MgO,M17_Na2O,N17_K2O,O17_SO3,P17_Cl,H18_SiO2,I18_Al2O3,J18_Fe2O3,K18_CaO,L18_MgO,M18_Na2O,N18_K2O, O18_SO3,P18_Cl,C30_LSF_PR,C31_SM_PR,C32_AM_PR,E33_Clinker_Factor,E34_RawMixType, F30_LSF_TG,F31_SM_TG,F32_AM_TG,H31_SiO2,I31_Al2O3,J31_Fe2O3,K31_CaO,L31_MgO, M31_Na2O,N31_K2O,O31_SO3,P31_Cl,L38_KL_LOI,V38_LOI, H38_literKG, I38_FCaO, J38_BurningCondition, U38_SO3, DT) values   (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    "INSERT INTO rmTable (name, email,check16,D16_Limestone,E16_Shale,F16_Sand,G16_Iron,  check17,D17_Limestone,E17_Shale ,F17_Sand,G17_Iron,check18,D18_Limestone, E18_Shale ,F18_Sand,G18_Iron,check19,D19_Limestone,E19_Shale ,F19_Sand,G19_Iron,   D15,E15,F15,G15,H15_SiO2,I15_Al2O3,J15_Fe2O3,K15_CaO,L15_MgO,M15_Na2O,N15_K2O,  O15_SO3,P15_Cl,H16_SiO2,I16_Al2O3,J16_Fe2O3,K16_CaO,L16_MgO,M16_Na2O,N16_K2O, O16_SO3,P16_Cl,H17_SiO2,I17_Al2O3,J17_Fe2O3,K17_CaO,L17_MgO,M17_Na2O,N17_K2O,O17_SO3,P17_Cl,H18_SiO2,I18_Al2O3,J18_Fe2O3,K18_CaO,L18_MgO,M18_Na2O,N18_K2O, O18_SO3,P18_Cl,C30_LSF_PR,C31_SM_PR,C32_AM_PR,E33_Clinker_Factor,E34_RawMixType, F30_LSF_TG,F31_SM_TG,F32_AM_TG,H31_SiO2,I31_Al2O3,J31_Fe2O3,K31_CaO,L31_MgO, M31_Na2O,N31_K2O,O31_SO3,P31_Cl,L38_KL_LOI,V38_LOI, H38_literKG, I38_FCaO, J38_BurningCondition, U38_SO3, DT) values   (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     [
                         "RAWMILL_" + rawmillnum + "_" + formattedDate,
+                        localStorage.getItem("email"),
                         cbox16.checked,
                         cbox16.checked ? parseFloat(D16_Limestone_DQ.textContent) : parseFloat(D16_Limestone_DG.value),
                         cbox16.checked ? parseFloat(E16_Shale_DQ.textContent) : parseFloat(E16_Shale_DG.value),
@@ -1960,7 +1961,7 @@ function update_ma(id) {
 
         db.transaction((tx) => {
             tx.executeSql(
-                "UPDATE rmTable SET check16 = ? ,D16_Limestone = ? ,E16_Shale  = ? ,F16_Sand = ? ,  G16_Iron = ? ,  check17 = ? ,D17_Limestone = ? ,E17_Shale  = ? ,F17_Sand = ? ,  G17_Iron = ? ,check18 = ? ,D18_Limestone = ? , E18_Shale  = ? ,F18_Sand = ? , G18_Iron = ? ,check19 = ? ,D19_Limestone = ? ,E19_Shale  = ? ,F19_Sand = ? , G19_Iron = ? , D15 = ? ,E15       = ? ,F15       = ? ,G15       = ? ,H15_SiO2    = ? ,I15_Al2O3 = ? ,J15_Fe2O3 = ? ,K15_CaO   = ?,L15_MgO   = ? ,M15_Na2O  = ? , N15_K2O   = ? ,O15_SO3   = ? ,P15_Cl    = ? ,H16_SiO2  = ? ,I16_Al2O3 = ? ,  J16_Fe2O3 = ? ,K16_CaO   = ? ,L16_MgO   = ? ,M16_Na2O  = ? ,N16_K2O   = ? , O16_SO3   = ? ,P16_Cl    = ? ,H17_SiO2  = ? ,I17_Al2O3 = ? ,J17_Fe2O3 = ? ,  K17_CaO   = ? ,L17_MgO   = ? ,M17_Na2O  = ? ,N17_K2O   = ? ,O17_SO3   = ? , P17_Cl    = ? ,H18_SiO2  = ? ,I18_Al2O3 = ? ,J18_Fe2O3 = ? ,K18_CaO   = ? ,  L18_MgO   = ? ,M18_Na2O  = ? ,N18_K2O   = ? ,O18_SO3   = ? ,P18_Cl    = ? , C30_LSF_PR= ? ,C31_SM_PR = ? ,C32_AM_PR = ? ,E33_Clinker_Factor= ? , E34_RawMixType    = ? ,F30_LSF_TG        = ? ,F31_SM_TG         = ? ,  F32_AM_TG         = ? ,H31_SiO2          = ? ,I31_Al2O3         = ? , J31_Fe2O3         = ? ,K31_CaO           = ? ,L31_MgO           = ? ,  M31_Na2O          = ? ,N31_K2O           = ? ,O31_SO3           = ? , P31_Cl            = ? ,L38_KL_LOI        = ? ,V38_LOI           = ?,  H38_literKG          = ?,I38_FCaO =?, J38_BurningCondition           = ?, U38_SO3           = ?  WHERE id = ?  ",
+                "UPDATE rmTable SET check16 = ? ,D16_Limestone = ? ,E16_Shale  = ? ,F16_Sand = ? ,  G16_Iron = ? ,  check17 = ? ,D17_Limestone = ? ,E17_Shale  = ? ,F17_Sand = ? ,  G17_Iron = ? ,check18 = ? ,D18_Limestone = ? , E18_Shale  = ? ,F18_Sand = ? , G18_Iron = ? ,check19 = ? ,D19_Limestone = ? ,E19_Shale  = ? ,F19_Sand = ? , G19_Iron = ? , D15 = ? ,E15       = ? ,F15       = ? ,G15       = ? ,H15_SiO2    = ? ,I15_Al2O3 = ? ,J15_Fe2O3 = ? ,K15_CaO   = ?,L15_MgO   = ? ,M15_Na2O  = ? , N15_K2O   = ? ,O15_SO3   = ? ,P15_Cl    = ? ,H16_SiO2  = ? ,I16_Al2O3 = ? ,  J16_Fe2O3 = ? ,K16_CaO   = ? ,L16_MgO   = ? ,M16_Na2O  = ? ,N16_K2O   = ? , O16_SO3   = ? ,P16_Cl    = ? ,H17_SiO2  = ? ,I17_Al2O3 = ? ,J17_Fe2O3 = ? ,  K17_CaO   = ? ,L17_MgO   = ? ,M17_Na2O  = ? ,N17_K2O   = ? ,O17_SO3   = ? , P17_Cl    = ? ,H18_SiO2  = ? ,I18_Al2O3 = ? ,J18_Fe2O3 = ? ,K18_CaO   = ? ,  L18_MgO   = ? ,M18_Na2O  = ? ,N18_K2O   = ? ,O18_SO3   = ? ,P18_Cl    = ? , C30_LSF_PR= ? ,C31_SM_PR = ? ,C32_AM_PR = ? ,E33_Clinker_Factor= ? , E34_RawMixType    = ? ,F30_LSF_TG        = ? ,F31_SM_TG         = ? ,  F32_AM_TG         = ? ,H31_SiO2          = ? ,I31_Al2O3         = ? , J31_Fe2O3         = ? ,K31_CaO           = ? ,L31_MgO           = ? ,  M31_Na2O          = ? ,N31_K2O           = ? ,O31_SO3           = ? , P31_Cl            = ? ,L38_KL_LOI        = ? ,V38_LOI           = ?,  H38_literKG          = ?,I38_FCaO =?, J38_BurningCondition           = ?, U38_SO3           = ?  WHERE id = ? AND email = ? ",
                 [
 
                     cbox16.checked,
@@ -2047,6 +2048,7 @@ function update_ma(id) {
                     J38_BurningCondition_DG.value,
                     U38_SO3_DG.value,
                     id,
+                    localStorage.getItem("email")
                 ],
                 (txObj, resultSet) => {
                     if (resultSet.rowsAffected > 0) {
@@ -2071,7 +2073,7 @@ window.update_ma = update_ma;
 
 function deleteRecord(id) {
     db.transaction((tx) => {
-        tx.executeSql("DELETE FROM rmTable WHERE id = ?", [id], (_, { rows }) => {
+        tx.executeSql("DELETE FROM rmTable WHERE id = ? AND email = ?", [id, localStorage.getItem("email")], (_, { rows }) => {
             const items = rows._array;
             alert("RAWMILL ID: " + id + " Data Deleted!")
             // showNotification("ID: " + id + " Data Deleted!", 3000, 1);
@@ -2088,8 +2090,8 @@ function load_ma(id) {
 
         db.transaction((tx) => {
             tx.executeSql(
-                "SELECT * FROM rmTable WHERE id = ?",
-                [id],
+                "SELECT * FROM rmTable WHERE id = ? and email = ?",
+                [id,localStorage.getItem("email")],
                 function (tx, result) {
                     const rows = result.rows;
                     const row = rows.item(0);

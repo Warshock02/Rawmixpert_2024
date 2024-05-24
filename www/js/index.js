@@ -3,6 +3,9 @@ document.addEventListener("deviceready", onDeviceReady);
  async function onDeviceReady() {
   try {
 
+
+    console.log("INDEX 1!!!!######");
+
     document.querySelector(".loading-screen").style.display = "none";
 
     getSessionData();
@@ -111,6 +114,12 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
   try {
     event.preventDefault();
 
+    //checks connection when Login button clicked.
+    const checkI = checkInternetConnection();
+    if(checkI){
+      return;
+    }
+
     const db =  window.sqlitePlugin.openDatabase({
       name: "rawmixpert24.db",
       location: "default",
@@ -152,6 +161,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
       const token = await callApiForEmail(email, password);
       
       if (token != null || token != "") {
+        // alert("Token: " + token);
         // Save the email to SQLite for future use
         await saveEmailToSQLite(db, email, password, token);
         navigateToDashboard();
@@ -161,6 +171,10 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
     }
     // end login process
   } catch (error) {
+    if(error.message.includes('Failed to fetch')){
+      alert("Login's error: Under Maintenance!");
+      return;
+    }
     alert("Login's error: " + error.message);
   }
 }
@@ -185,7 +199,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
 }
 
  function callApiForEmail(email, password) {
-  
+
     const apiUrl = "http://127.0.0.1:8000/api/auth/login";
 
     // User credentials
@@ -226,6 +240,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
       console.error("Error fetching user from API:", error);
       throw error; // Re-throw the error to be caught by the caller
     });
+    
 }
 
  async function saveEmailToSQLite(db, email, password, token) {
@@ -236,4 +251,17 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
     [email, password, token]
   );
   console.log("Email saved to SQLite:", email);
+}
+
+function checkInternetConnection() {
+  // const statusElement = document.createElement('p'); // Create a paragraph element
+  // document.body.appendChild(statusElement); // Append it to the body
+  if (navigator.onLine) {
+      // If online, display a message indicating internet connection is available
+      // statusElement.textContent = 'Internet connection is available.';
+  } else {
+      // If offline, display a message indicating no internet connection
+      alert('Warning: Login needs to be connected! Please check your internet connection. Thank you!');
+      return true;
+  }
 }
