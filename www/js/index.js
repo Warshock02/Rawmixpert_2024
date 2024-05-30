@@ -164,6 +164,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
         // alert("Token: " + token);
         // Save the email to SQLite for future use
         await saveEmailToSQLite(db, email, password, token);
+        localStorage.setItem("token", token);
         navigateToDashboard();
       } else {
         alert("Error: " + token);

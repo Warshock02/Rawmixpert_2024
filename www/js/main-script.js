@@ -94,12 +94,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return fetch(apiUrl, {
           method: "POST",
           headers: {
-            Authentication: "Bearer " + localStorage.getItem('token'),
-            "Content-Type": "application/json",
             Accept: "application/json",
             // Add CORS-related headers
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem('token'),
             "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
+            "Access-Control-Allow-Methods": "POST, OPTIONS", // Specify the allowed HTTP methods
             "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
           },
         })
