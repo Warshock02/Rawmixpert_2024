@@ -6,6 +6,44 @@ function startSessionTimer() {
 function resetSessionTimer() {
     startSessionTimer();
 }
+
+
+function callApiForLogout() {
+
+    const apiUrl = "http://127.0.0.1:8000/api/auth/logout";
+
+    // Make an API call to get the username
+    return fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Authentication: "Bearer " + localStorage.getItem('token'),
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // Add CORS-related headers
+        "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
+        "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
+        "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
+      },
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        });
+      }
+      return response.json();
+    })
+    .then(data => {
+        return data.message;
+    })
+    .catch(error => {
+      console.error("Error fetching user from API:", error);
+      throw error; // Re-throw the error to be caught by the caller
+    });
+    
+}
+
+
 function showTimeoutMessage() {
     //logout
     checkInternetConnection();
@@ -16,6 +54,9 @@ function showTimeoutMessage() {
         localStorage.removeItem("email"),
         localStorage.removeItem("token"),
         cordova.InAppBrowser.open("index.html", "_self");
+        if(localStorage.getItem("token") == null){
+            cordova.InAppBrowser.open("index.html", "_self");
+        }
 }
 function checkSessionTimeout() {
     const e = localStorage.getItem("lastActivity");
@@ -30,45 +71,10 @@ function updateLastActivity() {
     document.addEventListener("click", updateLastActivity),
     document.addEventListener("keydown", updateLastActivity),
     document.addEventListener("touchstart", updateLastActivity),
+    //checkSessionTimeout();
+
+
     checkSessionTimeout();
-
-
-
-    function callApiForLogout() {
-
-        const apiUrl = "http://127.0.0.1:8000/api/auth/logout";
-    
-        // Make an API call to get the username
-        return fetch(apiUrl, {
-          method: "POST",
-          headers: {
-            Authentication: "Bearer " + localStorage.getItem('token'),
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            // Add CORS-related headers
-            "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
-            "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
-          },
-        })
-        .then(response => {
-          if (!response.ok) {
-            return response.json().then(error => {
-              throw new Error(error.message);
-            });
-          }
-          return response.json();
-        })
-        .then(data => {
-            return data.message;
-        })
-        .catch(error => {
-          console.error("Error fetching user from API:", error);
-          throw error; // Re-throw the error to be caught by the caller
-        });
-        
-    }
-
 
 function checkInternetConnection() {
     // const statusElement = document.createElement('p'); // Create a paragraph element
