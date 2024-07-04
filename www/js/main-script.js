@@ -106,10 +106,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    function getApiUrl() {
+        const hostname = window.location.hostname;
+        if (hostname === "localhost" || hostname === "127.0.0.1") {
+          return "http://127.0.0.1:8000"; // Local API URL
+        } else {
+          return "https://your-server-domain.com"; // Server API URL
+        }
+      }
+
     function callApiForLogout() {
 
         // const apiUrl = "http://127.0.0.1:8000/api/auth/logout";
-        const apiUrl = "/api/auth/logout";
+        const apiUrl = getApiUrl() + "/api/auth/logout";
     
         // Make an API call to get the username
         return fetch(apiUrl, {
@@ -334,7 +343,7 @@ async function fetchAndUploadRecords() {
         }
 
         const responses = await Promise.all(records.map(recordData =>
-            fetch('/api/auth/storeOrupdate', {
+            fetch(getApiUrl() + '/api/auth/storeOrupdate', {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -447,7 +456,7 @@ async function fetchAndUploadRecords() {
         
                                 const responses = await Promise.all(records.map(async (recordData) => {
                                     try {
-                                        const response = await fetch('http://127.0.0.1:8000/api/auth/storeOrupdate', {
+                                        const response = await fetch(getApiUrl() + 'api/auth/storeOrupdate', {
                                             method: "POST",
                                             headers: {
                                                 Accept: "application/json",

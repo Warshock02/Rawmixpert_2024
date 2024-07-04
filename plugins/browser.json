@@ -7,10 +7,10 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-crosswalk-webview": {
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-file": {
+    "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-inappbrowser": {
@@ -20,9 +20,6 @@
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
-    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },

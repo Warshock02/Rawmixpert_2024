@@ -12,7 +12,8 @@
 
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+    OF ANY
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
@@ -32,7 +33,7 @@
  
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light dark">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/login.css">
@@ -45,72 +46,96 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      height: 100vh;
+      background-image: url(./img/RM-bg1.jpg);
+      background-size: cover;
+      background-position: center;
+      justify-content: space-between;
     }
 
-    .input-group {
-      margin-top: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 80px;
-    }
-
-    .input-group input {
-      margin: 1 20px;
-      padding: 5px;
-    }
-
-    .input-group button {
-      padding: 5px 40px;
-      background-color: grey;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      margin: 0;
-      text-wrap: nowrap;
-
-    }
-
-    .wrap {
+    .loading-screen {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url(./img/RM-bg1.jpg);
-      background-size: cover;
+      background-color: rgba(255, 255, 255, 0.8);
+      position: absolute;
+      width: 100%;
+      z-index: 10;
     }
 
-    .login-form {
-      background-blend-mode: inherit;
-      padding: 20px;
-      border-radius: 5px;
-      max-width: 300px;
-      /* width: 80%; */
+    .loading-icon {
+      width: 100px;
+    }
+
+    .app-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+
+    .input-group {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 500px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      padding-bottom: 1px;
     }
 
-    .form-group {
-      margin-top: 15px;
+    .input-group input {
+      margin: 5px 0;
+      padding: 5px;
+      width: calc(100% - 10px);
+      box-sizing: border-box;
+      font-size: 0.9em;
     }
 
-    .form-header {
-      text-align: center;
+    .input-group button {
+      padding: 5px;
+      background-color: grey;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      width: calc(100% - 10px);
+      box-sizing: border-box;
+      margin-top: 5px;
+      font-size: 0.9em;
     }
 
-    .form-footer {
-      margin: 0;
-      padding: 0;
+    .footer-dev {
+      margin-top: 10px;
+      font-size: 8px;
       text-align: center;
     }
 
     /* Landscape styles */
     @media (orientation: landscape) {
-      .login-form {
-        max-width: 250px;
+      .input-group {
+        max-width: 350px;
+      }
+    }
+
+    /* Small screen styles */
+    @media (max-width: 480px) {
+      .input-group {
+        width: 90%;
+      }
+
+      .input-group input, .input-group button {
+        width: 100%;
       }
     }
   </style>
@@ -130,34 +155,28 @@
         <!-- <img id="circular-image" src="img/rm.png" width="114" height="114" alt="logo"> -->
       </div>
 
-      <div class="input-group">
+      <div class="input-group" id="inputGroup">
         <input type="email" name="email" id="email" class="form-input" placeholder="Email" />
         <input type="password" name="password" id="password" class="form-input" placeholder="Password" />
         <button class="form-button" type="submit">Log in</button>
+        <p class="footer-dev">2023 © WM-Dev</p>
       </div>
-
-      <!-- <div class="input-group">
-        <div class="form-group">
-          <label style="font-size: 0.8rem; font-style: italic">Username:</label>
-          <input type="text" name="username" id="username" class="form-input" placeholder="Username" />
-        </div>
-        <div class="form-group">
-          <label style="font-size: 0.8rem; font-style: italic">Password:</label>
-          <input type="password" name="password" id="password" class="form-input" placeholder="Password" />
-        </div>
-        <div class="form-group">
-          <button class="form-button" type="submit">Log in</button>
-        </div>
-      </div> -->
-
-      <p class="footer-dev">2023 © WM-Dev</p>
-
 
     </form>
   </div>
   <script src="cordova.js"></script>
   <script src="js/index.js"></script>
   <script src="js/confirmation.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(() => {
+        document.querySelector(".loading-screen").style.display = "none";
+        const inputGroup = document.getElementById("inputGroup");
+        inputGroup.style.opacity = "1";
+        inputGroup.style.transform = "translateX(-50%) translateY(0)";
+      }, 2000); // Adjust the timeout as needed
+    });
+  </script>
 </body>
 
 </html>
