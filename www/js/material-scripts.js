@@ -1239,7 +1239,7 @@ function onDeviceReady() {
 
     // Initialize SQLite database
     db = window.sqlitePlugin.openDatabase({
-        name: "rawmixpert2.db",
+        name: "rawmixpert24.db",
         location: "default",
     });
 
@@ -1732,7 +1732,7 @@ window.checked_select = checked_select;
 
 function mloadlist() {
     const db = window.sqlitePlugin.openDatabase({
-        name: "rawmixpert2.db",
+        name: "rawmixpert24.db",
         location: "default",
     });
     // Initialize SQLite database

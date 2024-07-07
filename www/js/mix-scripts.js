@@ -346,7 +346,7 @@ function onDeviceReady() {
     // Initialize SQLite database
 
     const db = window.sqlitePlugin.openDatabase({
-        name: "rawmixpert2.db",
+        name: "rawmixpert24.db",
         location: "default",
     });
 
@@ -362,8 +362,8 @@ function onDeviceReady() {
 
     db.transaction((tx) => {
         tx.executeSql(
-            "SELECT * FROM rmTable  ORDER BY id DESC",
-            [],
+            "SELECT * FROM rmTable WHERE email = ? ORDER BY id DESC",
+            [localStorage.getItem("email")],
             function (tx, result) {
                 const table = document.getElementById("mix_table");
                 const rows = result.rows;
@@ -2244,8 +2244,8 @@ function loadlist() {
 
     db.transaction((tx) => {
         tx.executeSql(
-            "SELECT * FROM rmTable ORDER BY id DESC",
-            [],
+            "SELECT * FROM rmTable WHERE email = ? ORDER BY id DESC",
+            [localStorage.getItem("email")],
             function (tx, result) {
                 const table = document.getElementById("mix_table");
                 const rows = result.rows;
@@ -2375,7 +2375,8 @@ function addData2() {
         I14_Lime_Saturation_DG.value,
         I17_Silica_Modulus_DG.value,
         I20_Alumina_Modulus_DG.value,
-            formattedDate2]
+            formattedDate2,
+            localStorage.getItem("email")]
 
         console.log(data);
 
@@ -2383,7 +2384,7 @@ function addData2() {
 
         db.transaction((tx) => {
             tx.executeSql(
-                "INSERT INTO rmTable (name,C8_MIX_RDFC , C9_SiO2_RDFC ,C10_Al2O3_RDFC      ,C11_Fe2O3_RDFC ,C12_CaO_RDFC ,C13_MgO_RDFC ,C14_Na2O_RDFC ,C15_K2O_RDFC ,C16_SO3_RDFC ,C17_LOI_RDFC ,D8_MIX_RDFC ,D9_SiO2_RDFC ,D10_Al2O3_RDFC ,D11_Fe2O3_RDFC ,D12_CaO_RDFC ,D13_MgO_RDFC ,D14_Na2O_RDFC ,D15_K2O_RDFC ,D16_SO3_RDFC ,D17_LOI_RDFC ,E8_MIX_RDFC ,E9_SiO2_RDFC ,E10_Al2O3_RDFC ,E11_Fe2O3_RDFC ,E12_CaO_RDFC ,E13_MgO_RDFC ,E14_Na2O_RDFC       ,E15_K2O_RDFC ,E16_SO3_RDFC ,E17_LOI_RDFC ,F8_MIX_RDFC ,F9_SiO2_RDFC ,F10_Al2O3_RDFC ,F11_Fe2O3_RDFC ,F12_CaO_RDFC ,F13_MgO_RDFC ,F14_Na2O_RDFC ,F15_K2O_RDFC ,F16_SO3_RDFC ,F17_LOI_RDFC ,I14_Lime_Saturation ,I17_Silica_Modulus  ,I20_Alumina_Modulus , DT) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                "INSERT INTO rmTable (name,C8_MIX_RDFC , C9_SiO2_RDFC ,C10_Al2O3_RDFC      ,C11_Fe2O3_RDFC ,C12_CaO_RDFC ,C13_MgO_RDFC ,C14_Na2O_RDFC ,C15_K2O_RDFC ,C16_SO3_RDFC ,C17_LOI_RDFC ,D8_MIX_RDFC ,D9_SiO2_RDFC ,D10_Al2O3_RDFC ,D11_Fe2O3_RDFC ,D12_CaO_RDFC ,D13_MgO_RDFC ,D14_Na2O_RDFC ,D15_K2O_RDFC ,D16_SO3_RDFC ,D17_LOI_RDFC ,E8_MIX_RDFC ,E9_SiO2_RDFC ,E10_Al2O3_RDFC ,E11_Fe2O3_RDFC ,E12_CaO_RDFC ,E13_MgO_RDFC ,E14_Na2O_RDFC       ,E15_K2O_RDFC ,E16_SO3_RDFC ,E17_LOI_RDFC ,F8_MIX_RDFC ,F9_SiO2_RDFC ,F10_Al2O3_RDFC ,F11_Fe2O3_RDFC ,F12_CaO_RDFC ,F13_MgO_RDFC ,F14_Na2O_RDFC ,F15_K2O_RDFC ,F16_SO3_RDFC ,F17_LOI_RDFC ,I14_Lime_Saturation ,I17_Silica_Modulus  ,I20_Alumina_Modulus , DT, email) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)",
                 data,
                 (_, { rowsAffected }) => {
                     if (rowsAffected > 0) {
@@ -2411,7 +2412,7 @@ function updateData2(id) {
     console.log("Updating data...");
     db.transaction((tx) => {
         tx.executeSql(
-            "UPDATE rmTable SET C8_MIX_RDFC = ?, C9_SiO2_RDFC = ?,C10_Al2O3_RDFC      = ?,C11_Fe2O3_RDFC = ?,C12_CaO_RDFC = ?,C13_MgO_RDFC = ?,C14_Na2O_RDFC = ?,C15_K2O_RDFC = ?,C16_SO3_RDFC = ?,C17_LOI_RDFC = ?,D8_MIX_RDFC = ?,D9_SiO2_RDFC = ?,D10_Al2O3_RDFC = ?,D11_Fe2O3_RDFC = ?,D12_CaO_RDFC = ?,D13_MgO_RDFC = ?,D14_Na2O_RDFC = ?,D15_K2O_RDFC = ?,D16_SO3_RDFC = ?,D17_LOI_RDFC = ?,E8_MIX_RDFC = ?,E9_SiO2_RDFC = ?,E10_Al2O3_RDFC = ?,E11_Fe2O3_RDFC = ?,E12_CaO_RDFC = ?,E13_MgO_RDFC = ?,E14_Na2O_RDFC       = ?,E15_K2O_RDFC = ?,E16_SO3_RDFC = ?,E17_LOI_RDFC = ?,F8_MIX_RDFC = ?,F9_SiO2_RDFC = ?,F10_Al2O3_RDFC = ?,F11_Fe2O3_RDFC = ?,F12_CaO_RDFC = ?,F13_MgO_RDFC = ?,F14_Na2O_RDFC = ?,F15_K2O_RDFC = ?,F16_SO3_RDFC = ?,F17_LOI_RDFC = ?,I14_Lime_Saturation = ?,I17_Silica_Modulus  = ?,I20_Alumina_Modulus = ?  WHERE id = ?",
+            "UPDATE rmTable SET C8_MIX_RDFC = ?, C9_SiO2_RDFC = ?,C10_Al2O3_RDFC      = ?,C11_Fe2O3_RDFC = ?,C12_CaO_RDFC = ?,C13_MgO_RDFC = ?,C14_Na2O_RDFC = ?,C15_K2O_RDFC = ?,C16_SO3_RDFC = ?,C17_LOI_RDFC = ?,D8_MIX_RDFC = ?,D9_SiO2_RDFC = ?,D10_Al2O3_RDFC = ?,D11_Fe2O3_RDFC = ?,D12_CaO_RDFC = ?,D13_MgO_RDFC = ?,D14_Na2O_RDFC = ?,D15_K2O_RDFC = ?,D16_SO3_RDFC = ?,D17_LOI_RDFC = ?,E8_MIX_RDFC = ?,E9_SiO2_RDFC = ?,E10_Al2O3_RDFC = ?,E11_Fe2O3_RDFC = ?,E12_CaO_RDFC = ?,E13_MgO_RDFC = ?,E14_Na2O_RDFC       = ?,E15_K2O_RDFC = ?,E16_SO3_RDFC = ?,E17_LOI_RDFC = ?,F8_MIX_RDFC = ?,F9_SiO2_RDFC = ?,F10_Al2O3_RDFC = ?,F11_Fe2O3_RDFC = ?,F12_CaO_RDFC = ?,F13_MgO_RDFC = ?,F14_Na2O_RDFC = ?,F15_K2O_RDFC = ?,F16_SO3_RDFC = ?,F17_LOI_RDFC = ?,I14_Lime_Saturation = ?,I17_Silica_Modulus  = ?,I20_Alumina_Modulus = ?  WHERE id = ? and email = ?",
             [
                 C8_MIX_RDFC_DG.value,
                 C9_SiO2_RDFC_DG.value,
@@ -2457,6 +2458,7 @@ function updateData2(id) {
                 I17_Silica_Modulus_DG.value,
                 I20_Alumina_Modulus_DG.value,
                 id,
+                localStorage.getItem("email")
             ],
             (txObj, resultSet) => {
                 if (resultSet.rowsAffected > 0) {
@@ -2475,7 +2477,7 @@ function updateData2(id) {
 window.updateData2 = updateData2;
 function deleteData2(id) {
         db.transaction((tx) => {
-            tx.executeSql("DELETE FROM rmTable WHERE id = ?", [id], (_, { rows }) => {
+            tx.executeSql("DELETE FROM rmTable WHERE id = ? and email = ?", [id,localStorage.getItem("email")], (_, { rows }) => {
             const items = rows._array;
             alert("ID: " + id + " Data Deleted!");
             // showNotification("ID: " + id + " Data Deleted!", 3000, 3);
@@ -2494,8 +2496,8 @@ function loadselectData2(id) {
 
             console.log('M.C > Query ID:', id);
             tx.executeSql(
-                "SELECT * FROM rmTable WHERE id = ?",
-                [id],
+                "SELECT * FROM rmTable WHERE id = ? and email = ?",
+                [id, localStorage.getItem("email")],
                 function (tx, result) {
                     const rows = result.rows;
                     const row = rows.item(0);

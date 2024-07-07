@@ -42,6 +42,32 @@
   <title>RM Dashboard</title>
 
   <style>
+    
+@keyframes popUp {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+th,
+td {
+  animation: popUp 0.5s ease-in-out;
+}
+
+th {
+  animation-delay: 0s;
+}
+
+td {
+  animation-delay: 0.5s;
+}
+
+
     body {
       margin: 0;
       padding: 0;

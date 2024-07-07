@@ -172,6 +172,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
     }
     // end login process
   } catch (error) {
+    alert(error.message);
     if(error.message.includes('Failed to fetch')){
       alert("Login's error: Under Maintenance!");
       return;
@@ -199,10 +200,19 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
   });
 }
 
+function getApiUrl() {
+  const hostname = window.location.hostname;
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return "http://127.0.0.1:8000"; // Local API URL
+  } else {
+      return "http://54.87.14.45"; // Server API URL
+  }
+}
+
  function callApiForEmail(email, password) {
 
-    const apiUrl = "http://127.0.0.1:8000/api/auth/login";
-
+    const apiUrl = getApiUrl() + "/api/auth/login";
+    alert(apiUrl);
     // User credentials
     const credentials = {
       email: email,
@@ -216,9 +226,9 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
         "Content-Type": "application/json",
         Accept: "application/json",
         // Add CORS-related headers
-        "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
-        "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
+        // "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
+        // "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
+        // "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
       },
       body: JSON.stringify(credentials),
     })

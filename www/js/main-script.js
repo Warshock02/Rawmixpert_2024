@@ -8,7 +8,7 @@ document.addEventListener("deviceready", function () {
 
 
     const db = window.sqlitePlugin.openDatabase({
-        name: "rawmixpert2.db",
+        name: "rawmixpert24.db",
         location: "default",
     });
 
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hostname === "localhost" || hostname === "127.0.0.1") {
           return "http://127.0.0.1:8000"; // Local API URL
         } else {
-          return "https://your-server-domain.com"; // Server API URL
+            return "http://54.87.14.45"; // Server API URL
         }
       }
 
@@ -150,127 +150,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         
     }
-               
-        // ////
-        // function callApiForCreateOrUpdate() {
-        //     alert('Create or Update');
-        //     try {
-        
-        //         db = window.sqlitePlugin.openDatabase({
-        //             name: "rawmixpert2.db",
-        //             location: "default",
-        //         });
-        
-        //         console.log('SULOD SA LOCAL DB');
-        //         db.transaction((tx) => {
-        //             tx.executeSql(
-        //                 "SELECT * FROM rmTable WHERE email = ? ORDER BY id DESC",
-        //                 [localStorage.getItem("email")],
-        //                 function (tx, result) {
-        //                     const records = [];
-        
-        //                     console.log('SULOD SA EXECUTE SQL');
-        //                     console.log(result);
-        //                     for (let i = 0; i < result.rows.length; i++) {
-        //                         const record = {};
-        //                         const row = result.rows.item(i);
-        //                         record['C8_MIX_RDFC'] = row['C8_MIX_RDFC'];
-        //                         record['C9_SiO2_RDFC'] = row['C9_SiO2_RDFC'];
-        //                         record['C10_Al2O3_RDFC'] = row['C10_Al2O3_RDFC'];
-        //                         record['C11_Fe2O3_RDFC'] = row['C11_Fe2O3_RDFC'];
-        //                         record['C12_CaO_RDFC'] = row['C12_CaO_RDFC'];
-        //                         record['C13_MgO_RDFC'] = row['C13_MgO_RDFC'];
-        //                         record['C14_Na2O_RDFC'] = row['C14_Na2O_RDFC'];
-        //                         record['C15_K2O_RDFC'] = row['C15_K2O_RDFC'];
-        //                         record['C16_SO3_RDFC'] = row['C16_SO3_RDFC'];
-        //                         record['C17_LOI_RDFC'] = row['C17_LOI_RDFC'];
-        //                         record['D8_MIX_RDFC'] = row['D8_MIX_RDFC'];
-        //                         record['D9_SiO2_RDFC'] = row['D9_SiO2_RDFC'];
-        //                         record['D10_Al2O3_RDFC'] = row['D10_Al2O3_RDFC'];
-        //                         record['D11_Fe2O3_RDFC'] = row['D11_Fe2O3_RDFC'];
-        //                         record['D12_CaO_RDFC'] = row['D12_CaO_RDFC'];
-        //                         record['D13_MgO_RDFC'] = row['D13_MgO_RDFC'];
-        //                         record['D14_Na2O_RDFC'] = row['D14_Na2O_RDFC'];
-        //                         record['D15_K2O_RDFC'] = row['D15_K2O_RDFC'];
-        //                         record['D16_SO3_RDFC'] = row['D16_SO3_RDFC'];
-        //                         record['D17_LOI_RDFC'] = row['D17_LOI_RDFC'];
-        //                         record['E8_MIX_RDFC'] = row['E8_MIX_RDFC'];
-        //                         record['E9_SiO2_RDFC'] = row['E9_SiO2_RDFC'];
-        //                         record['E10_Al2O3_RDFC'] = row['E10_Al2O3_RDFC'];
-        //                         record['E11_Fe2O3_RDFC'] = row['E11_Fe2O3_RDFC'];
-        //                         record['E12_CaO_RDFC'] = row['E12_CaO_RDFC'];
-        //                         record['E13_MgO_RDFC'] = row['E13_MgO_RDFC'];
-        //                         record['E14_Na2O_RDFC'] = row['E14_Na2O_RDFC'];
-        //                         record['E15_K2O_RDFC'] = row['E15_K2O_RDFC'];
-        //                         record['E16_SO3_RDFC'] = row['E16_SO3_RDFC'];
-        //                         record['E17_LOI_RDFC'] = row['E17_LOI_RDFC'];
-        //                         record['F8_MIX_RDFC'] = row['F8_MIX_RDFC'];
-        //                         record['F9_SiO2_RDFC'] = row['F9_SiO2_RDFC'];
-        //                         record['F10_Al2O3_RDFC'] = row['F10_Al2O3_RDFC'];
-        //                         record['F11_Fe2O3_RDFC'] = row['F11_Fe2O3_RDFC'];
-        //                         record['F12_CaO_RDFC'] = row['F12_CaO_RDFC'];
-        //                         record['F13_MgO_RDFC'] = row['F13_MgO_RDFC'];
-        //                         record['F14_Na2O_RDFC'] = row['F14_Na2O_RDFC'];
-        //                         record['F15_K2O_RDFC'] = row['F15_K2O_RDFC'];
-        //                         record['F16_SO3_RDFC'] = row['F16_SO3_RDFC'];
-        //                         record['F17_LOI_RDFC'] = row['F17_LOI_RDFC'];
-        //                         record['I14_Lime_Saturation'] = row['I14_Lime_Saturation'];
-        //                         record['I17_Silica_Modulus'] = row['I17_Silica_Modulus'];
-        //                         record['I20_Alumina_Modulus'] = row['I20_Alumina_Modulus'];
-        //                         // Add other record fields here
-        //                         records.push(record);
-        //                         console.log(record);
-        //                     }
-        
-        //                     const responses = [];
-        //                     records.forEach(recordData => {
-        //                         fetch('http://127.0.0.1:8000/api/auth/storeOrupdate', {
-        //                             method: "POST",
-        //                             headers: {
-        //                                 Accept: "application/json",
-        //                                 // Add necessary headers
-        //                                 "Content-Type": "application/json",
-        //                                 "Authorization": "Bearer " + localStorage.getItem('token'),
-        //                             },
-        //                             body: JSON.stringify(recordData)
-        //                         })
-        //                         .then(response => {
-        //                             if (!response.ok) {
-        //                                 throw new Error('Failed to create record');
-        //                             }
-        //                             return response.json();
-        //                         })
-        //                         .then(data => {
-        //                             responses.push(true);
-        //                         })
-        //                         .catch(error => {
-        //                             console.log(error);
-        //                             responses.push(false);
-        //                         });
-        //                     });
-        
-        //                     // Check all responses and resolve based on success
-        //                     if (responses.every(success => success)) {
-        //                         // All records were uploaded successfully
-        //                         console.log("All records uploaded successfully");
-        //                     } else {
-        //                         // Some records failed to upload
-        //                         console.log("Some records failed to upload");
-        //                     }
-        //                 }
-        //             );
-        //         });
-        //     } catch (error) {
-        //         console.error("Error in callApiForCreateOrUpdate:", error);
-        //     }
-        // }
+              
 
         let db = null;
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
         db = window.sqlitePlugin.openDatabase({
-            name: "rawmixpert2.db",
+            name: "rawmixpert24.db",
             location: "default",
         }, resolve, reject);
     });
@@ -283,6 +170,49 @@ function executeSql(query, params = []) {
         });
     });
 }
+
+async function fetchRmdData() {
+    const apiUrl = getApiUrl() + "/api/download-rmd";
+    const token = localStorage.getItem("token");
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+  
+      const rmdData = await response.json();
+      saveRmdDataToLocalDb(rmdData);
+    } catch (error) {
+      console.error("Error fetching RMD data:", error);
+    }
+  }
+  
+  async function saveRmdDataToLocalDb(rmdData) {
+    const db = window.sqlitePlugin.openDatabase({
+      name: "rawmixpert24.db",
+      location: "default",
+    });
+  
+    try {
+    //   await executeSqlAsync(db, "CREATE TABLE IF NOT EXISTS rmTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NULL,email TEXT NULL,check16 BOOL,D16_Limestone NUMERIC NULL,E16_Shale NUMERIC NULL,F16_Sand NUMERIC NULL,G16_Iron NUMERIC NULL,  check17 BOOL,D17_Limestone NUMERIC NULL,E17_Shale  NUMERIC NULL,F17_Sand NUMERIC NULL,G17_Iron NUMERIC NULL,check18 BOOL,D18_Limestone NUMERIC NULL, E18_Shale  NUMERIC NULL,F18_Sand NUMERIC NULL,G18_Iron NUMERIC NULL,check19 BOOL,D19_Limestone NUMERIC NULL,E19_Shale  NUMERIC NULL,F19_Sand NUMERIC NULL,G19_Iron NUMERIC NULL,   D15 NUMERIC NULL,E15 NUMERIC NULL,F15 NUMERIC NULL,G15 NUMERIC NULL,H15_SiO2 NUMERIC NULL,I15_Al2O3 NUMERIC NULL,J15_Fe2O3 NUMERIC NULL,K15_CaO NUMERIC NULL,L15_MgO NUMERIC NULL,M15_Na2O NUMERIC NULL,N15_K2O NUMERIC NULL,  O15_SO3 NUMERIC NULL,P15_Cl NUMERIC NULL,H16_SiO2 NUMERIC NULL,I16_Al2O3 NUMERIC NULL,J16_Fe2O3 NUMERIC NULL,K16_CaO NUMERIC NULL,L16_MgO NUMERIC NULL,M16_Na2O NUMERIC NULL,N16_K2O NUMERIC NULL, O16_SO3 NUMERIC NULL,P16_Cl NUMERIC NULL,H17_SiO2 NUMERIC NULL,I17_Al2O3 NUMERIC NULL,J17_Fe2O3 NUMERIC NULL,K17_CaO NUMERIC NULL,L17_MgO NUMERIC NULL,M17_Na2O NUMERIC NULL,N17_K2O NUMERIC NULL,O17_SO3 NUMERIC NULL,P17_Cl NUMERIC NULL,H18_SiO2 NUMERIC NULL,I18_Al2O3 NUMERIC NULL,J18_Fe2O3 NUMERIC NULL,K18_CaO NUMERIC NULL,L18_MgO NUMERIC NULL,M18_Na2O NUMERIC NULL,N18_K2O NUMERIC NULL, O18_SO3 NUMERIC NULL,P18_Cl NUMERIC NULL,C30_LSF_PR NUMERIC NULL,C31_SM_PR NUMERIC NULL,C32_AM_PR NUMERIC NULL,E33_Clinker_Factor NUMERIC NULL,E34_RawMixType NUMERIC NULL, F30_LSF_TG NUMERIC NULL,F31_SM_TG NUMERIC NULL,F32_AM_TG NUMERIC NULL,H31_SiO2 NUMERIC NULL,I31_Al2O3 NUMERIC NULL,J31_Fe2O3 NUMERIC NULL,K31_CaO NUMERIC NULL,L31_MgO NUMERIC NULL, M31_Na2O NUMERIC NULL,N31_K2O NUMERIC NULL,O31_SO3 NUMERIC NULL,P31_Cl NUMERIC NULL,L38_KL_LOI NUMERIC NULL,V38_LOI NUMERIC NULL, H38_literKG NUMERIC NULL, I38_FCaO NUMERIC NULL, J38_BurningCondition NUMERIC NULL, U38_SO3 NUMERIC NULL, DT DATETIME)");
+  
+      for (const rmd of rmdData) {
+        await executeSqlAsync(db, "INSERT INTO rmd_table (id, user_id, data, quantity) VALUES (?, ?, ?, ?)", [rmd.id, rmd.user_id, JSON.stringify(rmd.data), rmd.quantity]);
+      }
+  
+      console.log("RMD data saved to SQLite");
+    } catch (error) {
+      console.error("Error saving RMD data to SQLite:", error);
+    }
+  }
 
 async function fetchAndUploadRecords() {
     try {
@@ -389,7 +319,7 @@ async function fetchAndUploadRecords() {
             try {
 
                      db = window.sqlitePlugin.openDatabase({
-                     name: "rawmixpert2.db",
+                     name: "rawmixpert24.db",
                      location: "default",
                      });
 
@@ -500,6 +430,19 @@ uploadbtn.addEventListener("click", async () => {
     if (result) {
         try {
             await fetchAndUploadRecords();
+        } catch (error) {
+            alert("Error Upload: " + error);
+        }
+    }
+});
+
+
+const downloadbtn = document.getElementById("downloadbtn");
+downloadbtn.addEventListener("click", async () => {
+    const result = confirm("Are you sure to upload data?");
+    if (result) {
+        try {
+            await fetchRmdData();
         } catch (error) {
             alert("Error Upload: " + error);
         }

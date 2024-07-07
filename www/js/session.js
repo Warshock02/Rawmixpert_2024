@@ -15,7 +15,7 @@ function getApiUrl() {
     if (hostname === "localhost" || hostname === "127.0.0.1") {
         return "http://127.0.0.1:8000"; // Local API URL
     } else {
-        return "https://your-server-domain.com"; // Server API URL
+        return "http://54.87.14.45"; // Server API URL
     }
 }
 
