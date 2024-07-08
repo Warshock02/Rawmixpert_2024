@@ -10,14 +10,19 @@ function resetSessionTimer() {
     startSessionTimer();
 }
 
+
 function getApiUrl() {
     const hostname = window.location.hostname;
     if (hostname === "localhost" || hostname === "127.0.0.1") {
-        return "http://127.0.0.1:8000"; // Local API URL
-    } else {
-        return "http://54.87.14.45"; // Server API URL
+      return "http://127.0.0.1:8000"; // Local API URL
+    } 
+    else if (hostname === "192.168.254.168") {
+      return "http://192.168.254.168:8000"; // My API
     }
-}
+    else {
+      return "http://54.87.14.45"; // Server API URL
+    }
+  }
 
 async function callApiForLogout() {
     const apiUrl = getApiUrl() + "/api/auth/logout";
