@@ -210,13 +210,13 @@ function getApiUrl() {
     return "http://192.168.254.168:8000"; // My API
   }
   else {
-    return "http://54.87.14.45"; // Server API URL
+    return "http://54.160.175.54"; // Server API URL
   }
 }
 
   function callApiForEmail(email, password) {
 
-    const apiUrl = getApiUrl() + "/api/auth/login";
+    const apiUrl = "http://54.160.175.54/api/auth/login";
       alert(apiUrl);
     // User credentials
     const credentials = {
@@ -230,10 +230,11 @@ function getApiUrl() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        
         // Add CORS-related headers
-        // "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
-        // "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
-        // "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
+        "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
+        "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
+        "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
       },
       body: JSON.stringify(credentials),
     })

@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return "http://192.168.254.168:8000"; // My API
         }
         else {
-          return "http://54.87.14.45"; // Server API URL
+          return "http://54.160.175.54"; // Server API URL
         }
       }
 
