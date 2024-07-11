@@ -6,21 +6,20 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
     <access origin="*" />
-
-
-    
-    <icon src="www/img/rm.png" density="ldpi" />
-    <icon src="www/img/rm.png" density="mdpi" />
-    <icon src="www/img/rm.png" density="hdpi" />
-    <icon src="www/img/rm.png" density="xhdpi" />
-    <icon src="www/img/rm.png" density="xxhdpi" />
-    <icon src="www/img/rm.png" density="xxxhdpi" />
-
-    <platform name="android">   
+    <icon density="ldpi" src="www/img/rm.png" />
+    <icon density="mdpi" src="www/img/rm.png" />
+    <icon density="hdpi" src="www/img/rm.png" />
+    <icon density="xhdpi" src="www/img/rm.png" />
+    <icon density="xxhdpi" src="www/img/rm.png" />
+    <icon density="xxxhdpi" src="www/img/rm.png" />
+    <platform name="android">
         <allow-intent href="http://*/*" />
         <allow-intent href="https://*/*" />
         <allow-intent href="tel:*" />

@@ -25,7 +25,7 @@ function getApiUrl() {
   }
 
 async function callApiForLogout() {
-    const apiUrl = getApiUrl() + "/api/auth/logout";
+    const apiUrl = "http://54.160.175.54/api/auth/logout";
 
     try {
         const response = await fetch(apiUrl, {

@@ -164,6 +164,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
         // alert("Token: " + token);
         // Save the email to SQLite for future use
         await saveEmailToSQLite(db, email, password, token);
+        alert(token);
         localStorage.setItem("token", token);
         navigateToDashboard();
       } else {
@@ -172,7 +173,7 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
     }
     // end login process
   } catch (error) {
-    alert(error.message);
+     alert(error.message);
     if(error.message.includes('Failed to fetch')){
       alert("Login's error: Under Maintenance!");
       return;
@@ -201,23 +202,23 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
 }
 
 
-function getApiUrl() {
-  const hostname = window.location.hostname;
-  if (hostname === "localhost" || hostname === "127.0.0.1") {
-    return "http://127.0.0.1:8000"; // Local API URL
-  } 
-  else if (hostname === "192.168.254.168") {
-    return "http://192.168.254.168:8000"; // My API
-  }
-  else {
-    return "http://54.160.175.54"; // Server API URL
-  }
-}
+// function getApiUrl() {
+//   const hostname = window.location.hostname;
+//   if (hostname === "localhost" || hostname === "127.0.0.1") {
+//     return "http://127.0.0.1:8000"; // Local API URL
+//   } 
+//   else if (hostname === "192.168.254.168") {
+//     return "http://192.168.254.168:8000"; // My API
+//   }
+//   else {
+//     return "http://54.160.175.54"; // Server API URL
+//   }
+// }
 
   function callApiForEmail(email, password) {
-
     const apiUrl = "http://54.160.175.54/api/auth/login";
-      alert(apiUrl);
+    alert(apiUrl);
+      // alert(apiUrl);
     // User credentials
     const credentials = {
       email: email,
@@ -233,7 +234,7 @@ function getApiUrl() {
         
         // Add CORS-related headers
         "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS", // Specify the allowed HTTP methods
+        "Access-Control-Allow-Methods": "POST, OPTIONS", // Specify the allowed HTTP methods
         "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
       },
       body: JSON.stringify(credentials),
@@ -255,6 +256,7 @@ function getApiUrl() {
     })
     .catch(error => {
       console.error("Error fetching user from API:", error);
+      alert(error);
       throw error; // Re-throw the error to be caught by the caller
     });
     

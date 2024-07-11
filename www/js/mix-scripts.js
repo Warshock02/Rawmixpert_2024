@@ -2066,7 +2066,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function autoTriggerFunction() {
-    document.body.innerHTML = '';
+    //empty the body
+    // document.body.innerHTML = '';
 }
 // END OF DOM
 
