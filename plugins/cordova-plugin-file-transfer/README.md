@@ -349,7 +349,7 @@ window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
     console.log('file system open: ' + fs.name);
 
     // Make sure you add the domain name to the Content-Security-Policy <meta> element.
-    var url = 'http://cordova.apache.org/static/img/cordova_bot.png';
+    var url = 'https://purepng.com/public/uploads/large/purepng.com-stonenaturestylenaturalbeautifulgreen-541521126017x2rjw.png';
     // Parameters passed to getFile create a new file or return the file if it already exists.
     fs.root.getFile('downloaded-image.png', { create: true, exclusive: false }, function (fileEntry) {
         download(fileEntry, url, true);

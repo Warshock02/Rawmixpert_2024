@@ -3,9 +3,6 @@ document.addEventListener("deviceready", onDeviceReady);
  async function onDeviceReady() {
   try {
 
-
-    console.log("INDEX 1!!!!######");
-
     document.querySelector(".loading-screen").style.display = "none";
 
     getSessionData();
@@ -36,9 +33,15 @@ document.addEventListener("deviceready", onDeviceReady);
       alert("SQLite plugin not available.");
     }
 
+    if (localStorage.getItem("token") != "" && localStorage.getItem("token") != null) {
+      // User exists, retrieve the username
+      navigateToDashboard();
+    }
+
   } catch (error) {
     console.error("Error:", error);
   }
+
 }
 
 //Session Checker
@@ -57,7 +60,7 @@ function isUserLoggedIn() {
     return result;
   }
   
-  function navigateToDashboard() {
+  function navigateToDashboard() { 
     cordova.InAppBrowser.open("rm-main.html", "_self");
   }
   
@@ -113,10 +116,13 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
 
   try {
     event.preventDefault();
+    document.getElementById("loginButton").disabled = true; // Disable login button
 
     //checks connection when Login button clicked.
     const checkI = checkInternetConnection();
     if(checkI){
+      element.style.display = "none";
+      document.getElementById("loginButton").disabled = false; // Enable login button
       return;
     }
 
@@ -131,54 +137,47 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    if (!checkEmail(email)) {
-      console.log("Email is not empty or null");
-    } else {
-      console.log("Email is empty or null");
+    if (checkEmail(email)) {
       alert("Email is required.");
+      element.style.display = "none";
+      document.getElementById("loginButton").disabled = false; // Enable login button
       return;
-    }
+  }
 
-    if (!checkPassword(password)) {
-      console.log("Password is not empty or null");
-    } else {
-      console.log("Password is empty or null");
-      alert("Password is required.");
-      return;
-    }
+  if (checkPassword(password)) {
+    alert("Password is required.");
+    element.style.display = "none";
+    document.getElementById("loginButton").disabled = false; // Enable login button
+    return;
+}
 
     // login process
 
-    // Check if the user exists in the local SQLite database
     const res =  await executeSqlAsync(db, "SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1", [email, password]);
 
-    if (res.rows.length > 0) {
-      // User exists, retrieve the username
-      const email = res.rows.item(0).email;
-      console.log("Email from SQLite:", email);
+    if (localStorage.getItem("token") != "" && localStorage.getItem("token") != null) {
+      navigateToDashboard();
     } else {
-      // User doesn't exist, call the API to get the email
-      const token = await callApiForEmail(email, password);
+      const response = await callApiForEmail(email, password);
       
-      if (token != null || token != "") {
-        // alert("Token: " + token);
-        // Save the email to SQLite for future use
-        await saveEmailToSQLite(db, email, password, token);
-        alert(token);
-        localStorage.setItem("token", token);
-        navigateToDashboard();
-      } else {
-        alert("Error: " + token);
-      }
+      
+  if (response) {
+    const token = response;  // Assuming response contains the token
+    await saveEmailToSQLite(db, email, password, token);
+    localStorage.setItem("token", token);
+    localStorage.setItem("email", email);
+    navigateToDashboard();
+  }
     }
     // end login process
   } catch (error) {
-     alert(error.message);
     if(error.message.includes('Failed to fetch')){
       alert("Login's error: Under Maintenance!");
       return;
     }
-    alert("Login's error: " + error.message);
+  } finally {
+      element.style.display = "none";
+      document.getElementById("loginButton").disabled = false; // Enable login button
   }
 }
 
@@ -202,65 +201,58 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
 }
 
 
-// function getApiUrl() {
-//   const hostname = window.location.hostname;
-//   if (hostname === "localhost" || hostname === "127.0.0.1") {
-//     return "http://127.0.0.1:8000"; // Local API URL
-//   } 
-//   else if (hostname === "192.168.254.168") {
-//     return "http://192.168.254.168:8000"; // My API
-//   }
-//   else {
-//     return "http://54.160.175.54"; // Server API URL
-//   }
-// }
-
-  function callApiForEmail(email, password) {
-    const apiUrl = "http://54.160.175.54/api/auth/login";
-    alert(apiUrl);
-      // alert(apiUrl);
-    // User credentials
-    const credentials = {
-      email: email,
-      password: password,
-    };
-
-    // Make an API call to get the username
-    return fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        
-        // Add CORS-related headers
-        "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
-        "Access-Control-Allow-Methods": "POST, OPTIONS", // Specify the allowed HTTP methods
-        "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
-      },
-      body: JSON.stringify(credentials),
-    })
-    .then(response => {
-      if (!response.ok) {
-        return response.json().then(error => {
-          throw new Error(error.message);
-        });
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.token != null && data.token !== '') {
-        return data.token;
-      } else {
-        return data.message;
-      }
-    })
-    .catch(error => {
-      console.error("Error fetching user from API:", error);
-      alert(error);
-      throw error; // Re-throw the error to be caught by the caller
-    });
-    
+function getApiUrl() {
+  const hostname = window.location.hostname;
+  return "http://107.23.7.86";
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+    return "http://127.0.0.1:8000"; // Local API URL
+  } 
+  else {
+    return "http://107.23.7.86"; // Server API URL
+  }
 }
+
+function callApiForEmail(email, password) {
+  const apiUrl = getApiUrl() + "/api/auth/login";
+  const credentials = {
+    email: email,
+    password: password,
+  };
+
+  // Make an API call to get the username
+  return fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+    body: JSON.stringify(credentials),
+  })
+  .then(response => {
+    return response.json().then(data => {
+      if (!response.ok) {
+        // If response is not ok, throw an error with the message from the response
+        throw new Error(data.message || 'Unknown error');
+      }
+      return data;
+    });
+  })
+  .then(data => {
+    if (data.token) {
+      return data.token;
+    } else {
+      throw new Error(data.message || 'Token not found');
+    }
+  })
+  .catch(error => {
+    console.error('Error during login:', error.message);
+    alert(`Error: ${error.message}`);
+  });
+}
+
 
  async function saveEmailToSQLite(db, email, password, token) {
   // Insert the username into the users table
@@ -273,13 +265,10 @@ loginForm.addEventListener("submit", onLoginFormSubmit);
 }
 
 function checkInternetConnection() {
-  // const statusElement = document.createElement('p'); // Create a paragraph element
-  // document.body.appendChild(statusElement); // Append it to the body
+  
   if (navigator.onLine) {
-      // If online, display a message indicating internet connection is available
-      // statusElement.textContent = 'Internet connection is available.';
+    return false;
   } else {
-      // If offline, display a message indicating no internet connection
       alert('Warning: Login needs to be connected! Please check your internet connection. Thank you!');
       return true;
   }

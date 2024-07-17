@@ -55,12 +55,38 @@
         padding: 6px 12px;
       }
     }
+
+    #progress-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 0%, #4caf50 var(--progress), #f3f3f3 var(--progress), #f3f3f3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #4caf50;
+            text-align: center;
+            line-height: 150px;
+        }
+        #progress-container.hidden {
+            display: none;
+        }
   </style>
 
   <script src="js/session.js"></script>
 </head>
 
 <body>
+
+  <div id="progress-container" class="hidden" style="--progress: 0%;">
+    <span id="progress-text">0%</span>
+</div>
+
   <div class="loading-screen">
     <img src="img/4.webp" alt="Loading" class="loading-icon">
     Loading RawMixPERT Menu . . .
@@ -105,9 +131,9 @@
           setTimeout(() => {
             button.style.opacity = "1";
             button.style.transform = "translateY(0)";
-          }, index * 200); // Stagger the appearance by 200ms each
+          }, index * 80); // Stagger the appearance by 200ms each
         });
-      }, 2000); // Adjust the timeout as needed
+      }, 500); // Adjust the timeout as needed
     });
   </script>
 </body>

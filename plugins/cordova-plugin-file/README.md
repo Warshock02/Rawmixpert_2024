@@ -734,7 +734,7 @@ For completeness, here is the xhr request to get a Blob image. There is nothing 
 function getSampleFile(dirEntry) {
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://cordova.apache.org/static/img/cordova_bot.png', true);
+    xhr.open('GET', 'https://purepng.com/public/uploads/large/purepng.com-stonenaturestylenaturalbeautifulgreen-541521126017x2rjw.png', true);
     xhr.responseType = 'blob';
 
     xhr.onload = function() {
