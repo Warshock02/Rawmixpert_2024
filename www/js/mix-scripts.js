@@ -329,7 +329,6 @@ function showNotification(message, duration, notifynum) {
     }, duration);
 }
 
-
 // SQLITE
 // CREATE TABLE
 
@@ -375,8 +374,8 @@ function onDeviceReady() {
 
 
     executeSql(db,
-            "SELECT * FROM rmdTable WHERE email = ? ORDER BY id DESC",
-            [localStorage.getItem("email")])
+            "SELECT * FROM rmdTable WHERE email = ? and pageType = ? ORDER BY id DESC",
+            [localStorage.getItem("email"), localStorage.getItem("pagetype")])
         .then(result => {
             const table = document.getElementById("mix_table");
             const rows = result.rows;
@@ -386,6 +385,8 @@ function onDeviceReady() {
                 const id = row.id;
                 const name = row.name;
 
+                let newname = name.replace("Rawmill", "Recipe");
+
                 // Create a new row in the table
                 const newRow = table.insertRow();
                 const idCell = newRow.insertCell();
@@ -394,13 +395,14 @@ function onDeviceReady() {
 
                 // Populate the cells with data
                 idCell.textContent = id;
-                nameCell.textContent = name;
+                nameCell.textContent = newname;
 
                 // Create buttons for select, update, and delete
                 const selectButton = createActionButton("Select", function() {
                     if (confirm("Are you sure you want to 'select' RECIPE ID:" + id + "'s record?")) {
-                        alert("Selected ID: " + id + ", Name: " + name)
+                        alert("Selected ID: " + id + ", Name: " + newname)
                         // showNotification("Selected ID: " + id + ", Name: " + name);
+                        localStorage.setItem("getid", id);
                         loadselectData2(id);
                     }
                 }, "blue");
@@ -2257,10 +2259,8 @@ function loadlist() {
     // Initialize SQLite database
 
     executeSql(db,
-        // "SELECT * FROM rmdTable WHERE email = ? ORDER BY id DESC",
-        // [localStorage.getItem("email")],
-        "SELECT * FROM rmdTable",
-        []).then(result => {
+        "SELECT * FROM rmdTable where email = ? and pageType = ? ORDER BY id DESC",
+        [localStorage.getItem("email"), localStorage.getItem("pagetype")]).then(result => {
         const table = document.getElementById("mix_table");
         const rows = result.rows;
 
@@ -2274,6 +2274,8 @@ function loadlist() {
             const id = row.id;
             const name = row.name;
 
+            let newname = name.replace("RAWMILL", "RECIPE");
+
             // Create a new row in the table
             const newRow = table.insertRow();
             const idCell = newRow.insertCell();
@@ -2282,12 +2284,12 @@ function loadlist() {
 
             // Populate the cells with data
             idCell.textContent = id;
-            nameCell.textContent = name;
+            nameCell.textContent = newname;
 
             // Create buttons for select, update, and delete
             const selectButton = createActionButton("Select", function() {
                 if (confirm("Are you sure you want to 'select' RECIPE ID:" + id + "'s record?")) {
-                    alert("Selected ID: " + id + ", Name: " + name)
+                    alert("Selected ID: " + id + ", Name: " + newname)
                     loadselectData2(id);
                 }
             }, "blue");
@@ -2314,9 +2316,219 @@ function loadlist() {
 }
 window.loadlist = loadlist;
 
+//
+function saveOrUpdateMix() {
+    try {
+
+        if (recipe1num !== null) {
+            recipenum = recipe1num.value;
+        }
+        if (recipe2num !== null) {
+            recipenum = recipe2num.value;
+        }
+
+        var get_id = localStorage.getItem("getid");
+        var parsed_id = parseInt(get_id);
+
+        if (isNaN(parsed_id)) {
+            throw new Error("Invalid ID");
+        }
+
+        const date = new Date();
+        const formattedDate = date.toLocaleString();
+        const formattedDate2 = date.toLocaleString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: false,
+        });
+
+        executeSql(db,
+                "SELECT * FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
+                [parsed_id, localStorage.getItem("email"), localStorage.getItem("pagetype")])
+            .then(result => {
+                var executetxt = "";
+
+                var rows_result = result.rows.length;
+
+                if (rows_result > 0) {
+                    executetxt = "Update";
+                } else {
+                    executetxt = "Save";
+                }
+
+                const resulttask = confirm("Do you want to " + executetxt + " the Recipe " + rawmillnum + "?");
+
+                if (resulttask) {
+                    executeSql(db,
+                        "UPDATE rmdTable SET C8_MIX_RDFC = ?, C9_SiO2_RDFC = ?,C10_Al2O3_RDFC      = ?,C11_Fe2O3_RDFC = ?,C12_CaO_RDFC = ?,C13_MgO_RDFC = ?,C14_Na2O_RDFC = ?,C15_K2O_RDFC = ?,C16_SO3_RDFC = ?,C17_LOI_RDFC = ?,D8_MIX_RDFC = ?,D9_SiO2_RDFC = ?,D10_Al2O3_RDFC = ?,D11_Fe2O3_RDFC = ?,D12_CaO_RDFC = ?,D13_MgO_RDFC = ?,D14_Na2O_RDFC = ?,D15_K2O_RDFC = ?,D16_SO3_RDFC = ?,D17_LOI_RDFC = ?,E8_MIX_RDFC = ?,E9_SiO2_RDFC = ?,E10_Al2O3_RDFC = ?,E11_Fe2O3_RDFC = ?,E12_CaO_RDFC = ?,E13_MgO_RDFC = ?,E14_Na2O_RDFC       = ?,E15_K2O_RDFC = ?,E16_SO3_RDFC = ?,E17_LOI_RDFC = ?,F8_MIX_RDFC = ?,F9_SiO2_RDFC = ?,F10_Al2O3_RDFC = ?,F11_Fe2O3_RDFC = ?,F12_CaO_RDFC = ?,F13_MgO_RDFC = ?,F14_Na2O_RDFC = ?,F15_K2O_RDFC = ?,F16_SO3_RDFC = ?,F17_LOI_RDFC = ?,I14_Lime_Saturation = ?,I17_Silica_Modulus  = ?,I20_Alumina_Modulus = ?  WHERE id = ? and email = ? and pagetype = ?",
+                        [
+                            C8_MIX_RDFC_DG.value,
+                            C9_SiO2_RDFC_DG.value,
+                            C10_Al2O3_RDFC_DG.value,
+                            C11_Fe2O3_RDFC_DG.value,
+                            C12_CaO_RDFC_DG.value,
+                            C13_MgO_RDFC_DG.value,
+                            C14_Na2O_RDFC_DG.value,
+                            C15_K2O_RDFC_DG.value,
+                            C16_SO3_RDFC_DG.value,
+                            C17_LOI_RDFC_DG.value,
+                            D8_MIX_RDFC_DG.value,
+                            D9_SiO2_RDFC_DG.value,
+                            D10_Al2O3_RDFC_DG.value,
+                            D11_Fe2O3_RDFC_DG.value,
+                            D12_CaO_RDFC_DG.value,
+                            D13_MgO_RDFC_DG.value,
+                            D14_Na2O_RDFC_DG.value,
+                            D15_K2O_RDFC_DG.value,
+                            D16_SO3_RDFC_DG.value,
+                            D17_LOI_RDFC_DG.value,
+                            E8_MIX_RDFC_DG.value,
+                            E9_SiO2_RDFC_DG.value,
+                            E10_Al2O3_RDFC_DG.value,
+                            E11_Fe2O3_RDFC_DG.value,
+                            E12_CaO_RDFC_DG.value,
+                            E13_MgO_RDFC_DG.value,
+                            E14_Na2O_RDFC_DG.value,
+                            E15_K2O_RDFC_DG.value,
+                            E16_SO3_RDFC_DG.value,
+                            E17_LOI_RDFC_DG.value,
+                            F8_MIX_RDFC_DG.value,
+                            F9_SiO2_RDFC_DG.value,
+                            F10_Al2O3_RDFC_DG.value,
+                            F11_Fe2O3_RDFC_DG.value,
+                            F12_CaO_RDFC_DG.value,
+                            F13_MgO_RDFC_DG.value,
+                            F14_Na2O_RDFC_DG.value,
+                            F15_K2O_RDFC_DG.value,
+                            F16_SO3_RDFC_DG.value,
+                            F17_LOI_RDFC_DG.value,
+                            I14_Lime_Saturation_DG.value,
+                            I17_Silica_Modulus_DG.value,
+                            I20_Alumina_Modulus_DG.value,
+                            getmix_id,
+                            localStorage.getItem("email"),
+                            localStorage.getItem("pagetype")
+                        ]).then(resultSet => {
+                        if (resultSet.rowsAffected > 0) {
+                            alert("RECIPE ID: " + id + " Updated");
+                            window.rdfc_clear()
+                            localStorage.setItem("getid", "0");
+                            // showNotification("Mix% & Matrix/Coefficient ID: " + id + " Updated", 3000, 3);
+                        }
+                    }).catch(error => {
+                        alert("Updating RECIPE Error: " + error)
+                        // showNotification("Update RMD Error: " + error, 3000, 4)
+                    });
+
+                } else {
+                    //INSERT MIX
+                    const date = new Date();
+
+                    const formattedDate = date.toLocaleString();
+                    const formattedDate2 = date.toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        hour12: false,
+                    });
+
+                    var data = ["Rawmill_" + recipenum + "_" + formattedDate,
+                        C8_MIX_RDFC_DG.value,
+                        C9_SiO2_RDFC_DG.value,
+                        C10_Al2O3_RDFC_DG.value,
+                        C11_Fe2O3_RDFC_DG.value,
+                        C12_CaO_RDFC_DG.value,
+                        C13_MgO_RDFC_DG.value,
+                        C14_Na2O_RDFC_DG.value,
+                        C15_K2O_RDFC_DG.value,
+                        C16_SO3_RDFC_DG.value,
+                        C17_LOI_RDFC_DG.value,
+                        D8_MIX_RDFC_DG.value,
+                        D9_SiO2_RDFC_DG.value,
+                        D10_Al2O3_RDFC_DG.value,
+                        D11_Fe2O3_RDFC_DG.value,
+                        D12_CaO_RDFC_DG.value,
+                        D13_MgO_RDFC_DG.value,
+                        D14_Na2O_RDFC_DG.value,
+                        D15_K2O_RDFC_DG.value,
+                        D16_SO3_RDFC_DG.value,
+                        D17_LOI_RDFC_DG.value,
+                        E8_MIX_RDFC_DG.value,
+                        E9_SiO2_RDFC_DG.value,
+                        E10_Al2O3_RDFC_DG.value,
+                        E11_Fe2O3_RDFC_DG.value,
+                        E12_CaO_RDFC_DG.value,
+                        E13_MgO_RDFC_DG.value,
+                        E14_Na2O_RDFC_DG.value,
+                        E15_K2O_RDFC_DG.value,
+                        E16_SO3_RDFC_DG.value,
+                        E17_LOI_RDFC_DG.value,
+                        F8_MIX_RDFC_DG.value,
+                        F9_SiO2_RDFC_DG.value,
+                        F10_Al2O3_RDFC_DG.value,
+                        F11_Fe2O3_RDFC_DG.value,
+                        F12_CaO_RDFC_DG.value,
+                        F13_MgO_RDFC_DG.value,
+                        F14_Na2O_RDFC_DG.value,
+                        F15_K2O_RDFC_DG.value,
+                        F16_SO3_RDFC_DG.value,
+                        F17_LOI_RDFC_DG.value,
+                        I14_Lime_Saturation_DG.value,
+                        I17_Silica_Modulus_DG.value,
+                        I20_Alumina_Modulus_DG.value,
+                        formattedDate2,
+                        localStorage.getItem("email"),
+                        localStorage.getItem("pagetype"),
+                    ]
+
+                    console.log(data);
+
+                    console.log("Trying to insert data...");
+
+                    executeSql(db,
+                        "INSERT INTO rmdTable (name,C8_MIX_RDFC , C9_SiO2_RDFC ,C10_Al2O3_RDFC      ,C11_Fe2O3_RDFC ,C12_CaO_RDFC ,C13_MgO_RDFC ,C14_Na2O_RDFC ,C15_K2O_RDFC ,C16_SO3_RDFC ,C17_LOI_RDFC ,D8_MIX_RDFC ,D9_SiO2_RDFC ,D10_Al2O3_RDFC ,D11_Fe2O3_RDFC ,D12_CaO_RDFC ,D13_MgO_RDFC ,D14_Na2O_RDFC ,D15_K2O_RDFC ,D16_SO3_RDFC ,D17_LOI_RDFC ,E8_MIX_RDFC ,E9_SiO2_RDFC ,E10_Al2O3_RDFC ,E11_Fe2O3_RDFC ,E12_CaO_RDFC ,E13_MgO_RDFC ,E14_Na2O_RDFC       ,E15_K2O_RDFC ,E16_SO3_RDFC ,E17_LOI_RDFC ,F8_MIX_RDFC ,F9_SiO2_RDFC ,F10_Al2O3_RDFC ,F11_Fe2O3_RDFC ,F12_CaO_RDFC ,F13_MgO_RDFC ,F14_Na2O_RDFC ,F15_K2O_RDFC ,F16_SO3_RDFC ,F17_LOI_RDFC ,I14_Lime_Saturation ,I17_Silica_Modulus  ,I20_Alumina_Modulus , DT, email, pageType) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)",
+                        data,
+                        (_, {
+                            rowsAffected
+                        }) => {
+                            if (rowsAffected > 0) {
+                                alert("RECIPE " + recipenum + " successfully saved!!")
+                                // showNotification("Mix% & Matrix/Coefficient successfully saved!!", 3000, 3);
+                                window.loadlist();
+                                window.rdfc_clear();
+
+                                localStorage.setItem("getid", "0");
+                                localStorage.removeItem('Recipe' + recipenum);
+                            }
+                            console.log("Rows affected:", rowsAffected);
+                        },
+                        (_, error) => {
+                            alert("Saving RECIPE Error: ", error.message)
+                            // showNotification("Save RMD Error: ", error.message, 3000, 4);
+                        }
+                    );
+                    setTimeout(() => {}, 60000);
+                    //END INSERT MIX
+
+                }
+
+            });
+    } catch (error) {
+
+
+    }
+}
+//
+
+
 function addData2() {
-
-
 
     if (recipe1num !== null) {
         recipenum = recipe1num.value;
@@ -2387,7 +2599,8 @@ function addData2() {
             I17_Silica_Modulus_DG.value,
             I20_Alumina_Modulus_DG.value,
             formattedDate2,
-            localStorage.getItem("email")
+            localStorage.getItem("email"),
+            localStorage.getItem("pagetype"),
         ]
 
         console.log(data);
@@ -2395,7 +2608,7 @@ function addData2() {
         console.log("Trying to insert data...");
 
         executeSql(db,
-            "INSERT INTO rmdTable (name,C8_MIX_RDFC , C9_SiO2_RDFC ,C10_Al2O3_RDFC      ,C11_Fe2O3_RDFC ,C12_CaO_RDFC ,C13_MgO_RDFC ,C14_Na2O_RDFC ,C15_K2O_RDFC ,C16_SO3_RDFC ,C17_LOI_RDFC ,D8_MIX_RDFC ,D9_SiO2_RDFC ,D10_Al2O3_RDFC ,D11_Fe2O3_RDFC ,D12_CaO_RDFC ,D13_MgO_RDFC ,D14_Na2O_RDFC ,D15_K2O_RDFC ,D16_SO3_RDFC ,D17_LOI_RDFC ,E8_MIX_RDFC ,E9_SiO2_RDFC ,E10_Al2O3_RDFC ,E11_Fe2O3_RDFC ,E12_CaO_RDFC ,E13_MgO_RDFC ,E14_Na2O_RDFC       ,E15_K2O_RDFC ,E16_SO3_RDFC ,E17_LOI_RDFC ,F8_MIX_RDFC ,F9_SiO2_RDFC ,F10_Al2O3_RDFC ,F11_Fe2O3_RDFC ,F12_CaO_RDFC ,F13_MgO_RDFC ,F14_Na2O_RDFC ,F15_K2O_RDFC ,F16_SO3_RDFC ,F17_LOI_RDFC ,I14_Lime_Saturation ,I17_Silica_Modulus  ,I20_Alumina_Modulus , DT, email) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)",
+            "INSERT INTO rmdTable (name,C8_MIX_RDFC , C9_SiO2_RDFC ,C10_Al2O3_RDFC      ,C11_Fe2O3_RDFC ,C12_CaO_RDFC ,C13_MgO_RDFC ,C14_Na2O_RDFC ,C15_K2O_RDFC ,C16_SO3_RDFC ,C17_LOI_RDFC ,D8_MIX_RDFC ,D9_SiO2_RDFC ,D10_Al2O3_RDFC ,D11_Fe2O3_RDFC ,D12_CaO_RDFC ,D13_MgO_RDFC ,D14_Na2O_RDFC ,D15_K2O_RDFC ,D16_SO3_RDFC ,D17_LOI_RDFC ,E8_MIX_RDFC ,E9_SiO2_RDFC ,E10_Al2O3_RDFC ,E11_Fe2O3_RDFC ,E12_CaO_RDFC ,E13_MgO_RDFC ,E14_Na2O_RDFC       ,E15_K2O_RDFC ,E16_SO3_RDFC ,E17_LOI_RDFC ,F8_MIX_RDFC ,F9_SiO2_RDFC ,F10_Al2O3_RDFC ,F11_Fe2O3_RDFC ,F12_CaO_RDFC ,F13_MgO_RDFC ,F14_Na2O_RDFC ,F15_K2O_RDFC ,F16_SO3_RDFC ,F17_LOI_RDFC ,I14_Lime_Saturation ,I17_Silica_Modulus  ,I20_Alumina_Modulus , DT, email, pageType) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)",
             data,
             (_, {
                 rowsAffected
@@ -2405,6 +2618,8 @@ function addData2() {
                     // showNotification("Mix% & Matrix/Coefficient successfully saved!!", 3000, 3);
                     window.loadlist();
                     window.rdfc_clear();
+
+                    localStorage.setItem("getid", "0");
                     localStorage.removeItem('Recipe' + recipenum);
                 }
                 console.log("Rows affected:", rowsAffected);
@@ -2415,15 +2630,14 @@ function addData2() {
             }
         );
         setTimeout(() => {}, 60000);
-    } else {}
+    }
 }
-
 window.addData2 = addData2;
 
-function updateData2(id) {
+function updateData2() {
     console.log("Updating data...");
     executeSql(db,
-        "UPDATE rmdTable SET C8_MIX_RDFC = ?, C9_SiO2_RDFC = ?,C10_Al2O3_RDFC      = ?,C11_Fe2O3_RDFC = ?,C12_CaO_RDFC = ?,C13_MgO_RDFC = ?,C14_Na2O_RDFC = ?,C15_K2O_RDFC = ?,C16_SO3_RDFC = ?,C17_LOI_RDFC = ?,D8_MIX_RDFC = ?,D9_SiO2_RDFC = ?,D10_Al2O3_RDFC = ?,D11_Fe2O3_RDFC = ?,D12_CaO_RDFC = ?,D13_MgO_RDFC = ?,D14_Na2O_RDFC = ?,D15_K2O_RDFC = ?,D16_SO3_RDFC = ?,D17_LOI_RDFC = ?,E8_MIX_RDFC = ?,E9_SiO2_RDFC = ?,E10_Al2O3_RDFC = ?,E11_Fe2O3_RDFC = ?,E12_CaO_RDFC = ?,E13_MgO_RDFC = ?,E14_Na2O_RDFC       = ?,E15_K2O_RDFC = ?,E16_SO3_RDFC = ?,E17_LOI_RDFC = ?,F8_MIX_RDFC = ?,F9_SiO2_RDFC = ?,F10_Al2O3_RDFC = ?,F11_Fe2O3_RDFC = ?,F12_CaO_RDFC = ?,F13_MgO_RDFC = ?,F14_Na2O_RDFC = ?,F15_K2O_RDFC = ?,F16_SO3_RDFC = ?,F17_LOI_RDFC = ?,I14_Lime_Saturation = ?,I17_Silica_Modulus  = ?,I20_Alumina_Modulus = ?  WHERE id = ? and email = ?",
+        "UPDATE rmdTable SET C8_MIX_RDFC = ?, C9_SiO2_RDFC = ?,C10_Al2O3_RDFC      = ?,C11_Fe2O3_RDFC = ?,C12_CaO_RDFC = ?,C13_MgO_RDFC = ?,C14_Na2O_RDFC = ?,C15_K2O_RDFC = ?,C16_SO3_RDFC = ?,C17_LOI_RDFC = ?,D8_MIX_RDFC = ?,D9_SiO2_RDFC = ?,D10_Al2O3_RDFC = ?,D11_Fe2O3_RDFC = ?,D12_CaO_RDFC = ?,D13_MgO_RDFC = ?,D14_Na2O_RDFC = ?,D15_K2O_RDFC = ?,D16_SO3_RDFC = ?,D17_LOI_RDFC = ?,E8_MIX_RDFC = ?,E9_SiO2_RDFC = ?,E10_Al2O3_RDFC = ?,E11_Fe2O3_RDFC = ?,E12_CaO_RDFC = ?,E13_MgO_RDFC = ?,E14_Na2O_RDFC       = ?,E15_K2O_RDFC = ?,E16_SO3_RDFC = ?,E17_LOI_RDFC = ?,F8_MIX_RDFC = ?,F9_SiO2_RDFC = ?,F10_Al2O3_RDFC = ?,F11_Fe2O3_RDFC = ?,F12_CaO_RDFC = ?,F13_MgO_RDFC = ?,F14_Na2O_RDFC = ?,F15_K2O_RDFC = ?,F16_SO3_RDFC = ?,F17_LOI_RDFC = ?,I14_Lime_Saturation = ?,I17_Silica_Modulus  = ?,I20_Alumina_Modulus = ?  WHERE id = ? and email = ? and pagetype = ?",
         [
             C8_MIX_RDFC_DG.value,
             C9_SiO2_RDFC_DG.value,
@@ -2468,13 +2682,14 @@ function updateData2(id) {
             I14_Lime_Saturation_DG.value,
             I17_Silica_Modulus_DG.value,
             I20_Alumina_Modulus_DG.value,
-            id,
-            localStorage.getItem("email")
+            getmix_id,
+            localStorage.getItem("email"),
+            localStorage.getItem("pagetype")
         ]).then(resultSet => {
         if (resultSet.rowsAffected > 0) {
             alert("RECIPE ID: " + id + " Updated");
-
             window.rdfc_clear()
+            localStorage.setItem("getid", "0");
             // showNotification("Mix% & Matrix/Coefficient ID: " + id + " Updated", 3000, 3);
         }
     }).catch(error => {
@@ -2486,8 +2701,8 @@ window.updateData2 = updateData2;
 
 function deleteData2(id) {
     executeSql(db,
-        "DELETE FROM rmdTable WHERE id = ? and email = ?",
-        [id, localStorage.getItem("email")], (_, {
+        "DELETE FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
+        [id, localStorage.getItem("email"), localStorage.getItem("email")], (_, {
             rows
         }) => {
             const items = rows._array;
@@ -2505,8 +2720,8 @@ function loadselectData2(id) {
     try {
         console.log('M.C > Query ID:', id);
         executeSql(db,
-                "SELECT * FROM rmdTable WHERE id = ? and email = ?",
-                [id, localStorage.getItem("email")])
+                "SELECT * FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
+                [id, localStorage.getItem("email"), localStorage.getItem("pagetype")])
             .then(result => {
                 const rows = result.rows;
                 const row = rows.item(0);
