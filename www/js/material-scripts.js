@@ -2339,7 +2339,7 @@ function saveOrUpdateMA() {
         const rawMixType = E34_RawMixType_DG.value.trim();
 
         if (isNaN(parsed_id)) {
-            throw new Error("Invalid ID");
+            parsed_id = 0;
         }
 
         const date = new Date();
@@ -2503,7 +2503,6 @@ function saveOrUpdateMA() {
                                     cbox19.checked ? parseFloat(E19_Shale_DQ.textContent) : parseFloat(E19_Shale_DG.value),
                                     cbox19.checked ? parseFloat(F19_Sand_DQ.textContent) : parseFloat(F19_Sand_DG.value),
                                     cbox19.checked ? parseFloat(G19_Iron_DQ.textContent) : parseFloat(G19_Iron_DG.value),
-                                    parseFloat(D15_DG.value) > 0 ? parseFloat(D15_DG.value) : 0,
                                     parseFloat(D15_DG.value) > 0 ? parseFloat(D15_DG.value) : 0,
                                     parseFloat(E15_DG.value) > 0 ? parseFloat(E15_DG.value) : 0,
                                     parseFloat(F15_DG.value) > 0 ? parseFloat(F15_DG.value) : 0,
