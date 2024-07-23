@@ -345,6 +345,13 @@ function createActionButton(label, onClick, color) {
 function onDeviceReady() {
     // Initialize SQLite database
 
+
+    if (recipenum == 0) {
+        localStorage.setItem("pagetype", false);
+    } else {
+        localStorage.setItem("pagetype", true);
+    }
+
     db = window.sqlitePlugin.openDatabase({
         name: "rawmixpert24.db",
         location: "default",
@@ -431,11 +438,6 @@ function onDeviceReady() {
             console.error("Error fetching data:", error);
         });
 
-    if (recipenum == 0) {
-        localStorage.setItem("pagetype", false);
-    } else {
-        localStorage.setItem("pagetype", true);
-    }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
