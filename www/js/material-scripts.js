@@ -935,12 +935,12 @@ document.addEventListener('resume', function() {
     var storedObject = JSON.parse(localStorage.getItem('Rawmill' + rawmillnum));
     if (storedObject !== null) {
 
-        // const row.check16 = storedObject.cbox16;
-        // const row.check17 = storedObject.cbox17;
-        // const row.check18 = storedObject.cbox18;
-        // const row.check19 = storedObject.cbox19;
+        const ck16 = storedObject.cbox16;
+        const ck17 = storedObject.cbox17;
+        const ck18 = storedObject.cbox18;
+        const ck19 = storedObject.cbox19;
 
-        if (row.check16 == true || row.check16 == 'true') {
+        if (ck16 == true || ck16 == 'true') {
             console.log("16: TRUE")
             inputContainerD16_Limestone.style.display = "none";
             inputContainerE16_Shale.style.display = "none";
@@ -966,7 +966,7 @@ document.addEventListener('resume', function() {
             cbox16.value = false;
             cbox16.checked = false;
         }
-        if (row.check17 == true || row.check17 == 'true') {
+        if (ck17 == true || ck17 == 'true') {
             console.log("17: TRUE")
             inputContainerD17_Limestone.style.display = "none";
             inputContainerE17_Shale.style.display = "none";
@@ -992,7 +992,7 @@ document.addEventListener('resume', function() {
             cbox17.value = false;
             cbox17.checked = false;
         }
-        if (row.check18 == true || row.check18 == 'true') {
+        if (ck18 == true || ck18 == 'true') {
             console.log("18: TRUE")
             inputContainerD18_Limestone.style.display = "none";
             inputContainerE18_Shale.style.display = "none";
@@ -1018,7 +1018,7 @@ document.addEventListener('resume', function() {
             cbox18.value = false;
             cbox18.checked = false;
         }
-        if (row.check19 == true || row.check19 == 'true') {
+        if (ck19 == true || ck19 == 'true') {
             console.log("19: TRUE")
             inputContainerD19_Limestone.style.display = "none";
             inputContainerE19_Shale.style.display = "none";
@@ -1045,37 +1045,37 @@ document.addEventListener('resume', function() {
             cbox19.checked = false;
         }
 
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         D16_Limestone_DQ.textContent: (D16_Limestone_DG.value = storedObject.D16_Limestone);
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         E16_Shale_DQ.textContent: (E16_Shale_DG.value = storedObject.E16_Shale);
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         F16_Sand_DQ.textContent: (F16_Sand_DG.value = storedObject.F16_Sand);
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         G16_Iron_DQ.textContent: (G16_Iron_DG.value = storedObject.G16_Iron);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         D17_Limestone_DQ.textContent: (D17_Limestone_DG.value = storedObject.D17_Limestone);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         E17_Shale_DQ.textContent: (E17_Shale_DG.value = storedObject.E17_Shale);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         F17_Sand_DQ.textContent: (F17_Sand_DG.value = storedObject.F17_Sand);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         G17_Iron_DQ.textContent: (G17_Iron_DG.value = storedObject.G17_Iron);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         D18_Limestone_DQ.textContent: (D18_Limestone_DG.value = storedObject.D18_Limestone);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         E18_Shale_DQ.textContent: (E18_Shale_DG.value = storedObject.E18_Shale);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         F18_Sand_DQ.textContent: (F18_Sand_DG.value = storedObject.F18_Sand);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         G18_Iron_DQ.textContent: (G18_Iron_DG.value = storedObject.G18_Iron);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         D19_Limestone_DQ.textContent: (D19_Limestone_DG.value = storedObject.D19_Limestone);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         E19_Shale_DQ.textContent: (E19_Shale_DG.value = storedObject.E19_Shale);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         F19_Sand_DQ.textContent: (F19_Sand_DG.value = storedObject.F19_Sand);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         G19_Iron_DQ.textContent: (G19_Iron_DG.value = storedObject.G19_Iron);
 
         D15_DG.value = storedObject.D15;
@@ -2189,12 +2189,12 @@ function load_ma(id) {
                 const row = rows.item(0);
                 // var rawMixType = row.E34_RawMixType;
 
-                const cbox16 = row.check16;
-                const cbox17 = row.check17;
-                const cbox18 = row.check18;
-                const cbox19 = row.check19;
+                const ck16 = row.check16;
+                const ck17 = row.check17;
+                const ck18 = row.check18;
+                const ck19 = row.check19;
 
-                if (cbox16 == true || cbox16 == 'true') {
+                if (ck16 == true || ck16 == 'true') {
                     console.log("16: TRUE")
                     inputContainerD16_Limestone.style.display = "none";
                     inputContainerE16_Shale.style.display = "none";
@@ -2220,7 +2220,7 @@ function load_ma(id) {
                     cbox16.value = false;
                     cbox16.checked = false;
                 }
-                if (cbox17 == true || cbox17 == 'true') {
+                if (ck17 == true || ck17 == 'true') {
                     console.log("17: TRUE")
                     inputContainerD17_Limestone.style.display = "none";
                     inputContainerE17_Shale.style.display = "none";
@@ -2246,7 +2246,7 @@ function load_ma(id) {
                     cbox17.value = false;
                     cbox17.checked = false;
                 }
-                if (cbox18 == true || cbox18 == 'true') {
+                if (ck18 == true || ck18 == 'true') {
                     console.log("18: TRUE")
                     inputContainerD18_Limestone.style.display = "none";
                     inputContainerE18_Shale.style.display = "none";
@@ -2272,7 +2272,7 @@ function load_ma(id) {
                     cbox18.value = false;
                     cbox18.checked = false;
                 }
-                if (cbox19 == true || cbox19 == 'true') {
+                if (ck19 == true || ck19 == 'true') {
                     console.log("19: TRUE")
                     inputContainerD19_Limestone.style.display = "none";
                     inputContainerE19_Shale.style.display = "none";
@@ -2332,7 +2332,6 @@ function load_ma(id) {
                 (row.check19 == true || row.check19 == 'true') ?
                 G19_Iron_DQ.textContent: (G19_Iron_DG.value = row.G19_Iron);
 
-                console.log('SELETED ROW!!!')
                 console.log(row);
 
                 D15_DG.value = row.D15;
@@ -2401,7 +2400,7 @@ function load_ma(id) {
 
 
 
-                window.computeall();
+                // window.computeall();
             })
             .catch(error => {
                 console.error('Error executing the query:', error);
@@ -2721,12 +2720,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var storedObject = JSON.parse(localStorage.getItem('Rawmill' + rawmillnum));
     if (storedObject !== null) {
 
-        // const row.check16 = storedObject.cbox16;
-        // const row.check17 = storedObject.cbox17;
-        // const row.check18 = storedObject.cbox18;
-        // const row.check19 = storedObject.cbox19;
+        const ck16 = storedObject.cbox16;
+        const ck17 = storedObject.cbox17;
+        const ck18 = storedObject.cbox18;
+        const ck19 = storedObject.cbox19;
 
-        if (row.check16 == true || row.check16 == 'true') {
+        if (ck16 == true || ck16 == 'true') {
             console.log("16: TRUE")
             inputContainerD16_Limestone.style.display = "none";
             inputContainerE16_Shale.style.display = "none";
@@ -2752,7 +2751,7 @@ document.addEventListener("DOMContentLoaded", function() {
             cbox16.value = false;
             cbox16.checked = false;
         }
-        if (row.check17 == true || row.check17 == 'true') {
+        if (ck17 == true || ck17 == 'true') {
             console.log("17: TRUE")
             inputContainerD17_Limestone.style.display = "none";
             inputContainerE17_Shale.style.display = "none";
@@ -2778,7 +2777,7 @@ document.addEventListener("DOMContentLoaded", function() {
             cbox17.value = false;
             cbox17.checked = false;
         }
-        if (row.check18 == true || row.check18 == 'true') {
+        if (ck18 == true || ck18 == 'true') {
             console.log("18: TRUE")
             inputContainerD18_Limestone.style.display = "none";
             inputContainerE18_Shale.style.display = "none";
@@ -2804,7 +2803,7 @@ document.addEventListener("DOMContentLoaded", function() {
             cbox18.value = false;
             cbox18.checked = false;
         }
-        if (row.check19 == true || row.check19 == 'true') {
+        if (ck19 == true || ck19 == 'true') {
             console.log("19: TRUE")
             inputContainerD19_Limestone.style.display = "none";
             inputContainerE19_Shale.style.display = "none";
@@ -2831,37 +2830,37 @@ document.addEventListener("DOMContentLoaded", function() {
             cbox19.checked = false;
         }
 
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         D16_Limestone_DQ.textContent: (D16_Limestone_DG.value = storedObject.D16_Limestone);
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         E16_Shale_DQ.textContent: (E16_Shale_DG.value = storedObject.E16_Shale);
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         F16_Sand_DQ.textContent: (F16_Sand_DG.value = storedObject.F16_Sand);
-        (row.check16 == true || row.check16 == 'true') ?
+        (ck16 == true || ck16 == 'true') ?
         G16_Iron_DQ.textContent: (G16_Iron_DG.value = storedObject.G16_Iron);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         D17_Limestone_DQ.textContent: (D17_Limestone_DG.value = storedObject.D17_Limestone);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         E17_Shale_DQ.textContent: (E17_Shale_DG.value = storedObject.E17_Shale);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         F17_Sand_DQ.textContent: (F17_Sand_DG.value = storedObject.F17_Sand);
-        (row.check17 == true || row.check17 == 'true') ?
+        (ck17 == true || ck17 == 'true') ?
         G17_Iron_DQ.textContent: (G17_Iron_DG.value = storedObject.G17_Iron);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         D18_Limestone_DQ.textContent: (D18_Limestone_DG.value = storedObject.D18_Limestone);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         E18_Shale_DQ.textContent: (E18_Shale_DG.value = storedObject.E18_Shale);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         F18_Sand_DQ.textContent: (F18_Sand_DG.value = storedObject.F18_Sand);
-        (row.check18 == true || row.check18 == 'true') ?
+        (ck18 == true || ck18 == 'true') ?
         G18_Iron_DQ.textContent: (G18_Iron_DG.value = storedObject.G18_Iron);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         D19_Limestone_DQ.textContent: (D19_Limestone_DG.value = storedObject.D19_Limestone);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         E19_Shale_DQ.textContent: (E19_Shale_DG.value = storedObject.E19_Shale);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         F19_Sand_DQ.textContent: (F19_Sand_DG.value = storedObject.F19_Sand);
-        (row.check19 == true || row.check19 == 'true') ?
+        (ck19 == true || ck19 == 'true') ?
         G19_Iron_DQ.textContent: (G19_Iron_DG.value = storedObject.G19_Iron);
 
         D15_DG.value = storedObject.D15;
@@ -5458,6 +5457,7 @@ document.addEventListener("DOMContentLoaded", function() {
             check19_Sand = F19_Sand_DG.value !== null ? F19_Sand_DG.value : "0.0";
             check19_Iron = G19_Iron_DG.value !== null ? G19_Iron_DG.value : "0.0";
         }
+
     }
 
     // LOAD ALL
@@ -6022,6 +6022,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     setTimeout(autoTriggerFunction, (8 * 60 * 1000)); // Auto-trigger after 5 seconds
+
+    computeall();
 });
 
 function autoTriggerFunction() {
