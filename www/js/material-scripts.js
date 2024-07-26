@@ -732,9 +732,11 @@ var rawmillnum = 0;
 window.addEventListener('beforeunload', function(event) {
     if (rawmill1num !== null) {
         rawmillnum = rawmill1num.value;
+        console.log("RAWMILL 111");
     }
     if (rawmill2num !== null) {
         rawmillnum = rawmill2num.value;
+        console.log("RAWMILL 222");
     }
     //Store to local
     var myObject = {
@@ -830,9 +832,11 @@ window.addEventListener('beforeunload', function(event) {
 document.addEventListener('pause', function() {
     if (rawmill1num !== null) {
         rawmillnum = rawmill1num.value;
+        console.log("RAWMILL 11");
     }
     if (rawmill2num !== null) {
         rawmillnum = rawmill2num.value;
+        console.log("RAWMILL 22");
     }
     //Store to local
     var myObject = {
@@ -931,9 +935,11 @@ document.addEventListener('pause', function() {
 document.addEventListener('resume', function() {
     if (rawmill1num !== null) {
         rawmillnum = rawmill1num.value;
+        console.log("RAWMILL 1");
     }
     if (rawmill2num !== null) {
         rawmillnum = rawmill2num.value;
+        console.log("RAWMILL 2");
     }
     var storedObject = JSON.parse(localStorage.getItem('Rawmill' + rawmillnum));
     if (storedObject !== null) {
@@ -1213,8 +1219,7 @@ function createActionButton2(label, onClick, color) {
 
 function onDeviceReady() {
 
-
-    if (rawmillnum == 0) {
+    if (rawmillnum == 1) {
         localStorage.setItem("pagetype", 0);
     } else {
         localStorage.setItem("pagetype", 1);
@@ -1269,10 +1274,24 @@ function onDeviceReady() {
     //   });
     // })
 
+
+    const email = localStorage.getItem('email').trim();
+    const pageType = localStorage.getItem('pagetype');
+    console.log('Email:', email);
+    console.log('PageType:', pageType);
+
+    var newptype = "";
+
+    if (pageType) {
+        newptype = 1;
+    } else {
+        newptype = 0;
+    }
+
     executeSql(db,
-        "SELECT * FROM rmdTable ",
+        "SELECT * FROM rmdTable where email = ? and pageType = ?",
         // "SELECT * FROM rmTable ORDER BY id DESC",
-        []).then(results => {
+        [email, localStorage.getItem('pagetype')]).then(results => {
 
         const table = document.getElementById("material_table");
         const rows = results.rows;
@@ -1750,11 +1769,19 @@ function checked_select() {
 window.checked_select = checked_select;
 
 function mloadlist() {
-    // const db = window.sqlitePlugin.openDatabase({
-    //     name: "rawmixpert24.db",
-    //     location: "default",
-    // });
-    // Initialize SQLite database
+
+    const email = localStorage.getItem('email').trim();
+    const pageType = localStorage.getItem('pagetype').trim();
+    console.log('Email:', email);
+    console.log('PageType:', pageType);
+
+    var newptype = "";
+
+    if (pageType) {
+        newptype = 1;
+    } else {
+        newptype = 0;
+    }
 
     // ***
     executeSql(db,
@@ -1769,7 +1796,7 @@ function mloadlist() {
         "I38_FCaO, J38_BurningCondition, U38_SO3 FROM rmdTable WHERE email = ? and pageType = ? ORDER BY id DESC",
         // "SELECT * FROM rmTable ORDER BY id DESC",
 
-        [localStorage.getItem('email'), localStorage.getItem('pagetype')],
+        [email, newptype],
         function(tx, result) {
             const table = document.getElementById("material_table");
             const rows = result.rows;
