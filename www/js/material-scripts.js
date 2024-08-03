@@ -1,7 +1,8 @@
 var db;
+var newptype;
 
-let domContentLoaded = false;
-let deviceReady = false;
+// let domContentLoaded = false;
+// let deviceReady = false;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -950,7 +951,7 @@ document.addEventListener('resume', function() {
         const ck19 = storedObject.cbox19;
 
         if (ck16 == true || ck16 == 'true') {
-            console.log("16: TRUE")
+            // console.log("16: TRUE")
             inputContainerD16_Limestone.style.display = "none";
             inputContainerE16_Shale.style.display = "none";
             inputContainerF16_Sand.style.display = "none";
@@ -1221,8 +1222,10 @@ function onDeviceReady() {
 
     if (rawmillnum == 1) {
         localStorage.setItem("pagetype", 0);
+        newptype = 0;
     } else {
         localStorage.setItem("pagetype", 1);
+        newptype = 1;
     }
 
     // Lock the screen orientation to landscape
@@ -1277,15 +1280,17 @@ function onDeviceReady() {
 
     const email = localStorage.getItem('email').trim();
     const pageType = localStorage.getItem('pagetype');
-    console.log('Email:', email);
-    console.log('PageType:', pageType);
+    // console.log('Email:', email);
+    // console.log('PageType:', pageType);
 
-    var newptype = "";
+    var materialtable_id = "";
 
-    if (pageType) {
+    if (pageType == 1) {
         newptype = 1;
+        materialtable_id = "material_table_2";
     } else {
         newptype = 0;
+        materialtable_id = "material_table";
     }
 
     executeSql(db,
@@ -1293,7 +1298,7 @@ function onDeviceReady() {
         // "SELECT * FROM rmTable ORDER BY id DESC",
         [email, localStorage.getItem('pagetype')]).then(results => {
 
-        const table = document.getElementById("material_table");
+        const table = document.getElementById(materialtable_id);
         const rows = results.rows;
 
         for (let i = 0; i < rows.length; i++) {
@@ -1339,7 +1344,8 @@ function onDeviceReady() {
             actionCell.appendChild(deleteButton);
         }
     }).catch(error => {
-        console.error("Error fetching data:", error);
+        // console.error("Error fetching data:", error);
+        alert("Error fetching data:", error);
     });
 
 
@@ -1365,7 +1371,7 @@ function executeSql(db, query, params) {
 }
 
 function clearnow() {
-    console.log("CLEAR!!!");
+    // console.log("CLEAR!!!");
     localStorage.setItem("getid", 0);
 
     cbox16.value = false;
@@ -1772,15 +1778,17 @@ function mloadlist() {
 
     const email = localStorage.getItem('email').trim();
     const pageType = localStorage.getItem('pagetype').trim();
-    console.log('Email:', email);
-    console.log('PageType:', pageType);
+    // console.log('Email:', email);
+    // console.log('PageType:', pageType);
 
-    var newptype = "";
+    var materialtable_id = "";
 
-    if (pageType) {
+    if (pageType == 1) {
         newptype = 1;
+        materialtable_id = "material_table_2";
     } else {
         newptype = 0;
+        materialtable_id = "material_table";
     }
 
     // ***
@@ -1798,7 +1806,7 @@ function mloadlist() {
 
         [email, newptype],
         function(tx, result) {
-            const table = document.getElementById("material_table");
+            const table = document.getElementById(materialtable_id);
             const rows = result.rows;
 
             // Remove existing rows except for the header row
@@ -1847,287 +1855,15 @@ function mloadlist() {
             }
         },
         function(error) {
-            console.error("Error fetching data:", error);
+            // console.error("Error fetching data:", error);
+            alert("Error fetching data:", error);
         }
     );
 }
 window.mloadlist = mloadlist;
 
-function save_ma() {
-    try {
-
-        if (rawmill1num !== null) {
-            rawmillnum = rawmill1num.value;
-        }
-        if (rawmill2num !== null) {
-            rawmillnum = rawmill2num.value;
-        }
-
-        const rawMixType = document.getElementById("E34_RawMixType").value.trim();
-
-        const result = confirm("Do you want to save the Rawmill " + rawmillnum + "?");
-
-        if (result) {
-            // User clicked "OK" (Yes)
-            // Perform the action you want for a positive response
-
-            const date = new Date();
-
-            const formattedDate = date.toLocaleString();
-            const formattedDate2 = date.toLocaleString("en-US", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-                hour: "numeric",
-                minute: "numeric",
-                second: "numeric",
-                hour12: false,
-            });
-
-            console.log("Trying to insert data...");
-
-            executeSql(db,
-                "INSERT INTO rmdTable (name, email,check16,D16_Limestone,E16_Shale,F16_Sand,G16_Iron,  check17,D17_Limestone,E17_Shale ,F17_Sand,G17_Iron,check18,D18_Limestone, E18_Shale ,F18_Sand,G18_Iron,check19,D19_Limestone,E19_Shale ,F19_Sand,G19_Iron,   D15,E15,F15,G15,H15_SiO2,I15_Al2O3,J15_Fe2O3,K15_CaO,L15_MgO,M15_Na2O,N15_K2O,  O15_SO3,P15_Cl,H16_SiO2,I16_Al2O3,J16_Fe2O3,K16_CaO,L16_MgO,M16_Na2O,N16_K2O, O16_SO3,P16_Cl,H17_SiO2,I17_Al2O3,J17_Fe2O3,K17_CaO,L17_MgO,M17_Na2O,N17_K2O,O17_SO3,P17_Cl,H18_SiO2,I18_Al2O3,J18_Fe2O3,K18_CaO,L18_MgO,M18_Na2O,N18_K2O, O18_SO3,P18_Cl,C30_LSF_PR,C31_SM_PR,C32_AM_PR,E33_Clinker_Factor,E34_RawMixType, F30_LSF_TG,F31_SM_TG,F32_AM_TG,H31_SiO2,I31_Al2O3,J31_Fe2O3,K31_CaO,L31_MgO, M31_Na2O,N31_K2O,O31_SO3,P31_Cl,L38_KL_LOI,V38_LOI, H38_literKG, I38_FCaO, J38_BurningCondition, U38_SO3, DT, pageType) values   (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                [
-                    "RAWMILL_" + rawmillnum + "_" + formattedDate,
-                    localStorage.getItem("email"),
-                    cbox16.checked,
-                    cbox16.checked ? parseFloat(D16_Limestone_DQ.textContent) : parseFloat(D16_Limestone_DG.value),
-                    cbox16.checked ? parseFloat(E16_Shale_DQ.textContent) : parseFloat(E16_Shale_DG.value),
-                    cbox16.checked ? parseFloat(F16_Sand_DQ.textContent) : parseFloat(F16_Sand_DG.value),
-                    cbox16.checked ? parseFloat(G16_Iron_DQ.textContent) : parseFloat(G16_Iron_DG.value),
-                    cbox17.checked,
-                    cbox17.checked ? parseFloat(D17_Limestone_DQ.textContent) : parseFloat(D17_Limestone_DG.value),
-                    cbox17.checked ? parseFloat(E17_Shale_DQ.textContent) : parseFloat(E17_Shale_DG.value),
-                    cbox17.checked ? parseFloat(F17_Sand_DQ.textContent) : parseFloat(F17_Sand_DG.value),
-                    cbox17.checked ? parseFloat(G17_Iron_DQ.textContent) : parseFloat(G17_Iron_DG.value),
-                    cbox18.checked,
-                    cbox18.checked ? parseFloat(D18_Limestone_DQ.textContent) : parseFloat(D18_Limestone_DG.value),
-                    cbox18.checked ? parseFloat(E18_Shale_DQ.textContent) : parseFloat(E18_Shale_DG.value),
-                    cbox18.checked ? parseFloat(F18_Sand_DQ.textContent) : parseFloat(F18_Sand_DG.value),
-                    cbox18.checked ? parseFloat(G18_Iron_DQ.textContent) : parseFloat(G18_Iron_DG.value),
-                    cbox19.checked,
-                    cbox19.checked ? parseFloat(D19_Limestone_DQ.textContent) : parseFloat(D19_Limestone_DG.value),
-                    cbox19.checked ? parseFloat(E19_Shale_DQ.textContent) : parseFloat(E19_Shale_DG.value),
-                    cbox19.checked ? parseFloat(F19_Sand_DQ.textContent) : parseFloat(F19_Sand_DG.value),
-                    cbox19.checked ? parseFloat(G19_Iron_DQ.textContent) : parseFloat(G19_Iron_DG.value),
-                    D15_DG.value,
-                    E15_DG.value,
-                    F15_DG.value,
-                    G15_DG.value,
-                    H15_SiO2_DG.value,
-                    I15_Al2O3_DG.value,
-                    J15_Fe2O3_DG.value,
-                    K15_CaO_DG.value,
-                    L15_MgO_DG.value,
-                    M15_Na2O_DG.value,
-                    N15_K2O_DG.value,
-                    O15_SO3_DG.value,
-                    P15_Cl_DG.value,
-                    H16_SiO2_DG.value,
-                    I16_Al2O3_DG.value,
-                    J16_Fe2O3_DG.value,
-                    K16_CaO_DG.value,
-                    L16_MgO_DG.value,
-                    M16_Na2O_DG.value,
-                    N16_K2O_DG.value,
-                    O16_SO3_DG.value,
-                    P16_Cl_DG.value,
-                    H17_SiO2_DG.value,
-                    I17_Al2O3_DG.value,
-                    J17_Fe2O3_DG.value,
-                    K17_CaO_DG.value,
-                    L17_MgO_DG.value,
-                    M17_Na2O_DG.value,
-                    N17_K2O_DG.value,
-                    O17_SO3_DG.value,
-                    P17_Cl_DG.value,
-                    H18_SiO2_DG.value,
-                    I18_Al2O3_DG.value,
-                    J18_Fe2O3_DG.value,
-                    K18_CaO_DG.value,
-                    L18_MgO_DG.value,
-                    M18_Na2O_DG.value,
-                    N18_K2O_DG.value,
-                    O18_SO3_DG.value,
-                    P18_Cl_DG.value,
-                    C30_LSF_PR_DG.value,
-                    C31_SM_PR_DG.value,
-                    C32_AM_PR_DG.value,
-                    E33_Clinker_Factor_DG.value,
-                    rawMixType,
-                    F30_LSF_TG_DG.value,
-                    F31_SM_TG_DG.value,
-                    F32_AM_TG_DG.value,
-                    H31_SiO2_DG.value,
-                    I31_Al2O3_DG.value,
-                    J31_Fe2O3_DG.value,
-                    K31_CaO_DG.value,
-                    L31_MgO_DG.value,
-                    M31_Na2O_DG.value,
-                    N31_K2O_DG.value,
-                    O31_SO3_DG.value,
-                    P31_Cl_DG.value,
-                    L38_KL_LOI_DG.value,
-                    V38_LOI_DG.value,
-                    H38_literKG_DG.value,
-                    I38_FCaO_DG.value,
-                    J38_BurningCondition_DG.value,
-                    U38_SO3_DG.value,
-                    formattedDate2,
-                    localStorage.getItem("pagetype")
-                ],
-                (_, {
-                    rowsAffected
-                }) => {
-                    console.log("Rows affected:", rowsAffected);
-                    window.mloadlist();
-                    window.clearnow();
-                    localStorage.removeItem("Rawmill" + rawmillnum);
-                    alert("RAWMILL " + rawmillnum + " successfully saved!")
-                    // showNotification(" Material Analysis & Target Composition successfully saved!", 3000, 1);
-                },
-                (_, error) => {
-                    console.log("RAWMILL " + rawmillnum + " Error: ", error.message);
-                    alert("RAWMILL " + rawmillnum + " Error: " + error.message)
-                    // showNotification("Material Analysis & Target Composition Error: ", error.message, 3000, 2);
-                }
-            );
-            setTimeout(() => {}, 60000);
-        } else {
-            // User clicked "Cancel" (No)
-            // Perform the action you want for a negative response or do nothing
-        }
-
-    } catch (error) {
-        console.log("Save RAWMILL catch error: ", error.message);
-        alert("Save RAWMILL catch error: " + error.message);
-        // showNotification("Save catch error: ", error.message, 3000, 2);
-    }
-
-}
-window.save_ma = save_ma;
-
-function update_ma(id) {
-    const rawMixType = E34_RawMixType_DG.value.trim();
-    // const result = confirm("Do you want to Update the M.A & T.C?");
-
-    // if (result) {
-    console.log("Updating data...");
-
-    try {
-
-        executeSql(db,
-            "UPDATE rmdTable SET check16 = ? ,D16_Limestone = ? ,E16_Shale  = ? ,F16_Sand = ? ,  G16_Iron = ? ,  check17 = ? ,D17_Limestone = ? ,E17_Shale  = ? ,F17_Sand = ? ,  G17_Iron = ? ,check18 = ? ,D18_Limestone = ? , E18_Shale  = ? ,F18_Sand = ? , G18_Iron = ? ,check19 = ? ,D19_Limestone = ? ,E19_Shale  = ? ,F19_Sand = ? , G19_Iron = ? , D15 = ? ,E15       = ? ,F15       = ? ,G15       = ? ,H15_SiO2    = ? ,I15_Al2O3 = ? ,J15_Fe2O3 = ? ,K15_CaO   = ?,L15_MgO   = ? ,M15_Na2O  = ? , N15_K2O   = ? ,O15_SO3   = ? ,P15_Cl    = ? ,H16_SiO2  = ? ,I16_Al2O3 = ? ,  J16_Fe2O3 = ? ,K16_CaO   = ? ,L16_MgO   = ? ,M16_Na2O  = ? ,N16_K2O   = ? , O16_SO3   = ? ,P16_Cl    = ? ,H17_SiO2  = ? ,I17_Al2O3 = ? ,J17_Fe2O3 = ? ,  K17_CaO   = ? ,L17_MgO   = ? ,M17_Na2O  = ? ,N17_K2O   = ? ,O17_SO3   = ? , P17_Cl    = ? ,H18_SiO2  = ? ,I18_Al2O3 = ? ,J18_Fe2O3 = ? ,K18_CaO   = ? ,  L18_MgO   = ? ,M18_Na2O  = ? ,N18_K2O   = ? ,O18_SO3   = ? ,P18_Cl    = ? , C30_LSF_PR= ? ,C31_SM_PR = ? ,C32_AM_PR = ? ,E33_Clinker_Factor= ? , E34_RawMixType    = ? ,F30_LSF_TG        = ? ,F31_SM_TG         = ? ,  F32_AM_TG         = ? ,H31_SiO2          = ? ,I31_Al2O3         = ? , J31_Fe2O3         = ? ,K31_CaO           = ? ,L31_MgO           = ? ,  M31_Na2O          = ? ,N31_K2O           = ? ,O31_SO3           = ? , P31_Cl            = ? ,L38_KL_LOI        = ? ,V38_LOI           = ?,  H38_literKG          = ?,I38_FCaO =?, J38_BurningCondition = ?, U38_SO3 = ?  WHERE id = ? AND email = ? and pageType = ?",
-            [
-
-                cbox16.checked,
-                cbox16.checked ? parseFloat(D16_Limestone_DQ.textContent) : parseFloat(D16_Limestone_DG.value),
-                cbox16.checked ? parseFloat(E16_Shale_DQ.textContent) : parseFloat(E16_Shale_DG.value),
-                cbox16.checked ? parseFloat(F16_Sand_DQ.textContent) : parseFloat(F16_Sand_DG.value),
-                cbox16.checked ? parseFloat(G16_Iron_DQ.textContent) : parseFloat(G16_Iron_DG.value),
-                cbox17.checked,
-                cbox17.checked ? parseFloat(D17_Limestone_DQ.textContent) : parseFloat(D17_Limestone_DG.value),
-                cbox17.checked ? parseFloat(E17_Shale_DQ.textContent) : parseFloat(E17_Shale_DG.value),
-                cbox17.checked ? parseFloat(F17_Sand_DQ.textContent) : parseFloat(F17_Sand_DG.value),
-                cbox17.checked ? parseFloat(G17_Iron_DQ.textContent) : parseFloat(G17_Iron_DG.value),
-                cbox18.checked,
-                cbox18.checked ? parseFloat(D18_Limestone_DQ.textContent) : parseFloat(D18_Limestone_DG.value),
-                cbox18.checked ? parseFloat(E18_Shale_DQ.textContent) : parseFloat(E18_Shale_DG.value),
-                cbox18.checked ? parseFloat(F18_Sand_DQ.textContent) : parseFloat(F18_Sand_DG.value),
-                cbox18.checked ? parseFloat(G18_Iron_DQ.textContent) : parseFloat(G18_Iron_DG.value),
-                cbox19.checked,
-                cbox19.checked ? parseFloat(D19_Limestone_DQ.textContent) : parseFloat(D19_Limestone_DG.value),
-                cbox19.checked ? parseFloat(E19_Shale_DQ.textContent) : parseFloat(E19_Shale_DG.value),
-                cbox19.checked ? parseFloat(F19_Sand_DQ.textContent) : parseFloat(F19_Sand_DG.value),
-                cbox19.checked ? parseFloat(G19_Iron_DQ.textContent) : parseFloat(G19_Iron_DG.value),
-                D15_DG.value,
-                E15_DG.value,
-                F15_DG.value,
-                G15_DG.value,
-                H15_SiO2_DG.value,
-                I15_Al2O3_DG.value,
-                J15_Fe2O3_DG.value,
-                K15_CaO_DG.value,
-                L15_MgO_DG.value,
-                M15_Na2O_DG.value,
-                N15_K2O_DG.value,
-                O15_SO3_DG.value,
-                P15_Cl_DG.value,
-                H16_SiO2_DG.value,
-                I16_Al2O3_DG.value,
-                J16_Fe2O3_DG.value,
-                K16_CaO_DG.value,
-                L16_MgO_DG.value,
-                M16_Na2O_DG.value,
-                N16_K2O_DG.value,
-                O16_SO3_DG.value,
-                P16_Cl_DG.value,
-                H17_SiO2_DG.value,
-                I17_Al2O3_DG.value,
-                J17_Fe2O3_DG.value,
-                K17_CaO_DG.value,
-                L17_MgO_DG.value,
-                M17_Na2O_DG.value,
-                N17_K2O_DG.value,
-                O17_SO3_DG.value,
-                P17_Cl_DG.value,
-                H18_SiO2_DG.value,
-                I18_Al2O3_DG.value,
-                J18_Fe2O3_DG.value,
-                K18_CaO_DG.value,
-                L18_MgO_DG.value,
-                M18_Na2O_DG.value,
-                N18_K2O_DG.value,
-                O18_SO3_DG.value,
-                P18_Cl_DG.value,
-                C30_LSF_PR_DG.value,
-                C31_SM_PR_DG.value,
-                C32_AM_PR_DG.value,
-                E33_Clinker_Factor_DG.value,
-                rawMixType,
-                F30_LSF_TG_DG.value,
-                F31_SM_TG_DG.value,
-                F32_AM_TG_DG.value,
-                H31_SiO2_DG.value,
-                I31_Al2O3_DG.value,
-                J31_Fe2O3_DG.value,
-                K31_CaO_DG.value,
-                L31_MgO_DG.value,
-                M31_Na2O_DG.value,
-                N31_K2O_DG.value,
-                O31_SO3_DG.value,
-                P31_Cl_DG.value,
-                L38_KL_LOI_DG.value,
-                V38_LOI_DG.value,
-                H38_literKG_DG.value,
-                I38_FCaO_DG.value,
-                J38_BurningCondition_DG.value,
-                U38_SO3_DG.value,
-                id,
-                localStorage.getItem("email"),
-                localStorage.getItem("pagetype")
-            ],
-            (txObj, resultSet) => {
-                if (resultSet.rowsAffected > 0) {
-                    alert("RAMILL ID: " + id + " Updated");
-                    window.clearnow();
-                    // showNotification("Material Analysis & Target Composition ID: " + id + " Updated", 3000, 1);
-                }
-            },
-            (txObj, error) =>
-            alert("RAMILL Update Error: " + error.message)
-            // alshowNotificationert("Material Analysis & Target Composition Update Error: " + error.message, 3000, 1)
-        );
-        setTimeout(() => {}, 60000);
-
-    } catch (error) {
-        alert("RAWMILL Update Error: " + error.message)
-    }
-}
-window.update_ma = update_ma;
-
 function deleteRecord(id) {
+
     executeSql(db, "DELETE FROM rmdTable WHERE id = ? AND email = ?", [id, localStorage.getItem("email")], (_, {
         rows
     }) => {
@@ -2137,63 +1873,10 @@ function deleteRecord(id) {
         window.mloadlist();
     });
 
-    console.log("Deletion complete!");
     setTimeout(() => {}, 60000);
 }
 window.deleteRecord = deleteRecord;
 
-function load_ma333(id) {
-
-    const email = localStorage.getItem('email').trim();
-    const pageType = localStorage.getItem('pagetype').trim();
-    console.log('Email:', email);
-    console.log('PageType:', pageType);
-
-    var newptype = "";
-
-    if (pageType) {
-        newptype = 1;
-    } else {
-        newptype = 0;
-    }
-
-    executeSql(db, "SELECT check16 FROM rmdTable WHERE id = ? AND email = ? AND pageType = ?",
-            [id, email, newptype])
-        .then(result => {
-
-
-            console.log('Query Result:', result);
-
-            const rows = result.rows;
-            console.log('Rows:', rows);
-
-            if (rows.length > 0) {
-                const row = rows.item(0);
-                console.log('First Row:', row);
-
-                if (row.check16 === true || row.check16 === 'true' || row.check16 === 1 || row.check16 === '1') {
-                    console.log("16: TRUE");
-                    inputContainerD16_Limestone.style.display = "none";
-                    inputContainerE16_Shale.style.display = "none";
-                    inputContainerF16_Sand.style.display = "none";
-                    inputContainerG16_Iron.style.display = "none";
-
-                    labelContainerD16_Limestone.style.display = "block";
-                    labelContainerE16_Shale.style.display = "block";
-                    labelContainerF16_Sand.style.display = "block";
-                    labelContainerG16_Iron.style.display = "block";
-                    cbox16.value = true;
-                    cbox16.checked = true;
-                }
-            } else {
-                console.error('No rows returned');
-            }
-        })
-        .catch(error => {
-            console.error('Error executing the query:', error);
-        });
-
-}
 
 function load_ma(id) {
     try {
@@ -2201,9 +1884,7 @@ function load_ma(id) {
         const email = localStorage.getItem('email').trim();
         const pageType = localStorage.getItem('pagetype').trim();
 
-        var newptype = "";
-
-        if (pageType) {
+        if (pageType == 1) {
             newptype = 1;
         } else {
             newptype = 0;
@@ -2229,7 +1910,7 @@ function load_ma(id) {
                 const ck19 = row.check19;
 
                 if (ck16 == true || ck16 == 'true') {
-                    console.log("16: TRUE")
+                    // console.log("16: TRUE")
                     inputContainerD16_Limestone.style.display = "none";
                     inputContainerE16_Shale.style.display = "none";
                     inputContainerF16_Sand.style.display = "none";
@@ -2366,7 +2047,6 @@ function load_ma(id) {
                 (row.check19 == true || row.check19 == 'true') ?
                 G19_Iron_DQ.textContent: (G19_Iron_DG.value = row.G19_Iron);
 
-                console.log(row);
 
                 D15_DG.value = row.D15;
                 E15_DG.value = row.E15;
@@ -2437,11 +2117,12 @@ function load_ma(id) {
                 // window.computeall();
             })
             .catch(error => {
-                console.error('Error executing the query:', error);
+                // console.error('Error executing the query:', error);
+                alert('Error executing the query:', error);
             });
 
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 }
 window.load_ma = load_ma;
@@ -2453,16 +2134,16 @@ function saveOrUpdateMA() {
         const email = localStorage.getItem('email').trim();
         const pageType = localStorage.getItem('pagetype').trim();
 
-        var newptype;
 
-        if (pageType) {
+        if (pageType == 1) {
             newptype = 1;
         } else {
             newptype = 0;
         }
+        // console.log('PAGE_TYPE: ' + newptype);
 
         var get_id = localStorage.getItem("getid");
-        console.log(get_id);
+        // console.log(get_id);
         if (get_id === null) {
             get_id = 0;
         }
@@ -2569,7 +2250,7 @@ function saveOrUpdateMA() {
                                     parseFloat(C30_LSF_PR_DG.value) > 0 ? parseFloat(C30_LSF_PR_DG.value) : 0,
                                     parseFloat(C31_SM_PR_DG.value) > 0 ? parseFloat(C31_SM_PR_DG.value) : 0,
                                     parseFloat(C32_AM_PR_DG.value) > 0 ? parseFloat(C32_AM_PR_DG.value) : 0,
-                                    E33_Clinker_Factor_DG.value,
+                                    parseFloat(E33_Clinker_Factor_DG.value) > 0 ? parseFloat(E33_Clinker_Factor_DG.value) : 0,
                                     rawMixType,
                                     parseFloat(F30_LSF_TG_DG.value) > 0 ? parseFloat(F30_LSF_TG_DG.value) : 0,
                                     parseFloat(F31_SM_TG_DG.value) > 0 ? parseFloat(F31_SM_TG_DG.value) : 0,
@@ -2676,7 +2357,7 @@ function saveOrUpdateMA() {
                                     parseFloat(C30_LSF_PR_DG.value) > 0 ? parseFloat(C30_LSF_PR_DG.value) : 0,
                                     parseFloat(C31_SM_PR_DG.value) > 0 ? parseFloat(C31_SM_PR_DG.value) : 0,
                                     parseFloat(C32_AM_PR_DG.value) > 0 ? parseFloat(C32_AM_PR_DG.value) : 0,
-                                    E33_Clinker_Factor_DG.value,
+                                    parseFloat(E33_Clinker_Factor_DG.value) > 0 ? parseFloat(E33_Clinker_Factor_DG.value) : 0,
                                     rawMixType,
                                     parseFloat(F30_LSF_TG_DG.value) > 0 ? parseFloat(F30_LSF_TG_DG.value) : 0,
                                     parseFloat(F31_SM_TG_DG.value) > 0 ? parseFloat(F31_SM_TG_DG.value) : 0,
@@ -2777,7 +2458,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const ck19 = storedObject.cbox19;
 
         if (ck16 == true || ck16 == 'true') {
-            console.log("16: TRUE")
+            // console.log("16: TRUE")
             inputContainerD16_Limestone.style.display = "none";
             inputContainerE16_Shale.style.display = "none";
             inputContainerF16_Sand.style.display = "none";
@@ -6097,6 +5778,17 @@ let isOpened = false;
 
 function checkAndCompute() {
     if (domContentLoaded && deviceReady) {
+
+        //check token if empty go to login
+        if (localStorage.getItem("token") == null || localStorage.getItem("token") == "") {
+            cordova.InAppBrowser.open("index.html", "_self");
+        }
+
+        if (rawmillnum == 1) {
+            localStorage.setItem("pagetype", 0);
+        } else {
+            localStorage.setItem("pagetype", 1);
+        }
         window.computeall();
     }
 }

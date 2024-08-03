@@ -1,3 +1,5 @@
+var db;
+
 document.addEventListener("deviceready", onDeviceReady);
 
 async function onDeviceReady() {
@@ -18,7 +20,7 @@ async function onDeviceReady() {
             });
 
         // Open or create the SQLite database
-        const db = window.sqlitePlugin.openDatabase({
+        db = window.sqlitePlugin.openDatabase({
             name: "rawmixpert24.db",
             location: "default",
         });
@@ -37,6 +39,13 @@ async function onDeviceReady() {
             // User exists, retrieve the username
             navigateToDashboard();
         }
+
+        await executeSqlAsync(
+            db,
+            "DROP TABLE rmdTable;",
+            []
+        );
+        console.log("TABLE DROPPED!");
 
     } catch (error) {
         console.error("Error:", error);
@@ -127,7 +136,7 @@ async function onLoginFormSubmit(event) {
             return;
         }
 
-        const db = window.sqlitePlugin.openDatabase({
+        db = window.sqlitePlugin.openDatabase({
             name: "rawmixpert24.db",
             location: "default",
         });
@@ -166,6 +175,7 @@ async function onLoginFormSubmit(event) {
                 const token = response; // Assuming response contains the token
                 localStorage.setItem("token", token);
                 localStorage.setItem("email", email);
+                saveEmailToSQLite(db, email, token);
                 navigateToDashboard();
             }
         }
@@ -261,6 +271,7 @@ async function saveEmailToSQLite(db, email, token) {
         [email, token]
     );
     console.log("Email saved to SQLite:", email);
+
 }
 
 function checkInternetConnection() {

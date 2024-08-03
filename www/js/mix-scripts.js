@@ -1,6 +1,7 @@
 // *********RAWMILL D FOUR COMPONENTS ****************/
 //MIX
 var db;
+var mixnewptype;
 
 let C8_MIX_RDFC = 0.0;
 let C9_SiO2_RDFC = 0.0;
@@ -347,9 +348,11 @@ function onDeviceReady() {
 
 
     if (recipenum == 0) {
-        localStorage.setItem("pagetype", false);
+        localStorage.setItem("mixpagetype", 0);
+        mixnewptype = 0;
     } else {
-        localStorage.setItem("pagetype", true);
+        localStorage.setItem("mixpagetype", 1);
+        mixnewptype = 1;
     }
 
     db = window.sqlitePlugin.openDatabase({
@@ -382,7 +385,7 @@ function onDeviceReady() {
 
     executeSql(db,
             "SELECT * FROM rmdTable WHERE email = ? and pageType = ? ORDER BY id DESC",
-            [localStorage.getItem("email"), localStorage.getItem("pagetype")])
+            [localStorage.getItem("email"), mixnewptype])
         .then(result => {
             const table = document.getElementById("mix_table");
             const rows = result.rows;
@@ -2260,9 +2263,21 @@ window.rdfc_clear = rdfc_clear;
 function loadlist() {
     // Initialize SQLite database
 
+    const mixpageType = localStorage.getItem('mixpagetype');
+
+    var mixtable_id = "";
+
+    if (mixpageType == 1) {
+        mixnewptype = 1;
+        mixtable_id = "mix_table_2";
+    } else {
+        mixnewptype = 0;
+        mixtable_id = "mix_table";
+    }
+
     executeSql(db,
         "SELECT * FROM rmdTable where email = ? and pageType = ? ORDER BY id DESC",
-        [localStorage.getItem("email"), localStorage.getItem("pagetype")]).then(result => {
+        [localStorage.getItem("email"), mixnewptype]).then(result => {
         const table = document.getElementById("mix_table");
         const rows = result.rows;
 
@@ -2350,7 +2365,7 @@ function saveOrUpdateMix() {
 
         executeSql(db,
                 "SELECT * FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
-                [parsed_id, localStorage.getItem("email"), localStorage.getItem("pagetype")])
+                [parsed_id, localStorage.getItem("email"), mixnewptype])
             .then(result => {
                 var executetxt = "";
 
@@ -2413,7 +2428,7 @@ function saveOrUpdateMix() {
                             I20_Alumina_Modulus_DG.value,
                             getmix_id,
                             localStorage.getItem("email"),
-                            localStorage.getItem("pagetype")
+                            mixnewptype
                         ]).then(resultSet => {
                         if (resultSet.rowsAffected > 0) {
                             alert("RECIPE ID: " + id + " Updated");
@@ -2487,7 +2502,7 @@ function saveOrUpdateMix() {
                         I20_Alumina_Modulus_DG.value,
                         formattedDate2,
                         localStorage.getItem("email"),
-                        localStorage.getItem("pagetype"),
+                        mixnewptype,
                     ]
 
                     console.log(data);
@@ -2602,7 +2617,7 @@ function addData2() {
             I20_Alumina_Modulus_DG.value,
             formattedDate2,
             localStorage.getItem("email"),
-            localStorage.getItem("pagetype"),
+            mixnewptype,
         ]
 
         console.log(data);
@@ -2686,7 +2701,7 @@ function updateData2() {
             I20_Alumina_Modulus_DG.value,
             getmix_id,
             localStorage.getItem("email"),
-            localStorage.getItem("pagetype")
+            mixnewptype
         ]).then(resultSet => {
         if (resultSet.rowsAffected > 0) {
             alert("RECIPE ID: " + id + " Updated");
@@ -2704,11 +2719,11 @@ window.updateData2 = updateData2;
 function deleteData2(id) {
     executeSql(db,
         "DELETE FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
-        [id, localStorage.getItem("email"), localStorage.getItem("email")], (_, {
+        [id, localStorage.getItem("email"), mixnewptype], (_, {
             rows
         }) => {
             const items = rows._array;
-            alert("ID: " + id + " Data Deleted!");
+            alert("ID: " + id + "Recipe Data Deleted!");
             // showNotification("ID: " + id + " Data Deleted!", 3000, 3);
             window.loadlist();
         });
@@ -2723,7 +2738,7 @@ function loadselectData2(id) {
         console.log('M.C > Query ID:', id);
         executeSql(db,
                 "SELECT * FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
-                [id, localStorage.getItem("email"), localStorage.getItem("pagetype")])
+                [id, localStorage.getItem("email"), mixnewptype])
             .then(result => {
                 const rows = result.rows;
                 const row = rows.item(0);

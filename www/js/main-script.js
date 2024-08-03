@@ -1,6 +1,8 @@
 var recipenum;
 var db = null;
 
+let domContentLoaded = false;
+let deviceReady = false;
 
 
 function getApiUrl() {
@@ -63,7 +65,7 @@ document.addEventListener("deviceready", function() {
     }
 
     executeSql(db,
-        "CREATE TABLE IF NOT EXISTS rmdTable (id INTEGER PRIMARY KEY AUTOINCREMENT,user_id NUMERIC,name TEXT NULL,email TEXT NULL, pageType BOOL DEFAULT 'false',C8_MIX_RDFC NUMERIC,C9_SiO2_RDFC NUMERIC,C10_Al2O3_RDFC NUMERIC, C11_Fe2O3_RDFC NUMERIC, C12_CaO_RDFC NUMERIC,   C13_MgO_RDFC NUMERIC,   C14_Na2O_RDFC NUMERIC,  C15_K2O_RDFC NUMERIC,   C16_SO3_RDFC NUMERIC,   C17_LOI_RDFC NUMERIC,   D8_MIX_RDFC NUMERIC,D9_SiO2_RDFC NUMERIC,   D10_Al2O3_RDFC NUMERIC, D11_Fe2O3_RDFC NUMERIC, D12_CaO_RDFC NUMERIC,   D13_MgO_RDFC NUMERIC,   D14_Na2O_RDFC NUMERIC,  D15_K2O_RDFC NUMERIC,   D16_SO3_RDFC NUMERIC,   D17_LOI_RDFC NUMERIC,E8_MIX_RDFC NUMERIC,E9_SiO2_RDFC NUMERIC,   E10_Al2O3_RDFC NUMERIC, E11_Fe2O3_RDFC NUMERIC, E12_CaO_RDFC NUMERIC,   E13_MgO_RDFC NUMERIC,   E14_Na2O_RDFC NUMERIC,  E15_K2O_RDFC NUMERIC,   E16_SO3_RDFC NUMERIC,   E17_LOI_RDFC NUMERIC,F8_MIX_RDFC NUMERIC,F9_SiO2_RDFC NUMERIC,   F10_Al2O3_RDFC NUMERIC, F11_Fe2O3_RDFC NUMERIC, F12_CaO_RDFC NUMERIC,   F13_MgO_RDFC NUMERIC,   F14_Na2O_RDFC NUMERIC,  F15_K2O_RDFC NUMERIC,   F16_SO3_RDFC NUMERIC,   F17_LOI_RDFC NUMERIC,   I14_Lime_Saturation NUMERIC, I17_Silica_Modulus NUMERIC,  I20_Alumina_Modulus NUMERIC, check16 BOOL,D16_Limestone NUMERIC,E16_Shale NUMERIC,F16_Sand NUMERIC,G16_Iron NUMERIC,check17 BOOL,D17_Limestone NUMERIC,E17_Shale NUMERIC,F17_Sand NUMERIC,G17_Iron NUMERIC,check18 BOOL,D18_Limestone NUMERIC,E18_Shale NUMERIC,F18_Sand NUMERIC,G18_Iron NUMERIC,check19 BOOL,D19_Limestone NUMERIC,E19_Shale NUMERIC,F19_Sand NUMERIC,G19_Iron NUMERIC,D15 NUMERIC,E15 NUMERIC,F15 NUMERIC,G15 NUMERIC,H15_SiO2 NUMERIC,I15_Al2O3 NUMERIC,J15_Fe2O3 NUMERIC,K15_CaO NUMERIC,L15_MgO NUMERIC,M15_Na2O NUMERIC,N15_K2O NUMERIC,O15_SO3 NUMERIC,P15_Cl NUMERIC,H16_SiO2 NUMERIC,I16_Al2O3 NUMERIC,J16_Fe2O3 NUMERIC,K16_CaO NUMERIC,L16_MgO NUMERIC,M16_Na2O NUMERIC,N16_K2O NUMERIC,O16_SO3 NUMERIC,P16_Cl NUMERIC,H17_SiO2 NUMERIC,I17_Al2O3 NUMERIC,J17_Fe2O3 NUMERIC,K17_CaO NUMERIC,L17_MgO NUMERIC,M17_Na2O NUMERIC,N17_K2O NUMERIC,O17_SO3 NUMERIC,P17_Cl NUMERIC,H18_SiO2 NUMERIC,I18_Al2O3 NUMERIC,J18_Fe2O3 NUMERIC,K18_CaO NUMERIC,L18_MgO NUMERIC,M18_Na2O NUMERIC,N18_K2O NUMERIC,O18_SO3 NUMERIC,P18_Cl NUMERIC,C30_LSF_PR NUMERIC,C31_SM_PR NUMERIC,C32_AM_PR NUMERIC,E33_Clinker_Factor NUMERIC,E34_RawMixType TEXT,F30_LSF_TG NUMERIC,F31_SM_TG NUMERIC,F32_AM_TG NUMERIC,H31_SiO2 NUMERIC,I31_Al2O3 NUMERIC,J31_Fe2O3 NUMERIC,K31_CaO NUMERIC,L31_MgO NUMERIC,M31_Na2O NUMERIC,N31_K2O NUMERIC,O31_SO3 NUMERIC,P31_Cl NUMERIC,L38_KL_LOI NUMERIC,V38_LOI NUMERIC,H38_literKG TEXT,I38_FCaO NUMERIC,J38_BurningCondition TEXT,U38_SO3 TEXT,DT DATETIME)",
+        "CREATE TABLE IF NOT EXISTS rmdTable (id INTEGER PRIMARY KEY AUTOINCREMENT,user_id NUMERIC,name TEXT NULL,email TEXT NULL, pageType BOOL DEFAULT 'false',C8_MIX_RDFC NUMERIC DEFAULT 0 NOT NULL,C9_SiO2_RDFC NUMERIC DEFAULT 0 NOT NULL,C10_Al2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, C11_Fe2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, C12_CaO_RDFC NUMERIC DEFAULT 0 NOT NULL,   C13_MgO_RDFC NUMERIC DEFAULT 0 NOT NULL,   C14_Na2O_RDFC NUMERIC DEFAULT 0 NOT NULL,  C15_K2O_RDFC NUMERIC DEFAULT 0 NOT NULL,   C16_SO3_RDFC NUMERIC DEFAULT 0 NOT NULL,   C17_LOI_RDFC NUMERIC DEFAULT 0 NOT NULL,   D8_MIX_RDFC NUMERIC DEFAULT 0 NOT NULL,D9_SiO2_RDFC NUMERIC DEFAULT 0 NOT NULL,   D10_Al2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, D11_Fe2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, D12_CaO_RDFC NUMERIC DEFAULT 0 NOT NULL,   D13_MgO_RDFC NUMERIC DEFAULT 0 NOT NULL,   D14_Na2O_RDFC NUMERIC DEFAULT 0 NOT NULL,  D15_K2O_RDFC NUMERIC DEFAULT 0 NOT NULL,   D16_SO3_RDFC NUMERIC DEFAULT 0 NOT NULL,   D17_LOI_RDFC NUMERIC DEFAULT 0 NOT NULL,E8_MIX_RDFC NUMERIC DEFAULT 0 NOT NULL,E9_SiO2_RDFC NUMERIC DEFAULT 0 NOT NULL,   E10_Al2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, E11_Fe2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, E12_CaO_RDFC NUMERIC DEFAULT 0 NOT NULL,   E13_MgO_RDFC NUMERIC DEFAULT 0 NOT NULL,   E14_Na2O_RDFC NUMERIC DEFAULT 0 NOT NULL,  E15_K2O_RDFC NUMERIC DEFAULT 0 NOT NULL,   E16_SO3_RDFC NUMERIC DEFAULT 0 NOT NULL,   E17_LOI_RDFC NUMERIC DEFAULT 0 NOT NULL,F8_MIX_RDFC NUMERIC DEFAULT 0 NOT NULL,F9_SiO2_RDFC NUMERIC DEFAULT 0 NOT NULL,   F10_Al2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, F11_Fe2O3_RDFC NUMERIC DEFAULT 0 NOT NULL, F12_CaO_RDFC NUMERIC DEFAULT 0 NOT NULL,   F13_MgO_RDFC NUMERIC DEFAULT 0 NOT NULL,   F14_Na2O_RDFC NUMERIC DEFAULT 0 NOT NULL,  F15_K2O_RDFC NUMERIC DEFAULT 0 NOT NULL,   F16_SO3_RDFC NUMERIC DEFAULT 0 NOT NULL,   F17_LOI_RDFC NUMERIC DEFAULT 0 NOT NULL,   I14_Lime_Saturation NUMERIC DEFAULT 0 NOT NULL, I17_Silica_Modulus NUMERIC DEFAULT 0 NOT NULL,  I20_Alumina_Modulus NUMERIC DEFAULT 0 NOT NULL, check16 BOOL,D16_Limestone NUMERIC DEFAULT 0 NOT NULL,E16_Shale NUMERIC DEFAULT 0 NOT NULL,F16_Sand NUMERIC DEFAULT 0 NOT NULL,G16_Iron NUMERIC DEFAULT 0 NOT NULL,check17 BOOL,D17_Limestone NUMERIC DEFAULT 0 NOT NULL,E17_Shale NUMERIC DEFAULT 0 NOT NULL,F17_Sand NUMERIC DEFAULT 0 NOT NULL,G17_Iron NUMERIC DEFAULT 0 NOT NULL,check18 BOOL,D18_Limestone NUMERIC DEFAULT 0 NOT NULL,E18_Shale NUMERIC DEFAULT 0 NOT NULL,F18_Sand NUMERIC DEFAULT 0 NOT NULL,G18_Iron NUMERIC DEFAULT 0 NOT NULL,check19 BOOL,D19_Limestone NUMERIC DEFAULT 0 NOT NULL,E19_Shale NUMERIC DEFAULT 0 NOT NULL,F19_Sand NUMERIC DEFAULT 0 NOT NULL,G19_Iron NUMERIC DEFAULT 0 NOT NULL,D15 NUMERIC DEFAULT 0 NOT NULL,E15 NUMERIC DEFAULT 0 NOT NULL,F15 NUMERIC DEFAULT 0 NOT NULL,G15 NUMERIC DEFAULT 0 NOT NULL,H15_SiO2 NUMERIC DEFAULT 0 NOT NULL,I15_Al2O3 NUMERIC DEFAULT 0 NOT NULL,J15_Fe2O3 NUMERIC DEFAULT 0 NOT NULL,K15_CaO NUMERIC DEFAULT 0 NOT NULL,L15_MgO NUMERIC DEFAULT 0 NOT NULL,M15_Na2O NUMERIC DEFAULT 0 NOT NULL,N15_K2O NUMERIC DEFAULT 0 NOT NULL,O15_SO3 NUMERIC DEFAULT 0 NOT NULL,P15_Cl NUMERIC DEFAULT 0 NOT NULL,H16_SiO2 NUMERIC DEFAULT 0 NOT NULL,I16_Al2O3 NUMERIC DEFAULT 0 NOT NULL,J16_Fe2O3 NUMERIC DEFAULT 0 NOT NULL,K16_CaO NUMERIC DEFAULT 0 NOT NULL,L16_MgO NUMERIC DEFAULT 0 NOT NULL,M16_Na2O NUMERIC DEFAULT 0 NOT NULL,N16_K2O NUMERIC DEFAULT 0 NOT NULL,O16_SO3 NUMERIC DEFAULT 0 NOT NULL,P16_Cl NUMERIC DEFAULT 0 NOT NULL,H17_SiO2 NUMERIC DEFAULT 0 NOT NULL,I17_Al2O3 NUMERIC DEFAULT 0 NOT NULL,J17_Fe2O3 NUMERIC DEFAULT 0 NOT NULL,K17_CaO NUMERIC DEFAULT 0 NOT NULL,L17_MgO NUMERIC DEFAULT 0 NOT NULL,M17_Na2O NUMERIC DEFAULT 0 NOT NULL,N17_K2O NUMERIC DEFAULT 0 NOT NULL,O17_SO3 NUMERIC DEFAULT 0 NOT NULL,P17_Cl NUMERIC DEFAULT 0 NOT NULL,H18_SiO2 NUMERIC DEFAULT 0 NOT NULL,I18_Al2O3 NUMERIC DEFAULT 0 NOT NULL,J18_Fe2O3 NUMERIC DEFAULT 0 NOT NULL,K18_CaO NUMERIC DEFAULT 0 NOT NULL,L18_MgO NUMERIC DEFAULT 0 NOT NULL,M18_Na2O NUMERIC DEFAULT 0 NOT NULL,N18_K2O NUMERIC DEFAULT 0 NOT NULL,O18_SO3 NUMERIC DEFAULT 0 NOT NULL,P18_Cl NUMERIC DEFAULT 0 NOT NULL,C30_LSF_PR NUMERIC DEFAULT 0 NOT NULL,C31_SM_PR NUMERIC DEFAULT 0 NOT NULL,C32_AM_PR NUMERIC DEFAULT 0 NOT NULL,E33_Clinker_Factor NUMERIC DEFAULT 0 NOT NULL,E34_RawMixType TEXT,F30_LSF_TG NUMERIC DEFAULT 0 NOT NULL,F31_SM_TG NUMERIC DEFAULT 0 NOT NULL,F32_AM_TG NUMERIC DEFAULT 0 NOT NULL,H31_SiO2 NUMERIC DEFAULT 0 NOT NULL,I31_Al2O3 NUMERIC DEFAULT 0 NOT NULL,J31_Fe2O3 NUMERIC DEFAULT 0 NOT NULL,K31_CaO NUMERIC DEFAULT 0 NOT NULL,L31_MgO NUMERIC DEFAULT 0 NOT NULL,M31_Na2O NUMERIC DEFAULT 0 NOT NULL,N31_K2O NUMERIC DEFAULT 0 NOT NULL,O31_SO3 NUMERIC DEFAULT 0 NOT NULL,P31_Cl NUMERIC DEFAULT 0 NOT NULL,L38_KL_LOI NUMERIC DEFAULT 0 NOT NULL,V38_LOI NUMERIC DEFAULT 0 NOT NULL,H38_literKG TEXT,I38_FCaO NUMERIC DEFAULT 0 NOT NULL,J38_BurningCondition TEXT,U38_SO3 TEXT,DT DATETIME)",
         [],
         () => console.log("Table rmd created successfully"),
         (error) => console.error("Error rmd creating table", error)
@@ -169,6 +171,9 @@ document.addEventListener("deviceready", function() {
     //     handleButtonClick(2);
     // });
 
+
+    deviceReady = true;
+    checkAndCompute();
 })
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -396,6 +401,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     async function fetchAndUploadRecords() {
         try {
+            console.log("You're about to UPLOAD!!!!!!!!");
             const result = await executeSql(db, "SELECT * FROM rmdTable WHERE email = ? ORDER BY id DESC", [localStorage.getItem("email")]);
             const records = [];
 
@@ -451,9 +457,98 @@ document.addEventListener("DOMContentLoaded", function() {
                     I14_Lime_Saturation: row.I14_Lime_Saturation,
                     I17_Silica_Modulus: row.I17_Silica_Modulus,
                     I20_Alumina_Modulus: row.I20_Alumina_Modulus,
+                    D16_Limestone: row.D16_Limestone,
+                    E16_Shale: row.E16_Shale,
+                    F16_Sand: row.F16_Sand,
+                    G16_Iron: row.G16_Iron,
+                    D17_Limestone: row.D17_Limestone,
+                    E17_Shale: row.E17_Shale,
+                    F17_Sand: row.F17_Sand,
+                    G17_Iron: row.G17_Iron,
+                    D18_Limestone: row.D18_Limestone,
+                    E18_Shale: row.E18_Shale,
+                    F18_Sand: row.F18_Sand,
+                    G18_Iron: row.G18_Iron,
+                    D19_Limestone: row.D19_Limestone,
+                    E19_Shale: row.E19_Shale,
+                    F19_Sand: row.F19_Sand,
+                    G19_Iron: row.G19_Iron,
+                    D15: row.D15,
+                    E15: row.E15,
+                    F15: row.F15,
+                    G15: row.G15,
+                    H15_SiO2: row.H15_SiO2,
+                    I15_Al2O3: row.I15_Al2O3,
+                    J15_Fe2O3: row.J15_Fe2O3,
+                    K15_CaO: row.K15_CaO,
+                    L15_MgO: row.L15_MgO,
+                    M15_Na2O: row.M15_Na2O,
+                    N15_K2O: row.N15_K2O,
+                    O15_SO3: row.O15_SO3,
+                    P15_Cl: row.P15_Cl,
+                    H16_SiO2: row.H16_SiO2,
+                    I16_Al2O3: row.I16_Al2O3,
+                    J16_Fe2O3: row.J16_Fe2O3,
+                    K16_CaO: row.K16_CaO,
+                    L16_MgO: row.L16_MgO,
+                    M16_Na2O: row.M16_Na2O,
+                    N16_K2O: row.N16_K2O,
+                    O16_SO3: row.O16_SO3,
+                    P16_Cl: row.P16_Cl,
+                    H17_SiO2: row.H17_SiO2,
+                    I17_Al2O3: row.I17_Al2O3,
+                    J17_Fe2O3: row.J17_Fe2O3,
+                    K17_CaO: row.K17_CaO,
+                    L17_MgO: row.L17_MgO,
+                    M17_Na2O: row.M17_Na2O,
+                    N17_K2O: row.N17_K2O,
+                    O17_SO3: row.O17_SO3,
+                    P17_Cl: row.P17_Cl,
+                    H18_SiO2: row.H18_SiO2,
+                    I18_Al2O3: row.I18_Al2O3,
+                    J18_Fe2O3: row.J18_Fe2O3,
+                    K18_CaO: row.K18_CaO,
+                    L18_MgO: row.L18_MgO,
+                    M18_Na2O: row.M18_Na2O,
+                    N18_K2O: row.N18_K2O,
+                    O18_SO3: row.O18_SO3,
+                    P18_Cl: row.P18_Cl,
+                    C30_LSF_PR: row.C30_LSF_PR,
+                    C31_SM_PR: row.C31_SM_PR,
+                    C32_AM_PR: row.C32_AM_PR,
+                    E33_Clinker_Factor: row.E33_Clinker_Factor,
+                    E34_RawMixType: row.E34_RawMixType,
+                    F30_LSF_TG: row.F30_LSF_TG,
+                    F31_SM_TG: row.F31_SM_TG,
+                    F32_AM_TG: row.F32_AM_TG,
+                    H31_SiO2: row.H31_SiO2,
+                    I31_Al2O3: row.I31_Al2O3,
+                    J31_Fe2O3: row.J31_Fe2O3,
+                    K31_CaO: row.K31_CaO,
+                    L31_MgO: row.L31_MgO,
+                    M31_Na2O: row.M31_Na2O,
+                    N31_K2O: row.N31_K2O,
+                    O31_SO3: row.O31_SO3,
+                    P31_Cl: row.P31_Cl,
+                    L38_KL_LOI: row.L38_KL_LOI,
+                    V38_LOI: row.V38_LOI,
+                    H38_literKG: row.H38_literKG,
+                    I38_FCaO: row.I38_FCaO,
+                    J38_BurningCondition: row.J38_BurningCondition,
+                    U38_SO3: row.U38_SO3,
+                    name: row.name,
+                    email: row.email,
+                    pageType: row.pageType
                     // Include other fields as needed
                 };
                 records.push(record);
+            }
+
+            console.log(records);
+
+            if (records == null || records == "") {
+                alert("Warning: Record is empty, there's nothing to upload");
+                return;
             }
 
             const responses = await Promise.all(records.map(recordData =>
@@ -472,18 +567,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                     return response.json();
                 })
-                .then(() => true)
+                .then(data => console.log(data))
                 .catch(error => {
                     console.log(error);
+                    alert("Error: " + error);
                     return false;
                 })
             ));
 
             console.log(responses);
-
             if (responses.every(success => success)) {
                 console.log("All records uploaded successfully");
-                console.log("UPLOADED: " + responses);
                 alert("Rawmix records uploaded successfully");
             } else {
                 console.log("Some records failed to upload");
@@ -533,8 +627,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
+
+    domContentLoaded = true;
+    checkAndCompute();
 })
 
+//CHECK DOM & DEVICEREADY
+function checkAndCompute() {
+    if (localStorage.getItem("token") == null || localStorage.getItem("token") == "") {
+        // cordova.InAppBrowser.open("index.html", "_self");
+    }
+    if (domContentLoaded && deviceReady) {
+        console.log("ReadyDevice & DOMContent has been loaded!");
+    }
+}
 
 function checkInternetConnection() {
     // const statusElement = document.createElement('p'); // Create a paragraph element
