@@ -1,97 +1,185 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 .container-tab {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  /* background-color: #948A54; 
-  color: black; */
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* background-color: #948A54; 
+    color: black; */
 }
 
 /* Styles for each tab */
 .container-tab .tab {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  cursor: pointer;
- 
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+
 }
-.container-tab .tab span{
-  color:black;
-  text-decoration:solid;
-  text-shadow: #fff;
+
+.container-tab .tab span {
+    color: black;
+    text-decoration: solid;
+    text-shadow: #fff;
 }
 
 /* Add any other styles you need for the tabs */
 
 /* Styles for tabContents */
 .container {
-  position: relative;
-  padding-bottom: 60px; /* Set the padding to accommodate the bottom tabs */
+    position: relative;
+    padding-bottom: 60px;
+    /* Set the padding to accommodate the bottom tabs */
 }
 
-.scaler-container{
-  position: relative;
-  transform: scale(1);
+.scaler-container {
+    position: relative;
+    transform: scale(1);
 
-}
-
-.tab-content {
-  padding: 10px;
-  /* Add any other styles you need for the tab contents */
-  /* The height will be adjusted automatically to fill the available space */
-  height: calc(100vh - 60px); /* Adjust the height to fill the available screen space */
-  overflow: auto;
 }
 
 .drag-container {
-  text-align: center;
-  margin: 10px;
+    text-align: center;
+    margin: 10px;
 
-  /* width: 100px;
-  height: 100px;
-  background-color: blue;
-  color: white;
-  line-height: 100px;
-  margin: 10px; */
+    /* width: 100px;
+    height: 100px;
+    background-color: blue;
+    color: white;
+    line-height: 100px;
+    margin: 10px; */
+}
+
+.tab-content {
+    display: none;
+    /* Hide all tab contents by default */
+    padding: 10px;
+    height: calc(100vh - 60px);
+    /* Adjust the height considering the tab height */
+    overflow-y: auto;
+    /* Add vertical scroll if content is too long */
+    box-sizing: border-box;
+    transform-origin: 0 0;
+    /* Ensure zoom happens from the top-left corner */
 }
 
 /* Apply zooming and scrolling to all tabContents */
 .tab-content.zoomable {
-  overflow: auto;
-  transform-origin: center center;
-  touch-action: pan-x pan-y; /* Enable smooth scrolling on touch devices */
+    display: block;
+    overflow: auto;
+    transform-origin: center center;
+    touch-action: pan-x pan-y;
+    /* Enable smooth scrolling on touch devices */
 }
 
-.tab-content.zoomable.zoomed {
-  transform: scale(1.5); /* Set the zoom level as per your requirement */
-  transition: transform 0.3s ease; /* Add a smooth transition for zooming */
-}
+/* .tab-content.zoomable.zoomed {
+    transform: scale(1.5); */
+/* Set the zoom level as per your requirement */
+/* transition: transform 0.3s ease; */
+/* Add a smooth transition for zooming */
+/* } */
 
-  .tab i {
+.tabs i {
     font-size: 24px;
     color: #888;
-  }
-  
-  .tab span {
+}
+
+.tabs span {
     margin-top: 5px;
     font-size: 12px;
     color: #888;
-  }
-  
-  input{
+}
+
+
+/* Tab Button Styles */
+.tabs {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    /* Create equal space around each button */
+    background-color: #f1f1f1;
+    padding: 5px 0;
+    /* Add some padding for better spacing */
+}
+
+.tabs button {
+    background-color: gray;
+    border: none;
+    border-color: darkgoldenrod;
+    outline: none;
+    cursor: pointer;
+    padding: 7px 8px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    flex-grow: 1;
+    /* Allow buttons to grow and fill space evenly */
+    text-align: center;
+}
+
+.tabs button:hover {
+    background-color: #ddd;
+}
+
+.tabs button.active {
+    background-color: #e7b240;
+}
+
+.tab-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.tab-content table th,
+.tab-content table td {
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+/* Responsive handling */
+@media screen and (max-width: 600px) {
+
+    .tab-content table,
+    .tab-content thead,
+    .tab-content tbody,
+    .tab-content th,
+    .tab-content td,
+    .tab-content tr {
+        display: block;
+        width: 100%;
+    }
+
+    .tab-content tr {
+        margin-bottom: 15px;
+    }
+
+    .tab-content td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .tab-content td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+input {
     font-size: 10px
-  }
-  /* BACK BUTTON */
-  .back-button {
+}
+
+/* BACK BUTTON */
+.back-button {
     display: block;
     position: fixed;
     top: 10px;
@@ -103,13 +191,12 @@ html, body {
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .back-button:hover {
+}
+
+.back-button:hover {
     background-color: #0056b3;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Replace the following with your actual font-awesome CDN link */
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-  
+}
+
+/* Replace the following with your actual font-awesome CDN link */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');

@@ -40,12 +40,6 @@ async function onDeviceReady() {
             navigateToDashboard();
         }
 
-        await executeSqlAsync(
-            db,
-            "DROP TABLE rmdTable;",
-            []
-        );
-        console.log("TABLE DROPPED!");
 
     } catch (error) {
         console.error("Error:", error);

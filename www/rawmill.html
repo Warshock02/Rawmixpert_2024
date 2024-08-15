@@ -32,7 +32,11 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <!-- <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+      -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/index.css">
@@ -42,27 +46,57 @@
     <title>RM Dashboard</title>
 
     <style>
+        @keyframes popUp {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        th,
+        td {
+            animation: popUp 0.5s ease-in-out;
+        }
+
+        th {
+            animation-delay: 0s;
+        }
+
+        td {
+            animation-delay: 0.5s;
+        }
+
+
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            /* background-image: url('./img/RM-bg2.jpg'); */
-
-            background-color: grey;
+            /* background-image: url('./img/RM-bg2.jpg');
+       */
+            background-color: #5F5F5F;
             margin: 0;
             /* Remove default margin to cover the full viewport */
             padding: 0;
             /* Remove default padding */
             background-size: cover;
             /* Adjust the background size as needed */
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             /* Prevent image from repeating */
             background-attachment: fixed;
         }
 
+        #tapArea1 {
+            background-color: #5F5F5F;
+        }
+
         /* Make the table responsive */
         .table-container {
-            overflow-x: auto;
+            width: 100%;
         }
 
         table {
@@ -154,19 +188,19 @@
 
 <body>
 
+
     <div class="loading-screen">
         <img src="img/4.webp" alt="Loading" class="loading-icon">
-        Loading RAWMILL 2. . .
+        Loading Rawmill. . .
     </div>
 
     <div class="app-content" id="appContent">
-
         <div id="tapArea1">
             <!-- BEGIN tabcontent1 -->
             <div id="tabContent1" class="tab-content">
 
                 <div style="text-align: center; background-color: #808080">
-                    <label class="centered-label" style="display: block; width: 100%;"> RAWMILL 2
+                    <label class="centered-label" style="display: block; width: 100%;"> RAWMILL 1
                     </label>
                 </div>
                 <div class="table-container">
@@ -215,79 +249,79 @@
 
                                 <td class="limestone-color">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="number" id="D15" class="limestone-color form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="D15" class="limestone-color form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="Shale-color">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="number" id="E15" class="Shale-color form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="E15" class="Shale-color form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="Sand-color">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="number" id="F15" class="Sand-color form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="F15" class="Sand-color form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="Iron-color ">
                                     <div class="input-group input-group-sm mb-3">
-                                        <input type="number" id="G15" class="Iron-color form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="G15" class="Iron-color form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
                                 <!-- end of M/Auto -->
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="H15_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="H15_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="I15_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="I15_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="J15_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="J15_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="K15_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="K15_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="L15_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="L15_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="M15_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="M15_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="N15_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="N15_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="O15_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="O15_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="P15_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="P15_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
@@ -333,7 +367,7 @@
                             <tr>
                                 <td class="rawmill-lightgray">
                                     <div class="mb-3">
-                                        <input type="checkbox" id="cbox16" />
+                                        <input value="9.5" type="checkbox" id="cbox16" />
                                     </div>
                                 </td>
 
@@ -346,7 +380,7 @@
                                 <td class="limestone-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerD16_Limestone" style="display: block">
-                                            <input type="number" id="D16_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="D16_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerD16_Limestone">
                                             <label for="D16_Limestone" class="limestone-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -356,7 +390,7 @@
                                 <td class="Shale-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerE16_Shale" style="display: block">
-                                            <input type="number" id="E16_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="E16_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerE16_Shale">
                                             <label for="E16_Shale" class="Shale-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -366,7 +400,7 @@
                                 <td class="Sand-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerF16_Sand" style="display: block">
-                                            <input type="number" id="F16_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="F16_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerF16_Sand">
                                             <label for="F16_Sand" class="Sand-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -376,7 +410,7 @@
                                 <td class="Iron-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerG16_Iron" style="display: block">
-                                            <input type="number" id="G16_Iron" class="Iron-color orm-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="G16_Iron" class="Iron-color orm-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerG16_Iron">
                                             <label for="G16_Iron" class="Iron-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -386,55 +420,55 @@
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="H16_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="H16_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="I16_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="I16_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="J16_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="J16_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="K16_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="K16_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="L16_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="L16_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="M16_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="M16_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="N16_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="N16_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="O16_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="O16_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="P16_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="P16_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
@@ -479,7 +513,7 @@
                             <tr>
                                 <td class="rawmill-lightgray">
                                     <div class="mb-3">
-                                        <input type="checkbox" id="cbox17" />
+                                        <input value="9.5" type="checkbox" id="cbox17" />
                                     </div>
                                 </td>
                                 <td class="rawmill-lightgray">
@@ -491,7 +525,7 @@
                                 <td class="limestone-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerD17_Limestone" style="display: block">
-                                            <input type="number" id="D17_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="D17_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerD17_Limestone">
                                             <label for="D17_Limestone" class="limestone-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -501,7 +535,7 @@
                                 <td class="Shale-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerE17_Shale" style="display: block">
-                                            <input type="number" id="E17_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="E17_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerE17_Shale">
                                             <label for="E17_Shale" class="Shale-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -511,7 +545,7 @@
                                 <td class="Sand-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerF17_Sand" style="display: block">
-                                            <input type="number" id="F17_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="F17_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerF17_Sand">
                                             <label for="F17_Sand" class="Sand-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -521,7 +555,7 @@
                                 <td class="Iron-color ">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerG17_Iron" style="display: block">
-                                            <input type="number" id="G17_Iron" class="Iron-color  form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="G17_Iron" class="Iron-color  form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerG17_Iron">
                                             <label for="G17_Iron" class="Iron-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -531,55 +565,55 @@
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="H17_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="H17_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="I17_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="I17_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="J17_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="J17_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="K17_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="K17_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="L17_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="L17_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="M17_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="M17_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="N17_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="N17_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="O17_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="O17_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="P17_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="P17_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
@@ -624,7 +658,7 @@
                             <tr>
                                 <td class="rawmill-lightgray">
                                     <div class="mb-3">
-                                        <input type="checkbox" id="cbox18" />
+                                        <input value="9.5" type="checkbox" id="cbox18" />
                                     </div>
                                 </td>
                                 <td class="rawmill-lightgray">
@@ -636,7 +670,7 @@
                                 <td class="limestone-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerD18_Limestone" style="display: block">
-                                            <input type="number" id="D18_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="D18_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerD18_Limestone">
                                             <label for="D18_Limestone" class="limestone-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -646,7 +680,7 @@
                                 <td class="Shale-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerE18_Shale" style="display: block">
-                                            <input type="number" id="E18_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="E18_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerE18_Shale">
                                             <label for="E18_Shale" class="Shale-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -656,7 +690,7 @@
                                 <td class="Sand-color ">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerF18_Sand" style="display: block">
-                                            <input type="number" id="F18_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="F18_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerF18_Sand">
                                             <label for="F18_Sand" class="Sand-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -666,7 +700,7 @@
                                 <td class="Iron-color ">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerG18_Iron" style="display: block">
-                                            <input type="number" id="G18_Iron" class="Iron-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="G18_Iron" class="Iron-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerG18_Iron">
                                             <label for="G18_Iron" class="Iron-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -676,55 +710,55 @@
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="H18_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="H18_SiO2" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="I18_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="I18_Al2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="J18_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="J18_Fe2O3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="K18_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="K18_CaO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="L18_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="L18_MgO" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="M18_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="M18_Na2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="N18_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="N18_K2O" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="O18_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="O18_SO3" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
                                 <td class="xrf-lightcolor">
                                     <div class="xrf-lightcolor input-group input-group-sm mb-3">
-                                        <input type="number" id="P18_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                        <input value="9.5" type="number" id="P18_Cl" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                     </div>
                                 </td>
 
@@ -769,7 +803,7 @@
                             <tr>
                                 <td class="rawmill-lightgray">
                                     <div class="mb-3">
-                                        <input type="checkbox" id="cbox19" />
+                                        <input value="9.5" type="checkbox" id="cbox19" />
                                     </div>
                                 </td>
                                 <td class="rawmill-lightgray">
@@ -781,7 +815,7 @@
                                 <td class="limestone-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerD19_Limestone" style="display: block">
-                                            <input type="number" id="D19_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="D19_Limestone" class="limestone-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerD19_Limestone">
                                             <label for="D19_Limestone" class="limestone-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -791,7 +825,7 @@
                                 <td class="Shale-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerE19_Shale" style="display: block">
-                                            <input type="number" id="E19_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="E19_Shale" class="Shale-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerE19_Shale">
                                             <label for="E19_Shale" class="Shale-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -801,7 +835,7 @@
                                 <td class="Sand-color ">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerF19_Sand" style="display: block">
-                                            <input type="number" id="F19_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="F19_Sand" class="Sand-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerF19_Sand">
                                             <label for="F19_Sand" class="Sand-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -811,7 +845,7 @@
                                 <td class="Iron-color">
                                     <div class="input-container">
                                         <div class="input-group input-group-sm mb-3" id="inputContainerG19_Iron" style="display: block">
-                                            <input type="number" id="G19_Iron" class="Iron-color form-control input-resize1" placeholder="0.0" required />
+                                            <input value="9.5" type="number" id="G19_Iron" class="Iron-color form-control input-resize1" placeholder="0.0" required />
                                         </div>
                                         <div class="mb-3" id="labelContainerG19_Iron">
                                             <label for="G19_Iron" class="Iron-color col-sm-2 col-form-label col-form-label-sm" data-default="0.0"></label>
@@ -1273,7 +1307,7 @@
                                             <div class="mb-3"><label class="col-sm-2 col-form-label col-form-label-sm">LSF</label></div>
                                         </td>
                                         <td class="limestone-color">
-                                            <div class="input-group input-group-sm mb-3"><input type="number" id="C30_LSF_PR" class="limestone-color form-control input-resize1" placeholder="0.0" required /></div>
+                                            <div class="input-group input-group-sm mb-3"><input value="9.5" type="number" id="C30_LSF_PR" class="limestone-color form-control input-resize1" placeholder="0.0" required /></div>
                                         </td>
 
                                         <th class="inputvar-dark" rowspan="3">Target</th>
@@ -1282,7 +1316,7 @@
                                             <div class="mb-3"><label class="col-sm-2 col-form-label col-form-label-sm">LSF</label></div>
                                         </td>
                                         <td class="xrf-lightcolor">
-                                            <div class="input-group input-group-sm mb-3"><input type="number" id="F30_LSF_TG" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required /></div>
+                                            <div class="input-group input-group-sm mb-3"><input value="9.5" type="number" id="F30_LSF_TG" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required /></div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1290,13 +1324,13 @@
                                             <div class="mb-3"><label class="col-sm-2 col-form-label col-form-label-sm">SM</label></div>
                                         </td>
                                         <td class="Sand-color">
-                                            <div class="input-group input-group-sm mb-3"><input type="number" id="C31_SM_PR" class="Sand-color form-control input-resize1" placeholder="0.0" required /></div>
+                                            <div class="input-group input-group-sm mb-3"><input value="9.5" type="number" id="C31_SM_PR" class="Sand-color form-control input-resize1" placeholder="0.0" required /></div>
                                         </td>
                                         <td class="inputvar-darklight inputvar-righttext">
                                             <div class="mb-3"><label class="col-sm-2 col-form-label col-form-label-sm">SM</label></div>
                                         </td>
                                         <td class="xrf-lightcolor">
-                                            <div class="input-group input-group-sm mb-3"><input type="number" id="F31_SM_TG" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required /></div>
+                                            <div class="input-group input-group-sm mb-3"><input value="9.5" type="number" id="F31_SM_TG" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required /></div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1304,13 +1338,13 @@
                                             <div class="mb-3"><label class="col-sm-2 col-form-label col-form-label-sm">AM</label></div>
                                         </td>
                                         <td class="Iron-color">
-                                            <div class="input-group input-group-sm mb-3"><input type="number" id="C32_AM_PR" class="Iron-color form-control input-resize1" placeholder="0.0" required /></div>
+                                            <div class="input-group input-group-sm mb-3"><input value="9.5" type="number" id="C32_AM_PR" class="Iron-color form-control input-resize1" placeholder="0.0" required /></div>
                                         </td>
                                         <td class="inputvar-darklight inputvar-righttext">
                                             <div class="mb-3"><label class="col-sm-2 col-form-label col-form-label-sm">AM</label></div>
                                         </td>
                                         <td class="xrf-lightcolor">
-                                            <div class="input-group input-group-sm mb-3"><input type="number" id="F32_AM_TG" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required /></div>
+                                            <div class="input-group input-group-sm mb-3"><input value="9.5" type="number" id="F32_AM_TG" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required /></div>
                                         </td>
                                     </tr>
 
@@ -1323,7 +1357,7 @@
                                         </td>
                                         <td class="xrf-lightcolor" colspan="2">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="number" colspan="2" id="E33_Clinker_Factor" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
+                                                <input value="9.5" type="number" colspan="2" id="E33_Clinker_Factor" class="xrf-lightcolor form-control input-resize1" placeholder="0.0" required />
                                             </div>
                                         </td>
                                     </tr>
@@ -1336,7 +1370,7 @@
                                         </td>
                                         <td class="inputvar-dark" colspan="2">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="text" id="E34_RawMixType" class="inputvar-dark form-control input-resize1" placeholder="Enter type..." />
+                                                <input value="9.5" type="text" id="E34_RawMixType" class="inputvar-dark form-control input-resize1" placeholder="Enter type..." />
                                             </div>
                                         </td>
                                     </tr>
@@ -1350,7 +1384,7 @@
                             <div class="table-three-group">
                                 <!-- <div style="display: flex" id="droppable">
 
-            </div> -->
+              </div> -->
                                 <div style="display: flex">
                                     <div class="tc-headcolor" style="width: fit-content; flex: 1; text-align: center;">
                                         <label class="centered-label"> Target Rawmeal Composition </label>
@@ -1380,47 +1414,47 @@
                                         <tr>
                                             <td class="modulus-detail">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="H31_SiO2" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="H31_SiO2" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="modulus-detail">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="I31_Al2O3" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="I31_Al2O3" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="modulus-detail">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="J31_Fe2O3" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="J31_Fe2O3" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="modulus-detail">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="K31_CaO" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="K31_CaO" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="L31_MgO" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="L31_MgO" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="M31_Na2O" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="M31_Na2O" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="N31_K2O" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="N31_K2O" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="O31_SO3" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="O31_SO3" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="P31_Cl" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="P31_Cl" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
@@ -1562,7 +1596,7 @@
 
                                         <tr>
                                             <!-- <th rowspan="2" class="expanded-header">(M/A)</th>
-            <th rowspan="2" class="expanded-header">Total</th> -->
+              <th rowspan="2" class="expanded-header">Total</th> -->
                                             <th class="inputvar-dark" rowspan="2">Liter wt. kg.</th>
                                             <th class="inputvar-dark" rowspan="2">FCaO</th>
                                             <th class="inputvar-dark" rowspan="2">Burning Condition</th>
@@ -1575,9 +1609,9 @@
                                             <th class="inputvar-dark" rowspan="2">Coating Index</th>
                                             <th colspan="2" class="inputvar-dark expanded-header">Hotmeal</th>
                                             <!-- <th colspan="9">XRF Analysis</th>
-            <th rowspan="2" class="expanded-header">LOI</th>
-            <th rowspan="2" class="expanded-header">Total</th>
-            <th colspan="4">Ratio</th> -->
+              <th rowspan="2" class="expanded-header">LOI</th>
+              <th rowspan="2" class="expanded-header">Total</th>
+              <th colspan="4">Ratio</th> -->
                                         </tr>
                                         <tr>
                                             <th class="inputvar-dark"><b>C3S net</b></th>
@@ -1592,17 +1626,17 @@
                                         <tr>
                                             <td class="modulus-detail">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="text" id="H38_literKG" class="modulus-detail form-control input-resize1" placeholder="Enter text" required />
+                                                    <input value="9.5" type="text" id="H38_literKG" class="modulus-detail form-control input-resize1" placeholder="Enter text" required />
                                                 </div>
                                             </td>
                                             <td class="modulus-detail">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="I38_FCaO" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="I38_FCaO" class="modulus-detail form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="text" id="J38_BurningCondition" class="inputvar-dark form-control input-resize1" placeholder="Enter text" required />
+                                                    <input value="9.5" type="text" id="J38_BurningCondition" class="inputvar-dark form-control input-resize1" placeholder="Enter text" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
@@ -1612,7 +1646,7 @@
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="L38_KL_LOI" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="L38_KL_LOI" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                             <td class="modulus-detail">
@@ -1657,12 +1691,12 @@
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="text" id="U38_SO3" class="inputvar-dark form-control input-resize1" placeholder="Enter text" required />
+                                                    <input value="9.5" type="text" id="U38_SO3" class="inputvar-dark form-control input-resize1" placeholder="Enter text" required />
                                                 </div>
                                             </td>
                                             <td class="inputvar-dark">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="number" id="V38_LOI" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
+                                                    <input value="9.5" type="number" id="V38_LOI" class="inputvar-dark form-control input-resize1" placeholder="0.0" required />
                                                 </div>
                                             </td>
                                         </tr>
@@ -1679,17 +1713,17 @@
             </div>
             <!-- END tabcontent1 -->
             <!-- BEGIN tabcontent2 -->
-            <div id="tabContent2" class="tab-content" style="display: none">
+            <!-- <div id="tabContent2" class="tab-content" style="display: none">
 
                 <div id="draggable" class="drag-container">
 
                 </div>
 
-            </div>
+            </div> -->
             <!-- END tabcontent2 -->
 
             <!-- BEGIN tabcontent3 -->
-            <div id="tabContent3" class="tab-content" style="display: none">
+            <div id="tabContent3" class="tab-content">
                 <!-- Begin MIX -->
                 <table class="table">
                     <thead>
@@ -1697,61 +1731,61 @@
                             <th></th>
                             <th class="mix-limestone">
                                 <div style="
-                width: 8%;
-
-                padding-right: 20px;
-
-                margin-right: 10px;
-                align-items: center;
-              ">
+                  width: 8%;
+  
+                  padding-right: 20px;
+  
+                  margin-right: 10px;
+                  align-items: center;
+                ">
                                     LIMESTONE
                                 </div>
                             </th>
                             <th class="mix-shale">
                                 <div style="
-                width: 18%;
-
-                padding-right: 20px;
-
-                margin-right: 10px;
-                align-items: center;
-              ">
+                  width: 18%;
+  
+                  padding-right: 20px;
+  
+                  margin-right: 10px;
+                  align-items: center;
+                ">
                                     SHALE
                                 </div>
                             </th>
                             <th class="mix-sand">
                                 <div style="
-                width: 18%;
-
-                padding-right: 20px;
-
-                margin-right: 10px;
-                align-items: center;
-              ">
+                  width: 18%;
+  
+                  padding-right: 20px;
+  
+                  margin-right: 10px;
+                  align-items: center;
+                ">
                                     SAND
                                 </div>
                             </th>
                             <th class="mix-iron">
                                 <div style="
-                width: 20%;
-
-                padding-right: 20px;
-
-                margin-right: 10px;
-                align-items: center;
-              ">
+                  width: 20%;
+  
+                  padding-right: 20px;
+  
+                  margin-right: 10px;
+                  align-items: center;
+                ">
                                     IRON ORE
                                 </div>
                             </th>
                             <th class="mix-rawmeal-head">
                                 <div style="
-                width: 18%;
-
-                padding-right: 20px;
-
-                margin-right: 10px;
-                align-items: center;
-              ">
+                  width: 18%;
+  
+                  padding-right: 20px;
+  
+                  margin-right: 10px;
+                  align-items: center;
+                ">
                                     RAWMEAL
                                 </div>
                             </th>
@@ -1767,25 +1801,25 @@
                             </td>
                             <td class="mix-color">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-color">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-color">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-color">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F8_MIX_RDFC" class="mix-color form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
-                            <td class="mix-rawmeal-head">
+                            <td class="mix-rawmeal">
                                 <div class="mb-3">
                                     <label for="G8_MIX_RDFC" class=" col-form-label col-form-label-sm" id="G8_MIX_RDFC">0.0</label>
                                 </div>
@@ -1799,22 +1833,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C9_SiO2_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C9_SiO2_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D9_SiO2_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D9_SiO2_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E9_SiO2_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E9_SiO2_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F9_SiO2_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F9_SiO2_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -1831,22 +1865,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C10_Al2O3_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C10_Al2O3_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D10_Al2O3_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D10_Al2O3_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E10_Al2O3_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E10_Al2O3_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F10_Al2O3_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F10_Al2O3_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -1863,22 +1897,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C11_Fe2O3_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C11_Fe2O3_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D11_Fe2O3_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D11_Fe2O3_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E11_Fe2O3_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E11_Fe2O3_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F11_Fe2O3_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F11_Fe2O3_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -1895,22 +1929,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C12_CaO_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C12_CaO_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D12_CaO_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D12_CaO_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E12_CaO_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E12_CaO_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F12_CaO_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F12_CaO_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -1927,22 +1961,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C13_MgO_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C13_MgO_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D13_MgO_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D13_MgO_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E13_MgO_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E13_MgO_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F13_MgO_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F13_MgO_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -1959,22 +1993,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C14_Na2O_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C14_Na2O_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D14_Na2O_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D14_Na2O_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E14_Na2O_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E14_Na2O_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F14_Na2O_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F14_Na2O_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -1991,22 +2025,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C15_K2O_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C15_K2O_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D15_K2O_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D15_K2O_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E15_K2O_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E15_K2O_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F15_K2O_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F15_K2O_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -2023,22 +2057,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C16_SO3_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C16_SO3_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D16_SO3_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D16_SO3_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E16_SO3_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E16_SO3_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F16_SO3_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F16_SO3_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -2055,22 +2089,22 @@
                             </td>
                             <td class="mix-limestone">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="C17_LOI_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="C17_LOI_RDFC" class="mix-limestone form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-shale">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="D17_LOI_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="D17_LOI_RDFC" class="mix-shale form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-sand">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="E17_LOI_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="E17_LOI_RDFC" class="mix-sand form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-iron">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="number" id="F17_LOI_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                    <input value="9.5" type="number" id="F17_LOI_RDFC" class="mix-iron form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                                 </div>
                             </td>
                             <td class="mix-rawmeal">
@@ -2213,31 +2247,31 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="bg-lightdarkblue">
+                            <th class="modulus-head">
                                 <div style=" width: 30%; align-items: center">Lime Saturation</div>
                             </th>
-                            <th class="rawmill-lightgray">
+                            <th class="modulus-head">
                                 <div style="width: 30%; align-items: center">Silica Modulus</div>
                             </th>
-                            <th class="rawmill-lightgray">
+                            <th class="modulus-head">
                                 <div style="width: 30%; align-items: center">Alumina Modulus</div>
                             </th>
                         </tr>
                     </thead>
                     <tr>
-                        <td class="bg-lightdarkblue">
+                        <td class="modulus-detail">
                             <div class="input-group input-group-sm mb-3">
-                                <input type="number" id="I14_Lime_Saturation" class="bg-lightdarkblue form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                <input value="9.5" type="number" id="I14_Lime_Saturation" class="modulus-detail form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                             </div>
                         </td>
-                        <td class="rawmill-lightgray">
+                        <td class="modulus-detail">
                             <div class="input-group input-group-sm mb-3">
-                                <input type="number" id="I17_Silica_Modulus" class="rawmill-lightgray form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                <input value="9.5" type="number" id="I17_Silica_Modulus" class="modulus-detail form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                             </div>
                         </td>
-                        <td class="bg-lightdarkblue">
+                        <td class="modulus-detail">
                             <div class="input-group input-group-sm mb-3">
-                                <input type="number" id="I20_Alumina_Modulus" class="bg-lightdarkblue form-control input-resize1" style="width: 100px" placeholder="0.0" required />
+                                <input value="9.5" type="number" id="I20_Alumina_Modulus" class="modulus-detail form-control input-resize1" style="width: 100px" placeholder="0.0" required />
                             </div>
                         </td>
                     </tr>
@@ -2251,6 +2285,7 @@
                 <!-- End MIX -->
             </div>
             <!-- END tabcontent3 -->
+
             <!-- BEGIN tabcontent4 -->
             <div id="tabContent4" class="tab-content" style="display: none">
                 <div class="table-containerMatrix">
@@ -2474,7 +2509,7 @@
                         <thead>
                             <th class="coff-matrix-color"></th>
                             <th class="coff-matrix-color">
-                                <div style="width: 15%; align-items: center"> MATRIX DETERMINANTS</div>
+                                <div style="text-wrap: nowrap;width: 15%; align-items: center"> MATRIX DETERMINANTS</div>
                             </th>
                         </thead>
                         <tbody>
@@ -2543,9 +2578,9 @@
 
                     <table>
                         <thead>
-                            <th></th>
-                            <th>
-                                <div style="width: 15%; align-items: center"> RAW MATERIALS %</div>
+                            <th style="background-color: #C4BD97;"></th>
+                            <th style=" background-color: #C4BD97">
+                                <div style="text-wrap: nowrap;color: black; width: 40%; align-items: center"> RAW MATERIALS %</div>
                             </th>
                         </thead>
                         <tbody>
@@ -2598,12 +2633,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="mix-rawmeal">
+                                <td class="mix-rawmeal-head">
                                     <div class=" mb-3">
                                         <label style="padding-right: 5px" for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">TOTAL</label>
                                     </div>
                                 </td>
-                                <td class="mix-rawmeal">
+                                <td class="mix-rawmeal-head">
                                     <div class=" mb-3">
                                         <label for="O19_TOTAL" class="col-sm-2 col-form-label col-form-label-sm">0.0</label>
                                     </div>
@@ -2614,6 +2649,7 @@
                 </div>
             </div>
             <!-- END tabcontent4 -->
+
             <!-- BEGIN tabcontent5 -->
             <div id="tabContent5" class="tab-content" style="display: none">
 
@@ -2635,81 +2671,60 @@
                     </div>
 
                     <div class="table-row">
-                        <table class="table" id="material_table_2">
-                            <tr>
-                                <th>ID RM</th>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </table>
-                        <table class="table" id="mix_table_2">
-                            <tr>
-                                <th>ID RECIPE</th>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
+                        <table class="table" id="material_table">
+                            <!-- <tr> -->
+                            <th>ID RM</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                            <!-- </tr> -->
                         </table>
                     </div>
                 </div>
                 <!-- END tabcontent5 -->
             </div>
         </div>
-
-
-        <input type="hidden" name="rawmill2" id="rawmill2" value="2">
-
-        <a onclick="window.back()" class="back-button">
-            &lt; </a>
-
-        <div class="container-tab">
-            <div class="tab" id="tab1" onclick="showTab('tab1')">
-                <i class="fa-solid fa-magnifying-glass-chart fa-spin"></i>
-                <span>RAWMILL 2</span>
-            </div>
-            <!-- <div class="tab" id="tab2" onclick="showTab('tab2')">
-      <i class="fa-solid fa-bullseye"></i>
-      <span>T.C.</span>
-    </div> -->
-            <!-- <div class="tab" id="tab3" onclick="showTab('tab3')">
-      <i class="fa-solid fa-percent"></i>
-      <span>Mix %</span>
     </div>
-    <div class="tab" id="tab4" onclick="showTab('tab4')">
-      <i class="fa-solid fa-grip"></i>
-      <span>M.C.</span>
-    </div> -->
-            <div class="tab" id="tab5" onclick="showTab('tab5')">
-                <i class="fa-solid fa-database"></i>
-                <span>RM</span>
-            </div>
-        </div>
-        <!-- FLOAT BUTTON -->
 
-        <div class="floating-button" id="floatingButton">
-            <!-- <button type="submit" onclick="handleButtonClick(1)">Save All</button> -->
-            <button onclick="handleButtonClick(2)">Save RAWMILL 2</button>
-            <!-- <button type="submit" onclick="handleButtonClick(3)">
-    Update M.A & T.C
-  </button> -->
-            <!-- <button type="submit" onclick="handleButtonClick(4)">
-      Save Mix % & M.C
-    </button> -->
-            <!-- <button type="submit" onclick="handleButtonClick(5)">
-    Update Mix % & M.C
-  </button> -->
-            <!-- <button onclick="handleButtonClick(4)">Update Mix% & M.C</button> -->
-            <button onclick="handleButtonClick(5)">Clear</button>
-            <div class="floating-button-circle" onclick="toggleButtons()">
-                <span>+</span>
-            </div>
+    <a onclick="window.back()" class="back-button">
+        &lt; </a>
+
+    <div class="tabs">
+        <div class="tablinks" id="tab1" onclick="showTab('tab1')">
+            <i class="fa-solid fa-magnifying-glass-chart fa-spin"></i>
+            <span>RAWMILL</span>
         </div>
-        <!-- SCRIPTS -->
+        <div class="tablinks" id="tab3" onclick="showTab('tab3')">
+            <i class="fa-solid fa-percent"></i>
+            <span>Mix %</span>
+        </div>
+        <div class="tablinks" id="tab4" onclick="showTab('tab4')">
+            <i class="fa-solid fa-grip"></i>
+            <span>M.C.</span>
+        </div>
+        <div class="tablinks" id="tab5" onclick="showTab('tab5')">
+            <i class="fa-solid fa-database"></i>
+            <span>RM</span>
+        </div>
     </div>
+    <!-- FLOAT BUTTON -->
+
+    <div class="floating-button" id="floatingButton">
+        <!-- <button type="submit" onclick="handleButtonClick(1)">Save All</button> -->
+        <button onclick="handleButtonClick(2)">Save RAWMILL</button>
+        <button onclick="handleButtonClick(5)">Clear</button>
+        <div class="floating-button-circle" onclick="toggleButtons()">
+            <span>+</span>
+        </div>
+    </div>
+    <!-- SCRIPTS -->
+
+    <input value="9.5" type="hidden" name="rawmill1" id="rawmill1" value="1">
+
     <script src="cordova.js"></script>
     <script src="js/main-script.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/material-scripts.js" defer></script>
     <script src="js/mix-scripts.js" defer></script>
+    <script src="js/material-scripts.js" defer></script>
     <script src="js/draggable.js"></script>
     <script src="js/confirmation.js"></script>
 </body>

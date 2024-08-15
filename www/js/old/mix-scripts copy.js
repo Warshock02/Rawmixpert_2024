@@ -115,238 +115,121 @@ let O17_Y = 0.0;
 let O18_Z = 0.0;
 let O19_TOTAL = 0.0;
 
-
-let C8_MIX_RDFC_DG;
-let C9_SiO2_RDFC_DG;
-let C10_Al2O3_RDFC_DG;
-let C11_Fe2O3_RDFC_DG;
-let C12_CaO_RDFC_DG;
-let C13_MgO_RDFC_DG;
-let C14_Na2O_RDFC_DG;
-let C15_K2O_RDFC_DG;
-let C16_SO3_RDFC_DG;
-let C17_LOI_RDFC_DG;
-
-let C18_TOTAL_RDFC_DG;
-let C19_LSF_RDFC_DG;
-let C20_SM_RDFC_DG;
-let C21_AM_RDFC_DG;
-
-let D8_MIX_RDFC_DG;
-let D9_SiO2_RDFC_DG;
-let D10_Al2O3_RDFC_DG;
-let D11_Fe2O3_RDFC_DG;
-let D12_CaO_RDFC_DG;
-let D13_MgO_RDFC_DG;
-let D14_Na2O_RDFC_DG;
-let D15_K2O_RDFC_DG;
-let D16_SO3_RDFC_DG;
-let D17_LOI_RDFC_DG;
-
-let D18_TOTAL_RDFC_DG;
-let D19_LSF_RDFC_DG;
-let D20_SM_RDFC_DG;
-let D21_AM_RDFC_DG;
-
-let E8_MIX_RDFC_DG;
-let E9_SiO2_RDFC_DG;
-let E10_Al2O3_RDFC_DG;
-let E11_Fe2O3_RDFC_DG;
-let E12_CaO_RDFC_DG;
-let E13_MgO_RDFC_DG;
-let E14_Na2O_RDFC_DG;
-let E15_K2O_RDFC_DG;
-let E16_SO3_RDFC_DG;
-let E17_LOI_RDFC_DG;
-
-let E18_TOTAL_RDFC_DG;
-let E19_LSF_RDFC_DG;
-let E20_SM_RDFC_DG;
-let E21_AM_RDFC_DG;
-
-let F8_MIX_RDFC_DG;
-let F9_SiO2_RDFC_DG;
-let F10_Al2O3_RDFC_DG;
-let F11_Fe2O3_RDFC_DG;
-let F12_CaO_RDFC_DG;
-let F13_MgO_RDFC_DG;
-let F14_Na2O_RDFC_DG;
-let F15_K2O_RDFC_DG;
-let F16_SO3_RDFC_DG;
-let F17_LOI_RDFC_DG;
-
-let F18_TOTAL_RDFC_DG;
-let F19_LSF_RDFC_DG;
-let F20_SM_RDFC_DG;
-let F21_AM_RDFC_DG;
-
-let G8_MIX_RDFC_DG;
-let G9_SiO2_RDFC_DG;
-let G10_Al2O3_RDFC_DG;
-let G11_Fe2O3_RDFC_DG;
-let G12_CaO_RDFC_DG;
-let G13_MgO_RDFC_DG;
-let G14_Na2O_RDFC_DG;
-let G15_K2O_RDFC_DG;
-let G16_SO3_RDFC_DG;
-let G17_LOI_RDFC_DG;
-let G18_TOTAL_RDFC_DG;
-let G19_LSF_RDFC_DG;
-let G20_SM_RDFC_DG;
-let G21_AM_RDFC_DG;
-
-//MATRIX & COE
-
-let L8_a_DG;
-let L9_b_DG;
-let L10_c_DG;
-let L11_d_DG;
-let L12_e_DG;
-let L13_f_DG;
-let L14_g_DG;
-let L15_h_DG;
-let L16_i_DG;
-let L17_k_DG;
-let L18_l_DG;
-let L19_m_DG;
-let L20_n_DG;
-let L21_p_DG;
-let L22_q_DG;
-let L23_r_DG;
-let L24_s_DG;
-let O8_Dw_Matrix_DG;
-let O9_Dx_Matrix_DG;
-let O10_Dy_Matrix_DG;
-let O11_Dz_Matrix_DG;
-let O12_D_Matrix_DG;
-let O15_W_DG;
-let O16_X_DG;
-let O17_Y_DG;
-let O18_Z_DG;
-let O19_TOTAL_DG;
-
-let I14_Lime_Saturation_DG;
-let I17_Silica_Modulus_DG;
-let I20_Alumina_Modulus_DG;
-
 // Begin All Variables getbyElementID
 //#region
 
-function initializeVariable() {
+let C8_MIX_RDFC_DG = document.getElementById("C8_MIX_RDFC");
+let C9_SiO2_RDFC_DG = document.getElementById("C9_SiO2_RDFC");
+let C10_Al2O3_RDFC_DG = document.getElementById("C10_Al2O3_RDFC");
+let C11_Fe2O3_RDFC_DG = document.getElementById("C11_Fe2O3_RDFC");
+let C12_CaO_RDFC_DG = document.getElementById("C12_CaO_RDFC");
+let C13_MgO_RDFC_DG = document.getElementById("C13_MgO_RDFC");
+let C14_Na2O_RDFC_DG = document.getElementById("C14_Na2O_RDFC");
+let C15_K2O_RDFC_DG = document.getElementById("C15_K2O_RDFC");
+let C16_SO3_RDFC_DG = document.getElementById("C16_SO3_RDFC");
+let C17_LOI_RDFC_DG = document.getElementById("C17_LOI_RDFC");
 
-    C8_MIX_RDFC_DG = document.getElementById("C8_MIX_RDFC");
-    C9_SiO2_RDFC_DG = document.getElementById("C9_SiO2_RDFC");
-    C10_Al2O3_RDFC_DG = document.getElementById("C10_Al2O3_RDFC");
-    C11_Fe2O3_RDFC_DG = document.getElementById("C11_Fe2O3_RDFC");
-    C12_CaO_RDFC_DG = document.getElementById("C12_CaO_RDFC");
-    C13_MgO_RDFC_DG = document.getElementById("C13_MgO_RDFC");
-    C14_Na2O_RDFC_DG = document.getElementById("C14_Na2O_RDFC");
-    C15_K2O_RDFC_DG = document.getElementById("C15_K2O_RDFC");
-    C16_SO3_RDFC_DG = document.getElementById("C16_SO3_RDFC");
-    C17_LOI_RDFC_DG = document.getElementById("C17_LOI_RDFC");
+let C18_TOTAL_RDFC_DG = document.querySelector("label[for='C18_TOTAL_RDFC']");
+let C19_LSF_RDFC_DG = document.querySelector("label[for='C19_LSF_RDFC']");
+let C20_SM_RDFC_DG = document.querySelector("label[for='C20_SM_RDFC']");
+let C21_AM_RDFC_DG = document.querySelector("label[for='C21_AM_RDFC']");
 
-    C18_TOTAL_RDFC_DG = document.querySelector("label[for='C18_TOTAL_RDFC']");
-    C19_LSF_RDFC_DG = document.querySelector("label[for='C19_LSF_RDFC']");
-    C20_SM_RDFC_DG = document.querySelector("label[for='C20_SM_RDFC']");
-    C21_AM_RDFC_DG = document.querySelector("label[for='C21_AM_RDFC']");
+let D8_MIX_RDFC_DG = document.getElementById("D8_MIX_RDFC");
+let D9_SiO2_RDFC_DG = document.getElementById("D9_SiO2_RDFC");
+let D10_Al2O3_RDFC_DG = document.getElementById("D10_Al2O3_RDFC");
+let D11_Fe2O3_RDFC_DG = document.getElementById("D11_Fe2O3_RDFC");
+let D12_CaO_RDFC_DG = document.getElementById("D12_CaO_RDFC");
+let D13_MgO_RDFC_DG = document.getElementById("D13_MgO_RDFC");
+let D14_Na2O_RDFC_DG = document.getElementById("D14_Na2O_RDFC");
+let D15_K2O_RDFC_DG = document.getElementById("D15_K2O_RDFC");
+let D16_SO3_RDFC_DG = document.getElementById("D16_SO3_RDFC");
+let D17_LOI_RDFC_DG = document.getElementById("D17_LOI_RDFC");
 
-    D8_MIX_RDFC_DG = document.getElementById("D8_MIX_RDFC");
-    D9_SiO2_RDFC_DG = document.getElementById("D9_SiO2_RDFC");
-    D10_Al2O3_RDFC_DG = document.getElementById("D10_Al2O3_RDFC");
-    D11_Fe2O3_RDFC_DG = document.getElementById("D11_Fe2O3_RDFC");
-    D12_CaO_RDFC_DG = document.getElementById("D12_CaO_RDFC");
-    D13_MgO_RDFC_DG = document.getElementById("D13_MgO_RDFC");
-    D14_Na2O_RDFC_DG = document.getElementById("D14_Na2O_RDFC");
-    D15_K2O_RDFC_DG = document.getElementById("D15_K2O_RDFC");
-    D16_SO3_RDFC_DG = document.getElementById("D16_SO3_RDFC");
-    D17_LOI_RDFC_DG = document.getElementById("D17_LOI_RDFC");
+let D18_TOTAL_RDFC_DG = document.querySelector("label[for='D18_TOTAL_RDFC']");
+let D19_LSF_RDFC_DG = document.querySelector("label[for='D19_LSF_RDFC']");
+let D20_SM_RDFC_DG = document.querySelector("label[for='D20_SM_RDFC']");
+let D21_AM_RDFC_DG = document.querySelector("label[for='D21_AM_RDFC']");
 
-    D18_TOTAL_RDFC_DG = document.querySelector("label[for='D18_TOTAL_RDFC']");
-    D19_LSF_RDFC_DG = document.querySelector("label[for='D19_LSF_RDFC']");
-    D20_SM_RDFC_DG = document.querySelector("label[for='D20_SM_RDFC']");
-    D21_AM_RDFC_DG = document.querySelector("label[for='D21_AM_RDFC']");
+let E8_MIX_RDFC_DG = document.getElementById("E8_MIX_RDFC");
+let E9_SiO2_RDFC_DG = document.getElementById("E9_SiO2_RDFC");
+let E10_Al2O3_RDFC_DG = document.getElementById("E10_Al2O3_RDFC");
+let E11_Fe2O3_RDFC_DG = document.getElementById("E11_Fe2O3_RDFC");
+let E12_CaO_RDFC_DG = document.getElementById("E12_CaO_RDFC");
+let E13_MgO_RDFC_DG = document.getElementById("E13_MgO_RDFC");
+let E14_Na2O_RDFC_DG = document.getElementById("E14_Na2O_RDFC");
+let E15_K2O_RDFC_DG = document.getElementById("E15_K2O_RDFC");
+let E16_SO3_RDFC_DG = document.getElementById("E16_SO3_RDFC");
+let E17_LOI_RDFC_DG = document.getElementById("E17_LOI_RDFC");
 
-    E8_MIX_RDFC_DG = document.getElementById("E8_MIX_RDFC");
-    E9_SiO2_RDFC_DG = document.getElementById("E9_SiO2_RDFC");
-    E10_Al2O3_RDFC_DG = document.getElementById("E10_Al2O3_RDFC");
-    E11_Fe2O3_RDFC_DG = document.getElementById("E11_Fe2O3_RDFC");
-    E12_CaO_RDFC_DG = document.getElementById("E12_CaO_RDFC");
-    E13_MgO_RDFC_DG = document.getElementById("E13_MgO_RDFC");
-    E14_Na2O_RDFC_DG = document.getElementById("E14_Na2O_RDFC");
-    E15_K2O_RDFC_DG = document.getElementById("E15_K2O_RDFC");
-    E16_SO3_RDFC_DG = document.getElementById("E16_SO3_RDFC");
-    E17_LOI_RDFC_DG = document.getElementById("E17_LOI_RDFC");
+let E18_TOTAL_RDFC_DG = document.querySelector("label[for='E18_TOTAL_RDFC']");
+let E19_LSF_RDFC_DG = document.querySelector("label[for='E19_LSF_RDFC']");
+let E20_SM_RDFC_DG = document.querySelector("label[for='E20_SM_RDFC']");
+let E21_AM_RDFC_DG = document.querySelector("label[for='E21_AM_RDFC']");
 
-    E18_TOTAL_RDFC_DG = document.querySelector("label[for='E18_TOTAL_RDFC']");
-    E19_LSF_RDFC_DG = document.querySelector("label[for='E19_LSF_RDFC']");
-    E20_SM_RDFC_DG = document.querySelector("label[for='E20_SM_RDFC']");
-    E21_AM_RDFC_DG = document.querySelector("label[for='E21_AM_RDFC']");
+let F8_MIX_RDFC_DG = document.getElementById("F8_MIX_RDFC");
+let F9_SiO2_RDFC_DG = document.getElementById("F9_SiO2_RDFC");
+let F10_Al2O3_RDFC_DG = document.getElementById("F10_Al2O3_RDFC");
+let F11_Fe2O3_RDFC_DG = document.getElementById("F11_Fe2O3_RDFC");
+let F12_CaO_RDFC_DG = document.getElementById("F12_CaO_RDFC");
+let F13_MgO_RDFC_DG = document.getElementById("F13_MgO_RDFC");
+let F14_Na2O_RDFC_DG = document.getElementById("F14_Na2O_RDFC");
+let F15_K2O_RDFC_DG = document.getElementById("F15_K2O_RDFC");
+let F16_SO3_RDFC_DG = document.getElementById("F16_SO3_RDFC");
+let F17_LOI_RDFC_DG = document.getElementById("F17_LOI_RDFC");
 
-    F8_MIX_RDFC_DG = document.getElementById("F8_MIX_RDFC");
-    F9_SiO2_RDFC_DG = document.getElementById("F9_SiO2_RDFC");
-    F10_Al2O3_RDFC_DG = document.getElementById("F10_Al2O3_RDFC");
-    F11_Fe2O3_RDFC_DG = document.getElementById("F11_Fe2O3_RDFC");
-    F12_CaO_RDFC_DG = document.getElementById("F12_CaO_RDFC");
-    F13_MgO_RDFC_DG = document.getElementById("F13_MgO_RDFC");
-    F14_Na2O_RDFC_DG = document.getElementById("F14_Na2O_RDFC");
-    F15_K2O_RDFC_DG = document.getElementById("F15_K2O_RDFC");
-    F16_SO3_RDFC_DG = document.getElementById("F16_SO3_RDFC");
-    F17_LOI_RDFC_DG = document.getElementById("F17_LOI_RDFC");
+let F18_TOTAL_RDFC_DG = document.querySelector("label[for='F18_TOTAL_RDFC']");
+let F19_LSF_RDFC_DG = document.querySelector("label[for='F19_LSF_RDFC']");
+let F20_SM_RDFC_DG = document.querySelector("label[for='F20_SM_RDFC']");
+let F21_AM_RDFC_DG = document.querySelector("label[for='F21_AM_RDFC']");
 
-    F18_TOTAL_RDFC_DG = document.querySelector("label[for='F18_TOTAL_RDFC']");
-    F19_LSF_RDFC_DG = document.querySelector("label[for='F19_LSF_RDFC']");
-    F20_SM_RDFC_DG = document.querySelector("label[for='F20_SM_RDFC']");
-    F21_AM_RDFC_DG = document.querySelector("label[for='F21_AM_RDFC']");
+let G8_MIX_RDFC_DG = document.querySelector("label[for='G8_MIX_RDFC']");
+let G9_SiO2_RDFC_DG = document.querySelector("label[for='G9_SiO2_RDFC']");
+let G10_Al2O3_RDFC_DG = document.querySelector("label[for='G10_Al2O3_RDFC']");
+let G11_Fe2O3_RDFC_DG = document.querySelector("label[for='G11_Fe2O3_RDFC']");
+let G12_CaO_RDFC_DG = document.querySelector("label[for='G12_CaO_RDFC']");
+let G13_MgO_RDFC_DG = document.querySelector("label[for='G13_MgO_RDFC']");
+let G14_Na2O_RDFC_DG = document.querySelector("label[for='G14_Na2O_RDFC']");
+let G15_K2O_RDFC_DG = document.querySelector("label[for='G15_K2O_RDFC']");
+let G16_SO3_RDFC_DG = document.querySelector("label[for='G16_SO3_RDFC']");
+let G17_LOI_RDFC_DG = document.querySelector("label[for='G17_LOI_RDFC']");
+let G18_TOTAL_RDFC_DG = document.querySelector("label[for='G18_TOTAL_RDFC']");
+let G19_LSF_RDFC_DG = document.querySelector("label[for='G19_LSF_RDFC']");
+let G20_SM_RDFC_DG = document.querySelector("label[for='G20_SM_RDFC']");
+let G21_AM_RDFC_DG = document.querySelector("label[for='G21_AM_RDFC']");
 
-    G8_MIX_RDFC_DG = document.querySelector("label[for='G8_MIX_RDFC']");
-    G9_SiO2_RDFC_DG = document.querySelector("label[for='G9_SiO2_RDFC']");
-    G10_Al2O3_RDFC_DG = document.querySelector("label[for='G10_Al2O3_RDFC']");
-    G11_Fe2O3_RDFC_DG = document.querySelector("label[for='G11_Fe2O3_RDFC']");
-    G12_CaO_RDFC_DG = document.querySelector("label[for='G12_CaO_RDFC']");
-    G13_MgO_RDFC_DG = document.querySelector("label[for='G13_MgO_RDFC']");
-    G14_Na2O_RDFC_DG = document.querySelector("label[for='G14_Na2O_RDFC']");
-    G15_K2O_RDFC_DG = document.querySelector("label[for='G15_K2O_RDFC']");
-    G16_SO3_RDFC_DG = document.querySelector("label[for='G16_SO3_RDFC']");
-    G17_LOI_RDFC_DG = document.querySelector("label[for='G17_LOI_RDFC']");
-    G18_TOTAL_RDFC_DG = document.querySelector("label[for='G18_TOTAL_RDFC']");
-    G19_LSF_RDFC_DG = document.querySelector("label[for='G19_LSF_RDFC']");
-    G20_SM_RDFC_DG = document.querySelector("label[for='G20_SM_RDFC']");
-    G21_AM_RDFC_DG = document.querySelector("label[for='G21_AM_RDFC']");
+//MATRIX & COE
 
-    //MATRIX & COE
+let L8_a_DG = document.querySelector("label[for='L8_a']");
+let L9_b_DG = document.querySelector("label[for='L9_b']");
+let L10_c_DG = document.querySelector("label[for='L10_c']");
+let L11_d_DG = document.querySelector("label[for='L11_d']");
+let L12_e_DG = document.querySelector("label[for='L12_e']");
+let L13_f_DG = document.querySelector("label[for='L13_f']");
+let L14_g_DG = document.querySelector("label[for='L14_g']");
+let L15_h_DG = document.querySelector("label[for='L15_h']");
+let L16_i_DG = document.querySelector("label[for='L16_i']");
+let L17_k_DG = document.querySelector("label[for='L17_k']");
+let L18_l_DG = document.querySelector("label[for='L18_l']");
+let L19_m_DG = document.querySelector("label[for='L19_m']");
+let L20_n_DG = document.querySelector("label[for='L20_n']");
+let L21_p_DG = document.querySelector("label[for='L21_p']");
+let L22_q_DG = document.querySelector("label[for='L22_q']");
+let L23_r_DG = document.querySelector("label[for='L23_r']");
+let L24_s_DG = document.querySelector("label[for='L24_s']");
+let O8_Dw_Matrix_DG = document.querySelector("label[for='O8_Dw_Matrix']");
+let O9_Dx_Matrix_DG = document.querySelector("label[for='O9_Dx_Matrix']");
+let O10_Dy_Matrix_DG = document.querySelector("label[for='O10_Dy_Matrix']");
+let O11_Dz_Matrix_DG = document.querySelector("label[for='O11_Dz_Matrix']");
+let O12_D_Matrix_DG = document.querySelector("label[for='O12_D_Matrix']");
+let O15_W_DG = document.querySelector("label[for='O15_W']");
+let O16_X_DG = document.querySelector("label[for='O16_X']");
+let O17_Y_DG = document.querySelector("label[for='O17_Y']");
+let O18_Z_DG = document.querySelector("label[for='O18_Z']");
+let O19_TOTAL_DG = document.querySelector("label[for='O19_TOTAL']");
 
-    L8_a_DG = document.querySelector("label[for='L8_a']");
-    L9_b_DG = document.querySelector("label[for='L9_b']");
-    L10_c_DG = document.querySelector("label[for='L10_c']");
-    L11_d_DG = document.querySelector("label[for='L11_d']");
-    L12_e_DG = document.querySelector("label[for='L12_e']");
-    L13_f_DG = document.querySelector("label[for='L13_f']");
-    L14_g_DG = document.querySelector("label[for='L14_g']");
-    L15_h_DG = document.querySelector("label[for='L15_h']");
-    L16_i_DG = document.querySelector("label[for='L16_i']");
-    L17_k_DG = document.querySelector("label[for='L17_k']");
-    L18_l_DG = document.querySelector("label[for='L18_l']");
-    L19_m_DG = document.querySelector("label[for='L19_m']");
-    L20_n_DG = document.querySelector("label[for='L20_n']");
-    L21_p_DG = document.querySelector("label[for='L21_p']");
-    L22_q_DG = document.querySelector("label[for='L22_q']");
-    L23_r_DG = document.querySelector("label[for='L23_r']");
-    L24_s_DG = document.querySelector("label[for='L24_s']");
-    O8_Dw_Matrix_DG = document.querySelector("label[for='O8_Dw_Matrix']");
-    O9_Dx_Matrix_DG = document.querySelector("label[for='O9_Dx_Matrix']");
-    O10_Dy_Matrix_DG = document.querySelector("label[for='O10_Dy_Matrix']");
-    O11_Dz_Matrix_DG = document.querySelector("label[for='O11_Dz_Matrix']");
-    O12_D_Matrix_DG = document.querySelector("label[for='O12_D_Matrix']");
-    O15_W_DG = document.querySelector("label[for='O15_W']");
-    O16_X_DG = document.querySelector("label[for='O16_X']");
-    O17_Y_DG = document.querySelector("label[for='O17_Y']");
-    O18_Z_DG = document.querySelector("label[for='O18_Z']");
-    O19_TOTAL_DG = document.querySelector("label[for='O19_TOTAL']");
-
-    I14_Lime_Saturation_DG = document.getElementById("I14_Lime_Saturation");
-    I17_Silica_Modulus_DG = document.getElementById("I17_Silica_Modulus");
-    I20_Alumina_Modulus_DG = document.getElementById("I20_Alumina_Modulus");
-}
+let I14_Lime_Saturation_DG = document.getElementById("I14_Lime_Saturation");
+let I17_Silica_Modulus_DG = document.getElementById("I17_Silica_Modulus");
+let I20_Alumina_Modulus_DG = document.getElementById("I20_Alumina_Modulus");
 
 //#endregion
 // End All Variables getbyElementID
@@ -578,1637 +461,6 @@ function onDeviceReady() {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    if (recipe1num !== null) {
-        recipenum = recipe1num.value;
-    }
-    if (recipe2num !== null) {
-        recipenum = recipe2num.value;
-    }
-    var storedObject = JSON.parse(localStorage.getItem('Recipe' + recipenum));
-    if (storedObject !== null) {
-
-        C8_MIX_RDFC_DG.value = storedObject.C8_MIX_RDFC;
-        C9_SiO2_RDFC_DG.value = storedObject.C9_SiO2_RDFC;
-        C10_Al2O3_RDFC_DG.value = storedObject.C10_Al2O3_RDFC;
-        C11_Fe2O3_RDFC_DG.value = storedObject.C11_Fe2O3_RDFC;
-        C12_CaO_RDFC_DG.value = storedObject.C12_CaO_RDFC;
-        C13_MgO_RDFC_DG.value = storedObject.C13_MgO_RDFC;
-        C14_Na2O_RDFC_DG.value = storedObject.C14_Na2O_RDFC;
-        C15_K2O_RDFC_DG.value = storedObject.C15_K2O_RDFC;
-        C16_SO3_RDFC_DG.value = storedObject.C16_SO3_RDFC;
-        C17_LOI_RDFC_DG.value = storedObject.C17_LOI_RDFC;
-        D8_MIX_RDFC_DG.value = storedObject.D8_MIX_RDFC;
-        D9_SiO2_RDFC_DG.value = storedObject.D9_SiO2_RDFC;
-        D10_Al2O3_RDFC_DG.value = storedObject.D10_Al2O3_RDFC;
-        D11_Fe2O3_RDFC_DG.value = storedObject.D11_Fe2O3_RDFC;
-        D12_CaO_RDFC_DG.value = storedObject.D12_CaO_RDFC;
-        D13_MgO_RDFC_DG.value = storedObject.D13_MgO_RDFC;
-        D14_Na2O_RDFC_DG.value = storedObject.D14_Na2O_RDFC;
-        D15_K2O_RDFC_DG.value = storedObject.D15_K2O_RDFC;
-        D16_SO3_RDFC_DG.value = storedObject.D16_SO3_RDFC;
-        D17_LOI_RDFC_DG.value = storedObject.D17_LOI_RDFC;
-        E8_MIX_RDFC_DG.value = storedObject.E8_MIX_RDFC;
-        E9_SiO2_RDFC_DG.value = storedObject.E9_SiO2_RDFC;
-        E10_Al2O3_RDFC_DG.value = storedObject.E10_Al2O3_RDFC;
-        E11_Fe2O3_RDFC_DG.value = storedObject.E11_Fe2O3_RDFC;
-        E12_CaO_RDFC_DG.value = storedObject.E12_CaO_RDFC;
-        E13_MgO_RDFC_DG.value = storedObject.E13_MgO_RDFC;
-        E14_Na2O_RDFC_DG.value = storedObject.E14_Na2O_RDFC;
-        E15_K2O_RDFC_DG.value = storedObject.E15_K2O_RDFC;
-        E16_SO3_RDFC_DG.value = storedObject.E16_SO3_RDFC;
-        E17_LOI_RDFC_DG.value = storedObject.E17_LOI_RDFC;
-        F8_MIX_RDFC_DG.value = storedObject.F8_MIX_RDFC;
-        F9_SiO2_RDFC_DG.value = storedObject.F9_SiO2_RDFC;
-        F10_Al2O3_RDFC_DG.value = storedObject.F10_Al2O3_RDFC;
-        F11_Fe2O3_RDFC_DG.value = storedObject.F11_Fe2O3_RDFC;
-        F12_CaO_RDFC_DG.value = storedObject.F12_CaO_RDFC;
-        F13_MgO_RDFC_DG.value = storedObject.F13_MgO_RDFC;
-        F14_Na2O_RDFC_DG.value = storedObject.F14_Na2O_RDFC;
-        F15_K2O_RDFC_DG.value = storedObject.F15_K2O_RDFC;
-        F16_SO3_RDFC_DG.value = storedObject.F16_SO3_RDFC;
-        F17_LOI_RDFC_DG.value = storedObject.F17_LOI_RDFC;
-        I14_Lime_Saturation_DG.value = storedObject.I14_Lime_Saturation;
-        I17_Silica_Modulus_DG.value = storedObject.I17_Silica_Modulus;
-        I20_Alumina_Modulus_DG.value = storedObject.I20_Alumina_Modulus;
-
-        // if (typeof rdfc_computeall === 'function') {
-        //   // The function is defined, so you can call it
-
-        //   rdfc_computeall();
-        // }
-
-    }
-
-    // BEGIN FUNCTION MIX % /////////////////////////////////
-    //#region
-    const compute_G8_MIX_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        G8_MIX_RDFC = C8_MIX_RDFC + D8_MIX_RDFC + E8_MIX_RDFC + F8_MIX_RDFC;
-
-        return G8_MIX_RDFC.toFixed(2);
-    };
-
-    const compute_G9_SiO2_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C9_SiO2_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D9_SiO2_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E9_SiO2_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F9_SiO2_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-        G9_SiO2_RDFC =
-            (C8_MIX_RDFC * C9_SiO2_RDFC +
-                D8_MIX_RDFC * D9_SiO2_RDFC +
-                E8_MIX_RDFC * E9_SiO2_RDFC +
-                F8_MIX_RDFC * F9_SiO2_RDFC) /
-            G8_MIX_RDFC;
-
-        return G9_SiO2_RDFC.toFixed(2);
-    };
-
-    const compute_G10_Al203_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-        G10_Al2O3_RDFC =
-            (C8_MIX_RDFC * C10_Al2O3_RDFC +
-                D8_MIX_RDFC * D10_Al2O3_RDFC +
-                E8_MIX_RDFC * E10_Al2O3_RDFC +
-                F8_MIX_RDFC * F10_Al2O3_RDFC) /
-            G8_MIX_RDFC;
-        return G10_Al2O3_RDFC.toFixed(2);
-    };
-
-    const compute_G11_Fe2O3_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-        G11_Fe2O3_RDFC =
-            (C8_MIX_RDFC * C11_Fe2O3_RDFC +
-                D8_MIX_RDFC * D11_Fe2O3_RDFC +
-                E8_MIX_RDFC * E11_Fe2O3_RDFC +
-                F8_MIX_RDFC * F11_Fe2O3_RDFC) /
-            G8_MIX_RDFC;
-
-        return G11_Fe2O3_RDFC.toFixed(2);
-    };
-
-    const compute_G12_CaO_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C12_CaO_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D12_CaO_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E12_CaO_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F12_CaO_RDFC_DG.value);
-        G12_CaO_RDFC =
-            (C8_MIX_RDFC * C12_CaO_RDFC +
-                D8_MIX_RDFC * D12_CaO_RDFC +
-                E8_MIX_RDFC * E12_CaO_RDFC +
-                F8_MIX_RDFC * F12_CaO_RDFC) /
-            G8_MIX_RDFC;
-
-        return G12_CaO_RDFC.toFixed(2);
-    };
-    const compute_G13_MgO_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C13_MgO_RDFC = isNaN(parseFloat(C13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C13_MgO_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D13_MgO_RDFC = isNaN(parseFloat(D13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D13_MgO_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E13_MgO_RDFC = isNaN(parseFloat(E13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E13_MgO_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F13_MgO_RDFC = isNaN(parseFloat(F13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F13_MgO_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-        G13_MgO_RDFC =
-            (C8_MIX_RDFC * C13_MgO_RDFC +
-                D8_MIX_RDFC * D13_MgO_RDFC +
-                E8_MIX_RDFC * E13_MgO_RDFC +
-                F8_MIX_RDFC * F13_MgO_RDFC) /
-            G8_MIX_RDFC;
-
-        return G13_MgO_RDFC.toFixed(2);
-    };
-
-    const compute_G14_Na2O_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C14_Na2O_RDFC = isNaN(parseFloat(C14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C14_Na2O_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D14_Na2O_RDFC = isNaN(parseFloat(D14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D14_Na2O_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E14_Na2O_RDFC = isNaN(parseFloat(E14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E14_Na2O_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F14_Na2O_RDFC = isNaN(parseFloat(F14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F14_Na2O_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-        G14_Na2O_RDFC =
-            (C8_MIX_RDFC * C14_Na2O_RDFC +
-                D8_MIX_RDFC * D14_Na2O_RDFC +
-                E8_MIX_RDFC * E14_Na2O_RDFC +
-                F8_MIX_RDFC * F14_Na2O_RDFC) /
-            G8_MIX_RDFC;
-
-        return G14_Na2O_RDFC.toFixed(2);
-    };
-
-    const compute_G15_K2O_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C15_K2O_RDFC = isNaN(parseFloat(C15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C15_K2O_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D15_K2O_RDFC = isNaN(parseFloat(D15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D15_K2O_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E15_K2O_RDFC = isNaN(parseFloat(E15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E15_K2O_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F15_K2O_RDFC = isNaN(parseFloat(F15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F15_K2O_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-        G15_K2O_RDFC =
-            (C8_MIX_RDFC * C15_K2O_RDFC +
-                D8_MIX_RDFC * D15_K2O_RDFC +
-                E8_MIX_RDFC * E15_K2O_RDFC +
-                F8_MIX_RDFC * F15_K2O_RDFC) /
-            G8_MIX_RDFC;
-
-        return G15_K2O_RDFC.toFixed(2);
-    };
-
-    const compute_G16_SO3_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C16_SO3_RDFC = isNaN(parseFloat(C16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C16_SO3_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D16_SO3_RDFC = isNaN(parseFloat(D16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D16_SO3_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E16_SO3_RDFC = isNaN(parseFloat(E16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E16_SO3_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F16_SO3_RDFC = isNaN(parseFloat(F16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F16_SO3_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-        G16_SO3_RDFC =
-            (C8_MIX_RDFC * C16_SO3_RDFC +
-                D8_MIX_RDFC * D16_SO3_RDFC +
-                E8_MIX_RDFC * E16_SO3_RDFC +
-                F8_MIX_RDFC * F16_SO3_RDFC) /
-            G8_MIX_RDFC;
-
-        return G16_SO3_RDFC.toFixed(2);
-    };
-    const compute_G17_LOI_RDFC = () => {
-        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C8_MIX_RDFC_DG.value);
-        C17_LOI_RDFC = isNaN(parseFloat(C17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C17_LOI_RDFC_DG.value);
-        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D8_MIX_RDFC_DG.value);
-        D17_LOI_RDFC = isNaN(parseFloat(D17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D17_LOI_RDFC_DG.value);
-        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E8_MIX_RDFC_DG.value);
-        E17_LOI_RDFC = isNaN(parseFloat(E17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E17_LOI_RDFC_DG.value);
-        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F8_MIX_RDFC_DG.value);
-        F17_LOI_RDFC = isNaN(parseFloat(F17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F17_LOI_RDFC_DG.value);
-        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G8_MIX_RDFC_DG.textContent);
-
-        G17_LOI_RDFC =
-            (C8_MIX_RDFC * C17_LOI_RDFC +
-                D8_MIX_RDFC * D17_LOI_RDFC +
-                E8_MIX_RDFC * E17_LOI_RDFC +
-                F8_MIX_RDFC * F17_LOI_RDFC) /
-            G8_MIX_RDFC;
-
-        return G17_LOI_RDFC.toFixed(2);
-    };
-
-    //all fix cell
-    const compute_G18_TOTAL_RDFC = () => {
-        G9_SiO2_RDFC = isNaN(parseFloat(G9_SiO2_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G9_SiO2_RDFC_DG.textContent);
-        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G10_Al2O3_RDFC_DG.textContent);
-        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
-        G12_CaO_RDFC = isNaN(parseFloat(G12_CaO_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G12_CaO_RDFC_DG.textContent);
-        G13_MgO_RDFC = isNaN(parseFloat(G13_MgO_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G13_MgO_RDFC_DG.textContent);
-        G14_Na2O_RDFC = isNaN(parseFloat(G14_Na2O_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G14_Na2O_RDFC_DG.textContent);
-        G15_K2O_RDFC = isNaN(parseFloat(G15_K2O_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G15_K2O_RDFC_DG.textContent);
-        G16_SO3_RDFC = isNaN(parseFloat(G16_SO3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G16_SO3_RDFC_DG.textContent);
-        G17_LOI_RDFC = isNaN(parseFloat(G17_LOI_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G17_LOI_RDFC_DG.textContent);
-        G18_TOTAL_RDFC =
-            G9_SiO2_RDFC +
-            G10_Al2O3_RDFC +
-            G11_Fe2O3_RDFC +
-            G12_CaO_RDFC +
-            G13_MgO_RDFC +
-            G14_Na2O_RDFC +
-            G15_K2O_RDFC +
-            G16_SO3_RDFC +
-            G17_LOI_RDFC;
-
-        return G18_TOTAL_RDFC.toFixed(2);
-    };
-
-    const compute_G19_LSF_RDFC = () => {
-        G12_CaO_RDFC = isNaN(parseFloat(G12_CaO_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G12_CaO_RDFC_DG.textContent);
-        G9_SiO2_RDFC = isNaN(parseFloat(G9_SiO2_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G9_SiO2_RDFC_DG.textContent);
-        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G10_Al2O3_RDFC_DG.textContent);
-        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
-        G19_LSF_RDFC =
-            100 * G12_CaO_RDFC /
-            (2.8 * G9_SiO2_RDFC +
-                1.18 * G10_Al2O3_RDFC +
-                0.65 * G11_Fe2O3_RDFC);
-
-        return G19_LSF_RDFC.toFixed(2);
-    };
-
-    const compute_G20_SM_RDFC = () => {
-        G9_SiO2_RDFC = isNaN(parseFloat(G9_SiO2_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G9_SiO2_RDFC_DG.textContent);
-        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G10_Al2O3_RDFC_DG.textContent);
-        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
-        G20_SM_RDFC = G9_SiO2_RDFC / (G10_Al2O3_RDFC + G11_Fe2O3_RDFC);
-
-        return G20_SM_RDFC.toFixed(2);
-    };
-
-    const compute_G21_AM_RDFC = () => {
-        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G10_Al2O3_RDFC_DG.textContent);
-        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
-            0.0 :
-            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
-        G21_AM_RDFC = G10_Al2O3_RDFC / G11_Fe2O3_RDFC;
-
-        return G21_AM_RDFC.toFixed(2);
-    };
-
-    //   0000000000000000000000000000000000000000000000000000
-
-    const compute_C18_TOTAL_RDFC = () => {
-        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C9_SiO2_RDFC_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C12_CaO_RDFC_DG.value);
-        C13_MgO_RDFC = isNaN(parseFloat(C13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C13_MgO_RDFC_DG.value);
-        C14_Na2O_RDFC = isNaN(parseFloat(C14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C14_Na2O_RDFC_DG.value);
-        C15_K2O_RDFC = isNaN(parseFloat(C15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C15_K2O_RDFC_DG.value);
-        C16_SO3_RDFC = isNaN(parseFloat(C16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C16_SO3_RDFC_DG.value);
-        C17_LOI_RDFC = isNaN(parseFloat(C17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C17_LOI_RDFC_DG.value);
-
-        C18_TOTAL_RDFC =
-            C9_SiO2_RDFC +
-            C10_Al2O3_RDFC +
-            C11_Fe2O3_RDFC +
-            C12_CaO_RDFC +
-            C13_MgO_RDFC +
-            C14_Na2O_RDFC +
-            C15_K2O_RDFC +
-            C16_SO3_RDFC +
-            C17_LOI_RDFC;
-
-        return C18_TOTAL_RDFC.toFixed(2);
-    };
-
-    const compute_D18_TOTAL_RDFC = () => {
-        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D9_SiO2_RDFC_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D12_CaO_RDFC_DG.value);
-        D13_MgO_RDFC = isNaN(parseFloat(D13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D13_MgO_RDFC_DG.value);
-        D14_Na2O_RDFC = isNaN(parseFloat(D14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D14_Na2O_RDFC_DG.value);
-        D15_K2O_RDFC = isNaN(parseFloat(D15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D15_K2O_RDFC_DG.value);
-        D16_SO3_RDFC = isNaN(parseFloat(D16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D16_SO3_RDFC_DG.value);
-        D17_LOI_RDFC = isNaN(parseFloat(D17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D17_LOI_RDFC_DG.value);
-
-        D18_TOTAL_RDFC =
-            D9_SiO2_RDFC +
-            D10_Al2O3_RDFC +
-            D11_Fe2O3_RDFC +
-            D12_CaO_RDFC +
-            D13_MgO_RDFC +
-            D14_Na2O_RDFC +
-            D15_K2O_RDFC +
-            D16_SO3_RDFC +
-            D17_LOI_RDFC;
-
-        return D18_TOTAL_RDFC.toFixed(2);
-    };
-    const compute_E18_TOTAL_RDFC = () => {
-        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E9_SiO2_RDFC_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E12_CaO_RDFC_DG.value);
-        E13_MgO_RDFC = isNaN(parseFloat(E13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E13_MgO_RDFC_DG.value);
-        E14_Na2O_RDFC = isNaN(parseFloat(E14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E14_Na2O_RDFC_DG.value);
-        E15_K2O_RDFC = isNaN(parseFloat(E15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E15_K2O_RDFC_DG.value);
-        E16_SO3_RDFC = isNaN(parseFloat(E16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E16_SO3_RDFC_DG.value);
-        E17_LOI_RDFC = isNaN(parseFloat(E17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E17_LOI_RDFC_DG.value);
-
-        E18_TOTAL_RDFC =
-            E9_SiO2_RDFC +
-            E10_Al2O3_RDFC +
-            E11_Fe2O3_RDFC +
-            E12_CaO_RDFC +
-            E13_MgO_RDFC +
-            E14_Na2O_RDFC +
-            E15_K2O_RDFC +
-            E16_SO3_RDFC +
-            E17_LOI_RDFC;
-
-        return E18_TOTAL_RDFC.toFixed(2);
-    };
-
-    const compute_F18_TOTAL_RDFC = () => {
-        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F9_SiO2_RDFC_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F12_CaO_RDFC_DG.value);
-        F13_MgO_RDFC = isNaN(parseFloat(F13_MgO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F13_MgO_RDFC_DG.value);
-        F14_Na2O_RDFC = isNaN(parseFloat(F14_Na2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F14_Na2O_RDFC_DG.value);
-        F15_K2O_RDFC = isNaN(parseFloat(F15_K2O_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F15_K2O_RDFC_DG.value);
-        F16_SO3_RDFC = isNaN(parseFloat(F16_SO3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F16_SO3_RDFC_DG.value);
-        F17_LOI_RDFC = isNaN(parseFloat(F17_LOI_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F17_LOI_RDFC_DG.value);
-
-        F18_TOTAL_RDFC =
-            F9_SiO2_RDFC +
-            F10_Al2O3_RDFC +
-            F11_Fe2O3_RDFC +
-            F12_CaO_RDFC +
-            F13_MgO_RDFC +
-            F14_Na2O_RDFC +
-            F15_K2O_RDFC +
-            F16_SO3_RDFC +
-            F17_LOI_RDFC;
-
-        return F18_TOTAL_RDFC.toFixed(2);
-    };
-
-    //LSF
-    const compute_C19_LSF_RDFC = () => {
-        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C12_CaO_RDFC_DG.value);
-        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C9_SiO2_RDFC_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-
-        C19_LSF_RDFC =
-            (100 * C12_CaO_RDFC) /
-            (2.8 * C9_SiO2_RDFC +
-                1.18 * C10_Al2O3_RDFC +
-                0.65 * C11_Fe2O3_RDFC_DG.value);
-
-        return C19_LSF_RDFC.toFixed(2);
-    };
-
-    const compute_D19_LSF_RDFC = () => {
-        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D9_SiO2_RDFC_DG.value);
-        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D12_CaO_RDFC_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-
-        D19_LSF_RDFC =
-            (100 * D12_CaO_RDFC) /
-            (2.8 * D9_SiO2_RDFC +
-                1.18 * D10_Al2O3_RDFC +
-                0.65 * D11_Fe2O3_RDFC_DG.value);
-
-        return D19_LSF_RDFC.toFixed(2);
-    };
-
-    const compute_E19_LSF_RDFC = () => {
-        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E9_SiO2_RDFC_DG.value);
-        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E12_CaO_RDFC_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-
-        E19_LSF_RDFC =
-            (100 * E12_CaO_RDFC) /
-            (2.8 * E9_SiO2_RDFC +
-                1.18 * E10_Al2O3_RDFC +
-                0.65 * E11_Fe2O3_RDFC_DG.value);
-
-        return E19_LSF_RDFC.toFixed(2);
-    };
-
-    const compute_F19_LSF_RDFC = () => {
-        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F9_SiO2_RDFC_DG.value);
-        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F12_CaO_RDFC_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-
-        F19_LSF_RDFC =
-            (100 * F12_CaO_RDFC) /
-            (2.8 * F9_SiO2_RDFC +
-                1.18 * F10_Al2O3_RDFC +
-                0.65 * F11_Fe2O3_RDFC_DG.value);
-
-        return F19_LSF_RDFC.toFixed(2);
-    };
-    const compute_C20_SM_RDFC = () => {
-        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C9_SiO2_RDFC_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-
-        C20_SM_RDFC = C9_SiO2_RDFC / (C10_Al2O3_RDFC + C11_Fe2O3_RDFC);
-
-        return C20_SM_RDFC.toFixed(2);
-    };
-
-    const compute_D20_SM_RDFC = () => {
-        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D9_SiO2_RDFC_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-
-        D20_SM_RDFC = D9_SiO2_RDFC / (D10_Al2O3_RDFC + D11_Fe2O3_RDFC);
-
-        return D20_SM_RDFC.toFixed(2);
-    };
-
-    const compute_E20_SM_RDFC = () => {
-        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E9_SiO2_RDFC_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-
-        E20_SM_RDFC = E9_SiO2_RDFC / (E10_Al2O3_RDFC + E11_Fe2O3_RDFC);
-
-        return E20_SM_RDFC.toFixed(2);
-    };
-
-    const compute_F20_SM_RDFC = () => {
-        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F9_SiO2_RDFC_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-
-        F20_SM_RDFC = F9_SiO2_RDFC / (F10_Al2O3_RDFC + F11_Fe2O3_RDFC);
-
-        return F20_SM_RDFC.toFixed(2);
-    };
-
-    //AM
-    const compute_C21_AM_RDFC = () => {
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-
-        C21_AM_RDFC = C10_Al2O3_RDFC / C11_Fe2O3_RDFC;
-
-        return C21_AM_RDFC.toFixed(2);
-    };
-
-    const compute_D21_AM_RDFC = () => {
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-
-        D21_AM_RDFC = D10_Al2O3_RDFC / D11_Fe2O3_RDFC;
-
-        return D21_AM_RDFC.toFixed(2);
-    };
-
-    const compute_E21_AM_RDFC = () => {
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-
-        E21_AM_RDFC = E10_Al2O3_RDFC / E11_Fe2O3_RDFC;
-
-        return E21_AM_RDFC.toFixed(2);
-    };
-
-    const compute_F21_AM_RDFC = () => {
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-
-        F21_AM_RDFC = F10_Al2O3_RDFC / F11_Fe2O3_RDFC;
-
-        return F21_AM_RDFC.toFixed(2);
-    };
-
-    //End NAME: MIX
-    //#endregion
-    // END FUNCTION////////////////////////////////////////
-    // Matrix and Coe FUNCTIONS
-    //#region
-    const compute_L13_f = () => {
-        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I20_Alumina_Modulus_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-
-        console;
-        L13_f = I20_Alumina_Modulus * C11_Fe2O3_RDFC - C10_Al2O3_RDFC;
-
-        return L13_f.toFixed(4);
-    };
-
-    const compute_L14_g = () => {
-        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I20_Alumina_Modulus_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-
-        L14_g = I20_Alumina_Modulus * D11_Fe2O3_RDFC - D10_Al2O3_RDFC;
-
-        return L14_g.toFixed(4);
-    };
-
-    const compute_L15_h = () => {
-        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I20_Alumina_Modulus_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        L15_h = I20_Alumina_Modulus * E11_Fe2O3_RDFC - E10_Al2O3_RDFC;
-
-        return L15_h.toFixed(4);
-    };
-
-    const compute_L16_i = () => {
-        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I20_Alumina_Modulus_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        L16_i = I20_Alumina_Modulus * F11_Fe2O3_RDFC - F10_Al2O3_RDFC;
-
-        return L16_i.toFixed(4);
-    };
-
-    const compute_L17_k = () => {
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C9_SiO2_RDFC_DG.value);
-        L17_k =
-            I17_Silica_Modulus * C10_Al2O3_RDFC +
-            I17_Silica_Modulus * C11_Fe2O3_RDFC -
-            C9_SiO2_RDFC;
-
-        return L17_k.toFixed(4);
-    };
-
-    const compute_L18_l = () => {
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D9_SiO2_RDFC_DG.value);
-        L18_l =
-            I17_Silica_Modulus * D10_Al2O3_RDFC +
-            I17_Silica_Modulus * D11_Fe2O3_RDFC -
-            D9_SiO2_RDFC;
-
-        return L18_l.toFixed(4);
-    };
-
-    const compute_L19_m = () => {
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E9_SiO2_RDFC_DG.value);
-        L19_m =
-            I17_Silica_Modulus * E10_Al2O3_RDFC +
-            I17_Silica_Modulus * E11_Fe2O3_RDFC -
-            E9_SiO2_RDFC;
-
-        return L19_m.toFixed(4);
-    };
-    const compute_L20_n = () => {
-        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
-            0.0 :
-            parseFloat(I17_Silica_Modulus_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F9_SiO2_RDFC_DG.value);
-        L20_n =
-            I17_Silica_Modulus * F10_Al2O3_RDFC +
-            I17_Silica_Modulus * F11_Fe2O3_RDFC -
-            F9_SiO2_RDFC;
-
-        return L20_n.toFixed(4);
-    };
-
-    const compute_L21_p = () => {
-        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
-            0.0 :
-            parseFloat(I14_Lime_Saturation_DG.value);
-        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C9_SiO2_RDFC_DG.value);
-        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C10_Al2O3_RDFC_DG.value);
-        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C11_Fe2O3_RDFC_DG.value);
-        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(C12_CaO_RDFC_DG.value);
-        L21_p =
-            I14_Lime_Saturation * 2.8 * C9_SiO2_RDFC +
-            I14_Lime_Saturation * 1.18 * C10_Al2O3_RDFC +
-            I14_Lime_Saturation * 0.65 * C11_Fe2O3_RDFC -
-            100 * C12_CaO_RDFC;
-
-        return L21_p.toFixed(4);
-    };
-
-    const compute_L22_q = () => {
-        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
-            0.0 :
-            parseFloat(I14_Lime_Saturation_DG.value);
-        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D9_SiO2_RDFC_DG.value);
-        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D10_Al2O3_RDFC_DG.value);
-        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D11_Fe2O3_RDFC_DG.value);
-        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(D12_CaO_RDFC_DG.value);
-        L22_q =
-            I14_Lime_Saturation * 2.8 * D9_SiO2_RDFC +
-            I14_Lime_Saturation * 1.18 * D10_Al2O3_RDFC +
-            I14_Lime_Saturation * 0.65 * D11_Fe2O3_RDFC -
-            100 * D12_CaO_RDFC;
-
-        return L22_q.toFixed(4);
-    };
-
-    const compute_L23_r = () => {
-        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
-            0.0 :
-            parseFloat(I14_Lime_Saturation_DG.value);
-        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E9_SiO2_RDFC_DG.value);
-        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E10_Al2O3_RDFC_DG.value);
-        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E11_Fe2O3_RDFC_DG.value);
-        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(E12_CaO_RDFC_DG.value);
-        L23_r =
-            I14_Lime_Saturation * 2.8 * E9_SiO2_RDFC +
-            I14_Lime_Saturation * 1.18 * E10_Al2O3_RDFC +
-            I14_Lime_Saturation * 0.65 * E11_Fe2O3_RDFC -
-            100 * E12_CaO_RDFC;
-
-        return L23_r.toFixed(4);
-    };
-
-    const compute_L24_s = () => {
-        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
-            0.0 :
-            parseFloat(I14_Lime_Saturation_DG.value);
-        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F9_SiO2_RDFC_DG.value);
-        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F10_Al2O3_RDFC_DG.value);
-        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F11_Fe2O3_RDFC_DG.value);
-        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
-            0.0 :
-            parseFloat(F12_CaO_RDFC_DG.value);
-        L24_s =
-            I14_Lime_Saturation * 2.8 * F9_SiO2_RDFC +
-            I14_Lime_Saturation * 1.18 * F10_Al2O3_RDFC +
-            I14_Lime_Saturation * 0.65 * F11_Fe2O3_RDFC -
-            100 * F12_CaO_RDFC;
-
-        return L24_s.toFixed(4);
-    };
-    const compute_O8_Dw_Matrix = () => {
-        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
-            0.0 :
-            parseFloat(L12_e_DG.textContent);
-        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
-            0.0 :
-            parseFloat(L14_g_DG.textContent);
-        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
-            0.0 :
-            parseFloat(L15_h_DG.textContent);
-        L16_i = isNaN(parseFloat(L16_i_DG.textContent)) ?
-            0.0 :
-            parseFloat(L16_i_DG.textContent);
-        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
-            0.0 :
-            parseFloat(L19_m_DG.textContent);
-        L20_n = isNaN(parseFloat(L20_n_DG.textContent)) ?
-            0.0 :
-            parseFloat(L20_n_DG.textContent);
-        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
-            0.0 :
-            parseFloat(L18_l_DG.textContent);
-        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
-            0.0 :
-            parseFloat(L24_s_DG.textContent);
-        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
-            0.0 :
-            parseFloat(L22_q_DG.textContent);
-        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
-            0.0 :
-            parseFloat(L23_r_DG.textContent);
-
-        O8_Dw_Matrix =
-            (L12_e * L14_g * L19_m * L24_s) +
-            (L12_e * L15_h * L20_n * L22_q) +
-            (L12_e * L16_i * L18_l * L23_r) -
-            (L12_e * L16_i * L19_m * L22_q) -
-            (L12_e * L14_g * L20_n * L23_r) -
-            (L12_e * L15_h * L18_l * L24_s);
-
-        return O8_Dw_Matrix.toFixed(0);
-    };
-
-    const compute_O9_Dx_Matrix = () => {
-        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
-            0.0 :
-            parseFloat(L13_f_DG.textContent);
-        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
-            0.0 :
-            parseFloat(L12_e_DG.textContent);
-        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
-            0.0 :
-            parseFloat(L17_k_DG.textContent);
-        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
-            0.0 :
-            parseFloat(L21_p_DG.textContent);
-        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
-            0.0 :
-            parseFloat(L19_m_DG.textContent);
-        L20_n = isNaN(parseFloat(L20_n_DG.textContent)) ?
-            0.0 :
-            parseFloat(L20_n_DG.textContent);
-        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
-            0.0 :
-            parseFloat(L15_h_DG.textContent);
-        L16_i = isNaN(parseFloat(L16_i_DG.textContent)) ?
-            0.0 :
-            parseFloat(L16_i_DG.textContent);
-        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
-            0.0 :
-            parseFloat(L23_r_DG.textContent);
-        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
-            0.0 :
-            parseFloat(L24_s_DG.textContent);
-
-        O9_Dx_Matrix = -L13_f * L12_e * L19_m * L24_s +
-            L13_f * L12_e * L20_n * L23_r +
-            L17_k * L12_e * L15_h * L24_s -
-            L17_k * L12_e * L16_i * L23_r -
-            L21_p * L12_e * L15_h * L20_n +
-            L21_p * L12_e * L16_i * L19_m;
-
-        return O9_Dx_Matrix.toFixed(0);
-    };
-
-    const compute_O10_Dy_Matrix = () => {
-        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
-            0.0 :
-            parseFloat(L13_f_DG.textContent);
-        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
-            0.0 :
-            parseFloat(L12_e_DG.textContent);
-        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
-            0.0 :
-            parseFloat(L17_k_DG.textContent);
-        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
-            0.0 :
-            parseFloat(L21_p_DG.textContent);
-        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
-            0.0 :
-            parseFloat(L19_m_DG.textContent);
-        L20_n = isNaN(parseFloat(L20_n_DG.textContent)) ?
-            0.0 :
-            parseFloat(L20_n_DG.textContent);
-        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
-            0.0 :
-            parseFloat(L18_l_DG.textContent);
-        L16_i = isNaN(parseFloat(L16_i_DG.textContent)) ?
-            0.0 :
-            parseFloat(L16_i_DG.textContent);
-        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
-            0.0 :
-            parseFloat(L14_g_DG.textContent);
-        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
-            0.0 :
-            parseFloat(L22_q_DG.textContent);
-        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
-            0.0 :
-            parseFloat(L24_s_DG.textContent);
-
-        O10_Dy_Matrix = -L13_f * L12_e * L20_n * L22_q +
-            L13_f * L12_e * L18_l * L24_s +
-            L17_k * L12_e * L16_i * L22_q -
-            L17_k * L12_e * L14_g * L24_s -
-            L21_p * L12_e * L16_i * L18_l +
-            L21_p * L12_e * L14_g * L20_n;
-
-        return O10_Dy_Matrix.toFixed(1);
-    };
-
-    const compute_O11_Dz_Matrix = () => {
-        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
-            0.0 :
-            parseFloat(L13_f_DG.textContent);
-        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
-            0.0 :
-            parseFloat(L12_e_DG.textContent);
-        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
-            0.0 :
-            parseFloat(L17_k_DG.textContent);
-        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
-            0.0 :
-            parseFloat(L21_p_DG.textContent);
-        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
-            0.0 :
-            parseFloat(L19_m_DG.textContent);
-        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
-            0.0 :
-            parseFloat(L18_l_DG.textContent);
-        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
-            0.0 :
-            parseFloat(L15_h_DG.textContent);
-        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
-            0.0 :
-            parseFloat(L14_g_DG.textContent);
-        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
-            0.0 :
-            parseFloat(L22_q_DG.textContent);
-        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
-            0.0 :
-            parseFloat(L23_r_DG.textContent);
-
-        O11_Dz_Matrix = -L13_f * L12_e * L18_l * L23_r +
-            L13_f * L12_e * L19_m * L22_q +
-            L17_k * L12_e * L14_g * L23_r -
-            L17_k * L12_e * L15_h * L22_q -
-            L21_p * L12_e * L14_g * L19_m +
-            L21_p * L12_e * L15_h * L18_l;
-
-        return O11_Dz_Matrix.toFixed(1);
-    };
-
-    const compute_O12_D_Matrix = () => {
-        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
-            0.0 :
-            parseFloat(L13_f_DG.textContent);
-        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
-            0.0 :
-            parseFloat(L12_e_DG.textContent);
-        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
-            0.0 :
-            parseFloat(L17_k_DG.textContent);
-        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
-            0.0 :
-            parseFloat(L21_p_DG.textContent);
-        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
-            0.0 :
-            parseFloat(L19_m_DG.textContent);
-        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
-            0.0 :
-            parseFloat(L18_l_DG.textContent);
-        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
-            0.0 :
-            parseFloat(L15_h_DG.textContent);
-        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
-            0.0 :
-            parseFloat(L14_g_DG.textContent);
-        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
-            0.0 :
-            parseFloat(L22_q_DG.textContent);
-        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
-            0.0 :
-            parseFloat(L23_r_DG.textContent);
-        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
-            0.0 :
-            parseFloat(L24_s_DG.textContent);
-
-        O12_D_Matrix =
-            (L14_g * L19_m * L24_s) +
-            (L15_h * L20_n * L22_q) +
-            (L16_i * L18_l * L23_r) -
-            (L16_i * L19_m * L22_q) -
-            (L14_g * L20_n * L23_r) -
-            (L15_h * L18_l * L24_s) -
-            (L13_f * L19_m * L24_s) -
-            (L13_f * L20_n * L22_q) -
-            (L13_f * L18_l * L23_r) +
-            (L13_f * L19_m * L22_q) +
-            (L13_f * L20_n * L23_r) +
-            (L13_f * L18_l * L24_s) +
-            (L17_k * L15_h * L24_s) +
-            (L17_k * L16_i * L22_q) +
-            (L17_k * L14_g * L23_r) -
-            (L17_k * L15_h * L22_q) -
-            (L17_k * L16_i * L23_r) -
-            (L17_k * L14_g * L24_s) -
-            (L21_p * L15_h * L20_n) -
-            (L21_p * L16_i * L18_l) -
-            (L21_p * L14_g * L19_m) +
-            (L21_p * L15_h * L18_l) +
-            (L21_p * L16_i * L19_m) +
-            (L21_p * L14_g * L20_n);
-
-        return O12_D_Matrix.toFixed(1);
-    };
-    const compute_O15_W = () => {
-        O8_Dw_Matrix = isNaN(parseFloat(O8_Dw_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O8_Dw_Matrix_DG.textContent);
-        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O12_D_Matrix_DG.textContent);
-
-        O15_W = O8_Dw_Matrix / O12_D_Matrix;
-        return O15_W.toFixed(1);
-    };
-
-    const compute_O16_X = () => {
-        O9_Dx_Matrix = isNaN(parseFloat(O9_Dx_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O9_Dx_Matrix_DG.textContent);
-        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O12_D_Matrix_DG.textContent);
-        O16_X = O9_Dx_Matrix / O12_D_Matrix;
-        return O16_X.toFixed(1);
-    };
-
-    const compute_O17_Y = () => {
-        O10_Dy_Matrix = isNaN(parseFloat(O10_Dy_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O10_Dy_Matrix_DG.textContent);
-        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O12_D_Matrix_DG.textContent);
-        O17_Y = O10_Dy_Matrix / O12_D_Matrix;
-        return O17_Y.toFixed(1);
-    };
-
-    const compute_O18_Z = () => {
-        O11_Dz_Matrix = isNaN(parseFloat(O11_Dz_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O11_Dz_Matrix_DG.textContent);
-        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
-            0.0 :
-            parseFloat(O12_D_Matrix_DG.textContent);
-        O18_Z = O11_Dz_Matrix / O12_D_Matrix;
-        return O18_Z.toFixed(1);
-    };
-
-    const compute_O19_TOTAL = () => {
-        O15_W = isNaN(parseFloat(O15_W_DG.textContent)) ?
-            0.0 :
-            parseFloat(O15_W_DG.textContent);
-        O16_X = isNaN(parseFloat(O16_X_DG.textContent)) ?
-            0.0 :
-            parseFloat(O16_X_DG.textContent);
-        O17_Y = isNaN(parseFloat(O17_Y_DG.textContent)) ?
-            0.0 :
-            parseFloat(O17_Y_DG.textContent);
-        O18_Z = isNaN(parseFloat(O18_Z_DG.textContent)) ?
-            0.0 :
-            parseFloat(O18_Z_DG.textContent);
-        O19_TOTAL = O15_W + O16_X + O17_Y + O18_Z;
-        return O19_TOTAL.toFixed(0);
-    };
-    //#endregion
-    // END OF THE FUNCTIONS
-
-    //#region
-    function rdfc_computeall() {
-        G8_MIX_RDFC_DG.textContent = compute_G8_MIX_RDFC();
-        G9_SiO2_RDFC_DG.textContent = compute_G9_SiO2_RDFC();
-        G10_Al2O3_RDFC_DG.textContent = compute_G10_Al203_RDFC();
-        G11_Fe2O3_RDFC_DG.textContent = compute_G11_Fe2O3_RDFC();
-        G12_CaO_RDFC_DG.textContent = compute_G12_CaO_RDFC();
-        G13_MgO_RDFC_DG.textContent = compute_G13_MgO_RDFC();
-        G14_Na2O_RDFC_DG.textContent = compute_G14_Na2O_RDFC();
-        G15_K2O_RDFC_DG.textContent = compute_G15_K2O_RDFC();
-        G16_SO3_RDFC_DG.textContent = compute_G16_SO3_RDFC();
-        G17_LOI_RDFC_DG.textContent = compute_G17_LOI_RDFC();
-        G18_TOTAL_RDFC_DG.textContent = compute_G18_TOTAL_RDFC();
-        G19_LSF_RDFC_DG.textContent = compute_G19_LSF_RDFC();
-        G20_SM_RDFC_DG.textContent = compute_G20_SM_RDFC();
-        G21_AM_RDFC_DG.textContent = compute_G21_AM_RDFC();
-        C18_TOTAL_RDFC_DG.textContent = compute_C18_TOTAL_RDFC();
-        D18_TOTAL_RDFC_DG.textContent = compute_D18_TOTAL_RDFC();
-        E18_TOTAL_RDFC_DG.textContent = compute_E18_TOTAL_RDFC();
-        F18_TOTAL_RDFC_DG.textContent = compute_F18_TOTAL_RDFC();
-        C19_LSF_RDFC_DG.textContent = compute_C19_LSF_RDFC();
-        D19_LSF_RDFC_DG.textContent = compute_D19_LSF_RDFC();
-        E19_LSF_RDFC_DG.textContent = compute_E19_LSF_RDFC();
-        F19_LSF_RDFC_DG.textContent = compute_F19_LSF_RDFC();
-        C20_SM_RDFC_DG.textContent = compute_C20_SM_RDFC();
-        D20_SM_RDFC_DG.textContent = compute_D20_SM_RDFC();
-        E20_SM_RDFC_DG.textContent = compute_E20_SM_RDFC();
-        F20_SM_RDFC_DG.textContent = compute_F20_SM_RDFC();
-        C21_AM_RDFC_DG.textContent = compute_C21_AM_RDFC();
-        D21_AM_RDFC_DG.textContent = compute_D21_AM_RDFC();
-        E21_AM_RDFC_DG.textContent = compute_E21_AM_RDFC();
-        F21_AM_RDFC_DG.textContent = compute_F21_AM_RDFC();
-
-        ///////////////Matrix & COE
-
-        L13_f_DG.textContent = compute_L13_f();
-        L14_g_DG.textContent = compute_L14_g();
-        L15_h_DG.textContent = compute_L15_h();
-        L16_i_DG.textContent = compute_L16_i();
-        L17_k_DG.textContent = compute_L17_k();
-        L18_l_DG.textContent = compute_L18_l();
-        L19_m_DG.textContent = compute_L19_m();
-        L20_n_DG.textContent = compute_L20_n();
-        L21_p_DG.textContent = compute_L21_p();
-        L22_q_DG.textContent = compute_L22_q();
-        L23_r_DG.textContent = compute_L23_r();
-        L24_s_DG.textContent = compute_L24_s();
-        O8_Dw_Matrix_DG.textContent = compute_O8_Dw_Matrix();
-        O9_Dx_Matrix_DG.textContent = compute_O9_Dx_Matrix();
-        O10_Dy_Matrix_DG.textContent = compute_O10_Dy_Matrix();
-        O11_Dz_Matrix_DG.textContent = compute_O11_Dz_Matrix();
-        O12_D_Matrix_DG.textContent = compute_O12_D_Matrix();
-        O15_W_DG.textContent = compute_O15_W();
-        O16_X_DG.textContent = compute_O16_X();
-        O17_Y_DG.textContent = compute_O17_Y();
-        O18_Z_DG.textContent = compute_O18_Z();
-        O19_TOTAL_DG.textContent = compute_O19_TOTAL();
-    }
-    window.rdfc_computeall = rdfc_computeall;
-
-    C8_MIX_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    C17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D8_MIX_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    D17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E8_MIX_RDFC_DG.addEventListener("load", function() {
-        rdfc_computeall();
-    });
-    E9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    E17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F8_MIX_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    F17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-
-    I17_Silica_Modulus_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    I20_Alumina_Modulus_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
-    I14_Lime_Saturation_DG.addEventListener("change", function() {
-        rdfc_computeall();
-    });
     //#endregion
     //////////////////////////END MIX
 
@@ -2289,6 +541,1477 @@ document.addEventListener('resume', function() {
     console.log('App resumed (foreground)');
     // Perform actions when the app is resumed, such as restoring data
 });
+
+const rdfc = {
+
+
+    // var storedObject = JSON.parse(localStorage.getItem('Recipe' + recipenum));
+    // if (storedObject !== null) {
+
+    //     C8_MIX_RDFC_DG.value = storedObject.C8_MIX_RDFC;
+    //     C9_SiO2_RDFC_DG.value = storedObject.C9_SiO2_RDFC;
+    //     C10_Al2O3_RDFC_DG.value = storedObject.C10_Al2O3_RDFC;
+    //     C11_Fe2O3_RDFC_DG.value = storedObject.C11_Fe2O3_RDFC;
+    //     C12_CaO_RDFC_DG.value = storedObject.C12_CaO_RDFC;
+    //     C13_MgO_RDFC_DG.value = storedObject.C13_MgO_RDFC;
+    //     C14_Na2O_RDFC_DG.value = storedObject.C14_Na2O_RDFC;
+    //     C15_K2O_RDFC_DG.value = storedObject.C15_K2O_RDFC;
+    //     C16_SO3_RDFC_DG.value = storedObject.C16_SO3_RDFC;
+    //     C17_LOI_RDFC_DG.value = storedObject.C17_LOI_RDFC;
+    //     D8_MIX_RDFC_DG.value = storedObject.D8_MIX_RDFC;
+    //     D9_SiO2_RDFC_DG.value = storedObject.D9_SiO2_RDFC;
+    //     D10_Al2O3_RDFC_DG.value = storedObject.D10_Al2O3_RDFC;
+    //     D11_Fe2O3_RDFC_DG.value = storedObject.D11_Fe2O3_RDFC;
+    //     D12_CaO_RDFC_DG.value = storedObject.D12_CaO_RDFC;
+    //     D13_MgO_RDFC_DG.value = storedObject.D13_MgO_RDFC;
+    //     D14_Na2O_RDFC_DG.value = storedObject.D14_Na2O_RDFC;
+    //     D15_K2O_RDFC_DG.value = storedObject.D15_K2O_RDFC;
+    //     D16_SO3_RDFC_DG.value = storedObject.D16_SO3_RDFC;
+    //     D17_LOI_RDFC_DG.value = storedObject.D17_LOI_RDFC;
+    //     E8_MIX_RDFC_DG.value = storedObject.E8_MIX_RDFC;
+    //     E9_SiO2_RDFC_DG.value = storedObject.E9_SiO2_RDFC;
+    //     E10_Al2O3_RDFC_DG.value = storedObject.E10_Al2O3_RDFC;
+    //     E11_Fe2O3_RDFC_DG.value = storedObject.E11_Fe2O3_RDFC;
+    //     E12_CaO_RDFC_DG.value = storedObject.E12_CaO_RDFC;
+    //     E13_MgO_RDFC_DG.value = storedObject.E13_MgO_RDFC;
+    //     E14_Na2O_RDFC_DG.value = storedObject.E14_Na2O_RDFC;
+    //     E15_K2O_RDFC_DG.value = storedObject.E15_K2O_RDFC;
+    //     E16_SO3_RDFC_DG.value = storedObject.E16_SO3_RDFC;
+    //     E17_LOI_RDFC_DG.value = storedObject.E17_LOI_RDFC;
+    //     F8_MIX_RDFC_DG.value = storedObject.F8_MIX_RDFC;
+    //     F9_SiO2_RDFC_DG.value = storedObject.F9_SiO2_RDFC;
+    //     F10_Al2O3_RDFC_DG.value = storedObject.F10_Al2O3_RDFC;
+    //     F11_Fe2O3_RDFC_DG.value = storedObject.F11_Fe2O3_RDFC;
+    //     F12_CaO_RDFC_DG.value = storedObject.F12_CaO_RDFC;
+    //     F13_MgO_RDFC_DG.value = storedObject.F13_MgO_RDFC;
+    //     F14_Na2O_RDFC_DG.value = storedObject.F14_Na2O_RDFC;
+    //     F15_K2O_RDFC_DG.value = storedObject.F15_K2O_RDFC;
+    //     F16_SO3_RDFC_DG.value = storedObject.F16_SO3_RDFC;
+    //     F17_LOI_RDFC_DG.value = storedObject.F17_LOI_RDFC;
+    //     I14_Lime_Saturation_DG.value = storedObject.I14_Lime_Saturation;
+    //     I17_Silica_Modulus_DG.value = storedObject.I17_Silica_Modulus;
+    //     I20_Alumina_Modulus_DG.value = storedObject.I20_Alumina_Modulus;
+
+    //     // if (typeof rdfc_computeall === 'function') {
+    //     //   // The function is defined, so you can call it
+
+    //     //   rdfc_computeall();
+    //     // }
+
+    // }
+
+    // BEGIN FUNCTION MIX % /////////////////////////////////
+    //#region
+    compute_G8_MIX_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        G8_MIX_RDFC = C8_MIX_RDFC + D8_MIX_RDFC + E8_MIX_RDFC + F8_MIX_RDFC;
+
+        return G8_MIX_RDFC.toFixed(2);
+    },
+
+    compute_G9_SiO2_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C9_SiO2_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D9_SiO2_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E9_SiO2_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F9_SiO2_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+        G9_SiO2_RDFC =
+            (C8_MIX_RDFC * C9_SiO2_RDFC +
+                D8_MIX_RDFC * D9_SiO2_RDFC +
+                E8_MIX_RDFC * E9_SiO2_RDFC +
+                F8_MIX_RDFC * F9_SiO2_RDFC) /
+            G8_MIX_RDFC;
+
+        return G9_SiO2_RDFC.toFixed(2);
+    },
+    compute_G10_Al203_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+        G10_Al2O3_RDFC =
+            (C8_MIX_RDFC * C10_Al2O3_RDFC +
+                D8_MIX_RDFC * D10_Al2O3_RDFC +
+                E8_MIX_RDFC * E10_Al2O3_RDFC +
+                F8_MIX_RDFC * F10_Al2O3_RDFC) /
+            G8_MIX_RDFC;
+        return G10_Al2O3_RDFC.toFixed(2);
+    },
+    compute_G11_Fe2O3_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+        G11_Fe2O3_RDFC =
+            (C8_MIX_RDFC * C11_Fe2O3_RDFC +
+                D8_MIX_RDFC * D11_Fe2O3_RDFC +
+                E8_MIX_RDFC * E11_Fe2O3_RDFC +
+                F8_MIX_RDFC * F11_Fe2O3_RDFC) /
+            G8_MIX_RDFC;
+
+        return G11_Fe2O3_RDFC.toFixed(2);
+    },
+    compute_G12_CaO_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C12_CaO_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D12_CaO_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E12_CaO_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F12_CaO_RDFC_DG.value);
+        G12_CaO_RDFC =
+            (C8_MIX_RDFC * C12_CaO_RDFC +
+                D8_MIX_RDFC * D12_CaO_RDFC +
+                E8_MIX_RDFC * E12_CaO_RDFC +
+                F8_MIX_RDFC * F12_CaO_RDFC) /
+            G8_MIX_RDFC;
+
+        return G12_CaO_RDFC.toFixed(2);
+    },
+
+    compute_G13_MgO_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C13_MgO_RDFC = isNaN(parseFloat(C13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C13_MgO_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D13_MgO_RDFC = isNaN(parseFloat(D13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D13_MgO_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E13_MgO_RDFC = isNaN(parseFloat(E13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E13_MgO_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F13_MgO_RDFC = isNaN(parseFloat(F13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F13_MgO_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+        G13_MgO_RDFC =
+            (C8_MIX_RDFC * C13_MgO_RDFC +
+                D8_MIX_RDFC * D13_MgO_RDFC +
+                E8_MIX_RDFC * E13_MgO_RDFC +
+                F8_MIX_RDFC * F13_MgO_RDFC) /
+            G8_MIX_RDFC;
+
+        return G13_MgO_RDFC.toFixed(2);
+    },
+    compute_G14_Na2O_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C14_Na2O_RDFC = isNaN(parseFloat(C14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C14_Na2O_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D14_Na2O_RDFC = isNaN(parseFloat(D14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D14_Na2O_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E14_Na2O_RDFC = isNaN(parseFloat(E14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E14_Na2O_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F14_Na2O_RDFC = isNaN(parseFloat(F14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F14_Na2O_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+        G14_Na2O_RDFC =
+            (C8_MIX_RDFC * C14_Na2O_RDFC +
+                D8_MIX_RDFC * D14_Na2O_RDFC +
+                E8_MIX_RDFC * E14_Na2O_RDFC +
+                F8_MIX_RDFC * F14_Na2O_RDFC) /
+            G8_MIX_RDFC;
+
+        return G14_Na2O_RDFC.toFixed(2);
+    },
+    compute_G15_K2O_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C15_K2O_RDFC = isNaN(parseFloat(C15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C15_K2O_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D15_K2O_RDFC = isNaN(parseFloat(D15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D15_K2O_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E15_K2O_RDFC = isNaN(parseFloat(E15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E15_K2O_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F15_K2O_RDFC = isNaN(parseFloat(F15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F15_K2O_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+        G15_K2O_RDFC =
+            (C8_MIX_RDFC * C15_K2O_RDFC +
+                D8_MIX_RDFC * D15_K2O_RDFC +
+                E8_MIX_RDFC * E15_K2O_RDFC +
+                F8_MIX_RDFC * F15_K2O_RDFC) /
+            G8_MIX_RDFC;
+
+        return G15_K2O_RDFC.toFixed(2);
+    },
+    compute_G16_SO3_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C16_SO3_RDFC = isNaN(parseFloat(C16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C16_SO3_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D16_SO3_RDFC = isNaN(parseFloat(D16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D16_SO3_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E16_SO3_RDFC = isNaN(parseFloat(E16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E16_SO3_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F16_SO3_RDFC = isNaN(parseFloat(F16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F16_SO3_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+        G16_SO3_RDFC =
+            (C8_MIX_RDFC * C16_SO3_RDFC +
+                D8_MIX_RDFC * D16_SO3_RDFC +
+                E8_MIX_RDFC * E16_SO3_RDFC +
+                F8_MIX_RDFC * F16_SO3_RDFC) /
+            G8_MIX_RDFC;
+
+        return G16_SO3_RDFC.toFixed(2);
+    },
+
+    compute_G17_LOI_RDFC: function() {
+        C8_MIX_RDFC = isNaN(parseFloat(C8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C8_MIX_RDFC_DG.value);
+        C17_LOI_RDFC = isNaN(parseFloat(C17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C17_LOI_RDFC_DG.value);
+        D8_MIX_RDFC = isNaN(parseFloat(D8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D8_MIX_RDFC_DG.value);
+        D17_LOI_RDFC = isNaN(parseFloat(D17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D17_LOI_RDFC_DG.value);
+        E8_MIX_RDFC = isNaN(parseFloat(E8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E8_MIX_RDFC_DG.value);
+        E17_LOI_RDFC = isNaN(parseFloat(E17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E17_LOI_RDFC_DG.value);
+        F8_MIX_RDFC = isNaN(parseFloat(F8_MIX_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F8_MIX_RDFC_DG.value);
+        F17_LOI_RDFC = isNaN(parseFloat(F17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F17_LOI_RDFC_DG.value);
+        G8_MIX_RDFC = isNaN(parseFloat(G8_MIX_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G8_MIX_RDFC_DG.textContent);
+
+        G17_LOI_RDFC =
+            (C8_MIX_RDFC * C17_LOI_RDFC +
+                D8_MIX_RDFC * D17_LOI_RDFC +
+                E8_MIX_RDFC * E17_LOI_RDFC +
+                F8_MIX_RDFC * F17_LOI_RDFC) /
+            G8_MIX_RDFC;
+
+        return G17_LOI_RDFC.toFixed(2);
+    },
+
+    //all fix cell
+    compute_G18_TOTAL_RDFC: function() {
+        G9_SiO2_RDFC = isNaN(parseFloat(G9_SiO2_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G9_SiO2_RDFC_DG.textContent);
+        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G10_Al2O3_RDFC_DG.textContent);
+        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
+        G12_CaO_RDFC = isNaN(parseFloat(G12_CaO_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G12_CaO_RDFC_DG.textContent);
+        G13_MgO_RDFC = isNaN(parseFloat(G13_MgO_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G13_MgO_RDFC_DG.textContent);
+        G14_Na2O_RDFC = isNaN(parseFloat(G14_Na2O_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G14_Na2O_RDFC_DG.textContent);
+        G15_K2O_RDFC = isNaN(parseFloat(G15_K2O_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G15_K2O_RDFC_DG.textContent);
+        G16_SO3_RDFC = isNaN(parseFloat(G16_SO3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G16_SO3_RDFC_DG.textContent);
+        G17_LOI_RDFC = isNaN(parseFloat(G17_LOI_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G17_LOI_RDFC_DG.textContent);
+        G18_TOTAL_RDFC =
+            G9_SiO2_RDFC +
+            G10_Al2O3_RDFC +
+            G11_Fe2O3_RDFC +
+            G12_CaO_RDFC +
+            G13_MgO_RDFC +
+            G14_Na2O_RDFC +
+            G15_K2O_RDFC +
+            G16_SO3_RDFC +
+            G17_LOI_RDFC;
+
+        return G18_TOTAL_RDFC.toFixed(2);
+    },
+    compute_G19_LSF_RDFC: function() {
+        G12_CaO_RDFC = isNaN(parseFloat(G12_CaO_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G12_CaO_RDFC_DG.textContent);
+        G9_SiO2_RDFC = isNaN(parseFloat(G9_SiO2_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G9_SiO2_RDFC_DG.textContent);
+        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G10_Al2O3_RDFC_DG.textContent);
+        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
+        G19_LSF_RDFC =
+            100 * G12_CaO_RDFC /
+            (2.8 * G9_SiO2_RDFC +
+                1.18 * G10_Al2O3_RDFC +
+                0.65 * G11_Fe2O3_RDFC);
+
+        return G19_LSF_RDFC.toFixed(2);
+    },
+    compute_G20_SM_RDFC: function() {
+        G9_SiO2_RDFC = isNaN(parseFloat(G9_SiO2_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G9_SiO2_RDFC_DG.textContent);
+        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G10_Al2O3_RDFC_DG.textContent);
+        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
+        G20_SM_RDFC = G9_SiO2_RDFC / (G10_Al2O3_RDFC + G11_Fe2O3_RDFC);
+
+        return G20_SM_RDFC.toFixed(2);
+    },
+    compute_G21_AM_RDFC: function() {
+        G10_Al2O3_RDFC = isNaN(parseFloat(G10_Al2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G10_Al2O3_RDFC_DG.textContent);
+        G11_Fe2O3_RDFC = isNaN(parseFloat(G11_Fe2O3_RDFC_DG.textContent)) ?
+            0.0 :
+            parseFloat(G11_Fe2O3_RDFC_DG.textContent);
+        G21_AM_RDFC = G10_Al2O3_RDFC / G11_Fe2O3_RDFC;
+
+        return G21_AM_RDFC.toFixed(2);
+    },
+
+    //   0000000000000000000000000000000000000000000000000000
+
+    compute_C18_TOTAL_RDFC: function() {
+        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C9_SiO2_RDFC_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C12_CaO_RDFC_DG.value);
+        C13_MgO_RDFC = isNaN(parseFloat(C13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C13_MgO_RDFC_DG.value);
+        C14_Na2O_RDFC = isNaN(parseFloat(C14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C14_Na2O_RDFC_DG.value);
+        C15_K2O_RDFC = isNaN(parseFloat(C15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C15_K2O_RDFC_DG.value);
+        C16_SO3_RDFC = isNaN(parseFloat(C16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C16_SO3_RDFC_DG.value);
+        C17_LOI_RDFC = isNaN(parseFloat(C17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C17_LOI_RDFC_DG.value);
+
+        C18_TOTAL_RDFC =
+            C9_SiO2_RDFC +
+            C10_Al2O3_RDFC +
+            C11_Fe2O3_RDFC +
+            C12_CaO_RDFC +
+            C13_MgO_RDFC +
+            C14_Na2O_RDFC +
+            C15_K2O_RDFC +
+            C16_SO3_RDFC +
+            C17_LOI_RDFC;
+
+        return C18_TOTAL_RDFC.toFixed(2);
+    },
+    compute_D18_TOTAL_RDFC: function() {
+        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D9_SiO2_RDFC_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D12_CaO_RDFC_DG.value);
+        D13_MgO_RDFC = isNaN(parseFloat(D13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D13_MgO_RDFC_DG.value);
+        D14_Na2O_RDFC = isNaN(parseFloat(D14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D14_Na2O_RDFC_DG.value);
+        D15_K2O_RDFC = isNaN(parseFloat(D15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D15_K2O_RDFC_DG.value);
+        D16_SO3_RDFC = isNaN(parseFloat(D16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D16_SO3_RDFC_DG.value);
+        D17_LOI_RDFC = isNaN(parseFloat(D17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D17_LOI_RDFC_DG.value);
+
+        D18_TOTAL_RDFC =
+            D9_SiO2_RDFC +
+            D10_Al2O3_RDFC +
+            D11_Fe2O3_RDFC +
+            D12_CaO_RDFC +
+            D13_MgO_RDFC +
+            D14_Na2O_RDFC +
+            D15_K2O_RDFC +
+            D16_SO3_RDFC +
+            D17_LOI_RDFC;
+
+        return D18_TOTAL_RDFC.toFixed(2);
+    },
+
+    compute_E18_TOTAL_RDFC: function() {
+        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E9_SiO2_RDFC_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E12_CaO_RDFC_DG.value);
+        E13_MgO_RDFC = isNaN(parseFloat(E13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E13_MgO_RDFC_DG.value);
+        E14_Na2O_RDFC = isNaN(parseFloat(E14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E14_Na2O_RDFC_DG.value);
+        E15_K2O_RDFC = isNaN(parseFloat(E15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E15_K2O_RDFC_DG.value);
+        E16_SO3_RDFC = isNaN(parseFloat(E16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E16_SO3_RDFC_DG.value);
+        E17_LOI_RDFC = isNaN(parseFloat(E17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E17_LOI_RDFC_DG.value);
+
+        E18_TOTAL_RDFC =
+            E9_SiO2_RDFC +
+            E10_Al2O3_RDFC +
+            E11_Fe2O3_RDFC +
+            E12_CaO_RDFC +
+            E13_MgO_RDFC +
+            E14_Na2O_RDFC +
+            E15_K2O_RDFC +
+            E16_SO3_RDFC +
+            E17_LOI_RDFC;
+
+        return E18_TOTAL_RDFC.toFixed(2);
+    },
+    compute_F18_TOTAL_RDFC: function() {
+        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F9_SiO2_RDFC_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F12_CaO_RDFC_DG.value);
+        F13_MgO_RDFC = isNaN(parseFloat(F13_MgO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F13_MgO_RDFC_DG.value);
+        F14_Na2O_RDFC = isNaN(parseFloat(F14_Na2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F14_Na2O_RDFC_DG.value);
+        F15_K2O_RDFC = isNaN(parseFloat(F15_K2O_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F15_K2O_RDFC_DG.value);
+        F16_SO3_RDFC = isNaN(parseFloat(F16_SO3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F16_SO3_RDFC_DG.value);
+        F17_LOI_RDFC = isNaN(parseFloat(F17_LOI_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F17_LOI_RDFC_DG.value);
+
+        F18_TOTAL_RDFC =
+            F9_SiO2_RDFC +
+            F10_Al2O3_RDFC +
+            F11_Fe2O3_RDFC +
+            F12_CaO_RDFC +
+            F13_MgO_RDFC +
+            F14_Na2O_RDFC +
+            F15_K2O_RDFC +
+            F16_SO3_RDFC +
+            F17_LOI_RDFC;
+
+        return F18_TOTAL_RDFC.toFixed(2);
+    },
+
+    //LSF
+    compute_C19_LSF_RDFC: function() {
+        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C12_CaO_RDFC_DG.value);
+        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C9_SiO2_RDFC_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+
+        C19_LSF_RDFC =
+            (100 * C12_CaO_RDFC) /
+            (2.8 * C9_SiO2_RDFC +
+                1.18 * C10_Al2O3_RDFC +
+                0.65 * C11_Fe2O3_RDFC_DG.value);
+
+        return C19_LSF_RDFC.toFixed(2);
+    },
+    compute_D19_LSF_RDFC: function() {
+        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D9_SiO2_RDFC_DG.value);
+        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D12_CaO_RDFC_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+
+        D19_LSF_RDFC =
+            (100 * D12_CaO_RDFC) /
+            (2.8 * D9_SiO2_RDFC +
+                1.18 * D10_Al2O3_RDFC +
+                0.65 * D11_Fe2O3_RDFC_DG.value);
+
+        return D19_LSF_RDFC.toFixed(2);
+    },
+    compute_E19_LSF_RDFC: function() {
+        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E9_SiO2_RDFC_DG.value);
+        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E12_CaO_RDFC_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+
+        E19_LSF_RDFC =
+            (100 * E12_CaO_RDFC) /
+            (2.8 * E9_SiO2_RDFC +
+                1.18 * E10_Al2O3_RDFC +
+                0.65 * E11_Fe2O3_RDFC_DG.value);
+
+        return E19_LSF_RDFC.toFixed(2);
+    },
+    compute_F19_LSF_RDFC: function() {
+        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F9_SiO2_RDFC_DG.value);
+        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F12_CaO_RDFC_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+
+        F19_LSF_RDFC =
+            (100 * F12_CaO_RDFC) /
+            (2.8 * F9_SiO2_RDFC +
+                1.18 * F10_Al2O3_RDFC +
+                0.65 * F11_Fe2O3_RDFC_DG.value);
+
+        return F19_LSF_RDFC.toFixed(2);
+    },
+
+    compute_C20_SM_RDFC: function() {
+        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C9_SiO2_RDFC_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+
+        C20_SM_RDFC = C9_SiO2_RDFC / (C10_Al2O3_RDFC + C11_Fe2O3_RDFC);
+
+        return C20_SM_RDFC.toFixed(2);
+    },
+    compute_D20_SM_RDFC: function() {
+        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D9_SiO2_RDFC_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+
+        D20_SM_RDFC = D9_SiO2_RDFC / (D10_Al2O3_RDFC + D11_Fe2O3_RDFC);
+
+        return D20_SM_RDFC.toFixed(2);
+    },
+    compute_E20_SM_RDFC: function() {
+        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E9_SiO2_RDFC_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+
+        E20_SM_RDFC = E9_SiO2_RDFC / (E10_Al2O3_RDFC + E11_Fe2O3_RDFC);
+
+        return E20_SM_RDFC.toFixed(2);
+    },
+    compute_F20_SM_RDFC: function() {
+        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F9_SiO2_RDFC_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+
+        F20_SM_RDFC = F9_SiO2_RDFC / (F10_Al2O3_RDFC + F11_Fe2O3_RDFC);
+
+        return F20_SM_RDFC.toFixed(2);
+    },
+
+    //AM
+    compute_C21_AM_RDFC: function() {
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+
+        C21_AM_RDFC = C10_Al2O3_RDFC / C11_Fe2O3_RDFC;
+
+        return C21_AM_RDFC.toFixed(2);
+    },
+    compute_D21_AM_RDFC: function() {
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+
+        D21_AM_RDFC = D10_Al2O3_RDFC / D11_Fe2O3_RDFC;
+
+        return D21_AM_RDFC.toFixed(2);
+    },
+    compute_E21_AM_RDFC: function() {
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+
+        E21_AM_RDFC = E10_Al2O3_RDFC / E11_Fe2O3_RDFC;
+
+        return E21_AM_RDFC.toFixed(2);
+    },
+    compute_F21_AM_RDFC: function() {
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+
+        F21_AM_RDFC = F10_Al2O3_RDFC / F11_Fe2O3_RDFC;
+
+        return F21_AM_RDFC.toFixed(2);
+    },
+
+    //End NAME: MIX
+    //#endregion
+    // END FUNCTION////////////////////////////////////////
+    // Matrix and Coe FUNCTIONS
+    //#region
+    compute_L13_f: function() {
+        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I20_Alumina_Modulus_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+
+        console;
+        L13_f = I20_Alumina_Modulus * C11_Fe2O3_RDFC - C10_Al2O3_RDFC;
+
+        return L13_f.toFixed(4);
+    },
+    compute_L14_g: function() {
+        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I20_Alumina_Modulus_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+
+        L14_g = I20_Alumina_Modulus * D11_Fe2O3_RDFC - D10_Al2O3_RDFC;
+
+        return L14_g.toFixed(4);
+    },
+    compute_L15_h: function() {
+        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I20_Alumina_Modulus_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        L15_h = I20_Alumina_Modulus * E11_Fe2O3_RDFC - E10_Al2O3_RDFC;
+
+        return L15_h.toFixed(4);
+    },
+    compute_L16_i: function() {
+        I20_Alumina_Modulus = isNaN(parseFloat(I20_Alumina_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I20_Alumina_Modulus_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        L16_i = I20_Alumina_Modulus * F11_Fe2O3_RDFC - F10_Al2O3_RDFC;
+
+        return L16_i.toFixed(4);
+    },
+    compute_L17_k: function() {
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C9_SiO2_RDFC_DG.value);
+        L17_k =
+            I17_Silica_Modulus * C10_Al2O3_RDFC +
+            I17_Silica_Modulus * C11_Fe2O3_RDFC -
+            C9_SiO2_RDFC;
+
+        return L17_k.toFixed(4);
+    },
+    compute_L18_l: function() {
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D9_SiO2_RDFC_DG.value);
+        L18_l =
+            I17_Silica_Modulus * D10_Al2O3_RDFC +
+            I17_Silica_Modulus * D11_Fe2O3_RDFC -
+            D9_SiO2_RDFC;
+
+        return L18_l.toFixed(4);
+    },
+    compute_L19_m: function() {
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E9_SiO2_RDFC_DG.value);
+        L19_m =
+            I17_Silica_Modulus * E10_Al2O3_RDFC +
+            I17_Silica_Modulus * E11_Fe2O3_RDFC -
+            E9_SiO2_RDFC;
+
+        return L19_m.toFixed(4);
+    },
+
+    compute_L20_n: function() {
+        I17_Silica_Modulus = isNaN(parseFloat(I17_Silica_Modulus_DG.value)) ?
+            0.0 :
+            parseFloat(I17_Silica_Modulus_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F9_SiO2_RDFC_DG.value);
+        L20_n =
+            I17_Silica_Modulus * F10_Al2O3_RDFC +
+            I17_Silica_Modulus * F11_Fe2O3_RDFC -
+            F9_SiO2_RDFC;
+
+        return L20_n.toFixed(4);
+    },
+    compute_L21_p: function() {
+        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
+            0.0 :
+            parseFloat(I14_Lime_Saturation_DG.value);
+        C9_SiO2_RDFC = isNaN(parseFloat(C9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C9_SiO2_RDFC_DG.value);
+        C10_Al2O3_RDFC = isNaN(parseFloat(C10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C10_Al2O3_RDFC_DG.value);
+        C11_Fe2O3_RDFC = isNaN(parseFloat(C11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C11_Fe2O3_RDFC_DG.value);
+        C12_CaO_RDFC = isNaN(parseFloat(C12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(C12_CaO_RDFC_DG.value);
+        L21_p =
+            I14_Lime_Saturation * 2.8 * C9_SiO2_RDFC +
+            I14_Lime_Saturation * 1.18 * C10_Al2O3_RDFC +
+            I14_Lime_Saturation * 0.65 * C11_Fe2O3_RDFC -
+            100 * C12_CaO_RDFC;
+
+        return L21_p.toFixed(4);
+    },
+    compute_L22_q: function() {
+        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
+            0.0 :
+            parseFloat(I14_Lime_Saturation_DG.value);
+        D9_SiO2_RDFC = isNaN(parseFloat(D9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D9_SiO2_RDFC_DG.value);
+        D10_Al2O3_RDFC = isNaN(parseFloat(D10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D10_Al2O3_RDFC_DG.value);
+        D11_Fe2O3_RDFC = isNaN(parseFloat(D11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D11_Fe2O3_RDFC_DG.value);
+        D12_CaO_RDFC = isNaN(parseFloat(D12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(D12_CaO_RDFC_DG.value);
+        L22_q =
+            I14_Lime_Saturation * 2.8 * D9_SiO2_RDFC +
+            I14_Lime_Saturation * 1.18 * D10_Al2O3_RDFC +
+            I14_Lime_Saturation * 0.65 * D11_Fe2O3_RDFC -
+            100 * D12_CaO_RDFC;
+
+        return L22_q.toFixed(4);
+    },
+    compute_L23_r: function() {
+        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
+            0.0 :
+            parseFloat(I14_Lime_Saturation_DG.value);
+        E9_SiO2_RDFC = isNaN(parseFloat(E9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E9_SiO2_RDFC_DG.value);
+        E10_Al2O3_RDFC = isNaN(parseFloat(E10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E10_Al2O3_RDFC_DG.value);
+        E11_Fe2O3_RDFC = isNaN(parseFloat(E11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E11_Fe2O3_RDFC_DG.value);
+        E12_CaO_RDFC = isNaN(parseFloat(E12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(E12_CaO_RDFC_DG.value);
+        L23_r =
+            I14_Lime_Saturation * 2.8 * E9_SiO2_RDFC +
+            I14_Lime_Saturation * 1.18 * E10_Al2O3_RDFC +
+            I14_Lime_Saturation * 0.65 * E11_Fe2O3_RDFC -
+            100 * E12_CaO_RDFC;
+
+        return L23_r.toFixed(4);
+    },
+    compute_L24_s: function() {
+        I14_Lime_Saturation = isNaN(parseFloat(I14_Lime_Saturation_DG.value)) ?
+            0.0 :
+            parseFloat(I14_Lime_Saturation_DG.value);
+        F9_SiO2_RDFC = isNaN(parseFloat(F9_SiO2_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F9_SiO2_RDFC_DG.value);
+        F10_Al2O3_RDFC = isNaN(parseFloat(F10_Al2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F10_Al2O3_RDFC_DG.value);
+        F11_Fe2O3_RDFC = isNaN(parseFloat(F11_Fe2O3_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F11_Fe2O3_RDFC_DG.value);
+        F12_CaO_RDFC = isNaN(parseFloat(F12_CaO_RDFC_DG.value)) ?
+            0.0 :
+            parseFloat(F12_CaO_RDFC_DG.value);
+        L24_s =
+            I14_Lime_Saturation * 2.8 * F9_SiO2_RDFC +
+            I14_Lime_Saturation * 1.18 * F10_Al2O3_RDFC +
+            I14_Lime_Saturation * 0.65 * F11_Fe2O3_RDFC -
+            100 * F12_CaO_RDFC;
+
+        return L24_s.toFixed(4);
+    },
+
+    compute_O8_Dw_Matrix: function() {
+        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
+            0.0 :
+            parseFloat(L12_e_DG.textContent);
+        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
+            0.0 :
+            parseFloat(L14_g_DG.textContent);
+        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
+            0.0 :
+            parseFloat(L15_h_DG.textContent);
+        L16_i = isNaN(parseFloat(L16_i_DG.textContent)) ?
+            0.0 :
+            parseFloat(L16_i_DG.textContent);
+        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
+            0.0 :
+            parseFloat(L19_m_DG.textContent);
+        L20_n = isNaN(parseFloat(L20_n_DG.textContent)) ?
+            0.0 :
+            parseFloat(L20_n_DG.textContent);
+        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
+            0.0 :
+            parseFloat(L18_l_DG.textContent);
+        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
+            0.0 :
+            parseFloat(L24_s_DG.textContent);
+        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
+            0.0 :
+            parseFloat(L22_q_DG.textContent);
+        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
+            0.0 :
+            parseFloat(L23_r_DG.textContent);
+
+        O8_Dw_Matrix =
+            (L12_e * L14_g * L19_m * L24_s) +
+            (L12_e * L15_h * L20_n * L22_q) +
+            (L12_e * L16_i * L18_l * L23_r) -
+            (L12_e * L16_i * L19_m * L22_q) -
+            (L12_e * L14_g * L20_n * L23_r) -
+            (L12_e * L15_h * L18_l * L24_s);
+
+        return O8_Dw_Matrix.toFixed(0);
+    },
+    compute_O9_Dx_Matrix: function() {
+        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
+            0.0 :
+            parseFloat(L13_f_DG.textContent);
+        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
+            0.0 :
+            parseFloat(L12_e_DG.textContent);
+        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
+            0.0 :
+            parseFloat(L17_k_DG.textContent);
+        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
+            0.0 :
+            parseFloat(L21_p_DG.textContent);
+        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
+            0.0 :
+            parseFloat(L19_m_DG.textContent);
+        L20_n = isNaN(parseFloat(L20_n_DG.textContent)) ?
+            0.0 :
+            parseFloat(L20_n_DG.textContent);
+        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
+            0.0 :
+            parseFloat(L15_h_DG.textContent);
+        L16_i = isNaN(parseFloat(L16_i_DG.textContent)) ?
+            0.0 :
+            parseFloat(L16_i_DG.textContent);
+        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
+            0.0 :
+            parseFloat(L23_r_DG.textContent);
+        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
+            0.0 :
+            parseFloat(L24_s_DG.textContent);
+
+        O9_Dx_Matrix = -L13_f * L12_e * L19_m * L24_s +
+            L13_f * L12_e * L20_n * L23_r +
+            L17_k * L12_e * L15_h * L24_s -
+            L17_k * L12_e * L16_i * L23_r -
+            L21_p * L12_e * L15_h * L20_n +
+            L21_p * L12_e * L16_i * L19_m;
+
+        return O9_Dx_Matrix.toFixed(0);
+    },
+    compute_O10_Dy_Matrix: function() {
+        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
+            0.0 :
+            parseFloat(L13_f_DG.textContent);
+        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
+            0.0 :
+            parseFloat(L12_e_DG.textContent);
+        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
+            0.0 :
+            parseFloat(L17_k_DG.textContent);
+        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
+            0.0 :
+            parseFloat(L21_p_DG.textContent);
+        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
+            0.0 :
+            parseFloat(L19_m_DG.textContent);
+        L20_n = isNaN(parseFloat(L20_n_DG.textContent)) ?
+            0.0 :
+            parseFloat(L20_n_DG.textContent);
+        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
+            0.0 :
+            parseFloat(L18_l_DG.textContent);
+        L16_i = isNaN(parseFloat(L16_i_DG.textContent)) ?
+            0.0 :
+            parseFloat(L16_i_DG.textContent);
+        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
+            0.0 :
+            parseFloat(L14_g_DG.textContent);
+        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
+            0.0 :
+            parseFloat(L22_q_DG.textContent);
+        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
+            0.0 :
+            parseFloat(L24_s_DG.textContent);
+
+        O10_Dy_Matrix = -L13_f * L12_e * L20_n * L22_q +
+            L13_f * L12_e * L18_l * L24_s +
+            L17_k * L12_e * L16_i * L22_q -
+            L17_k * L12_e * L14_g * L24_s -
+            L21_p * L12_e * L16_i * L18_l +
+            L21_p * L12_e * L14_g * L20_n;
+
+        return O10_Dy_Matrix.toFixed(1);
+    },
+    compute_O11_Dz_Matrix: function() {
+        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
+            0.0 :
+            parseFloat(L13_f_DG.textContent);
+        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
+            0.0 :
+            parseFloat(L12_e_DG.textContent);
+        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
+            0.0 :
+            parseFloat(L17_k_DG.textContent);
+        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
+            0.0 :
+            parseFloat(L21_p_DG.textContent);
+        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
+            0.0 :
+            parseFloat(L19_m_DG.textContent);
+        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
+            0.0 :
+            parseFloat(L18_l_DG.textContent);
+        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
+            0.0 :
+            parseFloat(L15_h_DG.textContent);
+        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
+            0.0 :
+            parseFloat(L14_g_DG.textContent);
+        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
+            0.0 :
+            parseFloat(L22_q_DG.textContent);
+        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
+            0.0 :
+            parseFloat(L23_r_DG.textContent);
+
+        O11_Dz_Matrix = -L13_f * L12_e * L18_l * L23_r +
+            L13_f * L12_e * L19_m * L22_q +
+            L17_k * L12_e * L14_g * L23_r -
+            L17_k * L12_e * L15_h * L22_q -
+            L21_p * L12_e * L14_g * L19_m +
+            L21_p * L12_e * L15_h * L18_l;
+
+        return O11_Dz_Matrix.toFixed(1);
+    },
+    compute_O12_D_Matrix: function() {
+        L13_f = isNaN(parseFloat(L13_f_DG.textContent)) ?
+            0.0 :
+            parseFloat(L13_f_DG.textContent);
+        L12_e = isNaN(parseFloat(L12_e_DG.textContent)) ?
+            0.0 :
+            parseFloat(L12_e_DG.textContent);
+        L17_k = isNaN(parseFloat(L17_k_DG.textContent)) ?
+            0.0 :
+            parseFloat(L17_k_DG.textContent);
+        L21_p = isNaN(parseFloat(L21_p_DG.textContent)) ?
+            0.0 :
+            parseFloat(L21_p_DG.textContent);
+        L19_m = isNaN(parseFloat(L19_m_DG.textContent)) ?
+            0.0 :
+            parseFloat(L19_m_DG.textContent);
+        L18_l = isNaN(parseFloat(L18_l_DG.textContent)) ?
+            0.0 :
+            parseFloat(L18_l_DG.textContent);
+        L15_h = isNaN(parseFloat(L15_h_DG.textContent)) ?
+            0.0 :
+            parseFloat(L15_h_DG.textContent);
+        L14_g = isNaN(parseFloat(L14_g_DG.textContent)) ?
+            0.0 :
+            parseFloat(L14_g_DG.textContent);
+        L22_q = isNaN(parseFloat(L22_q_DG.textContent)) ?
+            0.0 :
+            parseFloat(L22_q_DG.textContent);
+        L23_r = isNaN(parseFloat(L23_r_DG.textContent)) ?
+            0.0 :
+            parseFloat(L23_r_DG.textContent);
+        L24_s = isNaN(parseFloat(L24_s_DG.textContent)) ?
+            0.0 :
+            parseFloat(L24_s_DG.textContent);
+
+        O12_D_Matrix =
+            (L14_g * L19_m * L24_s) +
+            (L15_h * L20_n * L22_q) +
+            (L16_i * L18_l * L23_r) -
+            (L16_i * L19_m * L22_q) -
+            (L14_g * L20_n * L23_r) -
+            (L15_h * L18_l * L24_s) -
+            (L13_f * L19_m * L24_s) -
+            (L13_f * L20_n * L22_q) -
+            (L13_f * L18_l * L23_r) +
+            (L13_f * L19_m * L22_q) +
+            (L13_f * L20_n * L23_r) +
+            (L13_f * L18_l * L24_s) +
+            (L17_k * L15_h * L24_s) +
+            (L17_k * L16_i * L22_q) +
+            (L17_k * L14_g * L23_r) -
+            (L17_k * L15_h * L22_q) -
+            (L17_k * L16_i * L23_r) -
+            (L17_k * L14_g * L24_s) -
+            (L21_p * L15_h * L20_n) -
+            (L21_p * L16_i * L18_l) -
+            (L21_p * L14_g * L19_m) +
+            (L21_p * L15_h * L18_l) +
+            (L21_p * L16_i * L19_m) +
+            (L21_p * L14_g * L20_n);
+
+        return O12_D_Matrix.toFixed(1);
+    },
+
+    compute_O15_W: function() {
+        O8_Dw_Matrix = isNaN(parseFloat(O8_Dw_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O8_Dw_Matrix_DG.textContent);
+        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O12_D_Matrix_DG.textContent);
+
+        O15_W = O8_Dw_Matrix / O12_D_Matrix;
+        return O15_W.toFixed(1);
+    },
+    compute_O16_X: function() {
+        O9_Dx_Matrix = isNaN(parseFloat(O9_Dx_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O9_Dx_Matrix_DG.textContent);
+        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O12_D_Matrix_DG.textContent);
+        O16_X = O9_Dx_Matrix / O12_D_Matrix;
+        return O16_X.toFixed(1);
+    },
+    compute_O17_Y: function() {
+        O10_Dy_Matrix = isNaN(parseFloat(O10_Dy_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O10_Dy_Matrix_DG.textContent);
+        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O12_D_Matrix_DG.textContent);
+        O17_Y = O10_Dy_Matrix / O12_D_Matrix;
+        return O17_Y.toFixed(1);
+    },
+    compute_O18_Z: function() {
+        O11_Dz_Matrix = isNaN(parseFloat(O11_Dz_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O11_Dz_Matrix_DG.textContent);
+        O12_D_Matrix = isNaN(parseFloat(O12_D_Matrix_DG.textContent)) ?
+            0.0 :
+            parseFloat(O12_D_Matrix_DG.textContent);
+        O18_Z = O11_Dz_Matrix / O12_D_Matrix;
+        return O18_Z.toFixed(1);
+    },
+    compute_O19_TOTAL: function() {
+        O15_W = isNaN(parseFloat(O15_W_DG.textContent)) ?
+            0.0 :
+            parseFloat(O15_W_DG.textContent);
+        O16_X = isNaN(parseFloat(O16_X_DG.textContent)) ?
+            0.0 :
+            parseFloat(O16_X_DG.textContent);
+        O17_Y = isNaN(parseFloat(O17_Y_DG.textContent)) ?
+            0.0 :
+            parseFloat(O17_Y_DG.textContent);
+        O18_Z = isNaN(parseFloat(O18_Z_DG.textContent)) ?
+            0.0 :
+            parseFloat(O18_Z_DG.textContent);
+        O19_TOTAL = O15_W + O16_X + O17_Y + O18_Z;
+        return O19_TOTAL.toFixed(0);
+    },
+    //#endregion
+    // END OF THE FUNCTIONS
+
+    //#region
+    rdfc_computeall: function(x) {
+        if (x > 0) {
+            this.rdfc_computeall(x - 1);
+        }
+        G8_MIX_RDFC_DG.textContent = compute_G8_MIX_RDFC();
+        G9_SiO2_RDFC_DG.textContent = compute_G9_SiO2_RDFC();
+        G10_Al2O3_RDFC_DG.textContent = compute_G10_Al203_RDFC();
+        G11_Fe2O3_RDFC_DG.textContent = compute_G11_Fe2O3_RDFC();
+        G12_CaO_RDFC_DG.textContent = compute_G12_CaO_RDFC();
+        G13_MgO_RDFC_DG.textContent = compute_G13_MgO_RDFC();
+        G14_Na2O_RDFC_DG.textContent = compute_G14_Na2O_RDFC();
+        G15_K2O_RDFC_DG.textContent = compute_G15_K2O_RDFC();
+        G16_SO3_RDFC_DG.textContent = compute_G16_SO3_RDFC();
+        G17_LOI_RDFC_DG.textContent = compute_G17_LOI_RDFC();
+        G18_TOTAL_RDFC_DG.textContent = compute_G18_TOTAL_RDFC();
+        G19_LSF_RDFC_DG.textContent = compute_G19_LSF_RDFC();
+        G20_SM_RDFC_DG.textContent = compute_G20_SM_RDFC();
+        G21_AM_RDFC_DG.textContent = compute_G21_AM_RDFC();
+        C18_TOTAL_RDFC_DG.textContent = compute_C18_TOTAL_RDFC();
+        D18_TOTAL_RDFC_DG.textContent = compute_D18_TOTAL_RDFC();
+        E18_TOTAL_RDFC_DG.textContent = compute_E18_TOTAL_RDFC();
+        F18_TOTAL_RDFC_DG.textContent = compute_F18_TOTAL_RDFC();
+        C19_LSF_RDFC_DG.textContent = compute_C19_LSF_RDFC();
+        D19_LSF_RDFC_DG.textContent = compute_D19_LSF_RDFC();
+        E19_LSF_RDFC_DG.textContent = compute_E19_LSF_RDFC();
+        F19_LSF_RDFC_DG.textContent = compute_F19_LSF_RDFC();
+        C20_SM_RDFC_DG.textContent = compute_C20_SM_RDFC();
+        D20_SM_RDFC_DG.textContent = compute_D20_SM_RDFC();
+        E20_SM_RDFC_DG.textContent = compute_E20_SM_RDFC();
+        F20_SM_RDFC_DG.textContent = compute_F20_SM_RDFC();
+        C21_AM_RDFC_DG.textContent = compute_C21_AM_RDFC();
+        D21_AM_RDFC_DG.textContent = compute_D21_AM_RDFC();
+        E21_AM_RDFC_DG.textContent = compute_E21_AM_RDFC();
+        F21_AM_RDFC_DG.textContent = compute_F21_AM_RDFC();
+
+        ///////////////Matrix & COE
+
+        L13_f_DG.textContent = compute_L13_f();
+        L14_g_DG.textContent = compute_L14_g();
+        L15_h_DG.textContent = compute_L15_h();
+        L16_i_DG.textContent = compute_L16_i();
+        L17_k_DG.textContent = compute_L17_k();
+        L18_l_DG.textContent = compute_L18_l();
+        L19_m_DG.textContent = compute_L19_m();
+        L20_n_DG.textContent = compute_L20_n();
+        L21_p_DG.textContent = compute_L21_p();
+        L22_q_DG.textContent = compute_L22_q();
+        L23_r_DG.textContent = compute_L23_r();
+        L24_s_DG.textContent = compute_L24_s();
+        O8_Dw_Matrix_DG.textContent = compute_O8_Dw_Matrix();
+        O9_Dx_Matrix_DG.textContent = compute_O9_Dx_Matrix();
+        O10_Dy_Matrix_DG.textContent = compute_O10_Dy_Matrix();
+        O11_Dz_Matrix_DG.textContent = compute_O11_Dz_Matrix();
+        O12_D_Matrix_DG.textContent = compute_O12_D_Matrix();
+        O15_W_DG.textContent = compute_O15_W();
+        O16_X_DG.textContent = compute_O16_X();
+        O17_Y_DG.textContent = compute_O17_Y();
+        O18_Z_DG.textContent = compute_O18_Z();
+        O19_TOTAL_DG.textContent = compute_O19_TOTAL();
+    },
+
+};
 
 
 function rdfc_clear() {

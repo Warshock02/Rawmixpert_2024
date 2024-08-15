@@ -77,6 +77,13 @@ document.addEventListener("deviceready", function() {
         // Element exists, you can work with it
         element.style.display = "none";
 
+        function rawmill() {
+            // window.rawmillnum = 1;
+            console.log("RAWMILL")
+            cordova.InAppBrowser.open("rawmill.html", "_self");
+        }
+        window.rawmill = rawmill;
+
         function rawmill1() {
             window.rawmillnum = 1;
             console.log("RAWMILL 1")

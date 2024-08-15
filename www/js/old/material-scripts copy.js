@@ -1220,8 +1220,6 @@ function createActionButton2(label, onClick, color) {
 
 function onDeviceReady() {
 
-    initializeVariable();
-
     if (rawmillnum == 1) {
         localStorage.setItem("pagetype", 0);
         newptype = 0;
@@ -1285,14 +1283,14 @@ function onDeviceReady() {
     // console.log('Email:', email);
     // console.log('PageType:', pageType);
 
-    var materialtable_id = "material_table";
+    var materialtable_id = "";
 
     if (pageType == 1) {
         newptype = 1;
-        // materialtable_id = "material_table_2";
+        materialtable_id = "material_table_2";
     } else {
         newptype = 0;
-        // materialtable_id = "material_table";
+        materialtable_id = "material_table";
     }
 
     executeSql(db,
@@ -5578,8 +5576,14 @@ document.addEventListener("DOMContentLoaded", function() {
         R38_total_Alkali_DG.textContent = compute_R38_total_Alkali();
         S38_Liquid_Phase_DG.textContent = compute_S38_Liquid_Phase();
         T38_Coating_Index_DG.textContent = compute_T38_Coating_Index();
+
+        window.rdfc();
     }
     window.computeall = computeall;
+
+    //MIX
+
+
     //END LOAD ALL
 
     // ON CHANGE LISTENER
@@ -5831,139 +5835,6 @@ document.addEventListener("DOMContentLoaded", function() {
     G18_Iron_DG.addEventListener("change", function() {
         computeall();
     });
-
-    //Mix change
-
-    C8_MIX_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    C17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D8_MIX_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    D17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E8_MIX_RDFC_DG.addEventListener("load", function() {
-        rdfc.rdfc_computeall();
-    });
-    E9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    E17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F8_MIX_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F9_SiO2_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F12_CaO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F13_MgO_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F14_Na2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F15_K2O_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F16_SO3_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    F17_LOI_RDFC_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-
-    I17_Silica_Modulus_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    I20_Alumina_Modulus_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
-    I14_Lime_Saturation_DG.addEventListener("change", function() {
-        rdfc.rdfc_computeall();
-    });
     //#endregion
 
     document
@@ -5973,7 +5844,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // You can put your code here to handle the tap event
             materialsettings();
             computeall();
-            window.rdfc.rdfc_computeall();
+            window.rdfc_computeall();
             toggleButtons();
             if (isOpened == true) {
                 toggleButtons();

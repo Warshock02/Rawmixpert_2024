@@ -15,15 +15,14 @@ function getApiUrl() {
     const hostname = window.location.hostname;
     return "http://107.23.7.86";
     if (hostname === "localhost" || hostname === "127.0.0.1") {
-      return "http://127.0.0.1:8000"; // Local API URL
-    } 
-    else if (hostname === "192.168.254.168") {
-      return "http://192.168.254.168:8000"; // My API
+        return "http://127.0.0.1:8000"; // Local API URL
+    } else if (hostname === "192.168.254.168") {
+        return "http://192.168.254.168:8000"; // My API
     }
-  }
+}
 
 async function callApiForLogout() {
-    const apiUrl = getApiUrl()+"/api/auth/logout";
+    const apiUrl = getApiUrl() + "/api/auth/logout";
 
     try {
         const response = await fetch(apiUrl, {
@@ -59,6 +58,14 @@ async function showTimeoutMessage() {
         alert("Your session has timed out. Please log in again.");
         cordova.InAppBrowser.open("index.html", "_self");
     } catch (error) {
+        var err = "error message: " + error;
+        alert(err);
+        if (err.includes("Unauthenticated.")) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("lastActivity");
+            localStorage.removeItem("email");
+            cordova.InAppBrowser.open("index.html", "_self");
+        }
         console.error("Failed to logout:", error);
         // Handle the error if necessary
     } finally {

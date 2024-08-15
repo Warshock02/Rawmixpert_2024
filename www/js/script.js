@@ -1,6 +1,7 @@
 // Finger Pinch
 const tabContents = document.getElementsByClassName('tab-content');
 let isInteractingWithTabs = false;
+
 for (let i = 0; i < tabContents.length; i++) {
     const container = tabContents[i];
     container.currentZoom = 1.0; // Initial zoom level
@@ -25,7 +26,6 @@ for (let i = 0; i < tabContents.length; i++) {
         container.isInteractingWithTabs = false;
     }
 
-
     function handlePinchStart(event) {
         if (event.touches.length >= 2) {
             const touch1 = event.touches[0];
@@ -42,7 +42,7 @@ for (let i = 0; i < tabContents.length; i++) {
             const delta = currentDistance - initialDistance;
 
             // Adjust the zoom based on the pinch gesture
-            currentZoom = Math.max(0.5, currentZoom + delta * 0.01); // You can adjust the sensitivity here
+            container.currentZoom = Math.max(0.5, container.currentZoom + delta * 0.01); // You can adjust the sensitivity here
             applyZoom();
         }
     }
@@ -53,32 +53,28 @@ for (let i = 0; i < tabContents.length; i++) {
 
     // Function to handle tab interactions
     function showTab(tabId) {
+        isInteractingWithTabs = true;
+
+        // Hide all tab contents
         for (let i = 0; i < tabContents.length; i++) {
-            if (tabContents[i].id === `tabContent${tabId.slice(3)}`) {
-                tabContents[i].style.display = "block";
-                tabContents[i].classList.add('zoomable'); // Apply zoomable class to show zoom and scroll
-            } else {
-                tabContents[i].style.display = "none";
-                tabContents[i].classList.remove('zoomable'); // Remove zoomable class to hide zoom and scroll
-            }
+            tabContents[i].style.display = "none";
+            tabContents[i].classList.remove('zoomable'); // Remove zoomable class to hide zoom and scroll
         }
+
+        // Show the selected tab content
+        const selectedTabContent = document.getElementById("tabContent" + tabId.slice(3));
+        if (selectedTabContent) {
+            selectedTabContent.style.display = "block";
+            selectedTabContent.classList.add('zoomable'); // Apply zoomable class to show zoom and scroll
+        }
+
+        // After handling tab interactions, set the flag back to false
+        isInteractingWithTabs = false;
     }
-    // function showTab(tabId) {
-    //     isInteractingWithTabs = true;
 
-    //     // Hide all tab contents
-    //     var tabContents = document.getElementsByClassName("tab-content");
-    //     for (var i = 0; i < tabContents.length; i++) {
-    //         tabContents[i].style.display = "none";
-    //     }
-
-    //     // Show the selected tab content
-    //     var selectedTabContent = document.getElementById("tabContent" + tabId.slice(3));
-    //     if (selectedTabContent) {
-    //         selectedTabContent.style.display = "block";
-    //     }
-
-    //     // After handling tab interactions, set the flag back to false
-    //     isInteractingWithTabs = false;
-    // }
+    // Make the showTab function globally accessible
+    window.showTab = showTab;
 }
+
+// Optionally, you can show the first tab by default
+document.getElementsByClassName('tablinks')[0].click();

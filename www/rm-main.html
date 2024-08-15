@@ -3,60 +3,60 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src 127.0.0.1:8000 *">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/load.css">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src 127.0.0.1:8000 *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/load.css">
 
-  <title>RM</title>
+    <title>RM</title>
 
-  <style>
-    #offBtn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background-image: url('./img/off-button.png');
-      background-size: cover;
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 50%
-    }
+    <style>
+        #offBtn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-image: url('./img/off-button.png');
+            background-size: cover;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%
+        }
 
-    .button-container {
-      padding: 20;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+        .button-container {
+            padding: 20;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
 
-    .button {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      padding: 8px 16px;
-      font-size: 0.8em;
-      width: 100%;
-      box-sizing: border-box;
-    }
+        .button {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 8px 16px;
+            font-size: 0.8em;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    .form-footer {
-      text-align: center;
-    }
+        .form-footer {
+            text-align: center;
+        }
 
-    @media (max-width: 480px) {
-      .button {
-        font-size: 0.7em;
-        padding: 6px 12px;
-      }
-    }
+        @media (max-width: 480px) {
+            .button {
+                font-size: 0.7em;
+                padding: 6px 12px;
+            }
+        }
 
-    #progress-container {
+        #progress-container {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -73,69 +73,71 @@
             text-align: center;
             line-height: 150px;
         }
+
         #progress-container.hidden {
             display: none;
         }
-  </style>
+    </style>
 
-  <script src="js/session.js"></script>
+    <script src="js/session.js"></script>
 </head>
 
 <body>
 
-  <div id="progress-container" class="hidden" style="--progress: 0%;">
-    <span id="progress-text">0%</span>
-</div>
-
-  <div class="loading-screen">
-    <img src="img/4.webp" alt="Loading" class="loading-icon">
-    Loading RawMixPERT Menu . . .
-  </div>
-  <div class="app-content box" id="appContent">
-    <div class="button-container" id="buttonContainer">
-      <button class="button" onclick="window.rawmill1()">RAWMILL 1</button>
-      <button class="button" onclick="window.rawmill2()">RAWMILL 2</button>
-      <button class="button" onclick="window.recipe1()">RECIPE 1</button>
-      <button class="button" onclick="window.recipe2()">RECIPE 2</button>
-      <button class="button" id="downloadbtn">DOWNLOAD</button>
-      <button class="button" id="uploadbtn">UPLOAD</button>
+    <div id="progress-container" class="hidden" style="--progress: 0%;">
+        <span id="progress-text">0%</span>
     </div>
 
-    <button id="offBtn"></button>
-
-    <div class="form-footer">
-      <p style="margin-top: 0.6rem; font-size: 0.8rem">Created by: Franco Bacalando Ortiz</p>
-      <div class="icon-with-text">
-        <img class="resized-image" src="./img/linkin.png" alt="linkin">
-        <span class="text">https://www.linkedin.com/in/francobacalandoortiz</span>
-      </div>
-      <br>
-      <div class="icon-with-text">
-        <img class="resized-image" src="./img/google.png" alt="linkin">
-        <span class="text">franco.bacalando.ortiz@gmail.com</span>
-      </div>
-      <hr>
-      <p style="margin-top: 0.6rem; font-size: 8px; text-align: center;">2023 © WM-Dev</p>
+    <div class="loading-screen">
+        <img src="img/4.webp" alt="Loading" class="loading-icon">
+        Loading RawMixPERT Menu . . .
     </div>
-  </div>
+    <div class="app-content box" id="appContent">
+        <div class="button-container" id="buttonContainer">
+            <button class="button" onclick="window.rawmill()">RAWMILL & RECIPE</button>
+            <button class="button" onclick="window.rawmill1()">RAWMILL 1</button>
+            <button class="button" onclick="window.rawmill2()">RAWMILL 2</button>
+            <button class="button" onclick="window.recipe1()">RECIPE 1</button>
+            <button class="button" onclick="window.recipe2()">RECIPE 2</button>
+            <button class="button" id="downloadbtn">DOWNLOAD</button>
+            <button class="button" id="uploadbtn">UPLOAD</button>
+        </div>
 
-  <script src="cordova.js"></script>
-  <script src="js/main-script.js"></script>
-  <script src="js/confirmation.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      setTimeout(() => {
-        document.querySelector(".loading-screen").style.display = "none";
-        const buttons = document.querySelectorAll(".button");
-        buttons.forEach((button, index) => {
-          setTimeout(() => {
-            button.style.opacity = "1";
-            button.style.transform = "translateY(0)";
-          }, index * 80); // Stagger the appearance by 200ms each
+        <button id="offBtn"></button>
+
+        <div class="form-footer">
+            <p style="margin-top: 0.6rem; font-size: 0.8rem">Created by: Franco Bacalando Ortiz</p>
+            <div class="icon-with-text">
+                <img class="resized-image" src="./img/linkin.png" alt="linkin">
+                <span class="text">https://www.linkedin.com/in/francobacalandoortiz</span>
+            </div>
+            <br>
+            <div class="icon-with-text">
+                <img class="resized-image" src="./img/google.png" alt="linkin">
+                <span class="text">franco.bacalando.ortiz@gmail.com</span>
+            </div>
+            <hr>
+            <p style="margin-top: 0.6rem; font-size: 8px; text-align: center;">2023 © WM-Dev</p>
+        </div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/main-script.js"></script>
+    <script src="js/confirmation.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.querySelector(".loading-screen").style.display = "none";
+                const buttons = document.querySelectorAll(".button");
+                buttons.forEach((button, index) => {
+                    setTimeout(() => {
+                        button.style.opacity = "1";
+                        button.style.transform = "translateY(0)";
+                    }, index * 80); // Stagger the appearance by 200ms each
+                });
+            }, 500); // Adjust the timeout as needed
         });
-      }, 500); // Adjust the timeout as needed
-    });
-  </script>
+    </script>
 </body>
 
 </html>
