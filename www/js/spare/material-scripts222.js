@@ -8,21 +8,21 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 //BEGIN VARIABLES
 //#region
-var dataList = [];
-var dataList2 = [];
+let dataList = [];
+let dataList2 = [];
 
 // MATERIAL ANALYSIS useStates
-var C16TotalEnable = false;
-var C17TotalEnable = false;
-var C18TotalEnable = false;
-var C19TotalEnable = false;
-var previousDataLoaded = false;
+let C16TotalEnable = false;
+let C17TotalEnable = false;
+let C18TotalEnable = false;
+let C19TotalEnable = false;
+let previousDataLoaded = false;
 
-var total_C15 = 0.0;
-var total_C16 = 0.0;
-var total_C17 = 0.0;
-var total_C18 = 0.0;
-var total_C19 = 0.0;
+let total_C15 = 0.0;
+let total_C16 = 0.0;
+let total_C17 = 0.0;
+let total_C18 = 0.0;
+let total_C19 = 0.0;
 
 // START NAME: RAW MILL 2
 // FORMULAS
@@ -30,111 +30,111 @@ var total_C19 = 0.0;
 // Material Setting
 // can be changed
 // Limestone, Shale, Sand, Iron
-var D15 = 0.0;
-var E15 = 0.0;
-var F15 = 0.0;
-var G15 = 0.0;
+let D15 = 0.0;
+let E15 = 0.0;
+let F15 = 0.0;
+let G15 = 0.0;
 
 // Material Q31_LOI
 // fixed cell
-// var D16 = 0.0;
-// var E16 = 0.0;
-// var F16 = 0.0;
-// var G16 = 0.0;
-// var D17 = 0.0;
-// var E17 = 0.0;
-// var F17 = 0.0;
-// var G17 = 0.0;
-// var D18 = 0.0;
-// var E18 = 0.0;
-// var F18 = 0.0;
-// var G18 = 0.0;
-// var D19 = 0.0;
-// var E19 = 0.0;
-// var F19 = 0.0;
-// var G19 = 0.0;
+// let D16 = 0.0;
+// let E16 = 0.0;
+// let F16 = 0.0;
+// let G16 = 0.0;
+// let D17 = 0.0;
+// let E17 = 0.0;
+// let F17 = 0.0;
+// let G17 = 0.0;
+// let D18 = 0.0;
+// let E18 = 0.0;
+// let F18 = 0.0;
+// let G18 = 0.0;
+// let D19 = 0.0;
+// let E19 = 0.0;
+// let F19 = 0.0;
+// let G19 = 0.0;
 
 // DONE
 // XRF Analysis
 // can be changed
-var H15_SiO2 = 0.0;
-var H16_SiO2 = 0.0;
-var H17_SiO2 = 0.0;
-var H18_SiO2 = 0.0;
+let H15_SiO2 = 0.0;
+let H16_SiO2 = 0.0;
+let H17_SiO2 = 0.0;
+let H18_SiO2 = 0.0;
 
-var I15_Al2O3 = 0.0;
-var I16_Al2O3 = 0.0;
-var I17_Al2O3 = 0.0;
-var I18_Al2O3 = 0.0;
+let I15_Al2O3 = 0.0;
+let I16_Al2O3 = 0.0;
+let I17_Al2O3 = 0.0;
+let I18_Al2O3 = 0.0;
 
-var J15_Fe2O3 = 0.0;
-var J16_Fe2O3 = 0.0;
-var J17_Fe2O3 = 0.0;
-var J18_Fe2O3 = 0.0;
+let J15_Fe2O3 = 0.0;
+let J16_Fe2O3 = 0.0;
+let J17_Fe2O3 = 0.0;
+let J18_Fe2O3 = 0.0;
 
-var K15_CaO = 0.0;
-var K16_CaO = 0.0;
-var K17_CaO = 0.0;
-var K18_CaO = 0.0;
+let K15_CaO = 0.0;
+let K16_CaO = 0.0;
+let K17_CaO = 0.0;
+let K18_CaO = 0.0;
 
-var L15_MgO = 0.0;
-var L16_MgO = 0.0;
-var L17_MgO = 0.0;
-var L18_MgO = 0.0;
+let L15_MgO = 0.0;
+let L16_MgO = 0.0;
+let L17_MgO = 0.0;
+let L18_MgO = 0.0;
 
-var M15_Na2O = 0.0;
-var M16_Na2O = 0.0;
-var M17_Na2O = 0.0;
-var M18_Na2O = 0.0;
+let M15_Na2O = 0.0;
+let M16_Na2O = 0.0;
+let M17_Na2O = 0.0;
+let M18_Na2O = 0.0;
 
-var N15_K2O = 0.0;
-var N16_K2O = 0.0;
-var N17_K2O = 0.0;
-var N18_K2O = 0.0;
+let N15_K2O = 0.0;
+let N16_K2O = 0.0;
+let N17_K2O = 0.0;
+let N18_K2O = 0.0;
 
-var O15_SO3 = 0.0;
-var O16_SO3 = 0.0;
-var O17_SO3 = 0.0;
-var O18_SO3 = 0.0;
+let O15_SO3 = 0.0;
+let O16_SO3 = 0.0;
+let O17_SO3 = 0.0;
+let O18_SO3 = 0.0;
 
-var P15_Cl = 0.0;
-var P16_Cl = 0.0;
-var P17_Cl = 0.0;
-var P18_Cl = 0.0;
+let P15_Cl = 0.0;
+let P16_Cl = 0.0;
+let P17_Cl = 0.0;
+let P18_Cl = 0.0;
 
 // XRF Analysis
 // fixed cell
-var Q15_LOI = 0.0;
-var Q16_LOI = 0.0;
-var Q17_LOI = 0.0;
-var Q18_LOI = 0.0;
+let Q15_LOI = 0.0;
+let Q16_LOI = 0.0;
+let Q17_LOI = 0.0;
+let Q18_LOI = 0.0;
 
-var R15_XRFtotal = 0.0;
-var R16_XRFtotal = 0.0;
-var R17_XRFtotal = 0.0;
-var R18_XRFtotal = 0.0;
+let R15_XRFtotal = 0.0;
+let R16_XRFtotal = 0.0;
+let R17_XRFtotal = 0.0;
+let R18_XRFtotal = 0.0;
 
 // RATIOS
 // fixed cell
-var S15_LSF = 0.0;
-var S16_LSF = 0.0;
-var S17_LSF = 0.0;
-var S18_LSF = 0.0;
+let S15_LSF = 0.0;
+let S16_LSF = 0.0;
+let S17_LSF = 0.0;
+let S18_LSF = 0.0;
 
-var T15_HM = 0.0;
-var T16_HM = 0.0;
-var T17_HM = 0.0;
-var T18_HM = 0.0;
+let T15_HM = 0.0;
+let T16_HM = 0.0;
+let T17_HM = 0.0;
+let T18_HM = 0.0;
 
-var U15_SM = 0.0;
-var U16_SM = 0.0;
-var U17_SM = 0.0;
-var U18_SM = 0.0;
+let U15_SM = 0.0;
+let U16_SM = 0.0;
+let U17_SM = 0.0;
+let U18_SM = 0.0;
 
-var V15_AM = 0.0;
-var V16_AM = 0.0;
-var V17_AM = 0.0;
-var V18_AM = 0.0;
+let V15_AM = 0.0;
+let V16_AM = 0.0;
+let V17_AM = 0.0;
+let V18_AM = 0.0;
 
 //DONE
 //LSF
@@ -151,127 +151,127 @@ var V18_AM = 0.0;
 //DONE
 //Limestone
 //D19
-var D19_Limestone = 0.0;
-var E19_Shale = 0.0;
-var F19_Sand = 0.0;
-var G19_Iron = 0.0;
-var D16_Limestone = 0.0;
-var D17_Limestone = 0.0;
-var D18_Limestone = 0.0;
-var E16_Shale = 0.0;
-var E17_Shale = 0.0;
-var E18_Shale = 0.0;
-var F16_Sand = 0.0;
-var F17_Sand = 0.0;
-var F18_Sand = 0.0;
-var G16_Iron = 0.0;
-var G17_Iron = 0.0;
-var G18_Iron = 0.0;
+let D19_Limestone = 0.0;
+let E19_Shale = 0.0;
+let F19_Sand = 0.0;
+let G19_Iron = 0.0;
+let D16_Limestone = 0.0;
+let D17_Limestone = 0.0;
+let D18_Limestone = 0.0;
+let E16_Shale = 0.0;
+let E17_Shale = 0.0;
+let E18_Shale = 0.0;
+let F16_Sand = 0.0;
+let F17_Sand = 0.0;
+let F18_Sand = 0.0;
+let G16_Iron = 0.0;
+let G17_Iron = 0.0;
+let G18_Iron = 0.0;
 
 //DONE
 //AVERAGE
-var D20_AVG = 0.0;
-var E20_AVG = 0.0;
-var F20_AVG = 0.0;
-var G20_AVG = 0.0;
-var H20_AVG = 0.0;
-var I20_AVG = 0.0;
-var J20_AVG = 0.0;
-var K20_AVG = 0.0;
-var L20_AVG = 0.0;
-var M20_AVG = 0.0;
-var N20_AVG = 0.0;
-var O20_AVG = 0.0;
-var P20_AVG = 0.0;
-var Q20_AVG = 0.0;
-var R20_AVG = 0.0;
-var S20_AVG = 0.0;
-var T20_AVG = 0.0;
-var U20_AVG = 0.0;
-var V20_AVG = 0.0;
+let D20_AVG = 0.0;
+let E20_AVG = 0.0;
+let F20_AVG = 0.0;
+let G20_AVG = 0.0;
+let H20_AVG = 0.0;
+let I20_AVG = 0.0;
+let J20_AVG = 0.0;
+let K20_AVG = 0.0;
+let L20_AVG = 0.0;
+let M20_AVG = 0.0;
+let N20_AVG = 0.0;
+let O20_AVG = 0.0;
+let P20_AVG = 0.0;
+let Q20_AVG = 0.0;
+let R20_AVG = 0.0;
+let S20_AVG = 0.0;
+let T20_AVG = 0.0;
+let U20_AVG = 0.0;
+let V20_AVG = 0.0;
 
 //DONE
 //STDEV
-var D20_STDEV = 0.0;
-var E20_STDEV = 0.0;
-var F20_STDEV = 0.0;
-var G20_STDEV = 0.0;
-var H20_STDEV = 0.0;
-var I20_STDEV = 0.0;
-var J20_STDEV = 0.0;
-var K20_STDEV = 0.0;
-var L20_STDEV = 0.0;
-var M20_STDEV = 0.0;
-var N20_STDEV = 0.0;
-var O20_STDEV = 0.0;
-var P20_STDEV = 0.0;
-var Q20_STDEV = 0.0;
-var R20_STDEV = 0.0;
-var S20_STDEV = 0.0;
-var T20_STDEV = 0.0;
-var U20_STDEV = 0.0;
-var V20_STDEV = 0.0;
+let D20_STDEV = 0.0;
+let E20_STDEV = 0.0;
+let F20_STDEV = 0.0;
+let G20_STDEV = 0.0;
+let H20_STDEV = 0.0;
+let I20_STDEV = 0.0;
+let J20_STDEV = 0.0;
+let K20_STDEV = 0.0;
+let L20_STDEV = 0.0;
+let M20_STDEV = 0.0;
+let N20_STDEV = 0.0;
+let O20_STDEV = 0.0;
+let P20_STDEV = 0.0;
+let Q20_STDEV = 0.0;
+let R20_STDEV = 0.0;
+let S20_STDEV = 0.0;
+let T20_STDEV = 0.0;
+let U20_STDEV = 0.0;
+let V20_STDEV = 0.0;
 
 //DONE
 //MIN
-var D20_MIN = 0.0;
-var E20_MIN = 0.0;
-var F20_MIN = 0.0;
-var G20_MIN = 0.0;
-var H20_MIN = 0.0;
-var I20_MIN = 0.0;
-var J20_MIN = 0.0;
-var K20_MIN = 0.0;
-var L20_MIN = 0.0;
-var M20_MIN = 0.0;
-var N20_MIN = 0.0;
-var O20_MIN = 0.0;
-var P20_MIN = 0.0;
-var Q20_MIN = 0.0;
-var R20_MIN = 0.0;
-var S20_MIN = 0.0;
-var T20_MIN = 0.0;
-var U20_MIN = 0.0;
-var V20_MIN = 0.0;
+let D20_MIN = 0.0;
+let E20_MIN = 0.0;
+let F20_MIN = 0.0;
+let G20_MIN = 0.0;
+let H20_MIN = 0.0;
+let I20_MIN = 0.0;
+let J20_MIN = 0.0;
+let K20_MIN = 0.0;
+let L20_MIN = 0.0;
+let M20_MIN = 0.0;
+let N20_MIN = 0.0;
+let O20_MIN = 0.0;
+let P20_MIN = 0.0;
+let Q20_MIN = 0.0;
+let R20_MIN = 0.0;
+let S20_MIN = 0.0;
+let T20_MIN = 0.0;
+let U20_MIN = 0.0;
+let V20_MIN = 0.0;
 
 //DONE
 //MAX
-var D20_MAX = 0.0;
-var E20_MAX = 0.0;
-var F20_MAX = 0.0;
-var G20_MAX = 0.0;
-var H20_MAX = 0.0;
-var I20_MAX = 0.0;
-var J20_MAX = 0.0;
-var K20_MAX = 0.0;
-var L20_MAX = 0.0;
-var M20_MAX = 0.0;
-var N20_MAX = 0.0;
-var O20_MAX = 0.0;
-var P20_MAX = 0.0;
-var Q20_MAX = 0.0;
-var R20_MAX = 0.0;
-var S20_MAX = 0.0;
-var T20_MAX = 0.0;
-var U20_MAX = 0.0;
-var V20_MAX = 0.0;
+let D20_MAX = 0.0;
+let E20_MAX = 0.0;
+let F20_MAX = 0.0;
+let G20_MAX = 0.0;
+let H20_MAX = 0.0;
+let I20_MAX = 0.0;
+let J20_MAX = 0.0;
+let K20_MAX = 0.0;
+let L20_MAX = 0.0;
+let M20_MAX = 0.0;
+let N20_MAX = 0.0;
+let O20_MAX = 0.0;
+let P20_MAX = 0.0;
+let Q20_MAX = 0.0;
+let R20_MAX = 0.0;
+let S20_MAX = 0.0;
+let T20_MAX = 0.0;
+let U20_MAX = 0.0;
+let V20_MAX = 0.0;
 
 //START NAME: INPUT VARIABLES
 
 //PRIORITY
 //CAN BE CHANGE
-var C30_LSF_PR = 0.0;
-var C31_SM_PR = 0.0;
-var C32_AM_PR = 0.0;
+let C30_LSF_PR = 0.0;
+let C31_SM_PR = 0.0;
+let C32_AM_PR = 0.0;
 //TARGET
 //CAN BE CHANGE
-var F30_LSF_TG = 0.0;
-var F31_SM_TG = 0.0;
-var F32_AM_TG = 0.0;
+let F30_LSF_TG = 0.0;
+let F31_SM_TG = 0.0;
+let F32_AM_TG = 0.0;
 //CLINKER FACTOR
 //CAN BE CHANGE
-var E33_Clinker_Factor = 0.0;
-var E34_RawMixType = "";
+let E33_Clinker_Factor = 0.0;
+let E34_RawMixType = "";
 
 //END NAME: INPUT VARIABLES
 
@@ -282,250 +282,479 @@ var E34_RawMixType = "";
 
 //Target Rawmeal Composition
 //can be change
-var H31_SiO2 = 0.0;
-var I31_Al2O3 = 0.0;
-var J31_Fe2O3 = 0.0;
-var K31_CaO = 0.0;
-var L31_MgO = 0.0;
-var M31_Na2O = 0.0;
-var N31_K2O = 0.0;
-var O31_SO3 = 0.0;
-var P31_Cl = 0.0;
+let H31_SiO2 = 0.0;
+let I31_Al2O3 = 0.0;
+let J31_Fe2O3 = 0.0;
+let K31_CaO = 0.0;
+let L31_MgO = 0.0;
+let M31_Na2O = 0.0;
+let N31_K2O = 0.0;
+let O31_SO3 = 0.0;
+let P31_Cl = 0.0;
 
 //fixed cell
-var Q31_LOI = 0.0;
-var R31_total = 0.0;
-var S31_LSF = 0.0;
-var T31_HM = 0.0;
-var U31_SM = 0.0;
-var V31_AM = 0.0;
+let Q31_LOI = 0.0;
+let R31_total = 0.0;
+let S31_LSF = 0.0;
+let T31_HM = 0.0;
+let U31_SM = 0.0;
+let V31_AM = 0.0;
 
 //DONE
 //Expected  Clinker Composition
 
 //fixed cell
-var H35_SiO2 = 0.0;
-var I35_Al2O3 = 0.0;
-var J35_Fe2O3 = 0.0;
-var K35_CaO = 0.0;
-var L35_MgO = 0.0;
-var M35_Na2O = 0.0;
-var N35_K2O = 0.0;
-var O35_SO3 = 0.0;
-var P35_Cl = 0.0;
-var Q35_ECC_total = 0.0;
-var S35_LSF = 0.0;
-var T35_HM = 0.0;
-var U35_SM = 0.0;
-var V35_AM = 0.0;
+let H35_SiO2 = 0.0;
+let I35_Al2O3 = 0.0;
+let J35_Fe2O3 = 0.0;
+let K35_CaO = 0.0;
+let L35_MgO = 0.0;
+let M35_Na2O = 0.0;
+let N35_K2O = 0.0;
+let O35_SO3 = 0.0;
+let P35_Cl = 0.0;
+let Q35_ECC_total = 0.0;
+let S35_LSF = 0.0;
+let T35_HM = 0.0;
+let U35_SM = 0.0;
+let V35_AM = 0.0;
 //Fixed cell
 
-var H38_literKG = "0.0";
-var I38_FCaO = 0.0;
-var J38_BurningCondition = "";
-var L38_KL_LOI = 0.0;
-var U38_SO3 = "";
-var V38_LOI = 0.0;
+let H38_literKG = "0.0";
+let I38_FCaO = 0.0;
+let J38_BurningCondition = "";
+let L38_KL_LOI = 0.0;
+let U38_SO3 = "";
+let V38_LOI = 0.0;
 
 //END NAME: RAWMEAL and CLINKER TARGETS
 
-var K38_DOC = 0.0;
-var M38_C3Snet = 0.0;
-var N38_C2S = 0.0;
-var O38_C3A = 0.0;
-var P38_C4AF = 0.0;
-var Q38_Sulfur_Alkali_ratio = 0.0;
-var R38_total_Alkali = 0.0;
-var S38_Liquid_Phase = 0.0;
-var T38_Coating_Index = 0.0;
+let K38_DOC = 0.0;
+let M38_C3Snet = 0.0;
+let N38_C2S = 0.0;
+let O38_C3A = 0.0;
+let P38_C4AF = 0.0;
+let Q38_Sulfur_Alkali_ratio = 0.0;
+let R38_total_Alkali = 0.0;
+let S38_Liquid_Phase = 0.0;
+let T38_Coating_Index = 0.0;
 
 //#endregion
 //END OF VARIABLES
+
+//BEGIN MIX VARIABLES
+//#region 
+let C8_MIX_RDFC = 0.0;
+let C9_SiO2_RDFC = 0.0;
+let C10_Al2O3_RDFC = 0.0;
+let C11_Fe2O3_RDFC = 0.0;
+let C12_CaO_RDFC = 0.0;
+let C13_MgO_RDFC = 0.0;
+let C14_Na2O_RDFC = 0.0;
+let C15_K2O_RDFC = 0.0;
+let C16_SO3_RDFC = 0.0;
+let C17_LOI_RDFC = 0.0;
+let C18_TOTAL_RDFC = 0.0;
+let C19_LSF_RDFC = 0.0;
+let C20_SM_RDFC = 0.0;
+let C21_AM_RDFC = 0.0;
+let D8_MIX_RDFC = 0.0;
+let D9_SiO2_RDFC = 0.0;
+let D10_Al2O3_RDFC = 0.0;
+let D11_Fe2O3_RDFC = 0.0;
+let D12_CaO_RDFC = 0.0;
+let D13_MgO_RDFC = 0.0;
+let D14_Na2O_RDFC = 0.0;
+let D15_K2O_RDFC = 0.0;
+let D16_SO3_RDFC = 0.0;
+let D17_LOI_RDFC = 0.0;
+let D18_TOTAL_RDFC = 0.0;
+let D19_LSF_RDFC = 0.0;
+let D20_SM_RDFC = 0.0;
+let D21_AM_RDFC = 0.0;
+let E8_MIX_RDFC = 0.0;
+let E9_SiO2_RDFC = 0.0;
+let E10_Al2O3_RDFC = 0.0;
+let E11_Fe2O3_RDFC = 0.0;
+let E12_CaO_RDFC = 0.0;
+let E13_MgO_RDFC = 0.0;
+let E14_Na2O_RDFC = 0.0;
+let E15_K2O_RDFC = 0.0;
+let E16_SO3_RDFC = 0.0;
+let E17_LOI_RDFC = 0.0;
+let E18_TOTAL_RDFC = 0.0;
+let E19_LSF_RDFC = 0.0;
+let E20_SM_RDFC = 0.0;
+let E21_AM_RDFC = 0.0;
+let F8_MIX_RDFC = 0.0;
+let F9_SiO2_RDFC = 0.0;
+let F10_Al2O3_RDFC = 0.0;
+let F11_Fe2O3_RDFC = 0.0;
+let F12_CaO_RDFC = 0.0;
+let F13_MgO_RDFC = 0.0;
+let F14_Na2O_RDFC = 0.0;
+let F15_K2O_RDFC = 0.0;
+let F16_SO3_RDFC = 0.0;
+let F17_LOI_RDFC = 0.0;
+let F18_TOTAL_RDFC = 0.0;
+let F19_LSF_RDFC = 0.0;
+let F20_SM_RDFC = 0.0;
+let F21_AM_RDFC = 0.0;
+let G8_MIX_RDFC = 0.0;
+let G9_SiO2_RDFC = 0.0;
+let G10_Al2O3_RDFC = 0.0;
+let G11_Fe2O3_RDFC = 0.0;
+let G12_CaO_RDFC = 0.0;
+let G13_MgO_RDFC = 0.0;
+let G14_Na2O_RDFC = 0.0;
+let G15_K2O_RDFC = 0.0;
+let G16_SO3_RDFC = 0.0;
+let G17_LOI_RDFC = 0.0;
+let G18_TOTAL_RDFC = 0.0;
+let G19_LSF_RDFC = 0.0;
+let G20_SM_RDFC = 0.0;
+let G21_AM_RDFC = 0.0;
+let I14_Lime_Saturation = 10;
+let I17_Silica_Modulus = 0.0;
+let I20_Alumina_Modulus = 0.0;
+
+//MATRIX AND COEFFICIENTS
+//all fix cell
+let L8_a = 0.0;
+let L9_b = 0.0;
+let L10_c = 0.0;
+let L11_d = 0.0;
+let L12_e = 0.0;
+let L13_f = 0.0;
+let L14_g = 0.0;
+let L15_h = 0.0;
+let L16_i = 0.0;
+let L17_k = 0.0;
+let L18_l = 0.0;
+let L19_m = 0.0;
+let L20_n = 0.0;
+let L21_p = 0.0;
+let L22_q = 0.0;
+let L23_r = 0.0;
+let L24_s = 0.0;
+
+//fixed cell
+//MATRIX DETERMINANTS
+
+let O8_Dw_Matrix = 0.0;
+let O9_Dx_Matrix = 0.0;
+let O10_Dy_Matrix = 0.0;
+let O11_Dz_Matrix = 0.0;
+let O12_D_Matrix = 0.0;
+
+//RAW MATERIALS %
+
+let O15_W = 0.0;
+let O16_X = 0.0;
+let O17_Y = 0.0;
+let O18_Z = 0.0;
+let O19_TOTAL = 0.0;
+
+
+let C8_MIX_RDFC_DG;
+let C9_SiO2_RDFC_DG;
+let C10_Al2O3_RDFC_DG;
+let C11_Fe2O3_RDFC_DG;
+let C12_CaO_RDFC_DG;
+let C13_MgO_RDFC_DG;
+let C14_Na2O_RDFC_DG;
+let C15_K2O_RDFC_DG;
+let C16_SO3_RDFC_DG;
+let C17_LOI_RDFC_DG;
+
+let C18_TOTAL_RDFC_DG;
+let C19_LSF_RDFC_DG;
+let C20_SM_RDFC_DG;
+let C21_AM_RDFC_DG;
+
+let D8_MIX_RDFC_DG;
+let D9_SiO2_RDFC_DG;
+let D10_Al2O3_RDFC_DG;
+let D11_Fe2O3_RDFC_DG;
+let D12_CaO_RDFC_DG;
+let D13_MgO_RDFC_DG;
+let D14_Na2O_RDFC_DG;
+let D15_K2O_RDFC_DG;
+let D16_SO3_RDFC_DG;
+let D17_LOI_RDFC_DG;
+
+let D18_TOTAL_RDFC_DG;
+let D19_LSF_RDFC_DG;
+let D20_SM_RDFC_DG;
+let D21_AM_RDFC_DG;
+
+let E8_MIX_RDFC_DG;
+let E9_SiO2_RDFC_DG;
+let E10_Al2O3_RDFC_DG;
+let E11_Fe2O3_RDFC_DG;
+let E12_CaO_RDFC_DG;
+let E13_MgO_RDFC_DG;
+let E14_Na2O_RDFC_DG;
+let E15_K2O_RDFC_DG;
+let E16_SO3_RDFC_DG;
+let E17_LOI_RDFC_DG;
+
+let E18_TOTAL_RDFC_DG;
+let E19_LSF_RDFC_DG;
+let E20_SM_RDFC_DG;
+let E21_AM_RDFC_DG;
+
+let F8_MIX_RDFC_DG;
+let F9_SiO2_RDFC_DG;
+let F10_Al2O3_RDFC_DG;
+let F11_Fe2O3_RDFC_DG;
+let F12_CaO_RDFC_DG;
+let F13_MgO_RDFC_DG;
+let F14_Na2O_RDFC_DG;
+let F15_K2O_RDFC_DG;
+let F16_SO3_RDFC_DG;
+let F17_LOI_RDFC_DG;
+
+let F18_TOTAL_RDFC_DG;
+let F19_LSF_RDFC_DG;
+let F20_SM_RDFC_DG;
+let F21_AM_RDFC_DG;
+
+let G8_MIX_RDFC_DG;
+let G9_SiO2_RDFC_DG;
+let G10_Al2O3_RDFC_DG;
+let G11_Fe2O3_RDFC_DG;
+let G12_CaO_RDFC_DG;
+let G13_MgO_RDFC_DG;
+let G14_Na2O_RDFC_DG;
+let G15_K2O_RDFC_DG;
+let G16_SO3_RDFC_DG;
+let G17_LOI_RDFC_DG;
+let G18_TOTAL_RDFC_DG;
+let G19_LSF_RDFC_DG;
+let G20_SM_RDFC_DG;
+let G21_AM_RDFC_DG;
+
+//MATRIX & COE
+
+let L8_a_DG;
+let L9_b_DG;
+let L10_c_DG;
+let L11_d_DG;
+let L12_e_DG;
+let L13_f_DG;
+let L14_g_DG;
+let L15_h_DG;
+let L16_i_DG;
+let L17_k_DG;
+let L18_l_DG;
+let L19_m_DG;
+let L20_n_DG;
+let L21_p_DG;
+let L22_q_DG;
+let L23_r_DG;
+let L24_s_DG;
+let O8_Dw_Matrix_DG;
+let O9_Dx_Matrix_DG;
+let O10_Dy_Matrix_DG;
+let O11_Dz_Matrix_DG;
+let O12_D_Matrix_DG;
+let O15_W_DG;
+let O16_X_DG;
+let O17_Y_DG;
+let O18_Z_DG;
+let O19_TOTAL_DG;
+
+let I14_Lime_Saturation_DG;
+let I17_Silica_Modulus_DG;
+let I20_Alumina_Modulus_DG;
+//#endregion
+//END MIX VARIABLES
 
 // Begin All Variables getbyElementID
 //#region
 
 // MANUAL
-var D15_DG = document.getElementById("D15");
-var E15_DG = document.getElementById("E15");
-var F15_DG = document.getElementById("F15");
-var G15_DG = document.getElementById("G15");
+let D15_DG = document.getElementById("D15");
+let E15_DG = document.getElementById("E15");
+let F15_DG = document.getElementById("F15");
+let G15_DG = document.getElementById("G15");
 
-var D16_Limestone_DG = document.getElementById("D16_Limestone");
-var E16_Shale_DG = document.getElementById("E16_Shale");
-var F16_Sand_DG = document.getElementById("F16_Sand");
-var G16_Iron_DG = document.getElementById("G16_Iron");
-var D16_Limestone_DQ = document.querySelector("label[for='D16_Limestone']");
-var E16_Shale_DQ = document.querySelector("label[for='E16_Shale']");
-var F16_Sand_DQ = document.querySelector("label[for='F16_Sand']");
-var G16_Iron_DQ = document.querySelector("label[for='G16_Iron']");
-var D17_Limestone_DG = document.getElementById("D17_Limestone");
-var E17_Shale_DG = document.getElementById("E17_Shale");
-var F17_Sand_DG = document.getElementById("F17_Sand");
-var G17_Iron_DG = document.getElementById("G17_Iron");
-var D17_Limestone_DQ = document.querySelector("label[for='D17_Limestone']");
-var E17_Shale_DQ = document.querySelector("label[for='E17_Shale']");
-var F17_Sand_DQ = document.querySelector("label[for='F17_Sand']");
-var G17_Iron_DQ = document.querySelector("label[for='G17_Iron']");
-var D18_Limestone_DG = document.getElementById("D18_Limestone");
-var E18_Shale_DG = document.getElementById("E18_Shale");
-var F18_Sand_DG = document.getElementById("F18_Sand");
-var G18_Iron_DG = document.getElementById("G18_Iron");
-var D18_Limestone_DQ = document.querySelector("label[for='D18_Limestone']");
-var E18_Shale_DQ = document.querySelector("label[for='E18_Shale']");
-var F18_Sand_DQ = document.querySelector("label[for='F18_Sand']");
-var G18_Iron_DQ = document.querySelector("label[for='G18_Iron']");
-var D19_Limestone_DG = document.getElementById("D19_Limestone");
-var E19_Shale_DG = document.getElementById("E19_Shale");
-var F19_Sand_DG = document.getElementById("F19_Sand");
-var G19_Iron_DG = document.getElementById("G19_Iron");
-var D19_Limestone_DQ = document.querySelector("label[for='D19_Limestone']");
-var E19_Shale_DQ = document.querySelector("label[for='E19_Shale']");
-var F19_Sand_DQ = document.querySelector("label[for='F19_Sand']");
-var G19_Iron_DQ = document.querySelector("label[for='G19_Iron']");
-var H15_SiO2_DG = document.getElementById("H15_SiO2");
-var H16_SiO2_DG = document.getElementById("H16_SiO2");
-var H17_SiO2_DG = document.getElementById("H17_SiO2");
-var H18_SiO2_DG = document.getElementById("H18_SiO2");
-var I15_Al2O3_DG = document.getElementById("I15_Al2O3");
-var I16_Al2O3_DG = document.getElementById("I16_Al2O3");
-var I17_Al2O3_DG = document.getElementById("I17_Al2O3");
-var I18_Al2O3_DG = document.getElementById("I18_Al2O3");
-var J15_Fe2O3_DG = document.getElementById("J15_Fe2O3");
-var J16_Fe2O3_DG = document.getElementById("J16_Fe2O3");
-var J17_Fe2O3_DG = document.getElementById("J17_Fe2O3");
-var J18_Fe2O3_DG = document.getElementById("J18_Fe2O3");
-var K15_CaO_DG = document.getElementById("K15_CaO");
-var K16_CaO_DG = document.getElementById("K16_CaO");
-var K17_CaO_DG = document.getElementById("K17_CaO");
-var K18_CaO_DG = document.getElementById("K18_CaO");
-var L15_MgO_DG = document.getElementById("L15_MgO");
-var L16_MgO_DG = document.getElementById("L16_MgO");
-var L17_MgO_DG = document.getElementById("L17_MgO");
-var L18_MgO_DG = document.getElementById("L18_MgO");
-var M15_Na2O_DG = document.getElementById("M15_Na2O");
-var M16_Na2O_DG = document.getElementById("M16_Na2O");
-var M17_Na2O_DG = document.getElementById("M17_Na2O");
-var M18_Na2O_DG = document.getElementById("M18_Na2O");
-var N15_K2O_DG = document.getElementById("N15_K2O");
-var N16_K2O_DG = document.getElementById("N16_K2O");
-var N17_K2O_DG = document.getElementById("N17_K2O");
-var N18_K2O_DG = document.getElementById("N18_K2O");
-var O15_SO3_DG = document.getElementById("O15_SO3");
-var O16_SO3_DG = document.getElementById("O16_SO3");
-var O17_SO3_DG = document.getElementById("O17_SO3");
-var O18_SO3_DG = document.getElementById("O18_SO3");
-var P15_Cl_DG = document.getElementById("P15_Cl");
-var P16_Cl_DG = document.getElementById("P16_Cl");
-var P17_Cl_DG = document.getElementById("P17_Cl");
-var P18_Cl_DG = document.getElementById("P18_Cl");
+let D16_Limestone_DG = document.getElementById("D16_Limestone");
+let E16_Shale_DG = document.getElementById("E16_Shale");
+let F16_Sand_DG = document.getElementById("F16_Sand");
+let G16_Iron_DG = document.getElementById("G16_Iron");
+let D16_Limestone_DQ = document.querySelector("label[for='D16_Limestone']");
+let E16_Shale_DQ = document.querySelector("label[for='E16_Shale']");
+let F16_Sand_DQ = document.querySelector("label[for='F16_Sand']");
+let G16_Iron_DQ = document.querySelector("label[for='G16_Iron']");
+let D17_Limestone_DG = document.getElementById("D17_Limestone");
+let E17_Shale_DG = document.getElementById("E17_Shale");
+let F17_Sand_DG = document.getElementById("F17_Sand");
+let G17_Iron_DG = document.getElementById("G17_Iron");
+let D17_Limestone_DQ = document.querySelector("label[for='D17_Limestone']");
+let E17_Shale_DQ = document.querySelector("label[for='E17_Shale']");
+let F17_Sand_DQ = document.querySelector("label[for='F17_Sand']");
+let G17_Iron_DQ = document.querySelector("label[for='G17_Iron']");
+let D18_Limestone_DG = document.getElementById("D18_Limestone");
+let E18_Shale_DG = document.getElementById("E18_Shale");
+let F18_Sand_DG = document.getElementById("F18_Sand");
+let G18_Iron_DG = document.getElementById("G18_Iron");
+let D18_Limestone_DQ = document.querySelector("label[for='D18_Limestone']");
+let E18_Shale_DQ = document.querySelector("label[for='E18_Shale']");
+let F18_Sand_DQ = document.querySelector("label[for='F18_Sand']");
+let G18_Iron_DQ = document.querySelector("label[for='G18_Iron']");
+let D19_Limestone_DG = document.getElementById("D19_Limestone");
+let E19_Shale_DG = document.getElementById("E19_Shale");
+let F19_Sand_DG = document.getElementById("F19_Sand");
+let G19_Iron_DG = document.getElementById("G19_Iron");
+let D19_Limestone_DQ = document.querySelector("label[for='D19_Limestone']");
+let E19_Shale_DQ = document.querySelector("label[for='E19_Shale']");
+let F19_Sand_DQ = document.querySelector("label[for='F19_Sand']");
+let G19_Iron_DQ = document.querySelector("label[for='G19_Iron']");
+let H15_SiO2_DG = document.getElementById("H15_SiO2");
+let H16_SiO2_DG = document.getElementById("H16_SiO2");
+let H17_SiO2_DG = document.getElementById("H17_SiO2");
+let H18_SiO2_DG = document.getElementById("H18_SiO2");
+let I15_Al2O3_DG = document.getElementById("I15_Al2O3");
+let I16_Al2O3_DG = document.getElementById("I16_Al2O3");
+let I17_Al2O3_DG = document.getElementById("I17_Al2O3");
+let I18_Al2O3_DG = document.getElementById("I18_Al2O3");
+let J15_Fe2O3_DG = document.getElementById("J15_Fe2O3");
+let J16_Fe2O3_DG = document.getElementById("J16_Fe2O3");
+let J17_Fe2O3_DG = document.getElementById("J17_Fe2O3");
+let J18_Fe2O3_DG = document.getElementById("J18_Fe2O3");
+let K15_CaO_DG = document.getElementById("K15_CaO");
+let K16_CaO_DG = document.getElementById("K16_CaO");
+let K17_CaO_DG = document.getElementById("K17_CaO");
+let K18_CaO_DG = document.getElementById("K18_CaO");
+let L15_MgO_DG = document.getElementById("L15_MgO");
+let L16_MgO_DG = document.getElementById("L16_MgO");
+let L17_MgO_DG = document.getElementById("L17_MgO");
+let L18_MgO_DG = document.getElementById("L18_MgO");
+let M15_Na2O_DG = document.getElementById("M15_Na2O");
+let M16_Na2O_DG = document.getElementById("M16_Na2O");
+let M17_Na2O_DG = document.getElementById("M17_Na2O");
+let M18_Na2O_DG = document.getElementById("M18_Na2O");
+let N15_K2O_DG = document.getElementById("N15_K2O");
+let N16_K2O_DG = document.getElementById("N16_K2O");
+let N17_K2O_DG = document.getElementById("N17_K2O");
+let N18_K2O_DG = document.getElementById("N18_K2O");
+let O15_SO3_DG = document.getElementById("O15_SO3");
+let O16_SO3_DG = document.getElementById("O16_SO3");
+let O17_SO3_DG = document.getElementById("O17_SO3");
+let O18_SO3_DG = document.getElementById("O18_SO3");
+let P15_Cl_DG = document.getElementById("P15_Cl");
+let P16_Cl_DG = document.getElementById("P16_Cl");
+let P17_Cl_DG = document.getElementById("P17_Cl");
+let P18_Cl_DG = document.getElementById("P18_Cl");
 
 // FIXED CELL
-var total_C15_DG = document.querySelector("label[for='total_C15']");
-var total_C16_DG = document.querySelector("label[for='total_C16']");
-var total_C17_DG = document.querySelector("label[for='total_C17']");
-var total_C18_DG = document.querySelector("label[for='total_C18']");
-var total_C19_DG = document.querySelector("label[for='total_C19']");
-var Q15_LOI_DG = document.querySelector("label[for='Q15_LOI']");
-var Q16_LOI_DG = document.querySelector("label[for='Q16_LOI']");
-var Q17_LOI_DG = document.querySelector("label[for='Q17_LOI']");
-var Q18_LOI_DG = document.querySelector("label[for='Q18_LOI']");
-var R15_XRFtotal_DG = document.querySelector("label[for='R15_XRFtotal']");
-var R16_XRFtotal_DG = document.querySelector("label[for='R16_XRFtotal']");
-var R17_XRFtotal_DG = document.querySelector("label[for='R17_XRFtotal']");
-var R18_XRFtotal_DG = document.querySelector("label[for='R18_XRFtotal']");
-var S15_LSF_DG = document.querySelector("label[for='S15_LSF']");
-var S16_LSF_DG = document.querySelector("label[for='S16_LSF']");
-var S17_LSF_DG = document.querySelector("label[for='S17_LSF']");
-var S18_LSF_DG = document.querySelector("label[for='S18_LSF']");
-var T15_HM_DG = document.querySelector("label[for='T15_HM']");
-var T16_HM_DG = document.querySelector("label[for='T16_HM']");
-var T17_HM_DG = document.querySelector("label[for='T17_HM']");
-var T18_HM_DG = document.querySelector("label[for='T18_HM']");
-var U15_SM_DG = document.querySelector("label[for='U15_SM']");
-var U16_SM_DG = document.querySelector("label[for='U16_SM']");
-var U17_SM_DG = document.querySelector("label[for='U17_SM']");
-var U18_SM_DG = document.querySelector("label[for='U18_SM']");
-var V15_AM_DG = document.querySelector("label[for='V15_AM']");
-var V16_AM_DG = document.querySelector("label[for='V16_AM']");
-var V17_AM_DG = document.querySelector("label[for='V17_AM']");
-var V18_AM_DG = document.querySelector("label[for='V18_AM']");
-var D20_AVG_DG = document.querySelector("label[for='D20_AVG']");
-var E20_AVG_DG = document.querySelector("label[for='E20_AVG']");
-var F20_AVG_DG = document.querySelector("label[for='F20_AVG']");
-var G20_AVG_DG = document.querySelector("label[for='G20_AVG']");
-var H20_AVG_DG = document.querySelector("label[for='H20_AVG']");
-var I20_AVG_DG = document.querySelector("label[for='I20_AVG']");
-var J20_AVG_DG = document.querySelector("label[for='J20_AVG']");
-var K20_AVG_DG = document.querySelector("label[for='K20_AVG']");
-var L20_AVG_DG = document.querySelector("label[for='L20_AVG']");
-var M20_AVG_DG = document.querySelector("label[for='M20_AVG']");
-var N20_AVG_DG = document.querySelector("label[for='N20_AVG']");
-var O20_AVG_DG = document.querySelector("label[for='O20_AVG']");
-var P20_AVG_DG = document.querySelector("label[for='P20_AVG']");
-var Q20_AVG_DG = document.querySelector("label[for='Q20_AVG']");
-var R20_AVG_DG = document.querySelector("label[for='R20_AVG']");
-var S20_AVG_DG = document.querySelector("label[for='S20_AVG']");
-var T20_AVG_DG = document.querySelector("label[for='T20_AVG']");
-var U20_AVG_DG = document.querySelector("label[for='U20_AVG']");
-var V20_AVG_DG = document.querySelector("label[for='V20_AVG']");
-var D20_STDEV_DG = document.querySelector("label[for='D20_STDEV']");
-var E20_STDEV_DG = document.querySelector("label[for='E20_STDEV']");
-var F20_STDEV_DG = document.querySelector("label[for='F20_STDEV']");
-var G20_STDEV_DG = document.querySelector("label[for='G20_STDEV']");
-var H20_STDEV_DG = document.querySelector("label[for='H20_STDEV']");
-var I20_STDEV_DG = document.querySelector("label[for='I20_STDEV']");
-var J20_STDEV_DG = document.querySelector("label[for='J20_STDEV']");
-var K20_STDEV_DG = document.querySelector("label[for='K20_STDEV']");
-var L20_STDEV_DG = document.querySelector("label[for='L20_STDEV']");
-var M20_STDEV_DG = document.querySelector("label[for='M20_STDEV']");
-var N20_STDEV_DG = document.querySelector("label[for='N20_STDEV']");
-var O20_STDEV_DG = document.querySelector("label[for='O20_STDEV']");
-var P20_STDEV_DG = document.querySelector("label[for='P20_STDEV']");
-var Q20_STDEV_DG = document.querySelector("label[for='Q20_STDEV']");
-var R20_STDEV_DG = document.querySelector("label[for='R20_STDEV']");
-var S20_STDEV_DG = document.querySelector("label[for='S20_STDEV']");
-var T20_STDEV_DG = document.querySelector("label[for='T20_STDEV']");
-var U20_STDEV_DG = document.querySelector("label[for='U20_STDEV']");
-var V20_STDEV_DG = document.querySelector("label[for='V20_STDEV']");
-var D20_MIN_DG = document.querySelector("label[for='D20_MIN']");
-var E20_MIN_DG = document.querySelector("label[for='E20_MIN']");
-var F20_MIN_DG = document.querySelector("label[for='F20_MIN']");
-var G20_MIN_DG = document.querySelector("label[for='G20_MIN']");
-var H20_MIN_DG = document.querySelector("label[for='H20_MIN']");
-var I20_MIN_DG = document.querySelector("label[for='I20_MIN']");
-var J20_MIN_DG = document.querySelector("label[for='J20_MIN']");
-var K20_MIN_DG = document.querySelector("label[for='K20_MIN']");
-var L20_MIN_DG = document.querySelector("label[for='L20_MIN']");
-var M20_MIN_DG = document.querySelector("label[for='M20_MIN']");
-var N20_MIN_DG = document.querySelector("label[for='N20_MIN']");
-var O20_MIN_DG = document.querySelector("label[for='O20_MIN']");
-var P20_MIN_DG = document.querySelector("label[for='P20_MIN']");
-var Q20_MIN_DG = document.querySelector("label[for='Q20_MIN']");
-var R20_MIN_DG = document.querySelector("label[for='R20_MIN']");
-var S20_MIN_DG = document.querySelector("label[for='S20_MIN']");
-var T20_MIN_DG = document.querySelector("label[for='T20_MIN']");
-var U20_MIN_DG = document.querySelector("label[for='U20_MIN']");
-var V20_MIN_DG = document.querySelector("label[for='V20_MIN']");
-var D20_MAX_DG = document.querySelector("label[for='D20_MAX']");
-var E20_MAX_DG = document.querySelector("label[for='E20_MAX']");
-var F20_MAX_DG = document.querySelector("label[for='F20_MAX']");
-var G20_MAX_DG = document.querySelector("label[for='G20_MAX']");
-var H20_MAX_DG = document.querySelector("label[for='H20_MAX']");
-var I20_MAX_DG = document.querySelector("label[for='I20_MAX']");
-var J20_MAX_DG = document.querySelector("label[for='J20_MAX']");
-var K20_MAX_DG = document.querySelector("label[for='K20_MAX']");
-var L20_MAX_DG = document.querySelector("label[for='L20_MAX']");
-var M20_MAX_DG = document.querySelector("label[for='M20_MAX']");
-var N20_MAX_DG = document.querySelector("label[for='N20_MAX']");
-var O20_MAX_DG = document.querySelector("label[for='O20_MAX']");
-var P20_MAX_DG = document.querySelector("label[for='P20_MAX']");
-var Q20_MAX_DG = document.querySelector("label[for='Q20_MAX']");
-var R20_MAX_DG = document.querySelector("label[for='R20_MAX']");
-var S20_MAX_DG = document.querySelector("label[for='S20_MAX']");
-var T20_MAX_DG = document.querySelector("label[for='T20_MAX']");
-var U20_MAX_DG = document.querySelector("label[for='U20_MAX']");
-var V20_MAX_DG = document.querySelector("label[for='V20_MAX']");
+let total_C15_DG = document.querySelector("label[for='total_C15']");
+let total_C16_DG = document.querySelector("label[for='total_C16']");
+let total_C17_DG = document.querySelector("label[for='total_C17']");
+let total_C18_DG = document.querySelector("label[for='total_C18']");
+let total_C19_DG = document.querySelector("label[for='total_C19']");
+let Q15_LOI_DG = document.querySelector("label[for='Q15_LOI']");
+let Q16_LOI_DG = document.querySelector("label[for='Q16_LOI']");
+let Q17_LOI_DG = document.querySelector("label[for='Q17_LOI']");
+let Q18_LOI_DG = document.querySelector("label[for='Q18_LOI']");
+let R15_XRFtotal_DG = document.querySelector("label[for='R15_XRFtotal']");
+let R16_XRFtotal_DG = document.querySelector("label[for='R16_XRFtotal']");
+let R17_XRFtotal_DG = document.querySelector("label[for='R17_XRFtotal']");
+let R18_XRFtotal_DG = document.querySelector("label[for='R18_XRFtotal']");
+let S15_LSF_DG = document.querySelector("label[for='S15_LSF']");
+let S16_LSF_DG = document.querySelector("label[for='S16_LSF']");
+let S17_LSF_DG = document.querySelector("label[for='S17_LSF']");
+let S18_LSF_DG = document.querySelector("label[for='S18_LSF']");
+let T15_HM_DG = document.querySelector("label[for='T15_HM']");
+let T16_HM_DG = document.querySelector("label[for='T16_HM']");
+let T17_HM_DG = document.querySelector("label[for='T17_HM']");
+let T18_HM_DG = document.querySelector("label[for='T18_HM']");
+let U15_SM_DG = document.querySelector("label[for='U15_SM']");
+let U16_SM_DG = document.querySelector("label[for='U16_SM']");
+let U17_SM_DG = document.querySelector("label[for='U17_SM']");
+let U18_SM_DG = document.querySelector("label[for='U18_SM']");
+let V15_AM_DG = document.querySelector("label[for='V15_AM']");
+let V16_AM_DG = document.querySelector("label[for='V16_AM']");
+let V17_AM_DG = document.querySelector("label[for='V17_AM']");
+let V18_AM_DG = document.querySelector("label[for='V18_AM']");
+let D20_AVG_DG = document.querySelector("label[for='D20_AVG']");
+let E20_AVG_DG = document.querySelector("label[for='E20_AVG']");
+let F20_AVG_DG = document.querySelector("label[for='F20_AVG']");
+let G20_AVG_DG = document.querySelector("label[for='G20_AVG']");
+let H20_AVG_DG = document.querySelector("label[for='H20_AVG']");
+let I20_AVG_DG = document.querySelector("label[for='I20_AVG']");
+let J20_AVG_DG = document.querySelector("label[for='J20_AVG']");
+let K20_AVG_DG = document.querySelector("label[for='K20_AVG']");
+let L20_AVG_DG = document.querySelector("label[for='L20_AVG']");
+let M20_AVG_DG = document.querySelector("label[for='M20_AVG']");
+let N20_AVG_DG = document.querySelector("label[for='N20_AVG']");
+let O20_AVG_DG = document.querySelector("label[for='O20_AVG']");
+let P20_AVG_DG = document.querySelector("label[for='P20_AVG']");
+let Q20_AVG_DG = document.querySelector("label[for='Q20_AVG']");
+let R20_AVG_DG = document.querySelector("label[for='R20_AVG']");
+let S20_AVG_DG = document.querySelector("label[for='S20_AVG']");
+let T20_AVG_DG = document.querySelector("label[for='T20_AVG']");
+let U20_AVG_DG = document.querySelector("label[for='U20_AVG']");
+let V20_AVG_DG = document.querySelector("label[for='V20_AVG']");
+let D20_STDEV_DG = document.querySelector("label[for='D20_STDEV']");
+let E20_STDEV_DG = document.querySelector("label[for='E20_STDEV']");
+let F20_STDEV_DG = document.querySelector("label[for='F20_STDEV']");
+let G20_STDEV_DG = document.querySelector("label[for='G20_STDEV']");
+let H20_STDEV_DG = document.querySelector("label[for='H20_STDEV']");
+let I20_STDEV_DG = document.querySelector("label[for='I20_STDEV']");
+let J20_STDEV_DG = document.querySelector("label[for='J20_STDEV']");
+let K20_STDEV_DG = document.querySelector("label[for='K20_STDEV']");
+let L20_STDEV_DG = document.querySelector("label[for='L20_STDEV']");
+let M20_STDEV_DG = document.querySelector("label[for='M20_STDEV']");
+let N20_STDEV_DG = document.querySelector("label[for='N20_STDEV']");
+let O20_STDEV_DG = document.querySelector("label[for='O20_STDEV']");
+let P20_STDEV_DG = document.querySelector("label[for='P20_STDEV']");
+let Q20_STDEV_DG = document.querySelector("label[for='Q20_STDEV']");
+let R20_STDEV_DG = document.querySelector("label[for='R20_STDEV']");
+let S20_STDEV_DG = document.querySelector("label[for='S20_STDEV']");
+let T20_STDEV_DG = document.querySelector("label[for='T20_STDEV']");
+let U20_STDEV_DG = document.querySelector("label[for='U20_STDEV']");
+let V20_STDEV_DG = document.querySelector("label[for='V20_STDEV']");
+let D20_MIN_DG = document.querySelector("label[for='D20_MIN']");
+let E20_MIN_DG = document.querySelector("label[for='E20_MIN']");
+let F20_MIN_DG = document.querySelector("label[for='F20_MIN']");
+let G20_MIN_DG = document.querySelector("label[for='G20_MIN']");
+let H20_MIN_DG = document.querySelector("label[for='H20_MIN']");
+let I20_MIN_DG = document.querySelector("label[for='I20_MIN']");
+let J20_MIN_DG = document.querySelector("label[for='J20_MIN']");
+let K20_MIN_DG = document.querySelector("label[for='K20_MIN']");
+let L20_MIN_DG = document.querySelector("label[for='L20_MIN']");
+let M20_MIN_DG = document.querySelector("label[for='M20_MIN']");
+let N20_MIN_DG = document.querySelector("label[for='N20_MIN']");
+let O20_MIN_DG = document.querySelector("label[for='O20_MIN']");
+let P20_MIN_DG = document.querySelector("label[for='P20_MIN']");
+let Q20_MIN_DG = document.querySelector("label[for='Q20_MIN']");
+let R20_MIN_DG = document.querySelector("label[for='R20_MIN']");
+let S20_MIN_DG = document.querySelector("label[for='S20_MIN']");
+let T20_MIN_DG = document.querySelector("label[for='T20_MIN']");
+let U20_MIN_DG = document.querySelector("label[for='U20_MIN']");
+let V20_MIN_DG = document.querySelector("label[for='V20_MIN']");
+let D20_MAX_DG = document.querySelector("label[for='D20_MAX']");
+let E20_MAX_DG = document.querySelector("label[for='E20_MAX']");
+let F20_MAX_DG = document.querySelector("label[for='F20_MAX']");
+let G20_MAX_DG = document.querySelector("label[for='G20_MAX']");
+let H20_MAX_DG = document.querySelector("label[for='H20_MAX']");
+let I20_MAX_DG = document.querySelector("label[for='I20_MAX']");
+let J20_MAX_DG = document.querySelector("label[for='J20_MAX']");
+let K20_MAX_DG = document.querySelector("label[for='K20_MAX']");
+let L20_MAX_DG = document.querySelector("label[for='L20_MAX']");
+let M20_MAX_DG = document.querySelector("label[for='M20_MAX']");
+let N20_MAX_DG = document.querySelector("label[for='N20_MAX']");
+let O20_MAX_DG = document.querySelector("label[for='O20_MAX']");
+let P20_MAX_DG = document.querySelector("label[for='P20_MAX']");
+let Q20_MAX_DG = document.querySelector("label[for='Q20_MAX']");
+let R20_MAX_DG = document.querySelector("label[for='R20_MAX']");
+let S20_MAX_DG = document.querySelector("label[for='S20_MAX']");
+let T20_MAX_DG = document.querySelector("label[for='T20_MAX']");
+let U20_MAX_DG = document.querySelector("label[for='U20_MAX']");
+let V20_MAX_DG = document.querySelector("label[for='V20_MAX']");
 
 const cbox16 = document.getElementById("cbox16");
 const cbox17 = document.getElementById("cbox17");
@@ -533,83 +762,83 @@ const cbox18 = document.getElementById("cbox18");
 const cbox19 = document.getElementById("cbox19");
 
 // INPUT
-var C30_LSF_PR_DG = document.getElementById("C30_LSF_PR");
-var C31_SM_PR_DG = document.getElementById("C31_SM_PR");
-var C32_AM_PR_DG = document.getElementById("C32_AM_PR");
+let C30_LSF_PR_DG = document.getElementById("C30_LSF_PR");
+let C31_SM_PR_DG = document.getElementById("C31_SM_PR");
+let C32_AM_PR_DG = document.getElementById("C32_AM_PR");
 //TARGET
 //CAN BE CHANGE
-var F30_LSF_TG_DG = document.getElementById("F30_LSF_TG");
-var F31_SM_TG_DG = document.getElementById("F31_SM_TG");
-var F32_AM_TG_DG = document.getElementById("F32_AM_TG");
+let F30_LSF_TG_DG = document.getElementById("F30_LSF_TG");
+let F31_SM_TG_DG = document.getElementById("F31_SM_TG");
+let F32_AM_TG_DG = document.getElementById("F32_AM_TG");
 //CLINKER FACTOR
 //CAN BE CHANGE
-var E33_Clinker_Factor_DG = document.getElementById("E33_Clinker_Factor");
-var E34_RawMixType_DG = document.getElementById("E34_RawMixType");
+let E33_Clinker_Factor_DG = document.getElementById("E33_Clinker_Factor");
+let E34_RawMixType_DG = document.getElementById("E34_RawMixType");
 
 // TARGET Composition
 //can be change
-var H31_SiO2_DG = document.getElementById("H31_SiO2");
-var I31_Al2O3_DG = document.getElementById("I31_Al2O3");
-var J31_Fe2O3_DG = document.getElementById("J31_Fe2O3");
-var K31_CaO_DG = document.getElementById("K31_CaO");
-var L31_MgO_DG = document.getElementById("L31_MgO");
-var M31_Na2O_DG = document.getElementById("M31_Na2O");
-var N31_K2O_DG = document.getElementById("N31_K2O");
-var O31_SO3_DG = document.getElementById("O31_SO3");
-var P31_Cl_DG = document.getElementById("P31_Cl");
+let H31_SiO2_DG = document.getElementById("H31_SiO2");
+let I31_Al2O3_DG = document.getElementById("I31_Al2O3");
+let J31_Fe2O3_DG = document.getElementById("J31_Fe2O3");
+let K31_CaO_DG = document.getElementById("K31_CaO");
+let L31_MgO_DG = document.getElementById("L31_MgO");
+let M31_Na2O_DG = document.getElementById("M31_Na2O");
+let N31_K2O_DG = document.getElementById("N31_K2O");
+let O31_SO3_DG = document.getElementById("O31_SO3");
+let P31_Cl_DG = document.getElementById("P31_Cl");
 
 //fixed cell
-var Q31_LOI_DG = document.querySelector("label[for='Q31_LOI']");
-var R31_total_DG = document.querySelector("label[for='R31_total']");
-var S31_LSF_DG = document.querySelector("label[for='S31_LSF']");
-var T31_HM_DG = document.querySelector("label[for='T31_HM']");
-var U31_SM_DG = document.querySelector("label[for='U31_SM']");
-var V31_AM_DG = document.querySelector("label[for='V31_AM']");
+let Q31_LOI_DG = document.querySelector("label[for='Q31_LOI']");
+let R31_total_DG = document.querySelector("label[for='R31_total']");
+let S31_LSF_DG = document.querySelector("label[for='S31_LSF']");
+let T31_HM_DG = document.querySelector("label[for='T31_HM']");
+let U31_SM_DG = document.querySelector("label[for='U31_SM']");
+let V31_AM_DG = document.querySelector("label[for='V31_AM']");
 
 //DONE
 //Expected  Clinker Composition
 
 //fixed cell
-var H35_SiO2_DG = document.querySelector("label[for='H35_SiO2']");
-var I35_Al2O3_DG = document.querySelector("label[for='I35_Al2O3']");
-var J35_Fe2O3_DG = document.querySelector("label[for='J35_Fe2O3']");
-var K35_CaO_DG = document.querySelector("label[for='K35_CaO']");
-var L35_MgO_DG = document.querySelector("label[for='L35_MgO']");
-var M35_Na2O_DG = document.querySelector("label[for='M35_Na2O']");
-var N35_K2O_DG = document.querySelector("label[for='N35_K2O']");
-var O35_SO3_DG = document.querySelector("label[for='O35_SO3']");
-var P35_Cl_DG = document.querySelector("label[for='P35_Cl']");
-var Q35_ECC_total_DG = document.querySelector("label[for='Q35_ECC_total']");
-var S35_LSF_DG = document.querySelector("label[for='S35_LSF']");
-var T35_HM_DG = document.querySelector("label[for='T35_HM']");
-var U35_SM_DG = document.querySelector("label[for='U35_SM']");
-var V35_AM_DG = document.querySelector("label[for='V35_AM']");
+let H35_SiO2_DG = document.querySelector("label[for='H35_SiO2']");
+let I35_Al2O3_DG = document.querySelector("label[for='I35_Al2O3']");
+let J35_Fe2O3_DG = document.querySelector("label[for='J35_Fe2O3']");
+let K35_CaO_DG = document.querySelector("label[for='K35_CaO']");
+let L35_MgO_DG = document.querySelector("label[for='L35_MgO']");
+let M35_Na2O_DG = document.querySelector("label[for='M35_Na2O']");
+let N35_K2O_DG = document.querySelector("label[for='N35_K2O']");
+let O35_SO3_DG = document.querySelector("label[for='O35_SO3']");
+let P35_Cl_DG = document.querySelector("label[for='P35_Cl']");
+let Q35_ECC_total_DG = document.querySelector("label[for='Q35_ECC_total']");
+let S35_LSF_DG = document.querySelector("label[for='S35_LSF']");
+let T35_HM_DG = document.querySelector("label[for='T35_HM']");
+let U35_SM_DG = document.querySelector("label[for='U35_SM']");
+let V35_AM_DG = document.querySelector("label[for='V35_AM']");
 
-var H38_literKG_DG = document.getElementById("H38_literKG");
-var I38_FCaO_DG = document.getElementById("I38_FCaO");
-var J38_BurningCondition_DG = document.getElementById("J38_BurningCondition");
+let H38_literKG_DG = document.getElementById("H38_literKG");
+let I38_FCaO_DG = document.getElementById("I38_FCaO");
+let J38_BurningCondition_DG = document.getElementById("J38_BurningCondition");
 
-var L38_KL_LOI_DG = document.getElementById("L38_KL_LOI");
-var U38_SO3_DG = document.getElementById("U38_SO3");
-var V38_LOI_DG = document.getElementById("V38_LOI");
+let L38_KL_LOI_DG = document.getElementById("L38_KL_LOI");
+let U38_SO3_DG = document.getElementById("U38_SO3");
+let V38_LOI_DG = document.getElementById("V38_LOI");
 
 //END NAME: RAWMEAL and CLINKER TARGETS
 //Fixed cell
-var K38_DOC_DG = document.querySelector("label[for='K38_DOC']");
-var M38_C3Snet_DG = document.querySelector("label[for='M38_C3Snet']");
-var N38_C2S_DG = document.querySelector("label[for='N38_C2S']");
-var O38_C3A_DG = document.querySelector("label[for='O38_C3A']");
-var P38_C4AF_DG = document.querySelector("label[for='P38_C4AF']");
-var Q38_Sulfur_Alkali_ratio_DG = document.querySelector(
+let K38_DOC_DG = document.querySelector("label[for='K38_DOC']");
+let M38_C3Snet_DG = document.querySelector("label[for='M38_C3Snet']");
+let N38_C2S_DG = document.querySelector("label[for='N38_C2S']");
+let O38_C3A_DG = document.querySelector("label[for='O38_C3A']");
+let P38_C4AF_DG = document.querySelector("label[for='P38_C4AF']");
+let Q38_Sulfur_Alkali_ratio_DG = document.querySelector(
     "label[for='Q38_Sulfur_Alkali_ratio']"
 );
-var R38_total_Alkali_DG = document.querySelector(
+let R38_total_Alkali_DG = document.querySelector(
     "label[for='R38_total_Alkali']"
 );
-var S38_Liquid_Phase_DG = document.querySelector(
+let S38_Liquid_Phase_DG = document.querySelector(
     "label[for='S38_Liquid_Phase']"
 );
-var T38_Coating_Index_DG = document.querySelector(
+let T38_Coating_Index_DG = document.querySelector(
     "label[for='T38_Coating_Index']"
 );
 // End TARGET Composition
@@ -727,6 +956,123 @@ var rawmillnum = 0;
 //#endregion
 // End All Variables getbyElementID
 
+//BEGIN MIX V GetbyElementID
+//#region 
+C8_MIX_RDFC_DG = document.getElementById("C8_MIX_RDFC");
+C9_SiO2_RDFC_DG = document.getElementById("C9_SiO2_RDFC");
+C10_Al2O3_RDFC_DG = document.getElementById("C10_Al2O3_RDFC");
+C11_Fe2O3_RDFC_DG = document.getElementById("C11_Fe2O3_RDFC");
+C12_CaO_RDFC_DG = document.getElementById("C12_CaO_RDFC");
+C13_MgO_RDFC_DG = document.getElementById("C13_MgO_RDFC");
+C14_Na2O_RDFC_DG = document.getElementById("C14_Na2O_RDFC");
+C15_K2O_RDFC_DG = document.getElementById("C15_K2O_RDFC");
+C16_SO3_RDFC_DG = document.getElementById("C16_SO3_RDFC");
+C17_LOI_RDFC_DG = document.getElementById("C17_LOI_RDFC");
+
+C18_TOTAL_RDFC_DG = document.querySelector("label[for='C18_TOTAL_RDFC']");
+C19_LSF_RDFC_DG = document.querySelector("label[for='C19_LSF_RDFC']");
+C20_SM_RDFC_DG = document.querySelector("label[for='C20_SM_RDFC']");
+C21_AM_RDFC_DG = document.querySelector("label[for='C21_AM_RDFC']");
+
+D8_MIX_RDFC_DG = document.getElementById("D8_MIX_RDFC");
+D9_SiO2_RDFC_DG = document.getElementById("D9_SiO2_RDFC");
+D10_Al2O3_RDFC_DG = document.getElementById("D10_Al2O3_RDFC");
+D11_Fe2O3_RDFC_DG = document.getElementById("D11_Fe2O3_RDFC");
+D12_CaO_RDFC_DG = document.getElementById("D12_CaO_RDFC");
+D13_MgO_RDFC_DG = document.getElementById("D13_MgO_RDFC");
+D14_Na2O_RDFC_DG = document.getElementById("D14_Na2O_RDFC");
+D15_K2O_RDFC_DG = document.getElementById("D15_K2O_RDFC");
+D16_SO3_RDFC_DG = document.getElementById("D16_SO3_RDFC");
+D17_LOI_RDFC_DG = document.getElementById("D17_LOI_RDFC");
+
+D18_TOTAL_RDFC_DG = document.querySelector("label[for='D18_TOTAL_RDFC']");
+D19_LSF_RDFC_DG = document.querySelector("label[for='D19_LSF_RDFC']");
+D20_SM_RDFC_DG = document.querySelector("label[for='D20_SM_RDFC']");
+D21_AM_RDFC_DG = document.querySelector("label[for='D21_AM_RDFC']");
+
+E8_MIX_RDFC_DG = document.getElementById("E8_MIX_RDFC");
+E9_SiO2_RDFC_DG = document.getElementById("E9_SiO2_RDFC");
+E10_Al2O3_RDFC_DG = document.getElementById("E10_Al2O3_RDFC");
+E11_Fe2O3_RDFC_DG = document.getElementById("E11_Fe2O3_RDFC");
+E12_CaO_RDFC_DG = document.getElementById("E12_CaO_RDFC");
+E13_MgO_RDFC_DG = document.getElementById("E13_MgO_RDFC");
+E14_Na2O_RDFC_DG = document.getElementById("E14_Na2O_RDFC");
+E15_K2O_RDFC_DG = document.getElementById("E15_K2O_RDFC");
+E16_SO3_RDFC_DG = document.getElementById("E16_SO3_RDFC");
+E17_LOI_RDFC_DG = document.getElementById("E17_LOI_RDFC");
+
+E18_TOTAL_RDFC_DG = document.querySelector("label[for='E18_TOTAL_RDFC']");
+E19_LSF_RDFC_DG = document.querySelector("label[for='E19_LSF_RDFC']");
+E20_SM_RDFC_DG = document.querySelector("label[for='E20_SM_RDFC']");
+E21_AM_RDFC_DG = document.querySelector("label[for='E21_AM_RDFC']");
+
+F8_MIX_RDFC_DG = document.getElementById("F8_MIX_RDFC");
+F9_SiO2_RDFC_DG = document.getElementById("F9_SiO2_RDFC");
+F10_Al2O3_RDFC_DG = document.getElementById("F10_Al2O3_RDFC");
+F11_Fe2O3_RDFC_DG = document.getElementById("F11_Fe2O3_RDFC");
+F12_CaO_RDFC_DG = document.getElementById("F12_CaO_RDFC");
+F13_MgO_RDFC_DG = document.getElementById("F13_MgO_RDFC");
+F14_Na2O_RDFC_DG = document.getElementById("F14_Na2O_RDFC");
+F15_K2O_RDFC_DG = document.getElementById("F15_K2O_RDFC");
+F16_SO3_RDFC_DG = document.getElementById("F16_SO3_RDFC");
+F17_LOI_RDFC_DG = document.getElementById("F17_LOI_RDFC");
+
+F18_TOTAL_RDFC_DG = document.querySelector("label[for='F18_TOTAL_RDFC']");
+F19_LSF_RDFC_DG = document.querySelector("label[for='F19_LSF_RDFC']");
+F20_SM_RDFC_DG = document.querySelector("label[for='F20_SM_RDFC']");
+F21_AM_RDFC_DG = document.querySelector("label[for='F21_AM_RDFC']");
+
+G8_MIX_RDFC_DG = document.querySelector("label[for='G8_MIX_RDFC']");
+G9_SiO2_RDFC_DG = document.querySelector("label[for='G9_SiO2_RDFC']");
+G10_Al2O3_RDFC_DG = document.querySelector("label[for='G10_Al2O3_RDFC']");
+G11_Fe2O3_RDFC_DG = document.querySelector("label[for='G11_Fe2O3_RDFC']");
+G12_CaO_RDFC_DG = document.querySelector("label[for='G12_CaO_RDFC']");
+G13_MgO_RDFC_DG = document.querySelector("label[for='G13_MgO_RDFC']");
+G14_Na2O_RDFC_DG = document.querySelector("label[for='G14_Na2O_RDFC']");
+G15_K2O_RDFC_DG = document.querySelector("label[for='G15_K2O_RDFC']");
+G16_SO3_RDFC_DG = document.querySelector("label[for='G16_SO3_RDFC']");
+G17_LOI_RDFC_DG = document.querySelector("label[for='G17_LOI_RDFC']");
+G18_TOTAL_RDFC_DG = document.querySelector("label[for='G18_TOTAL_RDFC']");
+G19_LSF_RDFC_DG = document.querySelector("label[for='G19_LSF_RDFC']");
+G20_SM_RDFC_DG = document.querySelector("label[for='G20_SM_RDFC']");
+G21_AM_RDFC_DG = document.querySelector("label[for='G21_AM_RDFC']");
+
+//MATRIX & COE
+
+L8_a_DG = document.querySelector("label[for='L8_a']");
+L9_b_DG = document.querySelector("label[for='L9_b']");
+L10_c_DG = document.querySelector("label[for='L10_c']");
+L11_d_DG = document.querySelector("label[for='L11_d']");
+L12_e_DG = document.querySelector("label[for='L12_e']");
+L13_f_DG = document.querySelector("label[for='L13_f']");
+L14_g_DG = document.querySelector("label[for='L14_g']");
+L15_h_DG = document.querySelector("label[for='L15_h']");
+L16_i_DG = document.querySelector("label[for='L16_i']");
+L17_k_DG = document.querySelector("label[for='L17_k']");
+L18_l_DG = document.querySelector("label[for='L18_l']");
+L19_m_DG = document.querySelector("label[for='L19_m']");
+L20_n_DG = document.querySelector("label[for='L20_n']");
+L21_p_DG = document.querySelector("label[for='L21_p']");
+L22_q_DG = document.querySelector("label[for='L22_q']");
+L23_r_DG = document.querySelector("label[for='L23_r']");
+L24_s_DG = document.querySelector("label[for='L24_s']");
+O8_Dw_Matrix_DG = document.querySelector("label[for='O8_Dw_Matrix']");
+O9_Dx_Matrix_DG = document.querySelector("label[for='O9_Dx_Matrix']");
+O10_Dy_Matrix_DG = document.querySelector("label[for='O10_Dy_Matrix']");
+O11_Dz_Matrix_DG = document.querySelector("label[for='O11_Dz_Matrix']");
+O12_D_Matrix_DG = document.querySelector("label[for='O12_D_Matrix']");
+O15_W_DG = document.querySelector("label[for='O15_W']");
+O16_X_DG = document.querySelector("label[for='O16_X']");
+O17_Y_DG = document.querySelector("label[for='O17_Y']");
+O18_Z_DG = document.querySelector("label[for='O18_Z']");
+O19_TOTAL_DG = document.querySelector("label[for='O19_TOTAL']");
+
+I14_Lime_Saturation_DG = document.getElementById("I14_Lime_Saturation");
+I17_Silica_Modulus_DG = document.getElementById("I17_Silica_Modulus");
+I20_Alumina_Modulus_DG = document.getElementById("I20_Alumina_Modulus");
+//#endregion
+//END MIX V GetbyElementID
+
 //change navigation 
 
 
@@ -823,8 +1169,53 @@ window.addEventListener('beforeunload', function(event) {
         H38_literKG: H38_literKG_DG.value === 'undefined' ? '' : H38_literKG_DG.value,
         I38_FCaO: I38_FCaO_DG.value === 'undefined' ? '' : I38_FCaO_DG.value,
         J38_BurningCondition: J38_BurningCondition_DG.value === 'undefined' ? '' : J38_BurningCondition_DG.value,
-        U38_SO3: U38_SO3_DG.value === 'undefined' ? '' : U38_SO3_DG.value
+        U38_SO3: U38_SO3_DG.value === 'undefined' ? '' : U38_SO3_DG.value,
+        //MIX
+        C8_MIX_RDFC: typeof C8_MIX_RDFC_DG.value === 'undefined' ? '' : C8_MIX_RDFC_DG.value,
+        C9_SiO2_RDFC: typeof C9_SiO2_RDFC_DG.value === 'undefined' ? '' : C9_SiO2_RDFC_DG.value,
+        C10_Al2O3_RDFC: typeof C10_Al2O3_RDFC_DG.value === 'undefined' ? '' : C10_Al2O3_RDFC_DG.value,
+        C11_Fe2O3_RDFC: typeof C11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : C11_Fe2O3_RDFC_DG.value,
+        C12_CaO_RDFC: typeof C12_CaO_RDFC_DG.value === 'undefined' ? '' : C12_CaO_RDFC_DG.value,
+        C13_MgO_RDFC: typeof C13_MgO_RDFC_DG.value === 'undefined' ? '' : C13_MgO_RDFC_DG.value,
+        C14_Na2O_RDFC: typeof C14_Na2O_RDFC_DG.value === 'undefined' ? '' : C14_Na2O_RDFC_DG.value,
+        C15_K2O_RDFC: typeof C15_K2O_RDFC_DG.value === 'undefined' ? '' : C15_K2O_RDFC_DG.value,
+        C16_SO3_RDFC: typeof C16_SO3_RDFC_DG.value === 'undefined' ? '' : C16_SO3_RDFC_DG.value,
+        C17_LOI_RDFC: typeof C17_LOI_RDFC_DG.value === 'undefined' ? '' : C17_LOI_RDFC_DG.value,
+        D8_MIX_RDFC: typeof D8_MIX_RDFC_DG.value === 'undefined' ? '' : D8_MIX_RDFC_DG.value,
+        D9_SiO2_RDFC: typeof D9_SiO2_RDFC_DG.value === 'undefined' ? '' : D9_SiO2_RDFC_DG.value,
+        D10_Al2O3_RDFC: typeof D10_Al2O3_RDFC_DG.value === 'undefined' ? '' : D10_Al2O3_RDFC_DG.value,
+        D11_Fe2O3_RDFC: typeof D11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : D11_Fe2O3_RDFC_DG.value,
+        D12_CaO_RDFC: typeof D12_CaO_RDFC_DG.value === 'undefined' ? '' : D12_CaO_RDFC_DG.value,
+        D13_MgO_RDFC: typeof D13_MgO_RDFC_DG.value === 'undefined' ? '' : D13_MgO_RDFC_DG.value,
+        D14_Na2O_RDFC: typeof D14_Na2O_RDFC_DG.value === 'undefined' ? '' : D14_Na2O_RDFC_DG.value,
+        D15_K2O_RDFC: typeof D15_K2O_RDFC_DG.value === 'undefined' ? '' : D15_K2O_RDFC_DG.value,
+        D16_SO3_RDFC: typeof D16_SO3_RDFC_DG.value === 'undefined' ? '' : D16_SO3_RDFC_DG.value,
+        D17_LOI_RDFC: typeof D17_LOI_RDFC_DG.value === 'undefined' ? '' : D17_LOI_RDFC_DG.value,
+        E8_MIX_RDFC: typeof E8_MIX_RDFC_DG.value === 'undefined' ? '' : E8_MIX_RDFC_DG.value,
+        E9_SiO2_RDFC: typeof E9_SiO2_RDFC_DG.value === 'undefined' ? '' : E9_SiO2_RDFC_DG.value,
+        E10_Al2O3_RDFC: typeof E10_Al2O3_RDFC_DG.value === 'undefined' ? '' : E10_Al2O3_RDFC_DG.value,
+        E11_Fe2O3_RDFC: typeof E11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : E11_Fe2O3_RDFC_DG.value,
+        E12_CaO_RDFC: typeof E12_CaO_RDFC_DG.value === 'undefined' ? '' : E12_CaO_RDFC_DG.value,
+        E13_MgO_RDFC: typeof E13_MgO_RDFC_DG.value === 'undefined' ? '' : E13_MgO_RDFC_DG.value,
+        E14_Na2O_RDFC: typeof E14_Na2O_RDFC_DG.value === 'undefined' ? '' : E14_Na2O_RDFC_DG.value,
+        E15_K2O_RDFC: typeof E15_K2O_RDFC_DG.value === 'undefined' ? '' : E15_K2O_RDFC_DG.value,
+        E16_SO3_RDFC: typeof E16_SO3_RDFC_DG.value === 'undefined' ? '' : E16_SO3_RDFC_DG.value,
+        E17_LOI_RDFC: typeof E17_LOI_RDFC_DG.value === 'undefined' ? '' : E17_LOI_RDFC_DG.value,
+        F8_MIX_RDFC: typeof F8_MIX_RDFC_DG.value === 'undefined' ? '' : F8_MIX_RDFC_DG.value,
+        F9_SiO2_RDFC: typeof F9_SiO2_RDFC_DG.value === 'undefined' ? '' : F9_SiO2_RDFC_DG.value,
+        F10_Al2O3_RDFC: typeof F10_Al2O3_RDFC_DG.value === 'undefined' ? '' : F10_Al2O3_RDFC_DG.value,
+        F11_Fe2O3_RDFC: typeof F11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : F11_Fe2O3_RDFC_DG.value,
+        F12_CaO_RDFC: typeof F12_CaO_RDFC_DG.value === 'undefined' ? '' : F12_CaO_RDFC_DG.value,
+        F13_MgO_RDFC: typeof F13_MgO_RDFC_DG.value === 'undefined' ? '' : F13_MgO_RDFC_DG.value,
+        F14_Na2O_RDFC: typeof F14_Na2O_RDFC_DG.value === 'undefined' ? '' : F14_Na2O_RDFC_DG.value,
+        F15_K2O_RDFC: typeof F15_K2O_RDFC_DG.value === 'undefined' ? '' : F15_K2O_RDFC_DG.value,
+        F16_SO3_RDFC: typeof F16_SO3_RDFC_DG.value === 'undefined' ? '' : F16_SO3_RDFC_DG.value,
+        F17_LOI_RDFC: typeof F17_LOI_RDFC_DG.value === 'undefined' ? '' : F17_LOI_RDFC_DG.value,
+        I14_Lime_Saturation: typeof I14_Lime_Saturation_DG.value === 'undefined' ? '' : I14_Lime_Saturation_DG.value,
+        I17_Silica_Modulus: typeof I17_Silica_Modulus_DG.value === 'undefined' ? '' : I17_Silica_Modulus_DG.value,
+        I20_Alumina_Modulus: typeof I20_Alumina_Modulus_DG.value === 'undefined' ? '' : I20_Alumina_Modulus_DG.value
     };
+
 
     localStorage.setItem('Rawmill' + rawmillnum, JSON.stringify(myObject));
 
@@ -923,7 +1314,51 @@ document.addEventListener('pause', function() {
         H38_literKG: H38_literKG_DG.value === 'undefined' ? '' : H38_literKG_DG.value,
         I38_FCaO: I38_FCaO_DG.value === 'undefined' ? '' : I38_FCaO_DG.value,
         J38_BurningCondition: J38_BurningCondition_DG.value === 'undefined' ? '' : J38_BurningCondition_DG.value,
-        U38_SO3: U38_SO3_DG.value === 'undefined' ? '' : U38_SO3_DG.value
+        U38_SO3: U38_SO3_DG.value === 'undefined' ? '' : U38_SO3_DG.value,
+        //MIX
+        C8_MIX_RDFC: typeof C8_MIX_RDFC_DG.value === 'undefined' ? '' : C8_MIX_RDFC_DG.value,
+        C9_SiO2_RDFC: typeof C9_SiO2_RDFC_DG.value === 'undefined' ? '' : C9_SiO2_RDFC_DG.value,
+        C10_Al2O3_RDFC: typeof C10_Al2O3_RDFC_DG.value === 'undefined' ? '' : C10_Al2O3_RDFC_DG.value,
+        C11_Fe2O3_RDFC: typeof C11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : C11_Fe2O3_RDFC_DG.value,
+        C12_CaO_RDFC: typeof C12_CaO_RDFC_DG.value === 'undefined' ? '' : C12_CaO_RDFC_DG.value,
+        C13_MgO_RDFC: typeof C13_MgO_RDFC_DG.value === 'undefined' ? '' : C13_MgO_RDFC_DG.value,
+        C14_Na2O_RDFC: typeof C14_Na2O_RDFC_DG.value === 'undefined' ? '' : C14_Na2O_RDFC_DG.value,
+        C15_K2O_RDFC: typeof C15_K2O_RDFC_DG.value === 'undefined' ? '' : C15_K2O_RDFC_DG.value,
+        C16_SO3_RDFC: typeof C16_SO3_RDFC_DG.value === 'undefined' ? '' : C16_SO3_RDFC_DG.value,
+        C17_LOI_RDFC: typeof C17_LOI_RDFC_DG.value === 'undefined' ? '' : C17_LOI_RDFC_DG.value,
+        D8_MIX_RDFC: typeof D8_MIX_RDFC_DG.value === 'undefined' ? '' : D8_MIX_RDFC_DG.value,
+        D9_SiO2_RDFC: typeof D9_SiO2_RDFC_DG.value === 'undefined' ? '' : D9_SiO2_RDFC_DG.value,
+        D10_Al2O3_RDFC: typeof D10_Al2O3_RDFC_DG.value === 'undefined' ? '' : D10_Al2O3_RDFC_DG.value,
+        D11_Fe2O3_RDFC: typeof D11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : D11_Fe2O3_RDFC_DG.value,
+        D12_CaO_RDFC: typeof D12_CaO_RDFC_DG.value === 'undefined' ? '' : D12_CaO_RDFC_DG.value,
+        D13_MgO_RDFC: typeof D13_MgO_RDFC_DG.value === 'undefined' ? '' : D13_MgO_RDFC_DG.value,
+        D14_Na2O_RDFC: typeof D14_Na2O_RDFC_DG.value === 'undefined' ? '' : D14_Na2O_RDFC_DG.value,
+        D15_K2O_RDFC: typeof D15_K2O_RDFC_DG.value === 'undefined' ? '' : D15_K2O_RDFC_DG.value,
+        D16_SO3_RDFC: typeof D16_SO3_RDFC_DG.value === 'undefined' ? '' : D16_SO3_RDFC_DG.value,
+        D17_LOI_RDFC: typeof D17_LOI_RDFC_DG.value === 'undefined' ? '' : D17_LOI_RDFC_DG.value,
+        E8_MIX_RDFC: typeof E8_MIX_RDFC_DG.value === 'undefined' ? '' : E8_MIX_RDFC_DG.value,
+        E9_SiO2_RDFC: typeof E9_SiO2_RDFC_DG.value === 'undefined' ? '' : E9_SiO2_RDFC_DG.value,
+        E10_Al2O3_RDFC: typeof E10_Al2O3_RDFC_DG.value === 'undefined' ? '' : E10_Al2O3_RDFC_DG.value,
+        E11_Fe2O3_RDFC: typeof E11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : E11_Fe2O3_RDFC_DG.value,
+        E12_CaO_RDFC: typeof E12_CaO_RDFC_DG.value === 'undefined' ? '' : E12_CaO_RDFC_DG.value,
+        E13_MgO_RDFC: typeof E13_MgO_RDFC_DG.value === 'undefined' ? '' : E13_MgO_RDFC_DG.value,
+        E14_Na2O_RDFC: typeof E14_Na2O_RDFC_DG.value === 'undefined' ? '' : E14_Na2O_RDFC_DG.value,
+        E15_K2O_RDFC: typeof E15_K2O_RDFC_DG.value === 'undefined' ? '' : E15_K2O_RDFC_DG.value,
+        E16_SO3_RDFC: typeof E16_SO3_RDFC_DG.value === 'undefined' ? '' : E16_SO3_RDFC_DG.value,
+        E17_LOI_RDFC: typeof E17_LOI_RDFC_DG.value === 'undefined' ? '' : E17_LOI_RDFC_DG.value,
+        F8_MIX_RDFC: typeof F8_MIX_RDFC_DG.value === 'undefined' ? '' : F8_MIX_RDFC_DG.value,
+        F9_SiO2_RDFC: typeof F9_SiO2_RDFC_DG.value === 'undefined' ? '' : F9_SiO2_RDFC_DG.value,
+        F10_Al2O3_RDFC: typeof F10_Al2O3_RDFC_DG.value === 'undefined' ? '' : F10_Al2O3_RDFC_DG.value,
+        F11_Fe2O3_RDFC: typeof F11_Fe2O3_RDFC_DG.value === 'undefined' ? '' : F11_Fe2O3_RDFC_DG.value,
+        F12_CaO_RDFC: typeof F12_CaO_RDFC_DG.value === 'undefined' ? '' : F12_CaO_RDFC_DG.value,
+        F13_MgO_RDFC: typeof F13_MgO_RDFC_DG.value === 'undefined' ? '' : F13_MgO_RDFC_DG.value,
+        F14_Na2O_RDFC: typeof F14_Na2O_RDFC_DG.value === 'undefined' ? '' : F14_Na2O_RDFC_DG.value,
+        F15_K2O_RDFC: typeof F15_K2O_RDFC_DG.value === 'undefined' ? '' : F15_K2O_RDFC_DG.value,
+        F16_SO3_RDFC: typeof F16_SO3_RDFC_DG.value === 'undefined' ? '' : F16_SO3_RDFC_DG.value,
+        F17_LOI_RDFC: typeof F17_LOI_RDFC_DG.value === 'undefined' ? '' : F17_LOI_RDFC_DG.value,
+        I14_Lime_Saturation: typeof I14_Lime_Saturation_DG.value === 'undefined' ? '' : I14_Lime_Saturation_DG.value,
+        I17_Silica_Modulus: typeof I17_Silica_Modulus_DG.value === 'undefined' ? '' : I17_Silica_Modulus_DG.value,
+        I20_Alumina_Modulus: typeof I20_Alumina_Modulus_DG.value === 'undefined' ? '' : I20_Alumina_Modulus_DG.value
     };
 
     localStorage.setItem('Rawmill' + rawmillnum, JSON.stringify(myObject));
@@ -1153,33 +1588,79 @@ document.addEventListener('resume', function() {
         U38_SO3_DG.value = storedObject.U38_SO3;
         // computeall();
 
+        //MIX
+        C8_MIX_RDFC_DG.value = storedObject.C8_MIX_RDFC;
+        C9_SiO2_RDFC_DG.value = storedObject.C9_SiO2_RDFC;
+        C10_Al2O3_RDFC_DG.value = storedObject.C10_Al2O3_RDFC;
+        C11_Fe2O3_RDFC_DG.value = storedObject.C11_Fe2O3_RDFC;
+        C12_CaO_RDFC_DG.value = storedObject.C12_CaO_RDFC;
+        C13_MgO_RDFC_DG.value = storedObject.C13_MgO_RDFC;
+        C14_Na2O_RDFC_DG.value = storedObject.C14_Na2O_RDFC;
+        C15_K2O_RDFC_DG.value = storedObject.C15_K2O_RDFC;
+        C16_SO3_RDFC_DG.value = storedObject.C16_SO3_RDFC;
+        C17_LOI_RDFC_DG.value = storedObject.C17_LOI_RDFC;
+        D8_MIX_RDFC_DG.value = storedObject.D8_MIX_RDFC;
+        D9_SiO2_RDFC_DG.value = storedObject.D9_SiO2_RDFC;
+        D10_Al2O3_RDFC_DG.value = storedObject.D10_Al2O3_RDFC;
+        D11_Fe2O3_RDFC_DG.value = storedObject.D11_Fe2O3_RDFC;
+        D12_CaO_RDFC_DG.value = storedObject.D12_CaO_RDFC;
+        D13_MgO_RDFC_DG.value = storedObject.D13_MgO_RDFC;
+        D14_Na2O_RDFC_DG.value = storedObject.D14_Na2O_RDFC;
+        D15_K2O_RDFC_DG.value = storedObject.D15_K2O_RDFC;
+        D16_SO3_RDFC_DG.value = storedObject.D16_SO3_RDFC;
+        D17_LOI_RDFC_DG.value = storedObject.D17_LOI_RDFC;
+        E8_MIX_RDFC_DG.value = storedObject.E8_MIX_RDFC;
+        E9_SiO2_RDFC_DG.value = storedObject.E9_SiO2_RDFC;
+        E10_Al2O3_RDFC_DG.value = storedObject.E10_Al2O3_RDFC;
+        E11_Fe2O3_RDFC_DG.value = storedObject.E11_Fe2O3_RDFC;
+        E12_CaO_RDFC_DG.value = storedObject.E12_CaO_RDFC;
+        E13_MgO_RDFC_DG.value = storedObject.E13_MgO_RDFC;
+        E14_Na2O_RDFC_DG.value = storedObject.E14_Na2O_RDFC;
+        E15_K2O_RDFC_DG.value = storedObject.E15_K2O_RDFC;
+        E16_SO3_RDFC_DG.value = storedObject.E16_SO3_RDFC;
+        E17_LOI_RDFC_DG.value = storedObject.E17_LOI_RDFC;
+        F8_MIX_RDFC_DG.value = storedObject.F8_MIX_RDFC;
+        F9_SiO2_RDFC_DG.value = storedObject.F9_SiO2_RDFC;
+        F10_Al2O3_RDFC_DG.value = storedObject.F10_Al2O3_RDFC;
+        F11_Fe2O3_RDFC_DG.value = storedObject.F11_Fe2O3_RDFC;
+        F12_CaO_RDFC_DG.value = storedObject.F12_CaO_RDFC;
+        F13_MgO_RDFC_DG.value = storedObject.F13_MgO_RDFC;
+        F14_Na2O_RDFC_DG.value = storedObject.F14_Na2O_RDFC;
+        F15_K2O_RDFC_DG.value = storedObject.F15_K2O_RDFC;
+        F16_SO3_RDFC_DG.value = storedObject.F16_SO3_RDFC;
+        F17_LOI_RDFC_DG.value = storedObject.F17_LOI_RDFC;
+        I14_Lime_Saturation_DG.value = storedObject.I14_Lime_Saturation;
+        I17_Silica_Modulus_DG.value = storedObject.I17_Silica_Modulus;
+        I20_Alumina_Modulus_DG.value = storedObject.I20_Alumina_Modulus;
+
+
     }
     console.log('App resumed (foreground)');
     // Perform actions when the app is resumed, such as restoring data
 });
 
-var check16_Limestone;
-var check16_Shale;
-var check16_Sand;
-var check16_Iron;
+let check16_Limestone;
+let check16_Shale;
+let check16_Sand;
+let check16_Iron;
 
-var check17_Limestone;
-var check17_Shale;
-var check17_Sand;
-var check17_Iron;
+let check17_Limestone;
+let check17_Shale;
+let check17_Sand;
+let check17_Iron;
 
-var check18_Limestone;
-var check18_Shale;
-var check18_Sand;
-var check18_Iron;
+let check18_Limestone;
+let check18_Shale;
+let check18_Sand;
+let check18_Iron;
 
-var check19_Limestone;
-var check19_Shale;
-var check19_Sand;
-var check19_Iron;
+let check19_Limestone;
+let check19_Shale;
+let check19_Sand;
+let check19_Iron;
 
-var initialDistance = 0;
-var currentZoom = 1;
+let initialDistance = 0;
+let currentZoom = 1;
 // end Finger Pinch
 
 // SQLITE
@@ -1747,6 +2228,11 @@ function clearnow() {
         labelContainerF19_Sand.style.display = "none";
         labelContainerG19_Iron.style.display = "none";
     }
+
+    //CLEAR RDFC
+
+    //END CLEAR RDFC
+
 };
 window.clearnow = clearnow;
 
@@ -5835,134 +6321,134 @@ document.addEventListener("DOMContentLoaded", function() {
     //Mix change
 
     C8_MIX_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C9_SiO2_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C12_CaO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C13_MgO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C14_Na2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C15_K2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C16_SO3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     C17_LOI_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D8_MIX_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D9_SiO2_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D12_CaO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D13_MgO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D14_Na2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D15_K2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D16_SO3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     D17_LOI_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E8_MIX_RDFC_DG.addEventListener("load", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E9_SiO2_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E12_CaO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E13_MgO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E14_Na2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E15_K2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E16_SO3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     E17_LOI_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F8_MIX_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F9_SiO2_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F10_Al2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F11_Fe2O3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F12_CaO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F13_MgO_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F14_Na2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F15_K2O_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F16_SO3_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     F17_LOI_RDFC_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
 
     I17_Silica_Modulus_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     I20_Alumina_Modulus_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     I14_Lime_Saturation_DG.addEventListener("change", function() {
-        window.rdfc_computeall();
+        rdfc.rdfc_computeall();
     });
     //#endregion
 
@@ -5973,7 +6459,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // You can put your code here to handle the tap event
             materialsettings();
             computeall();
-            window.rdfc_computeall();
+            window.rdfc.rdfc_computeall();
             toggleButtons();
             if (isOpened == true) {
                 toggleButtons();
