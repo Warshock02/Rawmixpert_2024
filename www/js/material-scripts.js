@@ -6029,7 +6029,7 @@ function handleButtonClick(buttonNumber) {
         // window.save_ma();
         // window.addData2();
         // window.saveOrUpdateMA();
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");
         toggleButtons();
     } else if (buttonNumber == 2) {
         alert("handleButtonClick 1");
