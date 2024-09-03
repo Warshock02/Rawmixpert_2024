@@ -1893,14 +1893,7 @@ function load_ma(id) {
         }
 
         executeSql(db,
-                "SELECT D16_Limestone, E16_Shale, F16_Sand, G16_Iron, check16, check17, D17_Limestone, E17_Shale, F17_Sand, G17_Iron, check18, " +
-                "D18_Limestone, E18_Shale, F18_Sand, G18_Iron, check19, D19_Limestone, E19_Shale, F19_Sand, G19_Iron, D15, E15, F15, " +
-                "G15, H15_SiO2, I15_Al2O3, J15_Fe2O3, K15_CaO, L15_MgO, M15_Na2O, N15_K2O, O15_SO3, P15_Cl, H16_SiO2, I16_Al2O3, " +
-                "J16_Fe2O3, K16_CaO, L16_MgO, M16_Na2O, N16_K2O, O16_SO3, P16_Cl, H17_SiO2, I17_Al2O3, J17_Fe2O3, K17_CaO, L17_MgO, " +
-                "M17_Na2O, N17_K2O, O17_SO3, P17_Cl, H18_SiO2, I18_Al2O3, J18_Fe2O3, K18_CaO, L18_MgO, M18_Na2O, N18_K2O, O18_SO3, " +
-                "P18_Cl, C30_LSF_PR, C31_SM_PR, C32_AM_PR, E33_Clinker_Factor, E34_RawMixType, F30_LSF_TG, F31_SM_TG, F32_AM_TG, " +
-                "H31_SiO2, I31_Al2O3, J31_Fe2O3, K31_CaO, L31_MgO, M31_Na2O, N31_K2O, O31_SO3, P31_Cl, L38_KL_LOI, V38_LOI, H38_literKG, " +
-                "I38_FCaO, J38_BurningCondition, U38_SO3 FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
+                "SELECT * FROM rmdTable WHERE id = ? and email = ? and pageType = ?",
                 [id, email, newptype]).then(result => {
                 const rows = result.rows;
                 const row = rows.item(0);
@@ -2114,6 +2107,52 @@ function load_ma(id) {
                 J38_BurningCondition_DG.value = row.J38_BurningCondition;
                 U38_SO3_DG.value = row.U38_SO3;
 
+                //MIX
+                (C8_MIX_RDFC_DG.value = row.C8_MIX_RDFC);
+                (C9_SiO2_RDFC_DG.value = row.C9_SiO2_RDFC);
+                (C10_Al2O3_RDFC_DG.value = row.C10_Al2O3_RDFC);
+                (C11_Fe2O3_RDFC_DG.value = row.C11_Fe2O3_RDFC);
+                (C12_CaO_RDFC_DG.value = row.C12_CaO_RDFC);
+                (C13_MgO_RDFC_DG.value = row.C13_MgO_RDFC);
+                (C14_Na2O_RDFC_DG.value = row.C14_Na2O_RDFC);
+                (C15_K2O_RDFC_DG.value = row.C15_K2O_RDFC);
+                (C16_SO3_RDFC_DG.value = row.C16_SO3_RDFC);
+                (C17_LOI_RDFC_DG.value = row.C17_LOI_RDFC);
+                (D8_MIX_RDFC_DG.value = row.D8_MIX_RDFC);
+                (D9_SiO2_RDFC_DG.value = row.D9_SiO2_RDFC);
+                (D10_Al2O3_RDFC_DG.value = row.D10_Al2O3_RDFC);
+                (D11_Fe2O3_RDFC_DG.value = row.D11_Fe2O3_RDFC);
+                (D12_CaO_RDFC_DG.value = row.D12_CaO_RDFC);
+                (D13_MgO_RDFC_DG.value = row.D13_MgO_RDFC);
+                (D14_Na2O_RDFC_DG.value = row.D14_Na2O_RDFC);
+                (D15_K2O_RDFC_DG.value = row.D15_K2O_RDFC);
+                (D16_SO3_RDFC_DG.value = row.D16_SO3_RDFC);
+                (D17_LOI_RDFC_DG.value = row.D17_LOI_RDFC);
+                (E8_MIX_RDFC_DG.value = row.E8_MIX_RDFC);
+                (E9_SiO2_RDFC_DG.value = row.E9_SiO2_RDFC);
+                (E10_Al2O3_RDFC_DG.value = row.E10_Al2O3_RDFC);
+                (E11_Fe2O3_RDFC_DG.value = row.E11_Fe2O3_RDFC);
+                (E12_CaO_RDFC_DG.value = row.E12_CaO_RDFC);
+                (E13_MgO_RDFC_DG.value = row.E13_MgO_RDFC);
+                (E14_Na2O_RDFC_DG.value = row.E14_Na2O_RDFC);
+                (E15_K2O_RDFC_DG.value = row.E15_K2O_RDFC);
+                (E16_SO3_RDFC_DG.value = row.E16_SO3_RDFC);
+                (E17_LOI_RDFC_DG.value = row.E17_LOI_RDFC);
+                (F8_MIX_RDFC_DG.value = row.F8_MIX_RDFC);
+                (F9_SiO2_RDFC_DG.value = row.F9_SiO2_RDFC);
+                (F10_Al2O3_RDFC_DG.value = row.F10_Al2O3_RDFC);
+                (F11_Fe2O3_RDFC_DG.value = row.F11_Fe2O3_RDFC);
+                (F12_CaO_RDFC_DG.value = row.F12_CaO_RDFC);
+                (F13_MgO_RDFC_DG.value = row.F13_MgO_RDFC);
+                (F14_Na2O_RDFC_DG.value = row.F14_Na2O_RDFC);
+                (F15_K2O_RDFC_DG.value = row.F15_K2O_RDFC);
+                (F16_SO3_RDFC_DG.value = row.F16_SO3_RDFC);
+                (F17_LOI_RDFC_DG.value = row.F17_LOI_RDFC);
+                (I14_Lime_Saturation_DG.value = row.I14_Lime_Saturation);
+                (I17_Silica_Modulus_DG.value = row.I17_Silica_Modulus);
+                (I20_Alumina_Modulus_DG.value = row.I20_Alumina_Modulus);
+
+                //END MIX
 
 
                 // window.computeall();
@@ -2540,6 +2579,21 @@ numberInputs.forEach((input) => {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    var inputs = document.querySelectorAll('input');
+
+    // Iterate through each input element
+    inputs.forEach(function(input) {
+        // Add a focus event listener to each input element
+        input.addEventListener('focus', function() {
+            // Check if the value of the input is zero
+            if (input.value === '0') {
+                // Clear the input value
+                input.value = '';
+            }
+        });
+    });
+
 
     if (rawmill1num !== null) {
         rawmillnum = rawmill1num.value;
@@ -6029,22 +6083,22 @@ function handleButtonClick(buttonNumber) {
         // window.save_ma();
         // window.addData2();
         // window.saveOrUpdateMA();
-        // alert("handleButtonClick 1");
+        // // alert("handleButtonClick 1");
         toggleButtons();
     } else if (buttonNumber == 2) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");
         window.saveOrUpdateMA();
         toggleButtons();
     } else if (buttonNumber == 3) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");
         // window.saveOrUpdateMA();
         toggleButtons();
     } else if (buttonNumber == 4) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");
         // window.saveOrUpdateMA();
         toggleButtons();
     } else if (buttonNumber == 5) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");
         window.clearnow();
         window.rdfc_clear()
         toggleButtons();

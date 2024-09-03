@@ -84,33 +84,40 @@ document.addEventListener("deviceready", function() {
         }
         window.rawmill = rawmill;
 
-        function rawmill1() {
-            window.rawmillnum = 1;
-            console.log("RAWMILL 1")
-            cordova.InAppBrowser.open("rawmill1.html", "_self");
-        }
-        window.rawmill1 = rawmill1;
-
-        function rawmill2() {
-            window.rawmillnum = 2;
+        function rawmill_2() {
+            // window.rawmillnum = 1;
             console.log("RAWMILL 2")
-            cordova.InAppBrowser.open("rawmill2.html", "_self");
+            cordova.InAppBrowser.open("rawmill_2.html", "_self");
         }
-        window.rawmill2 = rawmill2;
+        window.rawmill_2 = rawmill_2;
 
-        function recipe1() {
-            window.recipenum = 1
-            console.log("RECIPE 1")
-            cordova.InAppBrowser.open("recipe1.html", "_self");
-        }
-        window.recipe1 = recipe1;
+        // function rawmill1() {
+        //     window.rawmillnum = 1;
+        //     console.log("RAWMILL 1")
+        //     cordova.InAppBrowser.open("rawmill1.html", "_self");
+        // }
+        // window.rawmill1 = rawmill1;
 
-        function recipe2() {
-            window.recipenum = 2
-            console.log("RECIPE 2")
-            cordova.InAppBrowser.open("recipe2.html", "_self");
-        }
-        window.recipe2 = recipe2;
+        // function rawmill2() {
+        //     window.rawmillnum = 2;
+        //     console.log("RAWMILL 2")
+        //     cordova.InAppBrowser.open("rawmill2.html", "_self");
+        // }
+        // window.rawmill2 = rawmill2;
+
+        // function recipe1() {
+        //     window.recipenum = 1
+        //     console.log("RECIPE 1")
+        //     cordova.InAppBrowser.open("recipe1.html", "_self");
+        // }
+        // window.recipe1 = recipe1;
+
+        // function recipe2() {
+        //     window.recipenum = 2
+        //     console.log("RECIPE 2")
+        //     cordova.InAppBrowser.open("recipe2.html", "_self");
+        // }
+        // window.recipe2 = recipe2;
 
         document.querySelector(".app-content").style.display = "block";
 
@@ -408,6 +415,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     async function fetchAndUploadRecords() {
         try {
+
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('uploadPopup').style.display = 'block';
+
+            const uploadList = document.getElementById('uploadList');
+            uploadList.innerHTML = ''; // Clear previous entries
+
             console.log("You're about to UPLOAD!!!!!!!!");
             const result = await executeSql(db, "SELECT * FROM rmdTable WHERE email = ? ORDER BY id DESC", [localStorage.getItem("email")]);
             const records = [];
@@ -574,28 +588,40 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                     return response.json();
                 })
-                .then(data => console.log(data))
+                .then(data => {
+                    // Success: Add the RM data ID with a success message
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('success'); // Add success class
+                    listItem.textContent = `RM ID: ${recordData.id} - Success`;
+                    uploadList.appendChild(listItem);
+                    console.log(data);
+                })
                 .catch(error => {
+                    // Error: Add the RM data ID with an error message
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('error'); // Add error class
+                    listItem.textContent = `RM ID: ${recordData.id} - Error: ${error.message}`;
+                    uploadList.appendChild(listItem);
                     console.log(error);
-                    alert("Error: " + error);
-                    return false;
                 })
             ));
 
-            console.log(responses);
+
             if (responses.every(success => success)) {
                 console.log("All records uploaded successfully");
-                alert("Rawmix records uploaded successfully");
+                // alert("Rawmix records uploaded successfully");
             } else {
                 console.log("Some records failed to upload");
                 console.log("Error: " + responses);
-                alert("Some records failed to upload");
+                // alert("Some records failed to upload");
             }
         } catch (error) {
             alert(error);
             console.error("Error in fetchAndUploadRecords:", error);
         }
     }
+
+
 
 
     // function callApiForCreateOrUpdate() {
@@ -638,6 +664,12 @@ document.addEventListener("DOMContentLoaded", function() {
     domContentLoaded = true;
     checkAndCompute();
 })
+
+function closePopup() {
+    // Hide the overlay and popup
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('uploadPopup').style.display = 'none';
+}
 
 //CHECK DOM & DEVICEREADY
 function checkAndCompute() {

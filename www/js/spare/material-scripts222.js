@@ -6515,22 +6515,22 @@ function handleButtonClick(buttonNumber) {
         // window.save_ma();
         // window.addData2();
         // window.saveOrUpdateMA();
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");Click 1");
         toggleButtons();
     } else if (buttonNumber == 2) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");Click 1");
         window.saveOrUpdateMA();
         toggleButtons();
     } else if (buttonNumber == 3) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");Click 1");
         // window.saveOrUpdateMA();
         toggleButtons();
     } else if (buttonNumber == 4) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");Click 1");
         // window.saveOrUpdateMA();
         toggleButtons();
     } else if (buttonNumber == 5) {
-        alert("handleButtonClick 1");
+        // alert("handleButtonClick 1");Click 1");
         window.clearnow();
         window.rdfc_clear()
         toggleButtons();
