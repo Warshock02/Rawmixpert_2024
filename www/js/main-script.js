@@ -612,6 +612,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
+
+            // Timeout helper function
+            const timeout = (ms) => new Promise((_, reject) =>
+                setTimeout(() => reject(new Error("Request timed out, slow connection, please try again!")), ms)
+            );
+
             try {
 
                 const responses = await Promise.all(records.map(recordData =>
@@ -636,7 +642,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         listItem.classList.add('success'); // Add success class
                         listItem.textContent = `RM ID: ${recordData.id} - Success`;
                         uploadList.appendChild(listItem);
-                        console.log(data);
+                        // console.log(data);
                     })
                     .catch(error => {
                         // Error: Add the RM data ID with an error message
@@ -645,7 +651,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         listItem.textContent = `RM ID: ${recordData.id} - Error: ${error.message}`;
                         uploadList.appendChild(listItem);
                         console.log(error);
-                    })
+                    }),
+                    timeout(60000) // 30 seconds timeout for each request
                 ));
             } finally {
 

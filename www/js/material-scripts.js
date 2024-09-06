@@ -1338,22 +1338,22 @@ function onDeviceReady() {
             }, "blue");
             const updateButton = createActionButton2("Update", function() {
                 if (confirm("Are you sure you want to update RAWMILL ID:" + id + "'s record?")) {
-                    update_ma(id);
+                    saveOrUpdateMA();
 
                 }
 
 
             }, "orange");
-            const deleteButton = createActionButton2("Delete", function() {
-                if (confirm("Are you sure you want to delete RAWMILL ID: " + id + "'s record?")) {
-                    deleteRecord(id);
-                    window.mloadlist();
-                }
-            }, "red");
+            // const deleteButton = createActionButton2("Delete", function() {
+            //     if (confirm("Are you sure you want to delete RAWMILL ID: " + id + "'s record?")) {
+            //         deleteRecord(id);
+            //         window.mloadlist();
+            //     }
+            // }, "red");
 
             actionCell.appendChild(selectButton);
             actionCell.appendChild(updateButton);
-            actionCell.appendChild(deleteButton);
+            // actionCell.appendChild(deleteButton);
         }
     }).catch(error => {
         // console.error("Error fetching data:", error);
@@ -1851,6 +1851,13 @@ function mloadlist() {
                 idCell.textContent = id;
                 nameCell.textContent = name;
 
+
+                // Create the action buttons and wrap them in a div for centering
+                const actionContainer = document.createElement('div');
+                actionContainer.className = 'action-buttons'; // Add class for styling
+
+
+
                 const selectButton = createActionButton2("Select", function() {
                     if (confirm("Are you sure you want to 'select' RAWMILL ID:" + id + "'s record?")) {
                         alert("Selected ID: " + id + ", Name: " + name)
@@ -1861,20 +1868,28 @@ function mloadlist() {
 
                 const updateButton = createActionButton2("Update", function() {
                     if (confirm("Are you sure you want to update RAWMILL ID:" + id + "'s record?")) {
-                        update_ma(id);
+                        saveOrUpdateMA();
                     }
                 }, "orange");
 
-                const deleteButton = createActionButton2("Delete", function() {
-                    if (confirm("Are you sure you want to delete RAWMILL ID:" + id + "'s record?")) {
-                        deleteRecord(id);
-                        window.mloadlist();
-                    }
-                }, "red");
+                // const deleteButton = createActionButton2("Delete", function() {
+                //     if (confirm("Are you sure you want to delete RAWMILL ID:" + id + "'s record?")) {
+                //         deleteRecord(id);
+                //         window.mloadlist();
+                //     }
+                // }, "red");
 
-                actionCell.appendChild(selectButton);
-                actionCell.appendChild(updateButton);
-                actionCell.appendChild(deleteButton);
+
+                // Append buttons to the action container
+                actionContainer.appendChild(selectButton);
+                actionContainer.appendChild(updateButton);
+                actionContainer.appendChild(deleteButton);
+
+                // Append the action container to the action cell
+                actionCell.appendChild(actionContainer);
+                // actionCell.appendChild(selectButton);
+                // actionCell.appendChild(updateButton);
+                // actionCell.appendChild(deleteButton);
             }
         },
         function(error) {
@@ -6093,8 +6108,8 @@ document.getElementById("deleteSelected").addEventListener("click", function() {
 
     if (selected.length > 0) {
         if (confirm("Are you sure you want to delete the selected rows?")) {
-            fetch('/api/auth/delete', {
-                    method: "POST",
+            fetch('http://107.23.7.86/api/auth/delete', {
+                    method: "DELETE",
                     headers: {
                         Accept: "application/json",
                         // Add CORS-related headers
@@ -6115,6 +6130,7 @@ document.getElementById("deleteSelected").addEventListener("click", function() {
                             var row = document.querySelector('input[value="' + id + '"]').closest('tr');
                             row.remove(); // Remove the row from the table
                         });
+                        alert("ID's: " + selected + " Successfully Deleted");
                     }
                 })
                 .catch(error => console.error('Error:', error));
@@ -6122,6 +6138,11 @@ document.getElementById("deleteSelected").addEventListener("click", function() {
     } else {
         alert("No rows selected for deletion.");
     }
+});
+
+
+document.getElementById('infoText').addEventListener('click', function() {
+    alert("Check records for online deletion");
 });
 
 function toggleButtons() {

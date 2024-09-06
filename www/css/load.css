@@ -43,6 +43,48 @@
     /* Add some spacing between input and button */
 }
 
+#deleteSelected {
+    background-color: red;
+}
+
+.checkbox {
+    margin: 0 auto;
+    /* Center the checkbox horizontally */
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    /* Center action buttons horizontally */
+    gap: 10px;
+    /* Add some space between buttons */
+}
+
+.delete-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.clickable-info {
+    font-size: 14px;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    /* Makes it look like a link */
+}
+
+.clickable-info:hover {
+    color: #0056b3;
+}
+
+#infoText {
+    font-size: 14px;
+    /* Adjust text size if needed */
+    color: #2d1bf6;
+    /* Change text color to something less prominent */
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
