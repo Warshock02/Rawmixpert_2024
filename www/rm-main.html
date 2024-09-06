@@ -85,12 +85,27 @@
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid #eba817;
+            border-radius: 1px;
             z-index: 1000;
             font-family: Arial, sans-serif;
             color: black;
             /* Default color */
+        }
+
+        #downloadPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid #ccc;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            color: black;
         }
 
         #overlay {
@@ -102,6 +117,28 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
+        }
+
+
+        #progressContainer {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 20px;
+            background-color: green;
+            border-radius: 10px;
+        }
+
+        #progressText,
+        #downloadText {
+            color: black;
+            font-size: 14px;
+            margin: 5px 0;
         }
 
         .success {
@@ -118,18 +155,26 @@
 
 <body>
 
-    <div id="progress-container" class="hidden" style="--progress: 0%;">
-        <span id="progress-text">0%</span>
+    <div id="downloadPopup">
+        <h4>Download Status:</h4>
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+        <p id="progressText">0% completed</p>
+        <p id="downloadText">. . .</p>
+        <button onclick="closeDownloadPopup()">Close</button>
     </div>
 
-    <div class="loading-screen">
+    <div id="overlay" onclick="closeDownloadPopup()"></div>
+
+    <div class="loading-screen" id="loadingOverlay">
         <img src="img/4.webp" alt="Loading" class="loading-icon">
-        Loading RawMixPERT Menu . . .
+        <h4 id="loadingtext">Loading RawMixPERT Menu . . .</h4>
     </div>
 
     <!-- Popup Box Structure -->
-    <div id="uploadPopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; background-color:white; border:1px solid #ccc; z-index:1000;">
-        <h3>Upload Status</h3>
+    <div id="uploadPopup">
+        <h3>Upload Status:</h3>
         <ul id="uploadList">
             <!-- List items will be added dynamically -->
         </ul>

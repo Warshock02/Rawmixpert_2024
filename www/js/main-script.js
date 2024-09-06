@@ -25,15 +25,6 @@ function updateProgressBar(progressPercentage) {
 }
 
 
-function hideProgressBar() {
-    document.getElementById("progress-container").classList.add("hidden");
-}
-
-function showProgressBar() {
-    document.getElementById("progress-container").classList.remove("hidden");
-}
-
-
 document.addEventListener("deviceready", function() {
 
     const token = localStorage.getItem('token');
@@ -79,6 +70,7 @@ document.addEventListener("deviceready", function() {
 
         function rawmill() {
             // window.rawmillnum = 1;
+            localStorage.setItem("rawmillnum", 1);
             console.log("RAWMILL")
             cordova.InAppBrowser.open("rawmill.html", "_self");
         }
@@ -86,6 +78,7 @@ document.addEventListener("deviceready", function() {
 
         function rawmill_2() {
             // window.rawmillnum = 1;
+            localStorage.setItem("rawmillnum", 2);
             console.log("RAWMILL 2")
             cordova.InAppBrowser.open("rawmill_2.html", "_self");
         }
@@ -130,11 +123,8 @@ document.addEventListener("deviceready", function() {
     window.back = back;
 
 
-
-
     async function fetchRmdDataDR() {
 
-        showProgressBar();
 
         const apiUrl = getApiUrl() + "/api/auth/download-rmd";
 
@@ -154,6 +144,8 @@ document.addEventListener("deviceready", function() {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
+
+
 
             const rmdData = await response.json();
             if (!rmdData || (Array.isArray(rmdData) && rmdData.length === 0) || (typeof rmdData === 'object' && Object.keys(rmdData).length === 0)) {
@@ -213,26 +205,31 @@ document.addEventListener("DOMContentLoaded", function() {
         cordova.InAppBrowser.open("index.html", "_self");
     }
     const offbtn = document.getElementById("offBtn");
-    offbtn.addEventListener("click", async () => {
+    if (offbtn) {
+        offbtn.addEventListener("click", async () => {
 
-        const result = confirm("Are you sure to logout?");
-        if (result) {
-            if (localStorage.getItem("token") == "" || localStorage.getItem("token") == null) {
-                logout();
-            }
+            const result = confirm("Are you sure to logout?");
+            if (result) {
+                if (localStorage.getItem("token") == "" || localStorage.getItem("token") == null) {
+                    logout();
+                }
 
-            const logout_result = await callApiForLogout();
-            if (logout_result.includes('Successfully logged out')) {
-                // Do something if the message contains 'Successfully logged out'
-                alert('Logout was successful');
-                logout();
-            } else {
-                // Do something if the message does not contain 'Successfully logged out'
-                alert('Error: Logout failed');
-                return;
+                const logout_result = await callApiForLogout();
+                if (logout_result.includes('Successfully logged out')) {
+                    // Do something if the message contains 'Successfully logged out'
+                    alert('Logout was successful');
+                    logout();
+                } else {
+                    // Do something if the message does not contain 'Successfully logged out'
+                    alert('Error: Logout failed');
+                    return;
+                }
             }
-        }
-    });
+        });
+
+    } else {
+        console.error("Element with ID 'myElement' not found.");
+    }
 
 
 
@@ -287,7 +284,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     async function fetchRmdData() {
 
-        showProgressBar();
+
+        document.getElementById('downloadPopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
 
         const apiUrl = getApiUrl() + "/api/auth/download-rmd";
 
@@ -308,24 +307,61 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
 
-            const rmdData = await response.json();
+            //PROGRESSBAR
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder('utf-8');
+            let jsonText = '';
+            let receivedBytes = 0;
+
+            // Progress simulation: Read the data in chunks
+            while (true) {
+                const {
+                    done,
+                    value
+                } = await reader.read();
+                if (done) {
+                    break;
+                }
+                receivedBytes += value.length;
+                jsonText += decoder.decode(value, {
+                    stream: true
+                });
+
+                // Simulate progress as data is being read
+                const progress = Math.min(100, (receivedBytes / 1024) * 10); // Adjust this factor for larger files
+                document.getElementById('progressBar').style.width = `${progress}%`;
+                document.getElementById('progressText').innerText = `${Math.floor(progress)}% completed`;
+            }
+
+
+            // Update to 100% and hide the popup
+            document.getElementById('progressBar').style.width = '100%';
+            document.getElementById('progressText').innerText = '100% completed';
+            setTimeout(closeDownloadPopup, 10000); // Close the popup after a short delay
+
+
+
+            // Hide the popup once done
+            // closeDownloadPopup();
+            //END PROGRESSBAR
+
+            // Once fully loaded, parse the JSON data
+            const rmdData = await JSON.parse(jsonText);
+            console.log('Downloaded JSON Data:', rmdData);
             saveRmdDataToLocalDb(rmdData);
         } catch (error) {
             console.error("Error fetching RMD data:", error);
         }
 
-        hideProgressBar();
     }
-
     /////55555
     async function saveRmdDataToLocalDb(rmdData) {
+
         const checkI = checkInternetConnection();
         if (checkI) {
             return;
         }
 
-        const totalItems = rmdData.length;
-        let processedItems = 0;
         try {
 
             for (const rmd of rmdData) {
@@ -401,23 +437,25 @@ document.addEventListener("DOMContentLoaded", function() {
                     rmd.L38_KL_LOI, rmd.V38_LOI, rmd.H38_literKG, rmd.I38_FCaO, rmd.J38_BurningCondition, rmd.U38_SO3, rmd.DT
                 ]);
 
-                processedItems++;
-                const progressPercentage = Math.round((processedItems / totalItems) * 100);
-                updateProgressBar(progressPercentage);
             }
             console.log("RMD data saved to SQLite");
-            alert("Rawmix data successfully downloaded! HERE!!");
+            // alert("Rawmix data successfully downloaded!");
+
+            document.getElementById('downloadText').innerText = 'Rawmix data successfully downloaded and saved!';
         } catch (error) {
-            console.log("Error saving RMD data to SQLite:", error);
-            alert("Error saving RMD data to SQLite:", error);
+            console.log("Error saving RMD data to SQLite:", error.message);
+            alert("Error saving RMD data to SQLite:", error.message);
         }
     }
 
+    var r_data = [];
     async function fetchAndUploadRecords() {
         try {
-
+            document.getElementById('loadingOverlay').style.display = 'flex';
             document.getElementById('overlay').style.display = 'block';
-            document.getElementById('uploadPopup').style.display = 'block';
+            // Change the text of the <h4> element
+            document.getElementById('loadingtext').innerText = 'Uploading data . . .';
+
 
             const uploadList = document.getElementById('uploadList');
             uploadList.innerHTML = ''; // Clear previous entries
@@ -566,63 +604,77 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             console.log(records);
-
+            r_data = records;
             if (records == null || records == "") {
+                document.getElementById('loadingOverlay').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none';
                 alert("Warning: Record is empty, there's nothing to upload");
                 return;
             }
 
-            const responses = await Promise.all(records.map(recordData =>
-                fetch(getApiUrl() + '/api/auth/storeOrupdate', {
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer " + localStorage.getItem('token'),
-                    },
-                    body: JSON.stringify(recordData)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to create record');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Success: Add the RM data ID with a success message
-                    const listItem = document.createElement('li');
-                    listItem.classList.add('success'); // Add success class
-                    listItem.textContent = `RM ID: ${recordData.id} - Success`;
-                    uploadList.appendChild(listItem);
-                    console.log(data);
-                })
-                .catch(error => {
-                    // Error: Add the RM data ID with an error message
-                    const listItem = document.createElement('li');
-                    listItem.classList.add('error'); // Add error class
-                    listItem.textContent = `RM ID: ${recordData.id} - Error: ${error.message}`;
-                    uploadList.appendChild(listItem);
-                    console.log(error);
-                })
-            ));
+            try {
 
+                const responses = await Promise.all(records.map(recordData =>
+                    fetch(getApiUrl() + '/api/auth/storeOrupdate', {
+                        method: "POST",
+                        headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer " + localStorage.getItem('token'),
+                        },
+                        body: JSON.stringify(recordData)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to create record');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Success: Add the RM data ID with a success message
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('success'); // Add success class
+                        listItem.textContent = `RM ID: ${recordData.id} - Success`;
+                        uploadList.appendChild(listItem);
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        // Error: Add the RM data ID with an error message
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('error'); // Add error class
+                        listItem.textContent = `RM ID: ${recordData.id} - Error: ${error.message}`;
+                        uploadList.appendChild(listItem);
+                        console.log(error);
+                    })
+                ));
+            } finally {
 
-            if (responses.every(success => success)) {
-                console.log("All records uploaded successfully");
-                // alert("Rawmix records uploaded successfully");
-            } else {
-                console.log("Some records failed to upload");
-                console.log("Error: " + responses);
-                // alert("Some records failed to upload");
+                if (r_data == null || r_data == "") {
+                    // alert("Warning: Record is empty, there's nothing to upload");
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    document.getElementById('overlay').style.display = 'none';
+                    return;
+                } else {
+                    // Hide the loading overlay after uploads are complete
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    document.getElementById('uploadPopup').style.display = 'block';
+                }
             }
+
+
+            // if (responses.every(success => success)) {
+            //     console.log("All records uploaded successfully");
+            //     // alert("Rawmix records uploaded successfully");
+            // } else {
+            //     console.log("Some records failed to upload");
+            //     console.log("Error: " + responses);
+            //     // alert("Some records failed to upload");
+            // }
         } catch (error) {
             alert(error);
             console.error("Error in fetchAndUploadRecords:", error);
         }
     }
-
-
-
 
     // function callApiForCreateOrUpdate() {
     //     alert('Create or Update');
@@ -654,7 +706,7 @@ document.addEventListener("DOMContentLoaded", function() {
             try {
                 await fetchRmdData();
             } catch (error) {
-                alert("Error Upload: " + error);
+                alert("Error Download: " + error);
             }
         }
     });
@@ -670,6 +722,14 @@ function closePopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('uploadPopup').style.display = 'none';
 }
+
+
+function closeDownloadPopup() {
+    document.getElementById('downloadPopup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('downloadText').innerText = '';
+}
+
 
 //CHECK DOM & DEVICEREADY
 function checkAndCompute() {

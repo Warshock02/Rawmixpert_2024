@@ -721,8 +721,8 @@ const labelContainerG19_Iron = document.getElementById(
 );
 //#endregion
 var rawmill1num = document.getElementById("rawmill1");
-var rawmill2num = document.getElementById("rawmill2");
-var rawmillnum = 0;
+var rawmill2num = document.getElementById("rawmill_2");
+var rawmillnum = localStorage.getItem("rawmillnum");;
 
 //#endregion
 // End All Variables getbyElementID
@@ -731,14 +731,14 @@ var rawmillnum = 0;
 
 
 window.addEventListener('beforeunload', function(event) {
-    if (rawmill1num !== null) {
-        rawmillnum = rawmill1num.value;
-        console.log("RAWMILL 111");
-    }
-    if (rawmill2num !== null) {
-        rawmillnum = rawmill2num.value;
-        console.log("RAWMILL 222");
-    }
+    // if (rawmill1num !== null) {
+    //     rawmillnum = rawmill1num.value;
+    //     console.log("RAWMILL 111");
+    // }
+    // if (rawmill2num !== null) {
+    //     rawmillnum = rawmill2num.value;
+    //     console.log("RAWMILL 222");
+    // }
     //Store to local
     var myObject = {
         cbox16: cbox16.checked,
@@ -831,14 +831,14 @@ window.addEventListener('beforeunload', function(event) {
 });
 
 document.addEventListener('pause', function() {
-    if (rawmill1num !== null) {
-        rawmillnum = rawmill1num.value;
-        console.log("RAWMILL 11");
-    }
-    if (rawmill2num !== null) {
-        rawmillnum = rawmill2num.value;
-        console.log("RAWMILL 22");
-    }
+    // if (rawmill1num !== null) {
+    //     rawmillnum = rawmill1num.value;
+    //     console.log("RAWMILL 11");
+    // }
+    // if (rawmill2num !== null) {
+    //     rawmillnum = rawmill2num.value;
+    //     console.log("RAWMILL 22");
+    // }
     //Store to local
     var myObject = {
         cbox16: cbox16.checked,
@@ -934,14 +934,14 @@ document.addEventListener('pause', function() {
 
 // Detect when the app comes back into the foreground
 document.addEventListener('resume', function() {
-    if (rawmill1num !== null) {
-        rawmillnum = rawmill1num.value;
-        console.log("RAWMILL 1");
-    }
-    if (rawmill2num !== null) {
-        rawmillnum = rawmill2num.value;
-        console.log("RAWMILL 2");
-    }
+    // if (rawmill1num !== null) {
+    //     rawmillnum = rawmill1num.value;
+    //     console.log("RAWMILL 1");
+    // }
+    // if (rawmill2num !== null) {
+    //     rawmillnum = rawmill2num.value;
+    //     console.log("RAWMILL 2");
+    // }
     var storedObject = JSON.parse(localStorage.getItem('Rawmill' + rawmillnum));
     if (storedObject !== null) {
 
@@ -1282,6 +1282,7 @@ function onDeviceReady() {
 
     const email = localStorage.getItem('email').trim();
     const pageType = localStorage.getItem('pagetype');
+
     // console.log('Email:', email);
     // console.log('PageType:', pageType);
 
@@ -1298,7 +1299,7 @@ function onDeviceReady() {
     executeSql(db,
         "SELECT * FROM rmdTable where email = ? and pageType = ?",
         // "SELECT * FROM rmTable ORDER BY id DESC",
-        [email, localStorage.getItem('pagetype')]).then(results => {
+        [email, newptype]).then(results => {
 
         const table = document.getElementById(materialtable_id);
         const rows = results.rows;
@@ -1310,6 +1311,15 @@ function onDeviceReady() {
 
             // Create a new row in the table
             const newRow = table.insertRow();
+
+            // Insert a cell for the checkbox
+            const checkboxCell = newRow.insertCell();
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = id; // Use the id as the value for the checkbox
+            checkbox.className = 'checkbox'; // Add class for easy selection
+            checkboxCell.appendChild(checkbox);
+
             const idCell = newRow.insertCell();
             const nameCell = newRow.insertCell();
             const actionCell = newRow.insertCell();
@@ -1337,7 +1347,7 @@ function onDeviceReady() {
             const deleteButton = createActionButton2("Delete", function() {
                 if (confirm("Are you sure you want to delete RAWMILL ID: " + id + "'s record?")) {
                     deleteRecord(id);
-                    mloadlist();
+                    window.mloadlist();
                 }
             }, "red");
 
@@ -1783,14 +1793,14 @@ function mloadlist() {
     // console.log('Email:', email);
     // console.log('PageType:', pageType);
 
-    var materialtable_id = "";
+    var materialtable_id = "material_table";
 
     if (pageType == 1) {
         newptype = 1;
-        materialtable_id = "material_table_2";
+        // materialtable_id = "material_table_2";
     } else {
         newptype = 0;
-        materialtable_id = "material_table";
+        // materialtable_id = "material_table";
     }
 
     // ***
@@ -1823,6 +1833,16 @@ function mloadlist() {
 
                 // Create a new row in the table
                 const newRow = table.insertRow();
+
+
+                // Insert a cell for the checkbox
+                const checkboxCell = newRow.insertCell();
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = id; // Use the id as the value for the checkbox
+                checkbox.className = 'checkbox'; // Add class for easy selection
+                checkboxCell.appendChild(checkbox);
+
                 const idCell = newRow.insertCell();
                 const nameCell = newRow.insertCell();
                 const actionCell = newRow.insertCell();
@@ -1848,6 +1868,7 @@ function mloadlist() {
                 const deleteButton = createActionButton2("Delete", function() {
                     if (confirm("Are you sure you want to delete RAWMILL ID:" + id + "'s record?")) {
                         deleteRecord(id);
+                        window.mloadlist();
                     }
                 }, "red");
 
@@ -2595,12 +2616,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
-    if (rawmill1num !== null) {
-        rawmillnum = rawmill1num.value;
-    }
-    if (rawmill2num !== null) {
-        rawmillnum = rawmill2num.value;
-    }
+    // if (rawmill1num !== null) {
+    //     rawmillnum = rawmill1num;
+    // }
+    // if (rawmill2num !== null) {
+    //     rawmillnum = rawmill2num;
+    // }
+
+    console.log("DOM RAWMILL VALUE: " + rawmillnum);
+
     var storedObject = JSON.parse(localStorage.getItem('Rawmill' + rawmillnum));
     if (storedObject !== null) {
 
@@ -6052,6 +6076,54 @@ function autoTriggerFunction() {
     // document.body.innerHTML = '';
 }
 
+document.getElementById("selectAll").addEventListener("change", function() {
+    var checkboxes = document.querySelectorAll('.checkbox');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = event.target.checked;
+    });
+});
+
+// Delete selected rows
+document.getElementById("deleteSelected").addEventListener("click", function() {
+    var selected = [];
+    var checkboxes = document.querySelectorAll('.checkbox:checked');
+    checkboxes.forEach(function(checkbox) {
+        selected.push(checkbox.value); // Collect the IDs of selected rows
+    });
+
+    if (selected.length > 0) {
+        if (confirm("Are you sure you want to delete the selected rows?")) {
+            fetch('/api/auth/delete', {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        // Add CORS-related headers
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem('token'),
+                        "Access-Control-Allow-Origin": "*", // Replace * with the specific origin if required
+                        "Access-Control-Allow-Methods": "POST, OPTIONS", // Specify the allowed HTTP methods
+                        "Access-Control-Allow-Headers": "Content-Type, Authorization", // Specify the allowed headers
+                    },
+                    body: JSON.stringify({
+                        ids: selected
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        selected.forEach(function(id) {
+                            var row = document.querySelector('input[value="' + id + '"]').closest('tr');
+                            row.remove(); // Remove the row from the table
+                        });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    } else {
+        alert("No rows selected for deletion.");
+    }
+});
+
 function toggleButtons() {
     const floatingbuttonID = document.getElementById("floatingButton");
     const floatingButton = document.querySelector(".floating-button")
@@ -6069,11 +6141,13 @@ function checkAndCompute() {
             cordova.InAppBrowser.open("index.html", "_self");
         }
 
+        // alert("DONE DOM&ONDEVICE RAWMILL#: " + localStorage.getItem("pagetype"));
         if (rawmillnum == 1) {
             localStorage.setItem("pagetype", 0);
         } else {
             localStorage.setItem("pagetype", 1);
         }
+        console.log("PAGETYPE: " + localStorage.getItem("pagetype"));
         window.computeall();
     }
 }
