@@ -164,6 +164,7 @@ async function onLoginFormSubmit(event) {
         } else {
             const response = await callApiForEmail(email, password);
 
+
             if (!response == "") {
                 alert("Successfully login!");
                 const token = response; // Assuming response contains the token
@@ -181,6 +182,7 @@ async function onLoginFormSubmit(event) {
         }
     } finally {
         element.style.display = "none";
+        document.getElementById('loginButton').innerText = 'Login';
         document.getElementById("loginButton").disabled = false; // Enable login button
     }
 }
@@ -216,44 +218,73 @@ function getApiUrl() {
 }
 
 function callApiForEmail(email, password) {
+
+    // document.getElementById('loadingOverlay').style.display = 'flex';
+    // // Change the text of the <h4> element
+    // document.getElementById('loadingtext').innerText = 'Logging-in . . .';
+    document.getElementById('loginButton').innerText = 'Logging-in . . .';
+
     const apiUrl = getApiUrl() + "/api/auth/login";
     const credentials = {
         email: email,
         password: password,
     };
 
-    // Make an API call to get the username
-    return fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            },
-            body: JSON.stringify(credentials),
-        })
-        .then(response => {
-            return response.json().then(data => {
-                if (!response.ok) {
-                    // If response is not ok, throw an error with the message from the response
-                    throw new Error(data.message || 'Unknown error');
+    try {
+
+        // Make an API call to get the username
+        return fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "POST, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+                },
+                body: JSON.stringify(credentials),
+            })
+            .then(response => {
+                return response.json().then(data => {
+                    if (!response.ok) {
+                        // If response is not ok, throw an error with the message from the response
+                        throw new Error(data.message || 'Unknown error');
+                    }
+                    return data;
+                });
+            })
+            .then(data => {
+
+                if (data.token) {
+
+                    return data.token;
+                } else {
+                    throw new Error(data.message || 'Token not found');
                 }
-                return data;
-            });
-        })
-        .then(data => {
-            if (data.token) {
-                return data.token;
-            } else {
-                throw new Error(data.message || 'Token not found');
-            }
-        })
-        .catch(error => {
-            console.error('Error during login:', error.message);
-            alert(`Error: ${error.message}`);
-        });
+            })
+            .catch(error => {
+
+                // document.getElementById('loadingOverlay').style.display = 'none';
+
+                document.getElementById('loginButton').innerText = 'Login';
+                document.getElementById("loginButton").disabled = false; // Enable login button
+                console.error('Error during login:', error.message);
+                alert(`Error: ${error.message}`);
+            })
+
+
+    } catch (error) {
+
+        document.getElementById('loginButton').innerText = 'Login';
+        // Check if the error message is the timeout error
+        if (error.message === "Login request timed out, slow connection, please try again!") {
+            alert(error.message); // Alert timeout error
+        } else {
+            alert("Error occurred during login: " + error.message); // Alert other errors
+        }
+        console.error("Error in Login:", error);
+
+    }
 }
 
 

@@ -1906,7 +1906,7 @@ function deleteRecord(id) {
         rows
     }) => {
         const items = rows._array;
-        alert("RAWMILL ID: " + id + " Data Deleted!")
+        // alert("RAWMILL ID: " + id + " Data Deleted!");
         // showNotification("ID: " + id + " Data Deleted!", 3000, 1);
         window.mloadlist();
     });
@@ -2405,6 +2405,7 @@ function saveOrUpdateMA() {
                                 alert("Rawmill " + rawmillnum + ": Record updated successfully");
                                 window.clearnow();
                                 window.mloadlist();
+                                mloadlist();
                             })
                             .catch(error => {
                                 console.error("Failed to update record: " + error.message);
@@ -2557,6 +2558,7 @@ function saveOrUpdateMA() {
                                 alert("Rawmill record successfully saved!");
                                 window.clearnow();
                                 window.mloadlist();
+                                mloadlist();
                             })
                             .catch(error => {
                                 console.log("execute error: " + JSON.stringify(error))
@@ -6129,6 +6131,13 @@ document.getElementById("deleteSelected").addEventListener("click", function() {
                         selected.forEach(function(id) {
                             var row = document.querySelector('input[value="' + id + '"]').closest('tr');
                             row.remove(); // Remove the row from the table
+
+                            executeSql(db, "DELETE FROM rmdTable WHERE id = ? AND email = ?", [id, localStorage.getItem("email")], (_, {
+                                rows
+                            }) => {
+                                const items = rows._array;
+
+                            });
                         });
                         alert("ID's: " + selected + " Successfully Deleted");
                     }

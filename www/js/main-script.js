@@ -615,7 +615,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Timeout helper function
             const timeout = (ms) => new Promise((_, reject) =>
-                setTimeout(() => reject(new Error("Request timed out, slow connection, please try again!")), ms)
+                setTimeout(() => reject(new Error("Download request timed out, slow connection, please try again!")), ms)
             );
 
             try {
@@ -678,7 +678,12 @@ document.addEventListener("DOMContentLoaded", function() {
             //     // alert("Some records failed to upload");
             // }
         } catch (error) {
-            alert(error);
+            // Check if the error message is the timeout error
+            if (error.message === "Download request timed out, slow connection, please try again!") {
+                alert(error.message); // Alert timeout error
+            } else {
+                alert("Error occurred during upload: " + error.message); // Alert other errors
+            }
             console.error("Error in fetchAndUploadRecords:", error);
         }
     }
