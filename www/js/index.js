@@ -47,6 +47,53 @@ async function onDeviceReady() {
 
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const rememberMeCheckbox = document.getElementById('rememberMe');
+    const loginForm = document.getElementById('loginForm');
+
+    // Load saved email and password if they exist
+    if (localStorage.getItem('email')) {
+        emailInput.value = localStorage.getItem('email');
+    }
+    if (localStorage.getItem('password')) {
+        passwordInput.value = localStorage.getItem('password');
+    }
+    if (localStorage.getItem('rememberMe') === 'true') {
+        rememberMeCheckbox.checked = true;
+    }
+
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Get form values
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        const rememberMe = rememberMeCheckbox.checked;
+
+        // Perform login (this is a placeholder)
+        console.log('Email:', email);
+        console.log('Password:', password);
+
+        // Save credentials if Remember Me is checked
+        if (rememberMe) {
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password); // Note: storing passwords in localStorage is not secure
+            localStorage.setItem('rememberMe', 'true');
+        } else {
+            // Clear credentials from localStorage if not remembered
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            localStorage.removeItem('rememberMe');
+        }
+
+        // Simulate a login process
+        // alert('Login submitted');
+    });
+});
+
+
 //Session Checker
 function isUserLoggedIn() {
     // Replace this with your actual check for user authentication
@@ -248,7 +295,7 @@ function callApiForEmail(email, password) {
                 return response.json().then(data => {
                     if (!response.ok) {
                         // If response is not ok, throw an error with the message from the response
-                        throw new Error(data.message || 'Unknown error');
+                        throw new Error(data.message || 'Email or Password is incorrect. Please re-enter!');
                     }
                     return data;
                 });
