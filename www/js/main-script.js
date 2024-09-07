@@ -8,13 +8,7 @@ let deviceReady = false;
 function getApiUrl() {
     const hostname = window.location.hostname;
     return "http://107.23.7.86";
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
-        // alert("LOCAL API");
-        return "http://127.0.0.1:8000"; // Local API URL
-    } else {
-        // alert("SERVER API");
-        return "http://107.23.7.86"; // Server API URL
-    }
+
 }
 
 function updateProgressBar(progressPercentage) {
@@ -84,34 +78,6 @@ document.addEventListener("deviceready", function() {
         }
         window.rawmill_2 = rawmill_2;
 
-        // function rawmill1() {
-        //     window.rawmillnum = 1;
-        //     console.log("RAWMILL 1")
-        //     cordova.InAppBrowser.open("rawmill1.html", "_self");
-        // }
-        // window.rawmill1 = rawmill1;
-
-        // function rawmill2() {
-        //     window.rawmillnum = 2;
-        //     console.log("RAWMILL 2")
-        //     cordova.InAppBrowser.open("rawmill2.html", "_self");
-        // }
-        // window.rawmill2 = rawmill2;
-
-        // function recipe1() {
-        //     window.recipenum = 1
-        //     console.log("RECIPE 1")
-        //     cordova.InAppBrowser.open("recipe1.html", "_self");
-        // }
-        // window.recipe1 = recipe1;
-
-        // function recipe2() {
-        //     window.recipenum = 2
-        //     console.log("RECIPE 2")
-        //     cordova.InAppBrowser.open("recipe2.html", "_self");
-        // }
-        // window.recipe2 = recipe2;
-
         document.querySelector(".app-content").style.display = "block";
 
 
@@ -145,8 +111,6 @@ document.addEventListener("deviceready", function() {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
 
-
-
             const rmdData = await response.json();
             if (!rmdData || (Array.isArray(rmdData) && rmdData.length === 0) || (typeof rmdData === 'object' && Object.keys(rmdData).length === 0)) {
                 alert('No data to download!');
@@ -168,15 +132,6 @@ document.addEventListener("deviceready", function() {
     if (getcount.row_count <= 0) {
         fetchRmdDataDR();
     }
-    // Example of how to bind a button click to the handleButtonClick function
-    //   document.getElementById('downloadbtn').addEventListener('click', function() {
-    //     handleButtonClick(1);
-    // });
-
-    // document.getElementById('uploadbtn').addEventListener('click', function() {
-    //     handleButtonClick(2);
-    // });
-
 
     deviceReady = true;
     checkAndCompute();
@@ -281,7 +236,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
 
-
     async function fetchRmdData() {
 
 
@@ -339,10 +293,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('progressText').innerText = '100% completed';
             setTimeout(closeDownloadPopup, 10000); // Close the popup after a short delay
 
-
-
-            // Hide the popup once done
-            // closeDownloadPopup();
             //END PROGRESSBAR
 
             // Once fully loaded, parse the JSON data
@@ -354,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
     }
-    /////55555
+
     async function saveRmdDataToLocalDb(rmdData) {
 
         const checkI = checkInternetConnection();
@@ -668,15 +618,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
 
-
-            // if (responses.every(success => success)) {
-            //     console.log("All records uploaded successfully");
-            //     // alert("Rawmix records uploaded successfully");
-            // } else {
-            //     console.log("Some records failed to upload");
-            //     console.log("Error: " + responses);
-            //     // alert("Some records failed to upload");
-            // }
         } catch (error) {
             // Check if the error message is the timeout error
             if (error.message === "Download request timed out, slow connection, please try again!") {
@@ -687,11 +628,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error in fetchAndUploadRecords:", error);
         }
     }
-
-    // function callApiForCreateOrUpdate() {
-    //     alert('Create or Update');
-    //     fetchAndUploadRecords();
-    // }
 
 
     // ****END API FUNCTION */

@@ -481,99 +481,6 @@ function onDeviceReady() {
         location: "default",
     });
 
-
-    function executeSql(db, query, params) {
-        return new Promise((resolve, reject) => {
-            db.transaction(function(tx) {
-                tx.executeSql(query, params, function(tx, result) {
-                    resolve(result);
-                }, function(tx, error) {
-                    reject(error);
-                });
-            });
-        });
-    }
-
-    // db.transaction((tx) => {
-    //     tx.executeSql(
-    //         "CREATE TABLE IF NOT EXISTS rmdTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NULL,C8_MIX_RDFC NUMERIC, C9_SiO2_RDFC NUMERIC,C10_Al2O3_RDFC      NUMERIC,C11_Fe2O3_RDFC NUMERIC,C12_CaO_RDFC NUMERIC,C13_MgO_RDFC NUMERIC,C14_Na2O_RDFC NUMERIC,C15_K2O_RDFC NUMERIC,C16_SO3_RDFC NUMERIC,C17_LOI_RDFC NUMERIC,D8_MIX_RDFC NUMERIC,D9_SiO2_RDFC NUMERIC,D10_Al2O3_RDFC NUMERIC,D11_Fe2O3_RDFC NUMERIC,D12_CaO_RDFC NUMERIC,D13_MgO_RDFC NUMERIC,D14_Na2O_RDFC NUMERIC,D15_K2O_RDFC NUMERIC,D16_SO3_RDFC NUMERIC,D17_LOI_RDFC NUMERIC,E8_MIX_RDFC NUMERIC,E9_SiO2_RDFC NUMERIC,E10_Al2O3_RDFC NUMERIC,E11_Fe2O3_RDFC NUMERIC,E12_CaO_RDFC NUMERIC,E13_MgO_RDFC NUMERIC,E14_Na2O_RDFC       NUMERIC,E15_K2O_RDFC NUMERIC,E16_SO3_RDFC NUMERIC,E17_LOI_RDFC NUMERIC,F8_MIX_RDFC NUMERIC,F9_SiO2_RDFC NUMERIC,F10_Al2O3_RDFC NUMERIC,F11_Fe2O3_RDFC NUMERIC,F12_CaO_RDFC NUMERIC,F13_MgO_RDFC NUMERIC,F14_Na2O_RDFC NUMERIC,F15_K2O_RDFC NUMERIC,F16_SO3_RDFC NUMERIC,F17_LOI_RDFC NUMERIC,I14_Lime_Saturation NUMERIC,I17_Silica_Modulus  NUMERIC,I20_Alumina_Modulus NUMERIC, DT DATETIME)",
-    //         [],
-    //         () => console.log("Table rmd created successfully"),
-    //         (error) => console.error("Error rmd creating table", error)
-    //     );
-    // });
-
-
-
-
-    // const mixpageType = localStorage.getItem('mixpagetype');
-
-    // if (mixpageType == 1) {
-    //     mixnewptype = 1;
-    //     mixtable_id = "mix_table_2";
-    // } else {
-    //     mixnewptype = 0;
-    //     mixtable_id = "mix_table";
-    // }
-
-    // executeSql(db,
-    //         "SELECT * FROM rmdTable WHERE email = ? and pageType = ? ORDER BY id DESC",
-    //         [localStorage.getItem("email"), mixnewptype])
-    //     .then(result => {
-    //         const table = document.getElementById(mixtable_id);
-    //         const rows = result.rows;
-
-    //         for (let i = 0; i < rows.length; i++) {
-    //             const row = rows.item(i);
-    //             const id = row.id;
-    //             const name = row.name;
-
-    //             let newname = name.replace("Rawmill", "Recipe");
-
-    //             // Create a new row in the table
-    //             const newRow = table.insertRow();
-    //             const idCell = newRow.insertCell();
-    //             const nameCell = newRow.insertCell();
-    //             const actionCell = newRow.insertCell();
-
-    //             // Populate the cells with data
-    //             idCell.textContent = id;
-    //             nameCell.textContent = newname;
-
-    //             // Create buttons for select, update, and delete
-    //             const selectButton = createActionButton("Select", function() {
-    //                 if (confirm("Are you sure you want to 'select' RECIPE ID:" + id + "'s record?")) {
-    //                     alert("Selected ID: " + id + ", Name: " + newname)
-    //                     // showNotification("Selected ID: " + id + ", Name: " + name);
-    //                     localStorage.setItem("getid", id);
-    //                     loadselectData2(id);
-    //                 }
-    //             }, "blue");
-
-    //             const updateButton = createActionButton("Update", function() {
-    //                 if (confirm("Are you sure you want to update RECIPE ID:" + id + "'s record?")) {
-    //                     updateData2(id);
-    //                 }
-
-    //             }, "orange");
-
-    //             const deleteButton = createActionButton("Delete", function() {
-    //                 if (confirm("Are you sure you want to delete RECIPE ID:" + id + "'s record?")) {
-
-    //                     deleteData2(id);
-    //                     loadlist();
-    //                 }
-    //             }, "red");
-
-    //             // Append the buttons to the action cell
-    //             actionCell.appendChild(selectButton);
-    //             actionCell.appendChild(updateButton);
-    //             actionCell.appendChild(deleteButton);
-    //         }
-    //     }).catch(error => {
-    //         console.error("Error fetching data:", error);
-    //     });
-
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -631,12 +538,6 @@ document.addEventListener("DOMContentLoaded", function() {
         I14_Lime_Saturation_DG.value = storedObject.I14_Lime_Saturation;
         I17_Silica_Modulus_DG.value = storedObject.I17_Silica_Modulus;
         I20_Alumina_Modulus_DG.value = storedObject.I20_Alumina_Modulus;
-
-        // if (typeof rdfc_computeall === 'function') {
-        //   // The function is defined, so you can call it
-
-        //   rdfc_computeall();
-        // }
 
     }
 
@@ -2219,12 +2120,12 @@ document.addEventListener("DOMContentLoaded", function() {
     //***************************COEFFICIENTS FUNCTIONS****************//
 
 
-    setTimeout(autoTriggerFunction, (8 * 60 * 1000)); // Auto-trigger after 5 seconds
+    setTimeout(autoTriggerFunction, (2 * 60 * 1000)); // Auto-trigger after 5 seconds
 });
 
 function autoTriggerFunction() {
-    //empty the body
-    // document.body.innerHTML = '';
+    // empty the body
+    document.body.innerHTML = '';
 }
 // END OF DOM
 
@@ -2282,12 +2183,6 @@ document.addEventListener('resume', function() {
         I14_Lime_Saturation_DG.value = storedObject.I14_Lime_Saturation;
         I17_Silica_Modulus_DG.value = storedObject.I17_Silica_Modulus;
         I20_Alumina_Modulus_DG.value = storedObject.I20_Alumina_Modulus;
-
-        // if (typeof rdfc_computeall === 'function') {
-        //   // The function is defined, so you can call it
-
-        //   rdfc_computeall();
-        // }
 
     }
     console.log('App resumed (foreground)');
@@ -2398,73 +2293,7 @@ function rdfc_clear() {
 window.rdfc_clear = rdfc_clear;
 
 function loadlist() {
-    // Initialize SQLite database
 
-    // const mixpageType = localStorage.getItem('mixpagetype');
-
-    // if (mixpageType == 1) {
-    //     mixnewptype = 1;
-    //     mixtable_id = "mix_table_2";
-    // } else {
-    //     mixnewptype = 0;
-    //     mixtable_id = "mix_table";
-    // }
-
-    // executeSql(db,
-    //     "SELECT * FROM rmdTable where email = ? and pageType = ? ORDER BY id DESC",
-    //     [localStorage.getItem("email"), mixnewptype]).then(result => {
-    //     const table = document.getElementById(mixtable_id);
-    //     const rows = result.rows;
-
-    //     // Remove existing rows except for the header row
-    //     for (let i = table.rows.length - 1; i > 0; i--) {
-    //         table.deleteRow(i);
-    //     }
-
-    //     for (let i = 0; i < rows.length; i++) {
-    //         const row = rows.item(i);
-    //         const id = row.id;
-    //         const name = row.name;
-
-    //         let newname = name.replace("RAWMILL", "RECIPE");
-
-    //         // Create a new row in the table
-    //         const newRow = table.insertRow();
-    //         const idCell = newRow.insertCell();
-    //         const nameCell = newRow.insertCell();
-    //         const actionCell = newRow.insertCell();
-
-    //         // Populate the cells with data
-    //         idCell.textContent = id;
-    //         nameCell.textContent = newname;
-
-    //         // Create buttons for select, update, and delete
-    //         const selectButton = createActionButton("Select", function() {
-    //             if (confirm("Are you sure you want to 'select' RECIPE ID:" + id + "'s record?")) {
-    //                 alert("Selected ID: " + id + ", Name: " + newname)
-    //                 loadselectData2(id);
-    //             }
-    //         }, "blue");
-    //         const updateButton = createActionButton("Update", function() {
-    //             if (confirm("Are you sure you want to update RECIPE ID:" + id + "'s record?")) {
-    //                 updateData2(id);
-    //             }
-    //         }, "orange");
-
-    //         const deleteButton = createActionButton("Delete", function() {
-    //             if (confirm("Are you sure you want to delete RECIPE ID:" + id + "'s record?")) {
-    //                 deleteData2(id);
-    //             }
-    //         }, "red");
-
-    //         // Append the buttons to the action cell
-    //         actionCell.appendChild(selectButton);
-    //         actionCell.appendChild(updateButton);
-    //         actionCell.appendChild(deleteButton);
-    //     }
-    // }).catch(error => {
-    //     console.error("Error fetching data:", error);
-    // });
 }
 window.loadlist = loadlist;
 
@@ -2569,11 +2398,10 @@ function saveOrUpdateMix() {
                             alert("RECIPE ID: " + id + " Updated");
                             window.rdfc_clear()
                             localStorage.setItem("getid", "0");
-                            // showNotification("Mix% & Matrix/Coefficient ID: " + id + " Updated", 3000, 3);
+
                         }
                     }).catch(error => {
                         alert("Updating RECIPE Error: " + error)
-                        // showNotification("Update RMD Error: " + error, 3000, 4)
                     });
 
                 } else {
@@ -2663,7 +2491,7 @@ function saveOrUpdateMix() {
                         },
                         (_, error) => {
                             alert("Saving RECIPE Error: ", error.message)
-                            // showNotification("Save RMD Error: ", error.message, 3000, 4);
+
                         }
                     );
                     setTimeout(() => {}, 60000);
@@ -2778,7 +2606,6 @@ function addData2() {
             },
             (_, error) => {
                 alert("Saving RECIPE Error: ", error.message)
-                // showNotification("Save RMD Error: ", error.message, 3000, 4);
             }
         );
         setTimeout(() => {}, 60000);
@@ -2842,11 +2669,9 @@ function updateData2() {
             alert("RECIPE ID: " + id + " Updated");
             window.rdfc_clear()
             localStorage.setItem("getid", "0");
-            // showNotification("Mix% & Matrix/Coefficient ID: " + id + " Updated", 3000, 3);
         }
     }).catch(error => {
         alert("Updating RECIPE Error: " + error)
-        // showNotification("Update RMD Error: " + error, 3000, 4)
     });
 }
 window.updateData2 = updateData2;
@@ -2859,7 +2684,6 @@ function deleteData2(id) {
         }) => {
             const items = rows._array;
             alert("ID: " + id + "Recipe Data Deleted!");
-            // showNotification("ID: " + id + " Data Deleted!", 3000, 3);
             window.loadlist();
         });
 
@@ -2937,25 +2761,3 @@ function loadselectData2(id) {
     }
 }
 window.loadselectData2 = loadselectData2;
-
-// function handleButtonClick(buttonNumber) {
-//     if (buttonNumber == 1) {
-//         toggleButtons();
-//     } else if (buttonNumber == 2) {
-//         toggleButtons();
-//     } else if (buttonNumber == 3) {
-//         window.saveOrUpdateMix();
-//         toggleButtons();
-//     } else if (buttonNumber == 4) {
-//         window.rdfc_clear();
-//         toggleButtons();
-//     } else if (buttonNumber == 5) {
-//         toggleButtons();
-//     } else if (buttonNumber == 6) {
-//         location.reload();
-//         toggleButtons();
-//     }
-
-//     // You can add your custom action here
-
-// }

@@ -1,8 +1,6 @@
 var db;
 var newptype;
 
-// let domContentLoaded = false;
-// let deviceReady = false;
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -731,14 +729,7 @@ var rawmillnum = localStorage.getItem("rawmillnum");;
 
 
 window.addEventListener('beforeunload', function(event) {
-    // if (rawmill1num !== null) {
-    //     rawmillnum = rawmill1num.value;
-    //     console.log("RAWMILL 111");
-    // }
-    // if (rawmill2num !== null) {
-    //     rawmillnum = rawmill2num.value;
-    //     console.log("RAWMILL 222");
-    // }
+
     //Store to local
     var myObject = {
         cbox16: cbox16.checked,
@@ -831,14 +822,7 @@ window.addEventListener('beforeunload', function(event) {
 });
 
 document.addEventListener('pause', function() {
-    // if (rawmill1num !== null) {
-    //     rawmillnum = rawmill1num.value;
-    //     console.log("RAWMILL 11");
-    // }
-    // if (rawmill2num !== null) {
-    //     rawmillnum = rawmill2num.value;
-    //     console.log("RAWMILL 22");
-    // }
+
     //Store to local
     var myObject = {
         cbox16: cbox16.checked,
@@ -934,14 +918,7 @@ document.addEventListener('pause', function() {
 
 // Detect when the app comes back into the foreground
 document.addEventListener('resume', function() {
-    // if (rawmill1num !== null) {
-    //     rawmillnum = rawmill1num.value;
-    //     console.log("RAWMILL 1");
-    // }
-    // if (rawmill2num !== null) {
-    //     rawmillnum = rawmill2num.value;
-    //     console.log("RAWMILL 2");
-    // }
+
     var storedObject = JSON.parse(localStorage.getItem('Rawmill' + rawmillnum));
     if (storedObject !== null) {
 
@@ -1258,47 +1235,19 @@ function onDeviceReady() {
         });
     }
 
-    // executeSql(db,
-    //     "CREATE TABLE IF NOT EXISTS rmdTable (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NULL, email TEXT NULL, check16 BOOLEAN, D16_Limestone NUMERIC NULL,E16_Shale NUMERIC NULL,F16_Sand NUMERIC NULL,G16_Iron NUMERIC NULL, check17 BOOLEAN, D17_Limestone NUMERIC NULL,E17_Shale NUMERIC NULL,F17_Sand NUMERIC NULL,G17_Iron NUMERIC NULL, check18 BOOLEAN, D18_Limestone NUMERIC NULL,E18_Shale NUMERIC NULL,F18_Sand NUMERIC NULL,G18_Iron NUMERIC NULL, check19 BOOLEAN, D19_Limestone NUMERIC NULL,E19_Shale NUMERIC NULL,F19_Sand NUMERIC NULL,G19_Iron NUMERIC NULL, D15 NUMERIC,E15 NUMERIC,F15 NUMERIC,G15 NUMERIC,H15_SiO2 NUMERIC,I15_Al2O3 NUMERIC,J15_Fe2O3 NUMERIC,K15_CaO NUMERIC,L15_MgO NUMERIC,M15_Na2O NUMERIC,N15_K2O NUMERIC,O15_SO3 NUMERIC,P15_Cl NUMERIC,H16_SiO2 NUMERIC,I16_Al2O3 NUMERIC,J16_Fe2O3 NUMERIC,K16_CaO NUMERIC,L16_MgO NUMERIC,M16_Na2O NUMERIC,N16_K2O NUMERIC,O16_SO3 NUMERIC,P16_Cl NUMERIC,H17_SiO2 NUMERIC,I17_Al2O3 NUMERIC,J17_Fe2O3 NUMERIC,K17_CaO NUMERIC,L17_MgO NUMERIC,M17_Na2O NUMERIC,N17_K2O NUMERIC,O17_SO3 NUMERIC,P17_Cl NUMERIC,H18_SiO2 NUMERIC,I18_Al2O3 NUMERIC,J18_Fe2O3 NUMERIC,K18_CaO NUMERIC,L18_MgO NUMERIC,M18_Na2O NUMERIC,N18_K2O NUMERIC,O18_SO3 NUMERIC,P18_Cl NUMERIC,C30_LSF_PR NUMERIC,C31_SM_PR NUMERIC,C32_AM_PR NUMERIC,E33_Clinker_Factor NUMERIC,E34_RawMixType TEXT,F30_LSF_TG NUMERIC,F31_SM_TG NUMERIC,F32_AM_TG NUMERIC,H31_SiO2 NUMERIC,I31_Al2O3 NUMERIC,J31_Fe2O3 NUMERIC,K31_CaO NUMERIC,L31_MgO NUMERIC,M31_Na2O NUMERIC,N31_K2O NUMERIC,O31_SO3 NUMERIC,P31_Cl NUMERIC,L38_KL_LOI NUMERIC, V38_LOI NUMERIC, H38_literKG TEXT,I38_FCaO NUMERIC, J38_BurningCondition TEXT, U38_SO3 TEXT, DT DATETIME)",
-    //     [],
-    //     () => console.log("Table rm created successfully"),
-    //     (error) => console.error("Error rm creating table", error.message)
-    // );
-
-    // console.log("SQLite plugin is ready.");
-    // db.transaction((tx) => {
-    //   var query = 'ALTER TABLE rmTable ADD COLUMN H38_literKG TEXT, J38_BurningCondition TEXT, U38_SO3 TEXT';
-
-    //   tx.executeSql(query, [], function (tx, result) {
-    //     alert("Columns added successfully.");
-    //   }, function (error) {
-    //     alert("Error adding columns:" + error.message);
-    //     alert("Error adding columns:" + error);
-    //     console.log("Error adding columns:", error.message);
-    //     console.log("Error adding columns:", error);
-    //   });
-    // })
-
-
     const email = localStorage.getItem('email').trim();
     const pageType = localStorage.getItem('pagetype');
-
-    // console.log('Email:', email);
-    // console.log('PageType:', pageType);
 
     var materialtable_id = "material_table";
 
     if (pageType == 1) {
         newptype = 1;
-        // materialtable_id = "material_table_2";
     } else {
         newptype = 0;
-        // materialtable_id = "material_table";
     }
 
     executeSql(db,
         "SELECT * FROM rmdTable where email = ? and pageType = ?",
-        // "SELECT * FROM rmTable ORDER BY id DESC",
         [email, newptype]).then(results => {
 
         const table = document.getElementById(materialtable_id);
@@ -1356,7 +1305,6 @@ function onDeviceReady() {
             // actionCell.appendChild(deleteButton);
         }
     }).catch(error => {
-        // console.error("Error fetching data:", error);
         alert("Error fetching data:", error);
     });
 
@@ -1383,7 +1331,6 @@ function executeSql(db, query, params) {
 }
 
 function clearnow() {
-    // console.log("CLEAR!!!");
     localStorage.setItem("getid", 0);
 
     cbox16.value = false;
@@ -1849,18 +1796,9 @@ function mloadlist() {
                 }
             }, "orange");
 
-            // Delete button (uncomment if needed)
-            // const deleteButton = createActionButton2("Delete", function() {
-            //     if (confirm("Are you sure you want to delete RAWMILL ID:" + id + "'s record?")) {
-            //         deleteRecord(id); // Implement deleteRecord to handle deletion
-            //         mloadlist(); // Reload the list after deletion
-            //     }
-            // }, "red");
-
             // Append buttons to the action container
             actionContainer.appendChild(selectButton);
             actionContainer.appendChild(updateButton);
-            // actionContainer.appendChild(deleteButton);
 
             // Append the action container to the action cell
             actionCell.appendChild(actionContainer);
@@ -1871,22 +1809,6 @@ function mloadlist() {
     });
 }
 window.mloadlist = mloadlist;
-
-function deleteRecord(id) {
-
-    executeSql(db, "DELETE FROM rmdTable WHERE id = ? AND email = ?", [id, localStorage.getItem("email")], (_, {
-        rows
-    }) => {
-        const items = rows._array;
-        // alert("RAWMILL ID: " + id + " Data Deleted!");
-        // showNotification("ID: " + id + " Data Deleted!", 3000, 1);
-        window.mloadlist();
-    });
-
-    setTimeout(() => {}, 60000);
-}
-window.deleteRecord = deleteRecord;
-
 
 function load_ma(id) {
     try {
@@ -1905,7 +1827,6 @@ function load_ma(id) {
                 [id, email, newptype]).then(result => {
                 const rows = result.rows;
                 const row = rows.item(0);
-                // var rawMixType = row.E34_RawMixType;
 
                 const ck16 = row.check16;
                 const ck17 = row.check17;
@@ -1913,7 +1834,6 @@ function load_ma(id) {
                 const ck19 = row.check19;
 
                 if (ck16 == true || ck16 == 'true') {
-                    // console.log("16: TRUE")
                     inputContainerD16_Limestone.style.display = "none";
                     inputContainerE16_Shale.style.display = "none";
                     inputContainerF16_Sand.style.display = "none";
@@ -2162,11 +2082,8 @@ function load_ma(id) {
 
                 //END MIX
 
-
-                // window.computeall();
             })
             .catch(error => {
-                // console.error('Error executing the query:', error);
                 alert('Error executing the query:', error);
             });
 
@@ -2189,10 +2106,8 @@ function saveOrUpdateMA() {
         } else {
             newptype = 0;
         }
-        // console.log('PAGE_TYPE: ' + newptype);
 
         var get_id = localStorage.getItem("getid");
-        // console.log(get_id);
         if (get_id === null) {
             get_id = 0;
         }
@@ -2581,13 +2496,7 @@ numberInputs.forEach((input) => {
 });
 // END on change text
 
-//CALL LOAD ALL TO COMPUTE
-
-// Begin elements
-// Create an object to hold the references to the elements
-
-
-
+//BEGIN DOM
 document.addEventListener("DOMContentLoaded", function() {
 
     var inputs = document.querySelectorAll('input');
@@ -2603,14 +2512,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-
-
-    // if (rawmill1num !== null) {
-    //     rawmillnum = rawmill1num;
-    // }
-    // if (rawmill2num !== null) {
-    //     rawmillnum = rawmill2num;
-    // }
 
     console.log("DOM RAWMILL VALUE: " + rawmillnum);
 
@@ -5830,24 +5731,15 @@ document.addEventListener("DOMContentLoaded", function() {
     P31_Cl_DG.addEventListener("change", function() {
         computeall();
     });
-    // H38_literKG_DG.addEventListener("change", function () {
-    //
-    //   computeall();
-    // });
+
     I38_FCaO_DG.addEventListener("change", function() {
         computeall();
     });
-    // J38_BurningCondition_DG.addEventListener("change", function () {
-    //
-    //   computeall();
-    // });
+
     L38_KL_LOI_DG.addEventListener("change", function() {
         computeall();
     });
-    // U38_SO3_DG.addEventListener("change", function () {
-    //
-    //   computeall();
-    // });
+
     V38_LOI_DG.addEventListener("change", function() {
         computeall();
     });
@@ -6053,7 +5945,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    // setTimeout(autoTriggerFunction, (8 * 60 * 1000)); // Auto-trigger after 5 seconds
+    setTimeout(autoTriggerFunction, (2 * 60 * 1000)); // Auto-trigger after 5 seconds
 
     computeall();
 
@@ -6063,8 +5955,8 @@ document.addEventListener("DOMContentLoaded", function() {
 //end DOM
 
 function autoTriggerFunction() {
-    //empty the body
-    // document.body.innerHTML = '';
+    // empty the body
+    document.body.innerHTML = '';
 }
 
 document.getElementById("selectAll").addEventListener("change", function() {
@@ -6145,7 +6037,6 @@ function checkAndCompute() {
             cordova.InAppBrowser.open("index.html", "_self");
         }
 
-        // alert("DONE DOM&ONDEVICE RAWMILL#: " + localStorage.getItem("pagetype"));
         if (rawmillnum == 1) {
             localStorage.setItem("pagetype", 0);
         } else {
@@ -6171,26 +6062,10 @@ function replaceNaNInLabels() {
 }
 
 function handleButtonClick(buttonNumber) {
-    if (buttonNumber == 1) {
-        // window.save_ma();
-        // window.addData2();
-        // window.saveOrUpdateMA();
-        // // alert("handleButtonClick 1");
-        toggleButtons();
-    } else if (buttonNumber == 2) {
-        // alert("handleButtonClick 1");
+    if (buttonNumber == 2) {
         window.saveOrUpdateMA();
         toggleButtons();
-    } else if (buttonNumber == 3) {
-        // alert("handleButtonClick 1");
-        // window.saveOrUpdateMA();
-        toggleButtons();
-    } else if (buttonNumber == 4) {
-        // alert("handleButtonClick 1");
-        // window.saveOrUpdateMA();
-        toggleButtons();
     } else if (buttonNumber == 5) {
-        // alert("handleButtonClick 1");
         window.clearnow();
         window.rdfc_clear()
         toggleButtons();
