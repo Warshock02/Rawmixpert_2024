@@ -1787,116 +1787,88 @@ function checked_select() {
 window.checked_select = checked_select;
 
 function mloadlist() {
-
     const email = localStorage.getItem('email').trim();
     const pageType = localStorage.getItem('pagetype').trim();
-    // console.log('Email:', email);
-    // console.log('PageType:', pageType);
+    const newptype = pageType == 1 ? 1 : 0;
+    const materialtable_id = "material_table";
 
-    var materialtable_id = "material_table";
-
-    if (pageType == 1) {
-        newptype = 1;
-        // materialtable_id = "material_table_2";
-    } else {
-        newptype = 0;
-        // materialtable_id = "material_table";
+    // Clear the existing rows from the table except the header
+    const table = document.getElementById(materialtable_id);
+    while (table.rows.length > 1) {
+        table.deleteRow(1);
     }
 
-    // ***
+    // Fetch the data from the database
     executeSql(db,
-        "SELECT check16, " +
-        "D16_Limestone, E16_Shale, F16_Sand, G16_Iron, check17, D17_Limestone, E17_Shale, F17_Sand, G17_Iron, check18, " +
-        "D18_Limestone, E18_Shale, F18_Sand, G18_Iron, check19, D19_Limestone, E19_Shale, F19_Sand, G19_Iron, D15, E15, F15, " +
-        "G15, H15_SiO2, I15_Al2O3, J15_Fe2O3, K15_CaO, L15_MgO, M15_Na2O, N15_K2O, O15_SO3, P15_Cl, H16_SiO2, I16_Al2O3, " +
-        "J16_Fe2O3, K16_CaO, L16_MgO, M16_Na2O, N16_K2O, O16_SO3, P16_Cl, H17_SiO2, I17_Al2O3, J17_Fe2O3, K17_CaO, L17_MgO, " +
-        "M17_Na2O, N17_K2O, O17_SO3, P17_Cl, H18_SiO2, I18_Al2O3, J18_Fe2O3, K18_CaO, L18_MgO, M18_Na2O, N18_K2O, O18_SO3, " +
-        "P18_Cl, C30_LSF_PR, C31_SM_PR, C32_AM_PR, E33_Clinker_Factor, E34_RawMixType, F30_LSF_TG, F31_SM_TG, F32_AM_TG, " +
-        "H31_SiO2, I31_Al2O3, J31_Fe2O3, K31_CaO, L31_MgO, M31_Na2O, N31_K2O, O31_SO3, P31_Cl, L38_KL_LOI, V38_LOI, H38_literKG, " +
-        "I38_FCaO, J38_BurningCondition, U38_SO3 FROM rmdTable WHERE email = ? and pageType = ? ORDER BY id DESC",
-        // "SELECT * FROM rmTable ORDER BY id DESC",
+        "SELECT * FROM rmdTable WHERE email = ? AND pageType = ? ORDER BY id DESC",
+        [email, newptype]
+    ).then(result => {
+        const rows = result.rows;
 
-        [email, newptype],
-        function(tx, result) {
-            const table = document.getElementById(materialtable_id);
-            const rows = result.rows;
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows.item(i);
+            const id = row.id;
+            const name = row.name;
 
-            // Remove existing rows except for the header row
-            for (let i = table.rows.length - 1; i > 0; i--) {
-                table.deleteRow(i);
-            }
+            // Create a new row in the table
+            const newRow = table.insertRow();
 
-            for (let i = 0; i < rows.length; i++) {
-                const row = rows.item(i);
-                const id = row.id;
-                const name = row.name;
+            // Checkbox cell
+            const checkboxCell = newRow.insertCell();
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = id;
+            checkbox.className = 'checkbox'; // Add a class for easy selection
+            checkboxCell.appendChild(checkbox);
 
-                // Create a new row in the table
-                const newRow = table.insertRow();
+            // ID and name cells
+            const idCell = newRow.insertCell();
+            idCell.textContent = id;
+            const nameCell = newRow.insertCell();
+            nameCell.textContent = name;
 
+            // Action buttons cell
+            const actionCell = newRow.insertCell();
+            const actionContainer = document.createElement('div');
+            actionContainer.className = 'action-buttons'; // Class for styling
 
-                // Insert a cell for the checkbox
-                const checkboxCell = newRow.insertCell();
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.value = id; // Use the id as the value for the checkbox
-                checkbox.className = 'checkbox'; // Add class for easy selection
-                checkboxCell.appendChild(checkbox);
+            // Select button
+            const selectButton = createActionButton2("Select", function() {
+                if (confirm("Are you sure you want to 'select' RAWMILL ID:" + id + "'s record?")) {
+                    alert("Selected ID: " + id + ", Name: " + name);
+                    localStorage.setItem("getid", id);
+                    load_ma(id); // Call your function to load data for the selected ID
+                }
+            }, "blue");
 
-                const idCell = newRow.insertCell();
-                const nameCell = newRow.insertCell();
-                const actionCell = newRow.insertCell();
+            // Update button
+            const updateButton = createActionButton2("Update", function() {
+                if (confirm("Are you sure you want to update RAWMILL ID:" + id + "'s record?")) {
+                    localStorage.setItem("getid", id);
+                    saveOrUpdateMA(); // Call your function to update data
+                }
+            }, "orange");
 
-                // Populate the cells with data
-                idCell.textContent = id;
-                nameCell.textContent = name;
+            // Delete button (uncomment if needed)
+            // const deleteButton = createActionButton2("Delete", function() {
+            //     if (confirm("Are you sure you want to delete RAWMILL ID:" + id + "'s record?")) {
+            //         deleteRecord(id); // Implement deleteRecord to handle deletion
+            //         mloadlist(); // Reload the list after deletion
+            //     }
+            // }, "red");
 
+            // Append buttons to the action container
+            actionContainer.appendChild(selectButton);
+            actionContainer.appendChild(updateButton);
+            // actionContainer.appendChild(deleteButton);
 
-                // Create the action buttons and wrap them in a div for centering
-                const actionContainer = document.createElement('div');
-                actionContainer.className = 'action-buttons'; // Add class for styling
-
-
-
-                const selectButton = createActionButton2("Select", function() {
-                    if (confirm("Are you sure you want to 'select' RAWMILL ID:" + id + "'s record?")) {
-                        alert("Selected ID: " + id + ", Name: " + name)
-                        localStorage.setItem("getid", id);
-                        load_ma(id);
-                    }
-                }, "blue");
-
-                const updateButton = createActionButton2("Update", function() {
-                    if (confirm("Are you sure you want to update RAWMILL ID:" + id + "'s record?")) {
-                        saveOrUpdateMA();
-                    }
-                }, "orange");
-
-                // const deleteButton = createActionButton2("Delete", function() {
-                //     if (confirm("Are you sure you want to delete RAWMILL ID:" + id + "'s record?")) {
-                //         deleteRecord(id);
-                //         window.mloadlist();
-                //     }
-                // }, "red");
-
-
-                // Append buttons to the action container
-                actionContainer.appendChild(selectButton);
-                actionContainer.appendChild(updateButton);
-                actionContainer.appendChild(deleteButton);
-
-                // Append the action container to the action cell
-                actionCell.appendChild(actionContainer);
-                // actionCell.appendChild(selectButton);
-                // actionCell.appendChild(updateButton);
-                // actionCell.appendChild(deleteButton);
-            }
-        },
-        function(error) {
-            // console.error("Error fetching data:", error);
-            alert("Error fetching data:", error);
+            // Append the action container to the action cell
+            actionCell.appendChild(actionContainer);
         }
-    );
+    }).catch(error => {
+        console.error("Error fetching data:", error);
+        alert("Error fetching data: " + error.message);
+    });
 }
 window.mloadlist = mloadlist;
 
@@ -2557,8 +2529,8 @@ function saveOrUpdateMA() {
                                 console.log("execute success results: " + JSON.stringify(results));
                                 alert("Rawmill record successfully saved!");
                                 window.clearnow();
-                                window.mloadlist();
-                                mloadlist();
+                                // window.mloadlist();
+                                return mloadlist();
                             })
                             .catch(error => {
                                 console.log("execute error: " + JSON.stringify(error))
@@ -5673,6 +5645,8 @@ document.addEventListener("DOMContentLoaded", function() {
         R38_total_Alkali_DG.textContent = compute_R38_total_Alkali();
         S38_Liquid_Phase_DG.textContent = compute_S38_Liquid_Phase();
         T38_Coating_Index_DG.textContent = compute_T38_Coating_Index();
+
+        replaceNaNInLabels();
     }
     window.computeall = computeall;
     //END LOAD ALL
@@ -6180,6 +6154,20 @@ function checkAndCompute() {
         console.log("PAGETYPE: " + localStorage.getItem("pagetype"));
         window.computeall();
     }
+}
+
+function replaceNaNInLabels() {
+    // Select all <label> elements
+    const labels = document.querySelectorAll('label');
+
+    // Loop through each label element
+    labels.forEach(label => {
+        // Check if the text content contains "NaN"
+        if (label.textContent.includes('NaN')) {
+            // Replace all occurrences of "NaN" with "0.00"
+            label.textContent = label.textContent.replace(/NaN/g, '0.00');
+        }
+    });
 }
 
 function handleButtonClick(buttonNumber) {

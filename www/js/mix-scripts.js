@@ -2077,6 +2077,9 @@ document.addEventListener("DOMContentLoaded", function() {
         O17_Y_DG.textContent = compute_O17_Y();
         O18_Z_DG.textContent = compute_O18_Z();
         O19_TOTAL_DG.textContent = compute_O19_TOTAL();
+
+
+        replaceNaNInLabels();
     }
     window.rdfc_computeall = rdfc_computeall;
 
