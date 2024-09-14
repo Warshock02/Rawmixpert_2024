@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../css/new.css">
+    <title>V2</title>
+
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src 127.0.0.1:8000 *"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src *">
+
+    <script src="../js/session.js"></script>
+</head>
+
+<body>
+    <!-- <button class="button" onclick="window.rawmill()">1 RAWMILL & RECIPE</button>
+    <button class="button" onclick="window.rawmill_2()">2 RAWMILL & RECIPE</button>
+     -->
+    <div class="loading-screen" id="loadingOverlay">
+        <img src="../img/4.webp" alt="Loading" class="loading-icon">
+        <h4 id="loadingtext">Loading RawMixPERT Menu V2 . . .</h4>
+    </div>
+
+    <div class="container">
+        <div class="button-group white">
+            <button onclick="window.materialslsfand_am()">3 MATERIALS<br>(LSF & AM)</button>
+            <button onclick="window.recipelsfand_am()">RECIPE<br>(LSF & AM)</button>
+        </div>
+        <div class="button-group red">
+            <button onclick="window.materialslsfand_sm()">3 MATERIALS<br>(LSF & SM)</button>
+            <button onclick="window.recipelsfand_am()">RECIPE<br>(LSF & SM)</button>
+        </div>
+        <div class="button-group orange">
+            <button onclick="window.materialslsf_sm_and_am()">4 MATERIALS<br>(LSF, SM & AM)</button>
+            <button onclick="window.recipelsf_sm_and_am()">RECIPE<br>(LSF, SM & AM)</button>
+        </div>
+        <div class="button-group brown">
+            <button onclick="window.fuelandclickerfactor()">FUEL & CLINKER FACTOR</button>
+            <button onclick="window.rawmaterialstoclicker()">RAW MATERIALS<br>TO CLINKER</button>
+        </div>
+
+
+    </div>
+    <button id="offBtn"></button>
+    <div class="fixed-buttons">
+        <button class="button" id="downloadbtn">DOWNLOAD</button>
+        <button class="button" id="uploadbtn">UPLOAD</button>
+    </div>
+
+
+    <script src="../cordova.js"></script>
+    <script src="../js/v2.js"></script>
+    <script src="../js/confirmation.js"></script>
+
+    <!-- <script>
+        function fuelandclickerfactor() {
+            console.log("fuel and clinker factor");
+            alert("fuel and clinker factor");
+        }
+    </script> -->
+</body>
+
+</html>

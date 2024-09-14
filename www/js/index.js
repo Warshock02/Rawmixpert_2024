@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 //Session Checker
 function isUserLoggedIn() {
     // Replace this with your actual check for user authentication
@@ -111,7 +110,8 @@ function isUserLoggedIn() {
 }
 
 function navigateToDashboard() {
-    cordova.InAppBrowser.open("rm-main.html", "_self");
+    // cordova.InAppBrowser.open("rm-main.html", "_self");
+    cordova.InAppBrowser.open("V2/dash_v2.html", "_self");
 }
 
 // If the user is logged in, set the session data

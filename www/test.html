@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/new.css">
+    <title>RM Login</title>
+
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src 127.0.0.1:8000 *"> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src *">
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clinker Production Dashboard</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Fuel</th>
+                        <th colspan="2">% Heat Value, Kcal/Kg</th>
+                        <th>Combined Fuel, Kcal/Kg</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">LVM</td>
+                        <td>100.00%</td>
+                        <td>9750.00</td>
+                        <td>9750.00</td>
+                        <td rowspan="2">9750.00</td>
+                    </tr>
+                    <tr>
+                        <td>0.00%</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                    </tr>
+                    <!-- Additional rows similar to above for other data sections -->
+                </tbody>
+            </table>
+            <button type="button" class="recheck-button">Recheck</button>
+        </div>
+
+
+        <script src="cordova.js"></script>
+        <script src="js/v2.js"></script>
+    </body>
+
+    </html>

@@ -1,0 +1,45 @@
+.floating-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.floating-button button {
+    display: none;
+    margin-bottom: 5px;
+    padding: 15px;
+    background-color: #caa52a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.floating-button-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #caa52a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.floating-button-circle span {
+    font-size: 24px;
+}
+
+.floating-button.opened button {
+    display: block;
+}
+
+.floating-button.opened .floating-button-circle {
+    transform: rotate(45deg);
+}

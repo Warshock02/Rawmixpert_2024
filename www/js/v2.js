@@ -21,6 +21,8 @@ function updateProgressBar(progressPercentage) {
 
 document.addEventListener("deviceready", function() {
 
+    document.querySelector(".loading-screen").style.display = "none";
+
     requestPermissions();
 
     const token = localStorage.getItem('token');
@@ -64,26 +66,12 @@ document.addEventListener("deviceready", function() {
         // Element exists, you can work with it
         element.style.display = "none";
 
-        function rawmill() {
-            // window.rawmillnum = 1;
-            localStorage.setItem("rawmillnum", 1);
-            console.log("RAWMILL")
-            cordova.InAppBrowser.open("rawmill.html", "_self");
-        }
-        window.rawmill = rawmill;
 
-        function rawmill_2() {
-            // window.rawmillnum = 1;
-            localStorage.setItem("rawmillnum", 2);
-            console.log("RAWMILL 2")
-            cordova.InAppBrowser.open("rawmill_2.html", "_self");
-        }
-        window.rawmill_2 = rawmill_2;
-
-        document.querySelector(".app-content").style.display = "block";
+        // document.querySelector(".app-content").style.display = "block";
 
 
     }
+
 
     function back() {
         cordova.InAppBrowser.open("rm-main.html", "_self");
@@ -139,6 +127,73 @@ document.addEventListener("deviceready", function() {
     checkAndCompute();
 })
 
+
+function materialslsfand_am() {
+    // window.rawmillnum = 1;
+    // localStorage.setItem("rawmillnum", 1);
+    console.log("3 materials lsf and am")
+    cordova.InAppBrowser.open("materialslsfandam.html", "_self");
+}
+window.materialslsfand_am = materialslsfand_am;
+
+function recipelsfand_am() {
+    // window.rawmillnum = 1;
+    // localStorage.setItem("rawmillnum", 2);
+    console.log("recipe lsf and_am")
+    cordova.InAppBrowser.open("recipelsfand_am.html", "_self");
+}
+window.recipelsfand_am = recipelsfand_am;
+
+function materialslsfand_sm() {
+    // window.rawmillnum = 1;
+    // localStorage.setItem("rawmillnum", 2);
+    console.log("materials lsf and sm")
+    cordova.InAppBrowser.open("materialslsfand_sm.html", "_self");
+}
+window.materialslsfand_sm = materialslsfand_sm;
+
+function recipelsfand_am() {
+    // window.rawmillnum = 1;
+    localStorage.setItem("rawmillnum", 2);
+    console.log("RAWMILL 2")
+    cordova.InAppBrowser.open("recipelsfand_am.html", "_self");
+}
+window.recipelsfand_am = recipelsfand_am;
+
+function materialslsf_sm_and_am() {
+    // window.rawmillnum = 1;
+    localStorage.setItem("rawmillnum", 2);
+    console.log("RAWMILL 2")
+    cordova.InAppBrowser.open("materialslsf_sm_and_am.html", "_self");
+}
+window.materialslsf_sm_and_am = materialslsf_sm_and_am;
+
+function recipelsf_sm_and_am() {
+    // window.rawmillnum = 1;
+    localStorage.setItem("rawmillnum", 2);
+    console.log("RAWMILL 2")
+    cordova.InAppBrowser.open("recipelsf_sm_and_am.html", "_self");
+}
+window.recipelsf_sm_and_am = recipelsf_sm_and_am;
+
+function fuelandclickerfactor() {
+    // window.rawmillnum = 1;
+    // localStorage.setItem("rawmillnum", 2);
+    console.log("fuel and clicker factor")
+    alert("FOR REAL!!! fuel and clicker factor")
+    cordova.InAppBrowser.open("fuelandclickerfactor.html", "_self");
+}
+window.fuelandclickerfactor = fuelandclickerfactor;
+
+function rawmaterialstoclicker() {
+    // window.rawmillnum = 1;
+    // localStorage.setItem("rawmillnum", 2);
+    console.log("raw materials to clicker")
+    cordova.InAppBrowser.open("rawmaterialstoclicker.html", "_self");
+}
+window.rawmaterialstoclicker = rawmaterialstoclicker;
+
+
 document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -161,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Redirect the user to the login page
         cordova.InAppBrowser.open("index.html", "_self");
     }
+
     const offbtn = document.getElementById("offBtn");
     if (offbtn) {
         offbtn.addEventListener("click", async () => {

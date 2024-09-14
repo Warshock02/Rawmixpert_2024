@@ -274,6 +274,11 @@ cordova-common@^5.0.0:
     read-chunk "^3.2.0"
     strip-bom "^4.0.0"
 
+cordova-plugin-android-permissions@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.1.5.tgz"
+  integrity sha512-oTTV9cCMBqXTCmU+nYRebsP2IQfrtdvl2vYXHjoJgv5NHCIDgY4KFg6kJTcwXQOiymeGXuw0+MTvJJOueAdleA==
+
 cordova-plugin-crosswalk-webview@^2.4.0:
   version "2.4.0"
   resolved "https://registry.npmjs.org/cordova-plugin-crosswalk-webview/-/cordova-plugin-crosswalk-webview-2.4.0.tgz"

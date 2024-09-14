@@ -14,6 +14,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "cordova-android": "^12.0.1",
+    "cordova-plugin-android-permissions": "^1.1.5",
     "cordova-plugin-crosswalk-webview": "^2.4.0",
     "cordova-plugin-file": "^8.0.0",
     "cordova-plugin-file-transfer": "github:apache/cordova-plugin-file-transfer",
@@ -28,10 +29,9 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-screen-orientation": {},
-      "cordova-plugin-file": {
-        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
-      },
-      "cordova-plugin-file-transfer": {}
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-android-permissions": {}
     },
     "platforms": [
       "browser",

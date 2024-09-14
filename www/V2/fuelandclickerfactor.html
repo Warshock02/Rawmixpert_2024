@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; connect-src 127.0.0.1:8000 *">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+      -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/load.css">
+    <link rel="stylesheet" href="../css/floatbtn.css">
+    <link rel="stylesheet" href="../css/fcf.css">
+    <title>Fuel & Kiln Feed to Clinker Ratio</title>
+
+    <script src="../js/session.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+    <div class="loading-screen">
+        <img src="../img/4.webp" alt="Loading" class="loading-icon">
+        Loading Rawmill. . .
+    </div> -->
+     
+
+    <div class="app-content" id="appContent">
+        <div id="tapArea1">
+            <!-- BEGIN tabcontent1 -->
+            <div id="tabContent1" class="tab-content">
+                <div class="container">
+                    <div class="header">
+                        Fuel & Kiln Feed to Clinker Ratio
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Fuel</span>
+                        <span class="label">%</span>
+                        <span class="label">Heat Value, Kcal/Kg</span>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">LVM</span>
+                        <label for="" type="text" class="input" id="" value="100.00">
+                            <input type="text" class="input" value="9750.00">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">HVM</span>
+                        <input type="text" class="input" value="0.00">
+                        <input type="text" class="input" value="0.00">
+                    </div>
+
+                    <div class="row">
+                        <span class="label yellow-text">Combined Fuel, Kcal/Kg</span>
+                        <input type="text" class="input readonly yellow-text" value="9750.00" readonly>
+                    </div>
+
+                    <div class="section-header">Ash</div>
+
+                    <div class="row">
+                        <span class="label">LVM</span>
+                        <input type="text" class="input" value="19.00">
+                        <input type="text" class="input readonly" value="12.75" readonly>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">HVM</span>
+                        <input type="text" class="input" value="6.50">
+                        <input type="text" class="input readonly" value="5.25" readonly>
+                    </div>
+
+                    <div class="row">
+                        <span class="label yellow-text">Combined VCM</span>
+                        <input type="text" class="input readonly yellow-text" value="29.00" readonly>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Specific Heat Consumption, Kcal/Kg Clinker</span>
+                        <input type="text" class="input" value="740.00">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Kg Fuel per Kg Clinker Produced</span>
+                        <input type="text" class="input" value="0.076">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Viscosity, cP</span>
+                        <input type="text" class="input" value="19.94">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Density, Kg/L</span>
+                        <input type="text" class="input" value="0.860">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">% Ash Absorbed</span>
+                        <input type="text" class="input" value="0.000">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">% Ash Content</span>
+                        <input type="text" class="input readonly" value="0.000" readonly>
+                    </div>
+
+                    <div class="section-header">Kiln Feed</div>
+
+                    <div class="row">
+                        <span class="label">Kiln Feed, TPH</span>
+                        <input type="text" class="input" value="350.00">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Clinker Factor</span>
+                        <input type="text" class="input readonly green-text" value="1.682" readonly>
+                    </div>
+
+                    <div class="row">
+                        <span class="label green-text">Clinker Production, TPH</span>
+                        <input type="text" class="input readonly green-text" value="237.9" readonly>
+                    </div>
+
+                    <div class="section-header">Recheck</div>
+
+                    <div class="row">
+                        <span class="label">Clinker Factor</span>
+                        <input type="text" class="input" value="1.680">
+                    </div>
+
+                    <div class="row">
+                        <span class="label green-text">Clinker Production, TPH</span>
+                        <input type="text" class="input readonly green-text" value="208.3" readonly>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">Fuel Requirement, TPH</span>
+                        <input type="text" class="input" value="15.81">
+                    </div>
+
+                    <div class="row">
+                        <span class="label">CMH</span>
+                        <input type="text" class="input" value="18.39">
+                    </div>
+                </div>
+            </div>
+            <!-- END tabcontent1 -->
+
+            <!-- BEGIN tabcontent2 -->
+            <div id="tabContent2" class="tab-content" style="display: none">
+
+                <div class="table-container">
+
+                    <h1>RM LIST</h1>
+                    <!-- START LIST -->
+                    <div class="notify-row">
+                        <div class="notify" id="notify1">
+                        </div>
+                        <div class="notify" id="notifyerror1">
+                        </div>
+                    </div>
+                    <div class="notify-row">
+                        <div class="notify" id="notify2">
+                        </div>
+                        <div class="notify" id="notifyerror2">
+                        </div>
+                    </div>
+
+                    <div class="table-row">
+                        <table class="table" id="material_table">
+
+                            <th><input type="checkbox" id="selectAll" style="align-items: center;">All</th>
+                            <th>ID RM</th>
+                            <th>Name</th>
+                            <th>Action</th>
+
+                        </table>
+
+                        <div class="delete-container">
+                            <button id="deleteSelected">Delete All Selected</button>
+                            <span id="infoText" class="clickable-info">info</span>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END tabcontent5 -->
+            </div>
+        </div>
+    </div>
+
+    <a onclick="window.back()" class="back-button">
+        &lt; </a>
+
+    <div class="tabs">
+        <div class="tablinks" id="tab1" onclick="showTab('tab1')">
+            <i class="fa-solid fa-magnifying-glass-chart fa-spin"></i>
+            <span>Fuel & Clicker Factor</span>
+        </div>
+        <div class="tablinks" id="tab2" onclick="showTab('tab2')">
+            <i class="fa-solid fa-percent"></i>
+            <span>FUEL LIST</span>
+        </div>
+    </div>
+    <!-- FLOAT BUTTON -->
+
+    <div class="floating-button" id="floatingButton">
+        <!-- <button type="submit" onclick="handleButtonClick(1)">Save All</button> -->
+        <button onclick="handleButtonClick(2)">Save RAWMILL</button>
+        <button onclick="handleButtonClick(5)">Clear</button>
+        <div class="floating-button-circle" onclick="toggleButtons()">
+            <span>+</span>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <!-- <input value="" type="hidden" name="rawmill1" id="rawmill1" value="1"> -->
+
+    <script src="../cordova.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/fcf.js"></script>
+    <script src="../js/draggable.js"></script>
+    <script src="../js/confirmation.js"></script>
+</body>
+
+</html>
